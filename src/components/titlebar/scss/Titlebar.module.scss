@@ -1,0 +1,32 @@
+body section.titlebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 32px;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  max-width: 100vw;
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+  background-color: #eaeaea;
+
+  div {
+    display: flex;
+    align-items: center;
+
+    span {
+      font-size: 14px;
+      font-family: 'Roboto', sans-serif;
+      color: #252525;
+    }
+
+    img {
+      width: 20px;
+      padding: 5px;
+    }
+
+  }
+}
