@@ -1,77 +1,70 @@
-# Electron, React & Python Template
+# Getting Started with Create React App
 
-[![Build](https://img.shields.io/badge/build-passing-%23704cb6?style=for-the-badge)](https://github.com/iPzard/electron-react-python-template#readme)
-[![License](https://img.shields.io/github/license/iPzard/electron-react-python-template?color=704cb6&style=for-the-badge)](https://github.com/iPzard/electron-react-python-template/blob/master/LICENSE)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-> Multi-platform Electron template, using React & Redux Toolkit on the front-end and Python/Flask for microservices on the back-end.
+## Available Scripts
 
-![electron_react_python](https://user-images.githubusercontent.com/8584126/95290114-59e42900-0821-11eb-8e43-a708959e8449.gif)
+In the project directory, you can run:
 
-## 🛠️ Setup
-Ensure you have [Node](https://nodejs.org/en/download/) and [Python](https://www.python.org/downloads/) installed, then clone this repository. After it's cloned, navigate to the project's root directory on your computer and
-run the following scrips in a terminal application *(e.g., Git Bash)*:
+### `yarn start`
 
-**Install Python dependencies:**
-```bash
-pip3 install -r requirements.txt
-```
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-**Install Node dependencies:**
-```bash
-yarn install
-```
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-<br>
+### `yarn test`
 
-## ⚙️ Config
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-**Electron:** Electron's `main.js`, `preload.js`, and `renderer.js` files can be found in the project's root directory.
+### `yarn build`
 
-**React:** React files can be found in the `./src/` folder, the custom toolbar is in `./src/components/toolbar`.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-**Python:** Python scripts can be created in the `./app.py` file and used on events via [REST](https://developer.mozilla.org/en-US/docs/Glossary/REST) calls.
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-<br>
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## 📜 Scripts
+### `yarn eject`
 
-Below are the scripts you'll need to run and package your application, as well as build out JSDoc documentation, if you choose to do so. An exhaustive list of scripts that are available can be found in the `package.json` file of the project's root directory, in the `scripts` section.
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-**Start Developer Mode:**
-```bash
-yarn run start
-```
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-**Package Linux:**
-```bash
-yarn run build:package:linux
-```
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-**Package macOS:**
-```bash
-yarn run build:package:mac
-```
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-**Package Windows:**
-```bash
-yarn run build:package:windows
-```
+## Learn More
 
-**Build Documentation:**
-```bash
-yarn run build:docs
-```
-*Note: For packaging, you must install [PyInstaller](https://pypi.org/project/pyinstaller) and include its path in your environment variables. Windows uses [electron-wix-msi](https://github.com/felixrieseberg/electron-wix-msi), which must also be installed and have its path included in your environment variables. MacOS uses [electron-installer-dmg](https://github.com/electron-userland/electron-installer-dmg).*
-<br><br>
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-## 🐱‍👓 Docs
-Code documentation for this template, created with [JSDoc](https://github.com/jsdoc/jsdoc), can be found here:<br>
-[Electron, React, & Python Template](https://ipzard.github.io/electron-react-python-template/)
-<br><br>
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-## 🦟 Bugs
-Bugs reported on the project's [issues page](https://github.com/iPzard/electron-react-python-template/issues) will be exterminated as quickly as possible, be sure to include steps to reproduce so they can be spotted easily.
-<br><br>
+### Code Splitting
 
-## 🏷️ License
-MIT © [iPzard](https://github.com/iPzard/electron-react-python-template/blob/master/LICENSE)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `yarn build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
