@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import {
   Box,
   Container,
@@ -6,18 +7,36 @@ import {
   Icon,
   Text,
   Stack,
-  HStack,
+  Flex,
   VStack,
 } from '@chakra-ui/react';
-import { CheckIcon } from '@chakra-ui/icons';
+import {
+  FcElectronics, FcInfo, FcGlobe, FcCollaboration, FcFeedback, FcInvite,
+} from 'react-icons/fc';
 
-// Replace test data with your own
-// eslint-disable-next-line prefer-spread
-const features = Array.apply(null, Array(8)).map((x, i) => ({
-  id: i,
-  title: 'Lorem ipsum dolor sit amet',
-  text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.',
-}));
+interface FeatureProps {
+  title: string;
+  text: string;
+  icon: ReactElement;
+}
+const Feature = ({ title, text, icon }: FeatureProps) => (
+  <Stack>
+    <Flex
+      w={16}
+      h={16}
+      align="center"
+      justify="center"
+      color="white"
+      rounded="full"
+      bg="gray.100"
+      mb={1}
+    >
+      {icon}
+    </Flex>
+    <Text fontWeight={600}>{title}</Text>
+    <Text color="gray.600">{text}</Text>
+  </Stack>
+);
 
 export default function HomeContent() {
   return (
@@ -35,25 +54,47 @@ export default function HomeContent() {
       </Stack>
 
       <Container maxW="6xl" mt={10}>
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={10}>
-          {features.map((feature) => (
-            <HStack key={feature.id} align="top">
-              <Box color="green.400" px={2}>
-                <Icon as={CheckIcon} />
-              </Box>
-              <VStack align="start">
-                <Text fontWeight={600}>
-                  {feature.title}
-                </Text>
-                <Text color="gray.600">
-                  {feature.text}
-                </Text>
-              </VStack>
-            </HStack>
-          ))}
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
+          <Feature
+            icon={<Icon as={FcElectronics} w={10} h={10} />}
+            title="Handling hardware"
+            text="Manjaro not only supports the use of multiple kernels (selectable from the advanced options at the boot screen), but also provides access to the very latest bleeding-edge kernels as well. This can be done through the use of the Kernel module in Manjaro's graphical Settings Manager, or via the command line using the MHWD-kernel (Manjaro Hardware Detection) command.
+                      "
+          />
+          <Feature
+            icon={<Icon as={FcInfo} w={10} h={10} />}
+            title="Getting help"
+            text="Although Manjaro is designed to work as much out of the box as possible, we don't claim it's perfect. There can be times when things go wrong, you might have questions and a desire to learn more, or just want to personalize it to suit your tastes. This page provides details of some available resources to help you!
+            "
+          />
+          <Feature
+            icon={<Icon as={FcGlobe} w={10} h={10} />}
+            title="Search the web"
+            text="Perhaps the first place to look for generic Linux help is by using your favorite search engine. Just include words like 'Linux', 'Manjaro' or 'Arch' in your search query. As Manjaro is based on Arch Linux, guides and tips designed for Arch usually apply to Manjaro too."
+          />
+          <Feature
+            icon={<Icon as={FcCollaboration} w={10} h={10} />}
+            title="Look in the forums"
+            text="For specific help with Manjaro we have a dedicated online forum where you can search for topics, or create one yourself! This is probably the next best place to go for collaboration, discussion and assistance. Ask for help, post your thoughts, or outline some suggestions. Don't be shy!
+
+            The Manjaro forum is divided into sub-forums for different topics and environments, please post your query "
+          />
+          <Feature
+            icon={<Icon as={FcInvite} w={10} h={10} />}
+            title="Sign up to a mailing list"
+            text="Perhaps the first place to look for generic Linux help is by using your favorite search engine. Just include words like 'Linux', 'Manjaro' or 'Arch' in your search query. As Manjaro is based on Arch Linux, guides and tips designed for Arch usually apply to Manjaro too."
+          />
+          <Feature
+            icon={<Icon as={FcFeedback} w={10} h={10} />}
+            title="Suggestions"
+            text="Got a suggestion on how we can make Manjaro better? Found something you want to be included, or want to help out? Please let us know, by posting your suggestion on the forum.
+
+            Thank you!"
+          />
         </SimpleGrid>
 
       </Container>
+
     </Box>
   );
 }
