@@ -6,7 +6,6 @@ import {
   Flex,
   Icon,
   useColorModeValue,
-  Link,
   Drawer,
   DrawerContent,
   Text,
@@ -16,53 +15,59 @@ import {
 } from '@chakra-ui/react';
 import {
   FiHome,
-  FiTrendingUp,
   FiCompass,
-  FiStar,
   FiSettings,
   FiMenu,
 } from 'react-icons/fi';
 import { IconType } from 'react-icons';
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+} from 'react-router-dom';
+
 interface LinkItemProps {
   name: string;
   icon: IconType;
+  route:string;
 }
 const LinkItems: Array<LinkItemProps> = [
-  { name: 'Home', icon: FiHome },
-  { name: 'Trending', icon: FiTrendingUp },
-  { name: 'Explore', icon: FiCompass },
-  { name: 'Favourites', icon: FiStar },
-  { name: 'Settings', icon: FiSettings },
+  { name: 'Home', icon: FiHome, route: 'home' },
+  { name: 'Explore', icon: FiCompass, route: 'explore' },
+  { name: 'Settings', icon: FiSettings, route: 'settings' },
 ];
 
 export default function SimpleSidebar({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
-      <SidebarContent
-        onClose={() => onClose}
-        display={{ base: 'none', md: 'block' }}
-      />
-      <Drawer
-        autoFocus={false}
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        returnFocusOnClose={false}
-        onOverlayClick={onClose}
-        size="full"
-      >
-        <DrawerContent>
-          <SidebarContent onClose={onClose} />
-        </DrawerContent>
-      </Drawer>
-      {/* mobilenav */}
-      <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
-        {children}
+    <Router>
+      <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
+        <SidebarContent
+          onClose={() => onClose}
+          display={{ base: 'none', md: 'block' }}
+        />
+        <Drawer
+          autoFocus={false}
+          isOpen={isOpen}
+          placement="left"
+          onClose={onClose}
+          returnFocusOnClose={false}
+          onOverlayClick={onClose}
+          size="full"
+        >
+          <DrawerContent>
+            <SidebarContent onClose={onClose} />
+          </DrawerContent>
+        </Drawer>
+        {/* mobilenav */}
+        <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
+        <Box ml={{ base: 0, md: 60 }} p="4">
+          {children}
+        </Box>
       </Box>
-    </Box>
+    </Router>
   );
 }
 
@@ -87,7 +92,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => (
       <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
     </Flex>
     {LinkItems.map((link) => (
-      <NavItem key={link.name} icon={link.icon}>
+      <NavItem key={link.name} icon={link.icon} route={link.route}>
         {link.name}
       </NavItem>
     ))}
@@ -97,9 +102,12 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => (
 interface NavItemProps extends FlexProps {
   icon: IconType;
   children: ReactText;
+  route:string;
 }
-const NavItem = ({ icon, children, ...rest }: NavItemProps) => (
-  <Link href="#" style={{ textDecoration: 'none' }}>
+const NavItem = ({
+  icon, route, children, ...rest
+}: NavItemProps) => (
+  <Link to={route}>
     <Flex
       align="center"
       p="4"
