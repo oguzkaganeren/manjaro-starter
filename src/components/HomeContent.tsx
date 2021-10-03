@@ -52,6 +52,7 @@ export default function HomeContent() {
             </HStack>
           ))}
         </SimpleGrid>
+
       </Container>
     </Box>
   );

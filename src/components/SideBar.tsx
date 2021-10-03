@@ -1,4 +1,4 @@
-import { ReactNode, ReactText } from 'react';
+import { ReactText, ReactNode } from 'react';
 import {
   IconButton,
   Box,
@@ -12,7 +12,14 @@ import {
   useDisclosure,
   BoxProps,
   FlexProps,
+  HStack,
+  Button,
+  VisuallyHidden,
+  Stack,
 } from '@chakra-ui/react';
+import {
+  FaDiscourse, FaWikipediaW, FaYoutube, FaTwitter, FaFacebook,
+} from 'react-icons/fa';
 import {
   FiHome,
   FiCompass,
@@ -38,7 +45,35 @@ const LinkItems: Array<LinkItemProps> = [
   { name: 'Explore', icon: FiCompass, route: 'explore' },
   { name: 'Settings', icon: FiSettings, route: 'settings' },
 ];
-
+const SocialButton = ({
+  children,
+  label,
+  href,
+}: {
+  children: ReactNode;
+  label: string;
+  href: string;
+}) => (
+  <Button
+    bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
+    rounded="full"
+    w={8}
+    h={8}
+    cursor="pointer"
+    as="a"
+    href={href}
+    display="inline-flex"
+    alignItems="center"
+    justifyContent="center"
+    transition="background 0.3s ease"
+    _hover={{
+      bg: useColorModeValue('blackAlpha.200', 'whiteAlpha.200'),
+    }}
+  >
+    <VisuallyHidden>{label}</VisuallyHidden>
+    {children}
+  </Button>
+);
 export default function SimpleSidebar({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
@@ -61,8 +96,7 @@ export default function SimpleSidebar({ children }: { children: ReactNode }) {
             <SidebarContent onClose={onClose} />
           </DrawerContent>
         </Drawer>
-        {/* mobilenav */}
-        <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
+        <MobileNav onOpen={onOpen} />
         <Box ml={{ base: 0, md: 60 }} p="4">
           {children}
         </Box>
@@ -142,24 +176,50 @@ interface MobileProps extends FlexProps {
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => (
   <Flex
     ml={{ base: 0, md: 60 }}
-    px={{ base: 4, md: 24 }}
+    px={{ base: 4, md: 4 }}
     height="20"
     alignItems="center"
     bg={useColorModeValue('white', 'gray.900')}
     borderBottomWidth="1px"
     borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
-    justifyContent="flex-start"
+    justifyContent={{ base: 'space-between', md: 'flex-end' }}
     {...rest}
   >
     <IconButton
-      variant="outline"
+      display={{ base: 'flex', md: 'none' }}
       onClick={onOpen}
+      variant="outline"
       aria-label="open menu"
       icon={<FiMenu />}
     />
 
-    <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
+    <Text
+      display={{ base: 'flex', md: 'none' }}
+      fontSize="2xl"
+      fontFamily="monospace"
+      fontWeight="bold"
+    >
       Logo
     </Text>
+
+    <HStack spacing={{ base: '0', md: '6' }}>
+      <Stack direction="row" spacing={6}>
+        <SocialButton label="Forum" href="#">
+          <FaDiscourse />
+        </SocialButton>
+        <SocialButton label="Wiki" href="#">
+          <FaWikipediaW />
+        </SocialButton>
+        <SocialButton label="Youtube" href="#">
+          <FaYoutube />
+        </SocialButton>
+        <SocialButton label="Twitter" href="#">
+          <FaTwitter />
+        </SocialButton>
+        <SocialButton label="Facebook" href="#">
+          <FaFacebook />
+        </SocialButton>
+      </Stack>
+    </HStack>
   </Flex>
 );
