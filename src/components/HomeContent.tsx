@@ -40,7 +40,7 @@ const Feature = ({ title, text, icon }: FeatureProps) => (
 
 export default function HomeContent() {
   return (
-    <Box p={4}>
+    <Flex p={4}>
       <Stack spacing={4} as={Container} maxW="3xl" textAlign="center">
         <Heading fontSize="3xl">
           Welcome to Manjaro!
@@ -51,10 +51,7 @@ export default function HomeContent() {
           started with your new operating system. So enjoy the experience, and
           don&apos;t hesitate to send us your feedback.
         </Text>
-      </Stack>
-
-      <Container maxW="6xl" mt={10}>
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
+        {/* <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
           <Feature
             icon={<Icon as={FcElectronics} w={10} h={10} />}
             title="Handling hardware"
@@ -91,10 +88,9 @@ export default function HomeContent() {
 
             Thank you!"
           />
-        </SimpleGrid>
+  </SimpleGrid> */}
+      </Stack>
 
-      </Container>
-
-    </Box>
+    </Flex>
   );
 }

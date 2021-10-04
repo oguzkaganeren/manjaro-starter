@@ -1,15 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ChakraProvider, extendTheme, ThemeProvider } from '@chakra-ui/react';
+import { StepsStyleConfig as Steps } from 'chakra-ui-steps';
 import App from './screens/Home';
 import reportWebVitals from './reportWebVitals';
-import { ChakraProvider } from "@chakra-ui/react"
+
+const theme = extendTheme({
+  config: {
+    initialColorMode: 'dark',
+  },
+  components: {
+    Steps,
+  },
+});
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider>
-    <App />
+    <ChakraProvider theme={theme}>
+      <App />
     </ChakraProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function

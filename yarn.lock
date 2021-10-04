@@ -4311,6 +4311,11 @@ caw@^2.0.0, caw@^2.0.1:
     tunnel-agent "^0.6.0"
     url-to-options "^1.0.1"
 
+chakra-ui-steps@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/chakra-ui-steps/-/chakra-ui-steps-1.3.0.tgz#ec1a2e47b70ca6d79107a711f3d575eae3eeb61f"
+  integrity sha512-B2VsxZ2xvGCm2r4GHaAK+nSUx+B6E4rmDtYK3FG+2nRzVjmt5LPAq1AKu4wI8w3K8lASOUCOP05aCrH6YC/8zQ==
+
 chalk@2.4.2, chalk@^2.0.0, chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
