@@ -1,0 +1,874 @@
+[
+    {
+        "name": "Browsers",
+        "icon": "browser",
+        "description": "Web browsing and communication",
+        "apps": [
+            {
+                "name": "Vivaldi",
+                "icon": "vivaldi",
+                "description": "Configurable browser for power users",
+                "pkg": "vivaldi",
+                "extra": []
+            },
+            {
+                "name": "Chromium",
+                "icon": "chromium",
+                "description": "Fast and popular open source browser",
+                "pkg": "chromium",
+                "extra": []
+            },
+            {
+                "name": "Epiphany",
+                "icon": "epiphany",
+                "description": "Gnome Web Browser",
+                "pkg": "epiphany",
+                "filter": [
+                    "advanced"
+                ],
+                "extra": []
+            },
+            {
+                "name": "Firefox",
+                "icon": "mozilla-firefox",
+                "description": "Privacy oriented Web Browser",
+                "pkg": "firefox",
+                "extra": ["firefox-gnome-theme-maia"]
+            },
+            {
+                "name": "Midori",
+                "icon": "midori",
+                "description": "Lightweight Web browser",
+                "pkg": "midori",
+                "extra": []
+            },
+            {
+                "name": "Falkon",
+                "icon": "falkon",
+                "description": "KDE Web Browser",
+                "pkg": "falkon",
+                "filter": [
+                    "advanced"
+                ],
+                "desktop": [
+                    "!gnome"
+                ],
+                "extra": []
+            },
+            {
+                "name": "Konqueror",
+                "icon": "konqueror",
+                "description": "Konqueror Web Browser",
+                "pkg": "konqueror",
+                "filter": [
+                    "advanced"
+                ],
+                "desktop": [
+                    "!gnome"
+                ],
+                "extra": []
+            },
+            {
+                "name": "Opera",
+                "icon": "opera",
+                "description": "Fast and secure webbrowser",
+                "pkg": "opera",
+                "extra": []
+            }
+        ]
+    },
+    {
+        "name": "E-mail",
+        "icon": "mail-client",
+        "description": "E-mail, Calendar, Tasks",
+        "apps": [
+            {
+                "name": "Claws Mail",
+                "icon": "claws-mail",
+                "description": "Lightweight and fast GTK+ based Mail Client",
+                "pkg": "claws-mail",
+                "filter": [
+                    "advanced"
+                ],
+                "extra": []
+            },
+            {
+                "name": "Evolution",
+                "icon": "evolution",
+                "description": "Manage your email, contacts and schedule",
+                "pkg": "evolution",
+                "extra": []
+            },
+            {
+                "name": "Geary",
+                "icon": "geary",
+                "description": "Send and receive mail",
+                "pkg": "geary",
+                "extra": []
+            },
+            {
+                "name": "KMail",
+                "icon": "kmail",
+                "description": "KDE E-mail client",
+                "pkg": "kmail",
+                "desktop": [
+                    "!gnome"
+                ],
+                "extra": []
+            },
+            {
+                "name": "Sylpheed",
+                "icon": "sylpheed",
+                "description": "E-mail client",
+                "pkg": "sylpheed",
+                "extra": []
+            },
+            {
+                "name": "Thunderbird",
+                "icon": "thunderbird",
+                "description": "Send and receive mail, contacts and schedule",
+                "pkg": "thunderbird",
+                "extra": []
+            }
+        ]
+    },
+    {
+        "name": "Office Suites",
+        "icon": "applications-office",
+        "description": "Office suites like MS Office",
+        "apps": [
+            {
+                "name": "FreeOffice",
+                "icon": "ms-word",
+                "description": "Microsoft Office compatible suite",
+                "pkg": "freeoffice",
+                "extra": []
+            },
+            {
+                "name": "Libre Office (Fresh)",
+                "icon": "libreoffice-main",
+                "description": "Open Source Office Application (Latest)",
+                "pkg": "libreoffice-fresh",
+                "extra": []
+            },
+            {
+                "name": "Libre Office (Still)",
+                "icon": "libreoffice-main",
+                "description": "Open Source Office Application (Stable)",
+                "pkg": "libreoffice-still",
+                "extra": []
+            },
+            {
+                "name": "MS Office Online",
+                "icon": "ms-word",
+                "description": "Microsoft Office Online",
+                "pkg": "microsoft-office-web-jak",
+                "extra": []
+            },
+            {
+                "name": "OnlyOffice Desktop Editors",
+                "icon": "ms-word",
+                "description": "Light and free MS Office clone.",
+                "pkg": "onlyoffice-desktopeditors",
+                "extra": []
+            }
+        ]
+    },
+    {
+        "name": "Extended language support",
+        "icon": "gnumeric",
+        "description": "Manjaro extended language support",
+        "apps": [
+          {
+            "name": "Manjaro Asian Input Support Fcitx",
+            "icon": "gnumeric",
+            "description": "Manjaro extended language support with fcitx support",
+            "pkg": "manjaro-asian-input-support-fcitx",
+            "extra": []
+          },
+          {
+            "name": "Manjaro Asian Input Support Ibus",
+            "icon": "gnumeric",
+            "description": "Manjaro extended language support with ibus support",
+            "pkg": "manjaro-asian-input-support-ibus",
+            "extra": []
+          }
+        ]
+    },
+    {
+        "name": "E-Book",
+        "icon": "calibre",
+        "description": "E-book library apps",
+        "apps": [
+            {
+                "name": "Calibre",
+                "icon": "calibre-viewer",
+                "description": "The one stop solution to your e-book needs",
+                "pkg": "calibre",
+                "extra": []
+            },
+            {
+                "name": "FBReader",
+                "icon": "fbreader",
+                "description": "FBReader E-Book Reader",
+                "pkg": "fbreader",
+                "extra": []
+            }
+        ]
+    },
+    {
+        "name": "Text Editors",
+        "icon": "text-editor",
+        "description": "Various editors for text or code",
+        "apps": [
+            {
+                "name": "Atom",
+                "icon": "atom",
+                "description": "A hackable text editor for the 21st Century",
+                "pkg": "atom",
+                "filter": [
+                    "advanced"
+                ],
+                "extra": []
+            },
+            {
+                "name": "Gedit",
+                "icon": "gedit",
+                "description": "Gnome text editor.",
+                "pkg": "gedit",
+                "extra": []
+            },
+            {
+                "name": "Micro",
+                "icon": "micro",
+                "description": "Inituitive Text Editor for terminal",
+                "pkg": "micro-manjaro",
+                "extra": []
+            },
+                        {
+                "name": "Vim",
+                "icon": "gvim",
+                "description": "Keyboard controlled text-editor",
+                "pkg": "gvim",
+                "filter": [
+                    "advanced"
+                ],
+                "extra": []
+            },
+            {
+                "name": "Visual Studio Code OSS",
+                "icon": "visual-studio-code",
+                "description": "Microsoft Code Editor",
+                "pkg": "code",
+                "filter": [
+                    "advanced"
+                ],
+                "extra": []
+            },
+            {
+                "name": "Gnome builder",
+                "icon": "gedit",
+                "description": "An IDE for writing GNOME-based software",
+                "pkg": "gnome-builder",
+                "filter": [
+                    "advanced"
+                ],
+                "extra": []
+            },
+            {
+                "name": "Xed",
+                "icon": "xed",
+                "description": "A small and lightweight text editor. X Apps Project",
+                "pkg": "xed",
+                "extra": []
+            }
+        ]
+    },
+    {
+        "name": "Printing",
+        "icon": "printer",
+        "description": "Support for printing CUPS, HPLIP",
+        "apps": [
+            {
+                "name": "Manjaro Printing",
+                "icon": "printer",
+                "description": "Printing Meta Package",
+                "pkg": "manjaro-printer",
+                "extra": []
+            }
+        ]
+    },
+    {
+        "name": "PDF",
+        "icon": "pdfeditor",
+        "description": "PDF applications applications",
+        "apps": [
+            {
+                "name": "Evince",
+                "icon": "evince",
+                "description": "View multi page documents",
+                "pkg": "evince",
+                "extra": []
+            },
+            {
+                "name": "Okular",
+                "icon": "okular",
+                "description": "Document Viewer",
+                "pkg": "okular",
+                "desktop": [
+                    "!gnome"
+                ],
+                "extra": []
+            },
+
+            {
+                "name": "PDFMod",
+                "icon": "pdfmod",
+                "description": "Remove, extract and rotate pages in PDF Documents",
+                "pkg": "pdfmod",
+                "extra": []
+            },
+            {
+                "name": "Xournalpp",
+                "icon": "xournalpp",
+                "description": "Easy pdf editing tool",
+                "pkg": "xournalpp",
+                "extra": []
+            },
+            {
+                "name": "Xreader",
+                "icon": "xreader",
+                "description": "Xreader is based on Atril and acts as document and PDF reader",
+                "pkg": "xreader",
+                "extra": []
+            },
+            {
+                "name": "Paperwork",
+                "icon": "paperwork",
+                "description": "Document manager for GNOME to manage scanned documents and PDFs",
+                "pkg": "paperwork",
+                "extra": []
+            }
+        ]
+    },
+    {
+        "name": "Graphics Creating",
+        "icon": "applications-accessories",
+        "description": "Creating and editing graphics",
+        "apps": [
+            {
+                "name": "Blender",
+                "icon": "blender",
+                "description": "3D modeling and animation",
+                "pkg": "blender",
+                "extra": []
+            },
+            {
+                "name": "GIMP",
+                "icon": "gimp",
+                "description": "Create images and edit photographs",
+                "pkg": "gimp",
+                "extra": []
+            },
+            {
+                "name": "Inkscape",
+                "icon": "inkscape",
+                "description": "Vector Graphics Editor",
+                "pkg": "inkscape",
+                "extra": []
+            },
+            {
+                "name": "Krita",
+                "icon": "krita",
+                "description": "Digital Painting Creative Freedom",
+                "pkg": "krita",
+                "extra": []
+            },
+            {
+                "name": "Pinta",
+                "icon": "pinta",
+                "description": "Easy create and edit images",
+                "pkg": "pinta",
+                "extra": []
+            },
+            {
+                "name": "Tux Paint",
+                "icon": "tuxpaint",
+                "description": "Drawing program for children",
+                "pkg": "tuxpaint",
+                "extra": []
+            }
+        ]
+    },
+    {
+        "name": "Photos",
+        "icon": "applications-graphics",
+        "description": "Viewers and organizers",
+        "apps": [
+            {
+                "name": "Gpicview",
+                "icon": "gpicview",
+                "description": "Lightweight Image Viewer",
+                "pkg": "gpicview",
+                "extra": []
+            },
+            {
+                "name": "gThumb",
+                "icon": "gthumb",
+                "description": "View and organize your images",
+                "pkg": "gthumb",
+                "extra": []
+            },
+            {
+                "name": "Gnome-photos",
+                "icon": "gthumb",
+                "description": "Access, organize, and share your photos on GNOME",
+                "pkg": "gnome-photos",
+                "extra": []
+            },
+            {
+                "name": "Ristretto",
+                "icon": "ristretto",
+                "description": "Free and lightweight image viewer",
+                "pkg": "ristretto",
+                "extra": []
+            },
+            {
+                "name": "Shotwell",
+                "icon": "shotwell",
+                "description": "Popular Photo Manager",
+                "pkg": "shotwell",
+                "extra": []
+            },
+            {
+                "name": "Viewnior",
+                "icon": "viewnior",
+                "description": "GTK based Elegant Image Viewer",
+                "pkg": "viewnior",
+                "extra": []
+            },
+            {
+                "name": "Eye of Gnome",
+                "icon": "eog",
+                "description": "An image viewing and cataloging program",
+                "pkg": "eog",
+                "extra": []
+            }
+        ]
+    },
+    {
+        "name": "Video/Movie",
+        "icon": "video-player",
+        "description": "Organize and play videos and movies",
+        "apps": [
+            {
+                "name": "Kodi",
+                "icon": "kodi",
+                "description": "Manage and view your media",
+                "pkg": "kodi",
+                "extra": []
+            },
+            {
+                "name": "Parole",
+                "icon": "parole",
+                "description": "Modern and simple media player",
+                "pkg": "parole",
+                "extra": []
+            },
+            {
+                "name": "SM Player",
+                "icon": "smplayer",
+                "description": "A great MPlayer front end",
+                "pkg": "smplayer",
+                "extra": []
+            },
+            {
+                "name": "Totem",
+                "icon": "totem",
+                "description": "Play movies",
+                "pkg": "totem",
+                "extra": []
+            },
+            {
+                "name": "VLC",
+                "icon": "vlc",
+                "description": "VLC media player, the openxource multimedia player",
+                "pkg": "vlc",
+                "extra": []
+            },
+            {
+                "name": "Xplayer",
+                "icon": "xplayer",
+                "description": "Xplayer is based on Totem and plays both music an video",
+                "pkg": "xplayer",
+                "extra": []
+            }
+        ]
+    },
+    {
+        "name": "Audio",
+        "icon": "musicbrainz",
+        "description": "Audio players",
+        "apps": [
+            {
+                "name": "Audacious",
+                "icon": "audacious",
+                "description": "Listen to music",
+                "pkg": "audacious",
+                "extra": []
+            },
+            {
+                "name": "Clementine",
+                "icon": "clementine",
+                "description": "Play music files and internet radio",
+                "pkg": "clementine",
+                "extra": []
+            },
+            {
+                "name": "DeadBeeF",
+                "icon": "deadbeef",
+                "description": "Listen to music",
+                "pkg": "deadbeef",
+                "extra": ["ffmpeg", "libmad", "mpg123"]
+            },
+            {
+                "name": "Lollypop",
+                "icon": "lollypop",
+                "description": "Play and organize your music collection",
+                "pkg": "lollypop",
+                "extra": []
+            },
+            {
+                "name": "Rhythmbox",
+                "icon": "rhythmbox",
+                "description": "Gnome music playing application",
+                "pkg": "rhythmbox",
+                "extra": []
+            }
+        ]
+    },
+    {
+        "name": "Media recording/editing",
+        "icon": "kdenlive",
+        "description": "Audio and Video editing",
+        "apps": [
+            {
+                "name": "Audacity",
+                "icon": "audacity",
+                "description": "Record and Edit Audio files",
+                "pkg": "audacity",
+                "extra": []
+            },
+            {
+                "name": "Kdenlive",
+                "icon": "kdenlive",
+                "description": "Video Editor",
+                "pkg": "kdenlive",
+                "extra": []
+            },
+            {
+                "name": "OBS Studio",
+                "icon": "obs",
+                "description": "Open Source Streaming/Recording Application",
+                "pkg": "obs-studio",
+                "extra": []
+            },
+            {
+                "name": "Shotcut",
+                "icon": "shotcut",
+                "description": "Cross-platform Qt based Video Editor",
+                "pkg": "shotcut",
+                "extra": []
+            },
+            {
+                "name": "Openshot",
+                "icon": "openshot",
+                "description": "Award-winning free and open-source video editor",
+                "pkg": "obs-studio",
+                "extra": []
+            },
+            {
+                "name": "Pitivi",
+                "icon": "pitivi",
+                "description": "Editor for audio/video projects",
+                "pkg": "pitivi",
+                "extra": []
+            },
+            {
+                "name": "Simple Screen Recorder",
+                "icon": "simple-ccsm",
+                "description": "Screen Capturing Application",
+                "pkg": "simplescreenrecorder",
+                "extra": []
+            },
+            {
+                "name": "Flowblade",
+                "icon": "flowblade",
+                "description": "Multitrack non-linear video editor",
+                "pkg": "flowblade",
+                "extra": []
+            }
+        ]
+    },
+    {
+        "name": "Chat",
+        "icon": "internet-chat",
+        "description": "Online messaging and chat",
+        "apps": [
+            {
+                "name": "HexChat",
+                "icon": "hexchat",
+                "description": "Graphic IRC Client",
+                "pkg": "hexchat",
+                "extra": []
+            },
+            {
+                "name": "Telegram",
+                "icon": "telegram-desktop",
+                "description": "Official Telegram Desktop client",
+                "pkg": "telegram-desktop",
+                "extra": []
+            },
+            {
+                "name": "Whatsapp web",
+                "icon": "whatsapp-web-jak",
+                "description": "Wrapper for whatsapp online",
+                "pkg": "whatsapp-web-jak",
+                "extra": []
+            },
+            {
+                "name": "Slack web",
+                "icon": "slack-web-jak",
+                "description": "Wrapper for slack online",
+                "pkg": "slack-web-jak",
+                "extra": []
+            },
+            {
+                "name": "Pidgin Messenger",
+                "icon": "pidgin",
+                "description": "Instant messaging Client",
+                "pkg": "pidgin",
+                "extra": []
+            }
+        ]
+    },
+    {
+        "name": "File Sharing",
+        "icon": "transmission",
+        "description": "FTP and Torrent apps",
+        "filter": [
+            "advanced"
+        ],
+        "apps": [
+            {
+                "name": "Deluge",
+                "icon": "deluge",
+                "description": "Python based Bittorrent Client",
+                "pkg": "deluge",
+                "extra": []
+            },
+            {
+                "name": "Filezilla",
+                "icon": "filezilla",
+                "description": "Graphical FTP/FTPS/SFTP browser",
+                "pkg": "filezilla",
+                "extra": []
+            },
+            {
+                "name": "Transmission GTK",
+                "icon": "transmission",
+                "description": "GTK based Bittorrent Client",
+                "pkg": "transmission-gtk",
+                "extra": []
+            },
+            {
+                "name": "QTransmission",
+                "icon": "transmission",
+                "description": "QT based Bittorrent Client",
+                "pkg": "transmission-qt",
+                "desktop": [
+                    "!gnome"
+                ],
+                "extra": []
+            },
+            {
+                "name": "Syncthing",
+                "icon": "syncthing-gtk",
+                "description": "Cross Platform file synchronization tool",
+                "pkg": "syncthing-gtk",
+                "extra": []
+            }
+        ]
+    },
+    {
+        "name": "Backup",
+        "icon": "deja-dup",
+        "description": "Backup utilites",
+        "apps": [
+            {
+                "name": "Deja Dup",
+                "icon": "deja-dup",
+                "description": "Keep your important documents safe from disater",
+                "pkg": "deja-dup",
+                "extra": []
+            },
+            {
+                "name": "Grsync",
+                "icon": "grsync",
+                "description": "Synchronize files and folders",
+                "pkg": "grsync",
+                "filter": [
+                    "advanced"
+                ],
+                "extra": []
+            },
+            {
+                "name": "Timeshift",
+                "icon": "timeshift",
+                "description": "A system restore utility for Linux",
+                "pkg": "timeshift",
+                "extra": []
+            },
+            {
+                "name": "Backintime",
+                "icon": "deja-dup",
+                "description": "Simple backup system",
+                "pkg": "backintime",
+                "extra": []
+            },
+            {
+                "name": "Borg",
+                "icon": "deja-dup",
+                "description": "Deduplicating backup program with compression and authenticated encryption",
+                "pkg": "borg",
+                "filter": [
+                    "advanced"
+                ],
+                "extra": []
+            }
+        ]
+    },
+    {
+        "name": "Password Manager",
+        "icon": "security-high",
+        "description": "Password Managers",
+        "apps": [
+            {
+                "name": "KeePassXC",
+                "icon": "keepassxc",
+                "description": "Cross Platform Password Manager",
+                "pkg": "keepassxc",
+                "extra": []
+            },
+            {
+                "name": "Bitwarden",
+                "icon": "bitwarden",
+                "description": "Secure and free cloud based password manager.",
+                "pkg": "bitwarden",
+                "extra": []
+            },
+            {
+                "name": "Enpass",
+                "icon": "enpass",
+                "description": "Premium Cross-platform Password Manager",
+                "pkg": "enpass",
+                "extra": []
+            }
+        ]
+    },
+    {
+        "name": "System Tools",
+        "icon": "disk-utility",
+        "description": "System utilities",
+        "filter": [
+            "advanced"
+        ],
+        "apps": [
+            {
+                "name": "Popsicle",
+                "icon": "mintstick",
+                "description": "Graphical tool to write ISO to USB",
+                "pkg": "popsicle",
+                "extra": []
+            },
+            {
+                "name": "Gnome Disks",
+                "icon": "gnome-disks",
+                "description": "Disk management system for Gnome",
+                "pkg": "gnome-disk-utility",
+                "desktop": [
+                    "!kde"
+                ],
+                "extra": []
+            },
+            {
+                "name": "Gparted",
+                "icon": "gparted",
+                "description": "Create, reorganize, and delete partitions",
+                "pkg": "gparted",
+                "extra": []
+            },
+            {
+                "name": "IsoUSB",
+                "icon": "mintstick",
+                "description": "A graphical tool to copy a hybrid ISO onto a USB key.",
+                "pkg": "isousb",
+                "extra": []
+            },
+            {
+                "name": "Mintstick",
+                "icon": "mintstick",
+                "description": "Format or write imges to usb sticks (Linux Mint tool).",
+                "pkg": "mintstick",
+                "extra": []
+            },
+            {
+                "name": "Ventoy",
+                "icon": "mintstick",
+                "description": "Tool for creating multiboot isos",
+                "pkg": "ventoy",
+                "extra": []
+            },
+            {
+                "name": "Alma",
+                "icon": "mintstick",
+                "description": "Tool for creating persistent live isos",
+                "pkg": "alma-git",
+                "extra": []
+            }
+        ]
+    },
+    {
+        "name": "Virtual Computing",
+        "icon": "virt-manager",
+        "description": "Virtual Machine applications",
+        "filter": [
+            "advanced"
+        ],
+        "apps": [
+            {
+                "name": "VirtualBox",
+                "icon": "virtualbox",
+                "description": "Run several virtual systems on a single host computer",
+                "pkg": "virtualbox",
+                "extra": [
+                    "virtualbox-guest-iso"
+                ]
+            },
+            {
+                "name": "Gnome Boxes",
+                "icon": "gnome-boxes",
+                "description": "Simple remote and virtual machines",
+                "pkg": "gnome-boxes",
+                "extra": []
+            },
+            {
+                "name": "Virt-manager",
+                "icon": "virt-manager",
+                "description": "Desktop user interface for managing virtual machines",
+                "pkg": "virt-manager",
+                "extra": []
+            }
+        ]
+    }
+]
