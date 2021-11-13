@@ -8,10 +8,33 @@ import {
   Spacer,
   HStack,
 } from '@chakra-ui/react';
+import React, { useState, useEffect } from 'react';
 import { RiInstallLine } from 'react-icons/ri';
+import { invoke } from '@tauri-apps/api/tauri';
 import apps from '../data/apps.json';
 
 export default function Packages() {
+  const [installedPackages, setInstalledPackages] = useState([] as any);
+  async function fetchData() {
+    try {
+      apps.map((category) => {
+        category.apps.map((app) => {
+          invoke('run_shell_command', { command: `pacman -Qe ${app.name.toLowerCase()}` }).then((message) => {
+            if (message === 'true') {
+              console.log(app.name.toLowerCase());
+              installedPackages.push(app.name.toLowerCase());
+            }
+          });
+        });
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const Feature = (props:any) => (
     <Box
       p={5}

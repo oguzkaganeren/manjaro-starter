@@ -1,5 +1,4 @@
 import './home.css';
-import { invoke } from '@tauri-apps/api/tauri';
 import { Text, Flex, VStack } from '@chakra-ui/react';
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
 import { FiPackage, FiHome } from 'react-icons/fi';
