@@ -8,14 +8,17 @@ import {
   Spacer,
   HStack,
 } from '@chakra-ui/react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { RiInstallLine } from 'react-icons/ri';
+import { observer, inject } from 'mobx-react';
 import { CategoryStore } from '../stores/CategoryStore';
 
-export default function Packages() {
-  const [installedPackages, setInstalledPackages] = useState([] as any);
-  const packages = CategoryStore.create();
-  packages.loadCat();
+const PackagesView = (categories:any) => {
+  useEffect(() => {
+    if (!categories.isLoading) {
+      categories.loadInstalled();
+    }
+  }, [categories.isLoading]);
 
   const Feature = (props:any) => (
     <Box
@@ -43,9 +46,16 @@ export default function Packages() {
           {props.title}
         </chakra.h3>
         <Spacer />
-        <Button leftIcon={<RiInstallLine />} colorScheme="green" variant="solid">
-          Install
-        </Button>
+        {props.isInstalled ? (
+          <Button leftIcon={<RiInstallLine />} colorScheme="red" variant="solid">
+            true
+          </Button>
+        ) : (
+          <Button leftIcon={<RiInstallLine />} colorScheme="green" variant="solid">
+            false
+          </Button>
+        )}
+
       </HStack>
       <chakra.p
         fontSize="sm"
@@ -57,7 +67,7 @@ export default function Packages() {
 
     </Box>
   );
-  const Features = packages.categories.map((category) => (
+  const Features = categories.categories.map((category:any) => (
     <Box mt={8}>
       <Box textAlign={{ lg: 'left' }}>
         <chakra.p
@@ -86,16 +96,18 @@ export default function Packages() {
           spacingY={10}
           mt={6}
         >
-          {category.apps.map((app) => (
+          {category.apps.map((app:any) => (
             <Feature
               color="red"
-              title={app.name}
+              title={app.isInstalled}
+              isInstalled={app.isInstalled}
               icon={(
                 <path
                   fillRule="evenodd"
                   d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z"
                   clipRule="evenodd"
                 />
+
           )}
             >
               {app.description}
@@ -140,4 +152,5 @@ export default function Packages() {
       {Features}
     </Box>
   );
-}
+};
+export default inject('categorystore')(observer(({ categorystore }) => (PackagesView(categorystore))));

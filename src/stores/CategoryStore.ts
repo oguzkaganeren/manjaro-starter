@@ -2,14 +2,41 @@ import { values } from 'mobx';
 import {
   types, getParent, flow, splitJsonPath,
 } from 'mobx-state-tree';
-import { Package } from './PackageStore';
+import { invoke } from '@tauri-apps/api/tauri';
 import apps from '../data/apps.json';
 
-export const Category = types.model('Category', {
+export const Package = types.model('Package', {
+  id: types.optional(types.identifier, () => Math.random().toString()),
   name: types.string,
   icon: types.string,
   description: types.string,
-  apps: types.array(Package),
+  pkg: types.string,
+  extra: types.array(types.string),
+  isInstalled: types.optional(types.boolean, false),
+})
+  .actions((self) => ({
+    // note the star, this a generator function!
+    fetchInstalled: flow(function* fetchInstalled() {
+      try {
+        const response = yield invoke('run_shell_command', { command: `pacman -Qe ${self.pkg}` });
+        if (response === 'true') {
+          self.isInstalled = true;
+        } else {
+          self.isInstalled = false;
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }),
+
+  }));
+
+export const Category = types.model('Category', {
+  id: types.optional(types.identifier, () => Math.random().toString()),
+  name: types.string,
+  icon: types.string,
+  description: types.string,
+  apps: types.optional(types.array(Package), []),
 });
 
 export const CategoryStore = types
@@ -18,6 +45,9 @@ export const CategoryStore = types
     categories: types.array(Category),
   })
   .views((self) => ({
+    get categories() {
+      return self.categories;
+    },
   }))
   .actions((self) => {
     function markLoading(loading:boolean) {
@@ -34,13 +64,13 @@ export const CategoryStore = types
         });
       });
     }
-    function loadAppDetail() {
-      self.categories.forEach((category) => {
-        category.apps.forEach((app) => {
-          app.loadAppDetail();
+    const loadInstalled = flow(function* checkAppsInstalled() {
+      self.categories.forEach((cat) => {
+        cat.apps.forEach((app) => {
+          app.fetchInstalled();
         });
       });
-    }
+    });
     const loadCat = flow(function* loadCat() {
       try {
         addApps();
@@ -52,5 +82,6 @@ export const CategoryStore = types
 
     return {
       loadCat,
+      loadInstalled,
     };
   });

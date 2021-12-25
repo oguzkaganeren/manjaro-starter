@@ -4,7 +4,10 @@ import { ChakraProvider, extendTheme, ThemeProvider } from '@chakra-ui/react';
 import { StepsStyleConfig as Steps } from 'chakra-ui-steps';
 import App from './screens/Home';
 import reportWebVitals from './reportWebVitals';
+import { CategoryStore } from './stores/CategoryStore';
 
+const categories = CategoryStore.create();
+categories.loadCat();
 const theme = extendTheme({
   config: {
     initialColorMode: 'dark',

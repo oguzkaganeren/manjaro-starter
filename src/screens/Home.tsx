@@ -6,7 +6,7 @@ import { GiSettingsKnobs } from 'react-icons/gi';
 import ResetPrompt from '../components/ResetPrompt';
 import StepButtons from '../components/StepButtons';
 import HomeContent from '../components/HomeContent';
-import Packages from '../components/Packages';
+import PackagesView from '../components/Packages';
 
 const homeContent = (
   <Flex py={4}>
@@ -15,7 +15,7 @@ const homeContent = (
 );
 const packageContent = (
   <Flex py={4}>
-    <Packages />
+    <PackagesView />
   </Flex>
 );
 const moreContent = (

@@ -3,7 +3,6 @@
   windows_subsystem = "windows"
 )]
 use std::process::Command;
-use log::info;
 #[tauri::command]
 fn run_shell_command(command: String) -> String {
   let output= Command::new("sh")
