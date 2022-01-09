@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ChakraProvider, extendTheme, ThemeProvider } from '@chakra-ui/react';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { StepsStyleConfig as Steps } from 'chakra-ui-steps';
+import { RecoilRoot } from 'recoil';
 import App from './screens/Home';
 import reportWebVitals from './reportWebVitals';
-import { CategoryStore } from './stores/CategoryStore';
 
-const categories = CategoryStore.create();
-categories.loadCat();
 const theme = extendTheme({
   config: {
     initialColorMode: 'dark',
@@ -18,8 +16,10 @@ const theme = extendTheme({
 });
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider theme={theme}>
-      <App />
+    <ChakraProvider theme={theme}> 
+      <RecoilRoot>
+        <App />
+      </RecoilRoot>
     </ChakraProvider>
   </React.StrictMode>,
   document.getElementById('root'),

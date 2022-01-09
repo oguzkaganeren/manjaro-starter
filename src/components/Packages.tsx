@@ -10,15 +10,17 @@ import {
 } from '@chakra-ui/react';
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { RiInstallLine } from 'react-icons/ri';
-import { observer, inject } from 'mobx-react';
-import { CategoryStore } from '../stores/CategoryStore';
+import {
+  useRecoilValue,
+  useRecoilState,
+} from 'recoil';
+import { getPackages, packageState } from '../stores/PackageStore';
 
-const PackagesView = (categories:any) => {
-  useEffect(() => {
-    if (!categories.isLoading) {
-      categories.loadInstalled();
-    }
-  }, [categories.isLoading]);
+interface PackageProps {
+}
+
+const PackagesList: React.FC<PackageProps> = (props) => {
+  const packageSt = useRecoilValue(getPackages);
 
   const Feature = (props:any) => (
     <Box
@@ -41,7 +43,6 @@ const PackagesView = (categories:any) => {
           mb={2}
           fontWeight="semibold"
           lineHeight="shorter"
-          color={useColorModeValue('gray.100', 'white.500')}
         >
           {props.title}
         </chakra.h3>
@@ -67,7 +68,7 @@ const PackagesView = (categories:any) => {
 
     </Box>
   );
-  const Features = categories.categories.map((category:any) => (
+  const Features = packageSt.map((category:any) => (
     <Box mt={8}>
       <Box textAlign={{ lg: 'left' }}>
         <chakra.p
@@ -99,7 +100,7 @@ const PackagesView = (categories:any) => {
           {category.apps.map((app:any) => (
             <Feature
               color="red"
-              title={app.isInstalled}
+              title={app.name}
               isInstalled={app.isInstalled}
               icon={(
                 <path
@@ -153,4 +154,4 @@ const PackagesView = (categories:any) => {
     </Box>
   );
 };
-export default inject('categorystore')(observer(({ categorystore }) => (PackagesView(categorystore))));
+export default PackagesList;

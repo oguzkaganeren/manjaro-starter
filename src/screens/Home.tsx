@@ -1,5 +1,8 @@
 import './home.css';
-import { Text, Flex, VStack } from '@chakra-ui/react';
+import React, { Suspense } from 'react';
+import {
+  Text, Flex, VStack, CircularProgress,
+} from '@chakra-ui/react';
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
 import { FiPackage, FiHome } from 'react-icons/fi';
 import { GiSettingsKnobs } from 'react-icons/gi';
@@ -8,12 +11,15 @@ import StepButtons from '../components/StepButtons';
 import HomeContent from '../components/HomeContent';
 import PackagesView from '../components/Packages';
 
+interface AppProps {
+}
+
 const homeContent = (
   <Flex py={4}>
     <HomeContent />
   </Flex>
 );
-const packageContent = (
+const PackageContent: React.FC<AppProps> = (props) => (
   <Flex py={4}>
     <PackagesView />
   </Flex>
@@ -24,12 +30,12 @@ const moreContent = (
   </Flex>
 );
 
-const steps = [
-  { label: 'Welcome', icon: FiHome, content: homeContent },
-  { label: 'Explorer', icon: FiPackage, content: packageContent },
-  { label: 'More', icon: GiSettingsKnobs, content: moreContent },
-];
-function App() {
+const App: React.FC<AppProps> = (props) => {
+  const steps = [
+    { label: 'Welcome', icon: FiHome, content: homeContent },
+    { label: 'Explorer', icon: FiPackage, content: <Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}><PackageContent /></Suspense> },
+    { label: 'More', icon: GiSettingsKnobs, content: moreContent },
+  ];
   const {
     nextStep, prevStep, reset, activeStep,
   } = useSteps({
@@ -54,6 +60,6 @@ function App() {
       )}
     </VStack>
   );
-}
+};
 
 export default App;
