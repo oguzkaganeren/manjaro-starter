@@ -11,16 +11,43 @@ import {
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { RiInstallLine } from 'react-icons/ri';
 import {
-  useRecoilValue,
-  useRecoilState,
+  useRecoilState, useSetRecoilState, useRecoilValue,
 } from 'recoil';
-import { getPackages, packageState } from '../stores/PackageStore';
+import { invoke } from '@tauri-apps/api/tauri';
+import _ from 'lodash';
+import {
+  Category, getPackages, Package, packageState,
+} from '../stores/PackageStore';
 
 interface PackageProps {
 }
 
 const PackagesList: React.FC<PackageProps> = (props) => {
-  const packageSt = useRecoilValue(getPackages);
+  const [packageSt, setPackageSt] = useRecoilState(packageState);
+  useEffect(() => {
+    async function fetchInstalledPackages() {
+      packageSt.map((category, indexCat) => {
+        category.packages.map((pk, indexPk) => {
+          try {
+            invoke('run_shell_command', { command: `pacman -Qe ${pk.pkg}` }).then((response) => {
+              if (response === 'true') {
+                setPackageSt((prevState) => {
+                  const temp = _.cloneDeep(prevState);
+                  temp[indexCat].packages[indexPk].isInstalled = true;
+                  console.log(temp);
+                  return temp;
+                });
+              }
+            });
+          } catch (err) {
+            console.log(err);
+            return false;
+          }
+        });
+      });
+    }
+    fetchInstalledPackages();
+  }, []);
 
   const Feature = (props:any) => (
     <Box
@@ -97,7 +124,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
           spacingY={10}
           mt={6}
         >
-          {category.apps.map((app:any) => (
+          {category.packages.map((app:any) => (
             <Feature
               color="red"
               title={app.name}

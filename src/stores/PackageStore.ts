@@ -19,32 +19,34 @@ export interface Category {
   description: string,
   packages:Array<Package>
 }
-
 export const getPackages = selector({
   key: 'getPackages',
-  get: async () => apps,
+  get: async () => {
+    const cats = [] as Category[];
+    apps.map((category) => {
+      const packs = [] as Package[];
+      category.apps.map((app) => {
+        packs.push({
+          pkg: app.pkg,
+          description: app.description,
+          extra: app.extra,
+          icon: app.icon,
+          isInstalled: false,
+          name: app.name,
+        });
+      });
+      cats.push({
+        description: category.description,
+        icon: category.icon,
+        name: category.name,
+        packages: packs,
+      });
+    });
+    return cats;
+  },
 });
 
 export const packageState = atom({
-  key: 'packages',
-  default: [] as Category[],
-});
-export const packageStatus = selector({
-  key: 'packageStatus',
-  get: ({ get }) => {
-    get(packageState).map((category) => {
-      category.packages.map((pk) => {
-        try {
-          invoke('run_shell_command', { command: `pacman -Qe ${pk.pkg}` }).then((response) => {
-            if (response === 'true') {
-              return true;
-            }
-            return false;
-          });
-        } catch (err) {
-          console.log(err);
-        }
-      });
-    });
-  },
+  key: 'packageState',
+  default: getPackages,
 });
