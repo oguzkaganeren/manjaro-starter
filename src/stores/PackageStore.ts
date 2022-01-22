@@ -1,4 +1,4 @@
-import { atom, selector } from 'recoil';
+import { atom, selector, selectorFamily } from 'recoil';
 import { invoke } from '@tauri-apps/api/tauri';
 import apps from '../data/apps.json';
 
@@ -43,6 +43,14 @@ export const getPackages = selector({
       });
     });
     return cats;
+  },
+});
+
+export const getPackageStatus = selectorFamily({
+  key: 'getPackageStatus',
+  get: (pkgName:string) => async () => {
+    const result = await invoke('run_shell_command', { command: `pacman -Qe ${pkgName}` });
+    return result;
   },
 });
 

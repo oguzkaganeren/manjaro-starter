@@ -1,22 +1,21 @@
 import {
   Box,
-  Button,
+  CircularProgress,
   Icon,
   SimpleGrid,
   useColorModeValue,
   chakra,
   Spacer,
   HStack,
+  IconButton,
 } from '@chakra-ui/react';
 import React, { useState, useEffect, useLayoutEffect } from 'react';
-import { RiInstallLine } from 'react-icons/ri';
+import { RiInstallLine, RiCheckLine } from 'react-icons/ri';
 import {
   useRecoilState, useSetRecoilState, useRecoilValue,
 } from 'recoil';
-import { invoke } from '@tauri-apps/api/tauri';
-import _ from 'lodash';
 import {
-  Category, getPackages, Package, packageState,
+  Category, getPackages, getPackageStatus, packageState,
 } from '../stores/PackageStore';
 
 interface PackageProps {
@@ -24,31 +23,45 @@ interface PackageProps {
 
 const PackagesList: React.FC<PackageProps> = (props) => {
   const [packageSt, setPackageSt] = useRecoilState(packageState);
-  useEffect(() => {
-    async function fetchInstalledPackages() {
-      packageSt.map((category, indexCat) => {
-        category.packages.map((pk, indexPk) => {
-          try {
-            invoke('run_shell_command', { command: `pacman -Qe ${pk.pkg}` }).then((response) => {
-              if (response === 'true') {
-                setPackageSt((prevState) => {
-                  const temp = _.cloneDeep(prevState);
-                  temp[indexCat].packages[indexPk].isInstalled = true;
-                  console.log(temp);
-                  return temp;
-                });
-              }
-            });
-          } catch (err) {
-            console.log(err);
-            return false;
-          }
-        });
-      });
-    }
-    fetchInstalledPackages();
-  }, []);
+  function PackageInfo(pkgName: string) {
+    const packageStatus = useRecoilValue(getPackageStatus(pkgName));
+    return (
+      <div>
+        <React.Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}>
+          {packageStatus === 'true' ? (
+            <IconButton aria-label="installed" icon={<RiCheckLine />} colorScheme="red" variant="solid" />
+          ) : (
+            <IconButton aria-label="install" icon={<RiInstallLine />} colorScheme="green" variant="solid" />
+          )}
+        </React.Suspense>
 
+      </div>
+    );
+  }
+  // useEffect(() => {
+  //   console.log('effect');
+  //   async function fetchInstalledPackages() {
+  //     packageSt.map((category, indexCat) => {
+  //       category.packages.map((pk, indexPk) => {
+  //         try {
+  //           invoke('run_shell_command', { command: `pacman -Qe ${pk.pkg}` }).then((response) => {
+  //             if (response === 'true') {
+  //               setPackageSt((prevState) => {
+  //                 prevState[indexCat].packages[indexPk].isInstalled = true;
+  //                 return prevState;
+  //               });
+  //             }
+  //           });
+  //         } catch (err) {
+  //           console.log(err);
+  //           return false;
+  //         }
+  //       });
+  //     });
+  //   }
+  //   fetchInstalledPackages();
+  // }, []);
+  console.log('render');
   const Feature = (props:any) => (
     <Box
       p={5}
@@ -74,15 +87,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
           {props.title}
         </chakra.h3>
         <Spacer />
-        {props.isInstalled ? (
-          <Button leftIcon={<RiInstallLine />} colorScheme="red" variant="solid">
-            true
-          </Button>
-        ) : (
-          <Button leftIcon={<RiInstallLine />} colorScheme="green" variant="solid">
-            false
-          </Button>
-        )}
+        {PackageInfo(props.pkg)}
 
       </HStack>
       <chakra.p
@@ -128,7 +133,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
             <Feature
               color="red"
               title={app.name}
-              isInstalled={app.isInstalled}
+              pkg={app.pkg}
               icon={(
                 <path
                   fillRule="evenodd"
