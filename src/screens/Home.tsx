@@ -6,12 +6,12 @@ import {
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
 import { FiPackage, FiHome } from 'react-icons/fi';
 import { RiCopyrightLine } from 'react-icons/ri';
-import { GiSettingsKnobs } from 'react-icons/gi';
+import { GiSettingsKnobs, GiDonerKebab } from 'react-icons/gi';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-import ResetPrompt from '../components/ResetPrompt';
 import StepButtons from '../components/StepButtons';
 import HomeContent from '../components/HomeContent';
 import PackagesView from '../components/Packages';
+import ResultComponent from '../components/ResultComponent';
 
 interface AppProps {
 }
@@ -65,7 +65,7 @@ const App: React.FC<AppProps> = (props) => {
           {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
         </Button>
         {activeStep === 3 ? (
-          <ResetPrompt onReset={reset} />
+          <ResultComponent onReset={reset} />
         ) : (
           <StepButtons
             {...{ nextStep, prevStep }}
@@ -73,10 +73,6 @@ const App: React.FC<AppProps> = (props) => {
           />
         )}
       </Flex>
-
-      <Button leftIcon={<RiCopyrightLine />} colorScheme="gray" variant="outline">
-        <a href="http://google.com" target="_blank" rel="noreferrer"> Manjaro</a>
-      </Button>
     </VStack>
 
   );
