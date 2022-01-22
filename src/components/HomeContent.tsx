@@ -8,7 +8,7 @@ import {
   Text,
   Stack,
   Flex,
-  VStack,
+  Divider,
 } from '@chakra-ui/react';
 import {
   FcElectronics, FcInfo, FcGlobe, FcCollaboration, FcFeedback, FcInvite,
@@ -21,20 +21,23 @@ interface FeatureProps {
 }
 const Feature = ({ title, text, icon }: FeatureProps) => (
   <Stack>
-    <Flex
-      w={16}
-      h={16}
-      align="center"
-      justify="center"
-      color="white"
-      rounded="full"
-      bg="gray.100"
-      mb={1}
-    >
-      {icon}
-    </Flex>
-    <Text fontWeight={600}>{title}</Text>
-    <Text color="gray.600">{text}</Text>
+    <Stack direction="row" align="center">
+      <Flex
+        w={16}
+        h={16}
+        align="center"
+        justify="center"
+        color="white"
+        rounded="full"
+        bg="gray.100"
+        mb={1}
+      >
+        {icon}
+      </Flex>
+      <Text fontWeight={600}>{title}</Text>
+    </Stack>
+
+    <Text color="gray.600" align="left">{text}</Text>
   </Stack>
 );
 
@@ -51,7 +54,9 @@ export default function HomeContent() {
           started with your new operating system. So enjoy the experience, and
           don&apos;t hesitate to send us your feedback.
         </Text>
-        {/* <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
+
+        <Divider orientation="horizontal" />
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
           <Feature
             icon={<Icon as={FcElectronics} w={10} h={10} />}
             title="Handling hardware"
@@ -88,7 +93,7 @@ export default function HomeContent() {
 
             Thank you!"
           />
-  </SimpleGrid> */}
+        </SimpleGrid>
       </Stack>
 
     </Flex>
