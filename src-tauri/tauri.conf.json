@@ -1,6 +1,6 @@
 {
   "package": {
-    "productName": "tauri-react",
+    "productName": "manjaro-hello-v2",
     "version": "0.1.0"
   },
   "build": {
@@ -54,7 +54,7 @@
     },
     "windows": [
       {
-        "title": "tauri-react",
+        "title": "Manjaro Hello",
         "width": 950,
         "height": 600,
         "resizable": true,

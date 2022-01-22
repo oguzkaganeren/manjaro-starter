@@ -29,7 +29,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
       <div>
         <React.Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}>
           {packageStatus === 'true' ? (
-            <IconButton aria-label="installed" icon={<RiCheckLine />} colorScheme="red" variant="solid" />
+            <IconButton aria-label="installed" icon={<RiCheckLine />} colorScheme="gray" variant="solid" />
           ) : (
             <IconButton aria-label="install" icon={<RiInstallLine />} colorScheme="green" variant="solid" />
           )}

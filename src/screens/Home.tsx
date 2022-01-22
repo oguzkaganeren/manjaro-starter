@@ -1,11 +1,12 @@
 import './home.css';
 import React, { Suspense } from 'react';
 import {
-  Text, Flex, VStack, CircularProgress,
+  Text, Flex, VStack, CircularProgress, useColorMode, Button,
 } from '@chakra-ui/react';
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
 import { FiPackage, FiHome } from 'react-icons/fi';
 import { GiSettingsKnobs } from 'react-icons/gi';
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import ResetPrompt from '../components/ResetPrompt';
 import StepButtons from '../components/StepButtons';
 import HomeContent from '../components/HomeContent';
@@ -36,29 +37,44 @@ const App: React.FC<AppProps> = (props) => {
     { label: 'Explorer', icon: FiPackage, content: <Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}><PackageContent /></Suspense> },
     { label: 'More', icon: GiSettingsKnobs, content: moreContent },
   ];
+  const { colorMode, toggleColorMode } = useColorMode();
   const {
     nextStep, prevStep, reset, activeStep,
   } = useSteps({
     initialStep: 0,
   });
   return (
-    <VStack width="100%" p={5} marginTop={5}>
-      <Steps activeStep={activeStep}>
-        {steps.map(({ label, content, icon }) => (
-          <Step label={label} key={label} icon={icon}>
-            {content}
-          </Step>
-        ))}
-      </Steps>
-      {activeStep === 3 ? (
-        <ResetPrompt onReset={reset} />
-      ) : (
-        <StepButtons
-          {...{ nextStep, prevStep }}
-          prevDisabled={activeStep === 0}
-        />
-      )}
+    <VStack>
+      <VStack width="100%" p={5} marginTop={55}>
+        <Steps activeStep={activeStep}>
+          {steps.map(({ label, content, icon }) => (
+            <Step label={label} key={label} icon={icon}>
+              {content}
+            </Step>
+          ))}
+        </Steps>
+
+      </VStack>
+      <Flex
+        position="fixed"
+        padding={5}
+        w="100%"
+      >
+        <Button onClick={toggleColorMode}>
+          {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+        </Button>
+        {activeStep === 3 ? (
+          <ResetPrompt onReset={reset} />
+        ) : (
+          <StepButtons
+            {...{ nextStep, prevStep }}
+            prevDisabled={activeStep === 0}
+          />
+        )}
+      </Flex>
+
     </VStack>
+
   );
 };
 
