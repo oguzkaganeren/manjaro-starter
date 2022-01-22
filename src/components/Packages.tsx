@@ -29,7 +29,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
       <div>
         <React.Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}>
           {packageStatus === 'true' ? (
-            <IconButton aria-label="installed" icon={<RiCheckLine />} colorScheme="gray" variant="solid" />
+            <IconButton aria-label="installed" disabled icon={<RiCheckLine />} colorScheme="gray" variant="solid" />
           ) : (
             <IconButton aria-label="install" icon={<RiInstallLine />} colorScheme="green" variant="solid" />
           )}
@@ -38,30 +38,6 @@ const PackagesList: React.FC<PackageProps> = (props) => {
       </div>
     );
   }
-  // useEffect(() => {
-  //   console.log('effect');
-  //   async function fetchInstalledPackages() {
-  //     packageSt.map((category, indexCat) => {
-  //       category.packages.map((pk, indexPk) => {
-  //         try {
-  //           invoke('run_shell_command', { command: `pacman -Qe ${pk.pkg}` }).then((response) => {
-  //             if (response === 'true') {
-  //               setPackageSt((prevState) => {
-  //                 prevState[indexCat].packages[indexPk].isInstalled = true;
-  //                 return prevState;
-  //               });
-  //             }
-  //           });
-  //         } catch (err) {
-  //           console.log(err);
-  //           return false;
-  //         }
-  //       });
-  //     });
-  //   }
-  //   fetchInstalledPackages();
-  // }, []);
-  console.log('render');
   const Feature = (props:any) => (
     <Box
       p={5}
