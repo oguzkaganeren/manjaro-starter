@@ -2,20 +2,22 @@ import {
   Box,
   CircularProgress,
   Icon,
+  Text,
   SimpleGrid,
   useColorModeValue,
   chakra,
   Spacer,
   HStack,
   IconButton,
+  useToast,
 } from '@chakra-ui/react';
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { RiInstallLine, RiCheckLine } from 'react-icons/ri';
 import {
-  useRecoilState, useSetRecoilState, useRecoilValue,
+  useRecoilState, useRecoilCallback, useRecoilValue,
 } from 'recoil';
 import {
-  Category, getPackages, getPackageStatus, packageState,
+  Category, getPackages, getPackageStatus, installPackage, packageState,
 } from '../stores/PackageStore';
 
 interface PackageProps {
@@ -23,6 +25,35 @@ interface PackageProps {
 
 const PackagesList: React.FC<PackageProps> = (props) => {
   const [packageSt, setPackageSt] = useRecoilState(packageState);
+  const toast = useToast();
+  function InstallPackage(pkgName: string) {
+    const packageInstallStatus = useRecoilValue(installPackage(pkgName));
+    return (
+      <div>
+        <React.Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}>
+          <Text>test</Text>
+        </React.Suspense>
+      </div>
+    );
+  }
+  const installPackageWithName = useRecoilCallback(({ snapshot }) => async (pkgName:string) => {
+    const result:string = await snapshot.getPromise(installPackage(pkgName));
+
+    const desc = result.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item) => (
+      <span>
+        {item}
+        <br />
+      </span>
+    ));
+    toast({
+      title: 'Installing...',
+      description: desc,
+      status: 'success',
+      duration: 9000,
+      isClosable: true,
+      position: 'bottom-right',
+    });
+  });
   function PackageInfo(pkgName: string) {
     const packageStatus = useRecoilValue(getPackageStatus(pkgName));
     return (
@@ -31,7 +62,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
           {packageStatus === 'true' ? (
             <IconButton aria-label="installed" disabled icon={<RiCheckLine />} colorScheme="gray" variant="solid" />
           ) : (
-            <IconButton aria-label="install" icon={<RiInstallLine />} colorScheme="green" variant="solid" />
+            <IconButton aria-label="install" icon={<RiInstallLine />} onClick={() => installPackageWithName(pkgName)} colorScheme="green" variant="solid" />
           )}
         </React.Suspense>
 

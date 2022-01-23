@@ -54,6 +54,14 @@ export const getPackageStatus = selectorFamily({
   },
 });
 
+export const installPackage = selectorFamily({
+  key: 'installPackage',
+  get: (pkgName:string) => async () => {
+    const result:string = await invoke('run_shell_command_with_result', { command: `pamac install -d --no-confirm ${pkgName}` });
+    return result;
+  },
+});
+
 export const packageState = atom({
   key: 'packageState',
   default: getPackages,

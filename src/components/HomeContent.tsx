@@ -43,7 +43,7 @@ const Feature = ({ title, text, icon }: FeatureProps) => (
 
 export default function HomeContent() {
   return (
-    <Flex p={4}>
+    <Flex p={4} marginTop={90}>
       <Stack spacing={4} as={Container} maxW="3xl" textAlign="center">
         <Heading fontSize="3xl">
           Welcome to Manjaro!

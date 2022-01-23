@@ -14,7 +14,7 @@ const ResultComponent: React.FC<ResultProps> = (props) => (
       Congratulations!
     </Heading>
     <Text color="gray.500">
-      You are done first steps. Time to discover your special linux environment.
+      You are done first step. Time to discover your special linux environment.
     </Text>
     <Button mt={6} size="sm" onClick={() => props.onReset()}>
       Return First Step
