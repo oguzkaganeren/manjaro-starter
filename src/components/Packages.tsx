@@ -26,16 +26,7 @@ interface PackageProps {
 const PackagesList: React.FC<PackageProps> = (props) => {
   const [packageSt, setPackageSt] = useRecoilState(packageState);
   const toast = useToast();
-  function InstallPackage(pkgName: string) {
-    const packageInstallStatus = useRecoilValue(installPackage(pkgName));
-    return (
-      <div>
-        <React.Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}>
-          <Text>test</Text>
-        </React.Suspense>
-      </div>
-    );
-  }
+  
   const installPackageWithName = useRecoilCallback(({ snapshot }) => async (pkgName:string) => {
     const result:string = await snapshot.getPromise(installPackage(pkgName));
 

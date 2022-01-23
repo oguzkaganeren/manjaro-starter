@@ -33,6 +33,7 @@ const moreContent = (
 );
 
 const App: React.FC<AppProps> = (props) => {
+  const STEPCOUNT = 3;
   const steps = [
     { label: 'Welcome', icon: FiHome, content: homeContent },
     { label: 'Explorer', icon: FiPackage, content: <Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}><PackageContent /></Suspense> },
@@ -62,25 +63,28 @@ const App: React.FC<AppProps> = (props) => {
         </Steps>
 
       </VStack>
-      <Flex
-        position="fixed"
-        padding={5}
-        bg={bg}
-        bottom={0}
-        w="100%"
-      >
-        <Button onClick={toggleColorMode}>
-          {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-        </Button>
-        {activeStep === 3 ? (
-          <ResultComponent onReset={reset} />
-        ) : (
+
+      {activeStep === STEPCOUNT ? (
+        <ResultComponent onReset={reset} />
+      ) : (
+        <Flex
+          position="fixed"
+          padding={5}
+          bg={bg}
+          bottom={0}
+          w="100%"
+        >
+          <Button onClick={toggleColorMode}>
+            {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+          </Button>
           <StepButtons
             {...{ nextStep, prevStep }}
             prevDisabled={activeStep === 0}
+            isLast={activeStep === STEPCOUNT - 1}
           />
-        )}
-      </Flex>
+        </Flex>
+      )}
+
     </VStack>
 
   );

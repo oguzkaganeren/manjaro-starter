@@ -1,6 +1,5 @@
 import { ReactElement } from 'react';
 import {
-  Box,
   Container,
   Heading,
   SimpleGrid,
