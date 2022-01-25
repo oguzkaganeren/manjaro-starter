@@ -16,6 +16,7 @@ import { RiInstallLine, RiCheckLine } from 'react-icons/ri';
 import {
   useRecoilState, useRecoilCallback, useRecoilValue,
 } from 'recoil';
+import _ from 'lodash';
 import {
   Category, getPackages, getPackageStatus, installPackage, packageState,
 } from '../stores/PackageStore';
@@ -26,8 +27,34 @@ interface PackageProps {
 const PackagesList: React.FC<PackageProps> = (props) => {
   const [packageSt, setPackageSt] = useRecoilState(packageState);
   const toast = useToast();
-  
-  const installPackageWithName = useRecoilCallback(({ snapshot }) => async (pkgName:string) => {
+
+  const packageStatusUpdate = useRecoilCallback(({ snapshot, set }) => async (
+    catId:string,
+    pkId:string,
+  ) => {
+    const packages = await snapshot.getPromise(packageState);
+    const cats = _.cloneDeep(packages);
+    const catIndex = cats.findIndex((element) => element.id === catId);
+    const pkIndex = cats[catIndex].packages.findIndex((element) => element.id === pkId);
+    const updatedPk = cats[catIndex].packages[pkIndex];
+    const packageStatus = await snapshot.getPromise(getPackageStatus(updatedPk.pkg));
+    updatedPk.isInstalled = packageStatus === 'true';
+    set(packageState, (prev) => prev.map((item, index) => {
+      if (index !== catIndex) {
+        return item;
+      }
+      return {
+        ...item,
+        packages: item.packages.map((pk, index2) => (pkIndex !== index2 ? pk : updatedPk)),
+      };
+    }));
+  }, []);
+
+  const installPackageWithName = useRecoilCallback(({ snapshot }) => async (
+    catId:string,
+    pkId:string,
+    pkgName:string,
+  ) => {
     const result:string = await snapshot.getPromise(installPackage(pkgName));
 
     const desc = result.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item) => (
@@ -36,6 +63,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
         <br />
       </span>
     ));
+    packageStatusUpdate(catId, pkId);
     toast({
       title: 'Installing...',
       description: desc,
@@ -45,17 +73,14 @@ const PackagesList: React.FC<PackageProps> = (props) => {
       position: 'bottom-right',
     });
   });
-  function PackageInfo(pkgName: string) {
-    const packageStatus = useRecoilValue(getPackageStatus(pkgName));
+  function PackageInfo(catId:string, pkId:string, pkgName:string, isInstalled: boolean) {
     return (
       <div>
-        <React.Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}>
-          {packageStatus === 'true' ? (
-            <IconButton aria-label="installed" disabled icon={<RiCheckLine />} colorScheme="gray" variant="solid" />
-          ) : (
-            <IconButton aria-label="install" icon={<RiInstallLine />} onClick={() => installPackageWithName(pkgName)} colorScheme="green" variant="solid" />
-          )}
-        </React.Suspense>
+        {isInstalled ? (
+          <IconButton aria-label="installed" disabled icon={<RiCheckLine />} colorScheme="gray" variant="solid" />
+        ) : (
+          <IconButton aria-label="install" icon={<RiInstallLine />} onClick={() => installPackageWithName(catId, pkId, pkgName)} colorScheme="green" variant="solid" />
+        )}
 
       </div>
     );
@@ -85,7 +110,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
           {props.title}
         </chakra.h3>
         <Spacer />
-        {PackageInfo(props.pkg)}
+        {PackageInfo(props.catId, props.uniqueId, props.pkg, props.isInstalled)}
 
       </HStack>
       <chakra.p
@@ -99,7 +124,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
     </Box>
   );
   const Features = packageSt.map((category:any) => (
-    <Box mt={8}>
+    <Box mt={8} key={category.id}>
       <Box textAlign={{ lg: 'left' }}>
         <chakra.p
           mt={2}
@@ -132,6 +157,10 @@ const PackagesList: React.FC<PackageProps> = (props) => {
               color="red"
               title={app.name}
               pkg={app.pkg}
+              key={app.id}
+              uniqueId={app.id}
+              isInstalled={app.isInstalled}
+              catId={category.id}
               icon={(
                 <path
                   fillRule="evenodd"

@@ -1,9 +1,10 @@
 import { atom, selector, selectorFamily } from 'recoil';
 import { invoke } from '@tauri-apps/api/tauri';
+import _ from 'lodash';
 import apps from '../data/apps.json';
 
 export interface Package {
-  id?: string;
+  id: string;
   name: string;
   icon: string;
   description: string,
@@ -13,7 +14,7 @@ export interface Package {
 }
 
 export interface Category {
-  id?: string;
+  id: string;
   name: string;
   icon: string;
   description: string,
@@ -27,6 +28,7 @@ export const getPackages = selector({
       const packs = [] as Package[];
       category.apps.map((app) => {
         packs.push({
+          id: _.uniqueId(),
           pkg: app.pkg,
           description: app.description,
           extra: app.extra,
@@ -36,6 +38,7 @@ export const getPackages = selector({
         });
       });
       cats.push({
+        id: _.uniqueId(),
         description: category.description,
         icon: category.icon,
         name: category.name,
