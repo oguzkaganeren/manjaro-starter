@@ -33,7 +33,7 @@ const moreContent = (
 );
 
 const App: React.FC<AppProps> = (props) => {
-  const STEPCOUNT = 3;
+  const STEPCOUNT = 4;
   const steps = [
     { label: 'Welcome', icon: FiHome, content: homeContent },
     { label: 'Explorer', icon: FiPackage, content: <Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}><PackageContent /></Suspense> },
