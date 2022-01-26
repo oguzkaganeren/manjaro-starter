@@ -57,7 +57,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
   ) => {
     const result:string = await snapshot.getPromise(installPackage(pkgName));
 
-    const desc = result.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item) => (
+    const desc = result.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item, index) => (
       <span>
         {item}
         <br />
@@ -65,7 +65,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
     ));
     packageStatusUpdate(catId, pkId);
     toast({
-      title: 'Installing...',
+      title: `Installing ${pkgName}`,
       description: desc,
       status: 'success',
       duration: 9000,

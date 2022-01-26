@@ -1,4 +1,6 @@
-import { atom, selector, selectorFamily } from 'recoil';
+import {
+  atom, selector, selectorFamily, useRecoilValue,
+} from 'recoil';
 import { invoke } from '@tauri-apps/api/tauri';
 import _ from 'lodash';
 import apps from '../data/apps.json';
@@ -20,9 +22,17 @@ export interface Category {
   description: string,
   packages:Array<Package>
 }
+
+export const getPackageStatus = selectorFamily({
+  key: 'getPackageStatus',
+  get: (pkgName:string) => async () => {
+    const result = await invoke('run_shell_command', { command: `pacman -Qe ${pkgName}` });
+    return result;
+  },
+});
 export const getPackages = selector({
   key: 'getPackages',
-  get: async () => {
+  get: async ({ get }) => {
     const cats = [] as Category[];
     apps.map((category) => {
       const packs = [] as Package[];
@@ -46,14 +56,6 @@ export const getPackages = selector({
       });
     });
     return cats;
-  },
-});
-
-export const getPackageStatus = selectorFamily({
-  key: 'getPackageStatus',
-  get: (pkgName:string) => async () => {
-    const result = await invoke('run_shell_command', { command: `pacman -Qe ${pkgName}` });
-    return result;
   },
 });
 
