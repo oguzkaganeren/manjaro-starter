@@ -37,7 +37,8 @@ const App: React.FC<AppProps> = (props) => {
   const steps = [
     { label: 'Welcome', icon: FiHome, content: homeContent },
     { label: 'Explorer', icon: FiPackage, content: <Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}><PackageContent /></Suspense> },
-    { label: 'More', icon: GiSettingsKnobs, content: moreContent },
+    { label: 'Settings', icon: GiSettingsKnobs, content: moreContent },
+    { label: 'More', icon: GiDonerKebab, content: moreContent },
   ];
   const { colorMode, toggleColorMode } = useColorMode();
   const bg = useColorModeValue('white', 'gray.800');
