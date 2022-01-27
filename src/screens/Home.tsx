@@ -12,6 +12,7 @@ import StepButtons from '../components/StepButtons';
 import HomeContent from '../components/HomeContent';
 import PackagesView from '../components/Packages';
 import ResultComponent from '../components/ResultComponent';
+import SystemSettings from '../components/SystemSettings';
 
 interface AppProps {
 }
@@ -23,7 +24,18 @@ const homeContent = (
 );
 const PackageContent: React.FC<AppProps> = (props) => (
   <Flex py={4}>
-    <PackagesView />
+    <Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}>
+      <PackagesView />
+    </Suspense>
+
+  </Flex>
+);
+const settingContent = (
+  <Flex py={4}>
+    <Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}>
+
+      <SystemSettings />
+    </Suspense>
   </Flex>
 );
 const moreContent = (
@@ -36,8 +48,8 @@ const App: React.FC<AppProps> = (props) => {
   const STEPCOUNT = 4;
   const steps = [
     { label: 'Welcome', icon: FiHome, content: homeContent },
-    { label: 'Explorer', icon: FiPackage, content: <Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}><PackageContent /></Suspense> },
-    { label: 'Settings', icon: GiSettingsKnobs, content: moreContent },
+    { label: 'Explorer', icon: FiPackage, content: <PackageContent /> },
+    { label: 'Settings', icon: GiSettingsKnobs, content: settingContent },
     { label: 'More', icon: GiDonerKebab, content: moreContent },
   ];
   const { colorMode, toggleColorMode } = useColorMode();
