@@ -38,7 +38,7 @@ export const getKernels = selector({
 export const installKernel = selectorFamily({
   key: 'installKernel',
   get: (kernelName:string) => async () => {
-    const result:string = await invoke('run_shell_command_with_result', { command: `mhwd-kernel -i ${kernelName}` });
+    const result:string = await invoke('run_shell_command_with_result', { command: `pamac install --no-confirm -d ${kernelName}` });
     return result;
   },
 });

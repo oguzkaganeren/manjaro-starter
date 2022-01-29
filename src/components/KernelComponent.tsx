@@ -10,18 +10,18 @@ import {
   Tag,
   IconButton,
   useToast,
-  VStack,
+  Spacer,
 } from '@chakra-ui/react';
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { FaLinux } from 'react-icons/fa';
 import { RiAddLine } from 'react-icons/ri';
 import { MdOutlineDownloadDone } from 'react-icons/md';
 import {
-  useRecoilState, useRecoilCallback, useRecoilValue,
+  useRecoilCallback, useRecoilValue,
 } from 'recoil';
 import _ from 'lodash';
 import {
-  kernelState,
+  kernelState, installKernel,
 } from '../stores/KernelStore';
 
 interface KernelComponentProps {
@@ -29,9 +29,31 @@ interface KernelComponentProps {
 
 const KernelComponent: React.FC<KernelComponentProps> = (props) => {
   const kernelSt = useRecoilValue(kernelState);
-
+  const toast = useToast();
+  const installKernelWithName = useRecoilCallback(({ snapshot, reset }) => async (
+    id:string,
+    kernelName:string,
+  ) => {
+    const result:string = await snapshot.getPromise(installKernel(kernelName));
+    const desc = result.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item, index) => (
+      <span>
+        {item}
+        <br />
+      </span>
+    ));
+    reset(kernelState);
+    toast({
+      title: `Installing ${kernelName}`,
+      description: desc,
+      status: 'success',
+      duration: 9000,
+      isClosable: true,
+      position: 'bottom-right',
+    });
+  });
   return (
-    <Box textAlign={{ lg: 'left' }}>
+    <Box borderWidth="1px" mt={5} borderRadius={5} padding={5} textAlign={{ lg: 'left' }}>
+
       <chakra.p
         mt={2}
         fontSize={{ base: '3xl', sm: '4xl' }}
@@ -42,6 +64,7 @@ const KernelComponent: React.FC<KernelComponentProps> = (props) => {
       >
         Kernels
       </chakra.p>
+
       <chakra.p
         mt={4}
         maxW="2xl"
@@ -51,10 +74,10 @@ const KernelComponent: React.FC<KernelComponentProps> = (props) => {
         Install kernel(s)
       </chakra.p>
       {kernelSt.map((kernel) => (
-        <Tag size="md" ml={5} mt={5} key={kernel.id} backgroundColor={kernel.isInstalled ? useColorModeValue('green.300', 'green.500') : 'none'}>
+        <Tag size="md" ml={5} mt={5} key={kernel.id} colorScheme={kernel.isInstalled ? 'whatsapp' : 'gray'}>
           <TagLeftIcon boxSize="12px" as={FaLinux} />
           <TagLabel>{kernel.name}</TagLabel>
-          {!kernel.isInstalled ? <IconButton ml={5} mr={-2} aria-label="Install Kernel" icon={<RiAddLine />} /> : <IconButton ml={5} mr={-2} disabled aria-label="" icon={<MdOutlineDownloadDone />} />}
+          {!kernel.isInstalled ? <IconButton ml={5} mr={-2} aria-label="Install Kernel" onClick={() => installKernelWithName(kernel.id, kernel.name)} icon={<RiAddLine />} /> : <IconButton ml={5} mr={-2} disabled aria-label="" icon={<MdOutlineDownloadDone />} />}
         </Tag>
       ))}
 
