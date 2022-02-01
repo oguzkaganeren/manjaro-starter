@@ -13,6 +13,7 @@ import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { GiProtectionGlasses } from 'react-icons/gi';
 import { invoke } from '@tauri-apps/api/tauri';
 import KernelComponent from './KernelComponent';
+import SystemInfoComponent from './SystemInfo';
 
 interface SystemSettingsProps {
 }
@@ -25,6 +26,7 @@ const SystemSettings: React.FC<SystemSettingsProps> = (props) => (
     bg={useColorModeValue('white', 'gray.800')}
     shadow="xl"
   >
+    <SystemInfoComponent />
     <Box textAlign={{ lg: 'center' }}>
       <Flex>
         <chakra.p
