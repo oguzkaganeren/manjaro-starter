@@ -6,10 +6,6 @@ Clone the repo and
 ```
 cd manjaro-starter
 yarn install
-yarn start
-```
-And Open new terminal
-```
 yarn tauri dev
 ```
 

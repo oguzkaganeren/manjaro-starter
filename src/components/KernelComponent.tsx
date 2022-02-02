@@ -52,11 +52,11 @@ const KernelComponent: React.FC<KernelComponentProps> = (props) => {
     });
   });
   return (
-    <Box borderWidth="1px" mt={5} borderRadius={5} padding={5} textAlign={{ lg: 'left' }}>
+    <Box mt={5} textAlign={{ lg: 'left' }}>
 
       <chakra.p
         mt={2}
-        fontSize={{ base: '3xl', sm: '4xl' }}
+        fontSize={{ base: '3xl', sm: '3xl' }}
         lineHeight="8"
         fontWeight="extrabold"
         letterSpacing="tight"

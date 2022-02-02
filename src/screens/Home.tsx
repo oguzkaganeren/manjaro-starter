@@ -13,6 +13,7 @@ import HomeContent from '../components/HomeContent';
 import PackagesView from '../components/Packages';
 import ResultComponent from '../components/ResultComponent';
 import SystemSettings from '../components/SystemSettings';
+import MoreComponent from '../components/MoreComponent';
 
 interface AppProps {
 }
@@ -40,7 +41,7 @@ const settingContent = (
 );
 const moreContent = (
   <Flex py={4}>
-    <Text>Test</Text>
+    <MoreComponent />
   </Flex>
 );
 

@@ -38,7 +38,7 @@ const SystemInfoComponent: React.FC<SystemInfoComponentProps> = (props) => {
     setSystemInfoRaw(htmlRaw);
   }, []);
   return (
-    <Box borderWidth="1px" mt={5} mb={5} borderRadius={5} padding={5} textAlign={{ lg: 'left' }}>
+    <Box mt={5} mb={5} textAlign={{ lg: 'left' }}>
 
       <chakra.p
         mt={2}
