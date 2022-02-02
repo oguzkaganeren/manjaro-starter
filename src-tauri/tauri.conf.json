@@ -1,6 +1,6 @@
 {
   "package": {
-    "productName": "manjaro-hello-v2",
+    "productName": "manjaro-starter",
     "version": "0.1.0"
   },
   "build": {

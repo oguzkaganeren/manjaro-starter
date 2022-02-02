@@ -1,7 +1,7 @@
 import './home.css';
 import React, { Suspense } from 'react';
 import {
-  Text, Flex, VStack, CircularProgress, useColorMode, Button, useColorModeValue,
+  Text, Flex, VStack, CircularProgress, useColorMode, Button, useColorModeValue, Center, Spacer,
 } from '@chakra-ui/react';
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
 import { FiPackage, FiHome } from 'react-icons/fi';
@@ -14,6 +14,8 @@ import PackagesView from '../components/Packages';
 import ResultComponent from '../components/ResultComponent';
 import SystemSettings from '../components/SystemSettings';
 import MoreComponent from '../components/MoreComponent';
+
+import packageJson from '../../package.json';
 
 interface AppProps {
 }
@@ -62,13 +64,16 @@ const App: React.FC<AppProps> = (props) => {
   });
   return (
     <VStack>
+
       <VStack width="100%">
+
         <Steps
           bg={bg}
           position="fixed"
           padding={5}
           activeStep={activeStep}
         >
+
           {steps.map(({ label, content, icon }) => (
             <Step label={label} key={label} icon={icon}>
               {content}
@@ -91,11 +96,16 @@ const App: React.FC<AppProps> = (props) => {
           <Button onClick={toggleColorMode}>
             {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
           </Button>
+
           <StepButtons
             {...{ nextStep, prevStep }}
             prevDisabled={activeStep === 0}
             isLast={activeStep === STEPCOUNT - 1}
           />
+          <Text position="absolute" ml={3} fontSize="xs" mt={10} color="gray.500">
+            {packageJson.version}
+          </Text>
+
         </Flex>
       )}
 
