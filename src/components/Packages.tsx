@@ -1,6 +1,6 @@
 import {
   Box,
-  CircularProgress,
+  Center,
   Icon,
   Button,
   SimpleGrid,
@@ -235,6 +235,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
         >
           Packages
         </chakra.p>
+
         <chakra.p
           mt={4}
           maxW="2xl"
@@ -247,6 +248,21 @@ const PackagesList: React.FC<PackageProps> = (props) => {
       </Box>
 
       {Features}
+      <Center>
+        <a href="https://discover.manjaro.org/applications" target="_blank" rel="noreferrer">
+          <Button
+            mt={10}
+            size="md"
+            height="48px"
+            width="200px"
+            border="2px"
+            borderColor="green.500"
+          >
+            Discover More
+          </Button>
+        </a>
+      </Center>
+
     </Box>
   );
 };
