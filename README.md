@@ -31,7 +31,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Manjaro Starter Screen][product-screenshot]](https://github.com/oguzkaganeren/manjaro-starter/)
+<img src="./Screenshots/mainscreen.png" width="400"/>
 
 
 ### Built With
