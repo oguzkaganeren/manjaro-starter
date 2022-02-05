@@ -5,7 +5,6 @@ import {
 } from '@chakra-ui/react';
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
 import { FiPackage, FiHome } from 'react-icons/fi';
-import { RiCopyrightLine } from 'react-icons/ri';
 import { GiSettingsKnobs, GiDonerKebab } from 'react-icons/gi';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import StepButtons from '../components/StepButtons';
@@ -28,9 +27,9 @@ const homeContent = (
 const PackageContent: React.FC<AppProps> = (props) => (
   <Flex py={4}>
     <Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}>
+
       <PackagesView />
     </Suspense>
-
   </Flex>
 );
 const settingContent = (
