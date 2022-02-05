@@ -10,7 +10,15 @@ import {
   HStack,
   IconButton,
   useToast,
-  CircularProgress,
+  Text,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
 } from '@chakra-ui/react';
 import React, { useState, useEffect, Suspense } from 'react';
 import { RiInstallLine, RiCheckLine } from 'react-icons/ri';
@@ -19,7 +27,6 @@ import {
 } from 'recoil';
 import _ from 'lodash';
 import { invoke } from '@tauri-apps/api/tauri';
-import LazyLoad from 'react-lazyload';
 import {
   Category, getPackages, getPackageStatus, installPackage, packageState,
 } from '../stores/PackageStore';
@@ -35,6 +42,7 @@ interface PackageInfoProps {
 
 const PackageInfo: React.FC<PackageInfoProps> = (props) => {
   const toast = useToast();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const packageStatusUpdate = useRecoilCallback(({ snapshot, set }) => async (
     catId:string,
     pkId:string,
@@ -69,15 +77,33 @@ const PackageInfo: React.FC<PackageInfoProps> = (props) => {
         <br />
       </span>
     ));
+    const colDesc = (
+      <>
+        <Text noOfLines={[1, 2, 3]}>
+          {desc}
+        </Text>
+      </>
+    );
     packageStatusUpdate(catId, pkId);
-    toast({
-      title: `Installing ${pkgName}`,
-      description: desc,
-      status: 'success',
-      duration: 9000,
-      isClosable: true,
-      position: 'bottom-right',
-    });
+    if (result.toUpperCase().includes('ERROR')) {
+      toast({
+        title: `Installing ${pkgName}`,
+        description: desc,
+        status: 'error',
+        duration: 9000,
+        isClosable: true,
+        position: 'bottom-right',
+      });
+    } else {
+      toast({
+        title: `Installing ${pkgName}`,
+        description: colDesc,
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+        position: 'bottom-right',
+      });
+    }
   });
   const {
     isInstalled, catId, pkId, pkgName,
