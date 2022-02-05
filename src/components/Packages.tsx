@@ -10,14 +10,16 @@ import {
   HStack,
   IconButton,
   useToast,
+  CircularProgress,
 } from '@chakra-ui/react';
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { RiInstallLine, RiCheckLine } from 'react-icons/ri';
 import {
   useRecoilState, useRecoilCallback, useRecoilValue,
 } from 'recoil';
 import _ from 'lodash';
 import { invoke } from '@tauri-apps/api/tauri';
+import LazyLoad from 'react-lazyload';
 import {
   Category, getPackages, getPackageStatus, installPackage, packageState,
 } from '../stores/PackageStore';
@@ -95,20 +97,21 @@ const PackageInfo: React.FC<PackageInfoProps> = (props) => {
 const PackagesList: React.FC<PackageProps> = (props) => {
   const [packageSt, setPackageSt] = useRecoilState(packageState);
   const [pkStatus, setPkStatus] = useState(false);
-  async function getAllPackageStatus() {
-    const temp = _.cloneDeep(packageSt);
-    await Promise.all(temp.map(async (cat) => {
-      await Promise.all(cat.packages.map(async (pk) => {
-        const packageStatus = await invoke('run_shell_command', { command: `pacman -Qe ${pk.pkg}` });
-        pk.isInstalled = packageStatus === 'true';
-      }));
-    }));
-    setPackageSt(temp);
-    setPkStatus(true);
-  }
 
   useEffect(() => {
-    getAllPackageStatus();
+    const getAllPackageStatus = async () => {
+      const temp = _.cloneDeep(packageSt);
+      await Promise.all(temp.map(async (cat) => {
+        await Promise.all(cat.packages.map(async (pk) => {
+          const packageStatus = await invoke('run_shell_command', { command: `pacman -Qe ${pk.pkg}` });
+          pk.isInstalled = packageStatus === 'true';
+        }));
+      }));
+      setPackageSt(temp);
+      setPkStatus(true);
+    };
+    setTimeout(getAllPackageStatus,
+      1000);
   }, []);
   const Feature = (props:any) => (
     <Box
@@ -214,7 +217,6 @@ const PackagesList: React.FC<PackageProps> = (props) => {
       </Box>
 
     </Box>
-
   ));
   return (
     <Box
@@ -246,7 +248,6 @@ const PackagesList: React.FC<PackageProps> = (props) => {
           Install packages to set up your environment.
         </chakra.p>
       </Box>
-
       {Features}
       <Center>
         <a href="https://discover.manjaro.org/applications" target="_blank" rel="noreferrer">

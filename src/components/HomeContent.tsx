@@ -49,7 +49,7 @@ export default function HomeContent() {
         </Heading>
         <Text color="gray.600" fontSize="xl">
           We, the Manjaro Developers, hope that you will enjoy using Manjaro as
-          much as we enjoy building it. Manjaro Hello will help you to get
+          much as we enjoy building it. Manjaro Starter will help you to get
           started with your new operating system. So enjoy the experience, and
           don&apos;t hesitate to send us your feedback.
         </Text>
