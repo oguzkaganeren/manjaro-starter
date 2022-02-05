@@ -39,10 +39,12 @@ interface PackageInfoProps {
   pkId:string,
   pkgName:string,
 }
+interface ModalProps {
+  dsc:JSX.Element[],
+}
 
 const PackageInfo: React.FC<PackageInfoProps> = (props) => {
   const toast = useToast();
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const packageStatusUpdate = useRecoilCallback(({ snapshot, set }) => async (
     catId:string,
     pkId:string,
@@ -64,6 +66,26 @@ const PackageInfo: React.FC<PackageInfoProps> = (props) => {
       };
     }));
   }, []);
+  const BasicUsage : React.FunctionComponent<ModalProps> = (props) => {
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    return (
+      <Box>
+        <Button onClick={onOpen} size="sm" mt={5} colorScheme="whatsapp" variant="solid">Details</Button>
+
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Details</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              {props.dsc}
+            </ModalBody>
+
+          </ModalContent>
+        </Modal>
+      </Box>
+    );
+  };
   const installPackageWithName = useRecoilCallback(({ snapshot }) => async (
     catId:string,
     pkId:string,
@@ -82,6 +104,7 @@ const PackageInfo: React.FC<PackageInfoProps> = (props) => {
         <Text noOfLines={[1, 2, 3]}>
           {desc}
         </Text>
+        <BasicUsage dsc={desc} />
       </>
     );
     packageStatusUpdate(catId, pkId);
@@ -115,7 +138,6 @@ const PackageInfo: React.FC<PackageInfoProps> = (props) => {
       ) : (
         <IconButton aria-label="install" icon={<RiInstallLine />} onClick={() => installPackageWithName(catId, pkId, pkgName)} colorScheme="green" variant="solid" />
       )}
-
     </div>
   );
 };
@@ -289,7 +311,6 @@ const PackagesList: React.FC<PackageProps> = (props) => {
           </Button>
         </a>
       </Center>
-
     </Box>
   );
 };
