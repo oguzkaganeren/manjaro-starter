@@ -1,8 +1,5 @@
 import {
   Box,
-  CircularProgress,
-  Flex,
-  Button,
   TagLabel,
   useColorModeValue,
   chakra,
@@ -10,16 +7,14 @@ import {
   Tag,
   IconButton,
   useToast,
-  Spacer,
 } from '@chakra-ui/react';
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React from 'react';
 import { FaLinux } from 'react-icons/fa';
 import { RiAddLine } from 'react-icons/ri';
 import { MdOutlineDownloadDone } from 'react-icons/md';
 import {
   useRecoilCallback, useRecoilValue,
 } from 'recoil';
-import _ from 'lodash';
 import {
   kernelState, installKernel,
 } from '../stores/KernelStore';

@@ -1,5 +1,5 @@
 import {
-  Container, Heading, Text, Button, Center,
+  Container, Heading, Text, Button,
 } from '@chakra-ui/react';
 import React from 'react';
 import { CheckCircleIcon } from '@chakra-ui/icons';

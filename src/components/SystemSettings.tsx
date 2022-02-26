@@ -1,15 +1,12 @@
 import {
   Box,
-  CircularProgress,
-  Icon,
   Button,
-  SimpleGrid,
   useColorModeValue,
   chakra,
   Spacer,
   Flex,
 } from '@chakra-ui/react';
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React from 'react';
 import { GiProtectionGlasses } from 'react-icons/gi';
 import { invoke } from '@tauri-apps/api/tauri';
 import KernelComponent from './KernelComponent';
