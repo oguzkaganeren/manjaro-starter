@@ -1,7 +1,7 @@
 import './home.css';
 import React, { Suspense } from 'react';
 import {
-  Text, Flex, VStack, CircularProgress, useColorMode, Button, useColorModeValue, Center, Spacer,
+  Text, Flex, VStack, CircularProgress, useColorMode, Button, useColorModeValue,
 } from '@chakra-ui/react';
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
 import { FiPackage, FiHome } from 'react-icons/fi';
@@ -9,7 +9,7 @@ import { GiSettingsKnobs, GiDonerKebab } from 'react-icons/gi';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import StepButtons from '../components/StepButtons';
 import HomeContent from '../components/HomeContent';
-import PackagesView from '../components/Packages';
+import PackagesView from '../components/packageList/PackageListComponent';
 import ResultComponent from '../components/ResultComponent';
 import SystemSettings from '../components/SystemSettings';
 import MoreComponent from '../components/MoreComponent';

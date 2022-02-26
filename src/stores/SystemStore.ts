@@ -1,8 +1,7 @@
 import {
-  atom, selector, selectorFamily, useRecoilValue,
+  atom, selector,
 } from 'recoil';
 import { invoke } from '@tauri-apps/api/tauri';
-import _ from 'lodash';
 
 export const getSystemInfo = selector({
   key: 'getSystemInfo',

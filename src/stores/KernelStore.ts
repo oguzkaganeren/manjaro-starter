@@ -1,5 +1,5 @@
 import {
-  atom, selector, selectorFamily, useRecoilValue,
+  atom, selector, selectorFamily,
 } from 'recoil';
 import { invoke } from '@tauri-apps/api/tauri';
 import _ from 'lodash';
