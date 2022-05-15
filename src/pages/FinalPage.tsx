@@ -4,10 +4,10 @@ import {
 import React from 'react';
 import { CheckCircleIcon } from '@chakra-ui/icons';
 
-interface ResultProps {
-    onReset: () => void;
-}
-const ResultComponent: React.FC<ResultProps> = (props) => (
+  interface FinalPageProps {
+      onReset: () => void;
+  }
+const FinalPage: React.FC<FinalPageProps> = (props) => (
   <Container textAlign="center">
     <CheckCircleIcon boxSize="50px" color="green.500" marginTop={150} />
     <Heading as="h2" size="xl" mt={6} mb={2}>
@@ -22,4 +22,4 @@ const ResultComponent: React.FC<ResultProps> = (props) => (
 
   </Container>
 );
-export default ResultComponent;
+export default FinalPage;

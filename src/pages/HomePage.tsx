@@ -40,7 +40,7 @@ const Feature = ({ title, text, icon }: FeatureProps) => (
   </Stack>
 );
 
-export default function HomeContent() {
+export default function HomePage():JSX.Element {
   return (
     <Flex p={4} marginTop={90}>
       <Stack spacing={4} as={Container} maxW="3xl" textAlign="center">

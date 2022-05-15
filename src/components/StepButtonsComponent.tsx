@@ -8,7 +8,7 @@ type StepButtonsProps = {
   isLast?: boolean;
 };
 
-const StepButtons = ({
+const StepButtonsComponent = ({
   nextStep,
   prevStep,
   prevDisabled,
@@ -31,4 +31,4 @@ const StepButtons = ({
   </Flex>
 );
 
-export default StepButtons;
+export default StepButtonsComponent;

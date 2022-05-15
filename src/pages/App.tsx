@@ -1,34 +1,31 @@
-import './home.css';
 import React, { Suspense } from 'react';
 import {
   Text, Flex, VStack, CircularProgress, useColorMode, Button, useColorModeValue,
 } from '@chakra-ui/react';
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
 import { FiPackage, FiHome } from 'react-icons/fi';
-import { GiSettingsKnobs, GiDonerKebab } from 'react-icons/gi';
+import { GiSettingsKnobs } from 'react-icons/gi';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-import StepButtons from '../components/StepButtons';
-import HomeContent from '../components/HomeContent';
-import PackagesView from '../components/packageList/PackageListComponent';
-import ResultComponent from '../components/ResultComponent';
-import SystemSettings from '../components/SystemSettings';
-import MoreComponent from '../components/MoreComponent';
-
+import StepButtonsComponent from '../components/StepButtonsComponent';
+import HomePage from './HomePage';
+import ExplorerPage from './ExplorerPage';
 import packageJson from '../../package.json';
+import SettingPage from './SettingPage';
+import FinalPage from './FinalPage';
 
 interface AppProps {
 }
 
 const homeContent = (
   <Flex py={4}>
-    <HomeContent />
+    <HomePage />
   </Flex>
 );
-const PackageContent: React.FC<AppProps> = (props) => (
+const PackageContent = (
   <Flex py={4}>
     <Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}>
 
-      <PackagesView />
+      <ExplorerPage />
     </Suspense>
   </Flex>
 );
@@ -36,23 +33,17 @@ const settingContent = (
   <Flex py={4}>
     <Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}>
 
-      <SystemSettings />
+      <SettingPage />
     </Suspense>
-  </Flex>
-);
-const moreContent = (
-  <Flex py={4}>
-    <MoreComponent />
   </Flex>
 );
 
 const App: React.FC<AppProps> = (props) => {
-  const STEPCOUNT = 4;
+  const STEPCOUNT = 3;
   const steps = [
     { label: 'Welcome', icon: FiHome, content: homeContent },
-    { label: 'Explorer', icon: FiPackage, content: <PackageContent /> },
+    { label: 'Explorer', icon: FiPackage, content: <ExplorerPage /> },
     { label: 'Settings', icon: GiSettingsKnobs, content: settingContent },
-    { label: 'More', icon: GiDonerKebab, content: moreContent },
   ];
   const { colorMode, toggleColorMode } = useColorMode();
   const bg = useColorModeValue('white', 'gray.800');
@@ -83,7 +74,7 @@ const App: React.FC<AppProps> = (props) => {
       </VStack>
 
       {activeStep === STEPCOUNT ? (
-        <ResultComponent onReset={reset} />
+        <FinalPage onReset={reset} />
       ) : (
         <Flex
           position="fixed"
@@ -96,7 +87,7 @@ const App: React.FC<AppProps> = (props) => {
             {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
           </Button>
 
-          <StepButtons
+          <StepButtonsComponent
             {...{ nextStep, prevStep }}
             prevDisabled={activeStep === 0}
             isLast={activeStep === STEPCOUNT - 1}

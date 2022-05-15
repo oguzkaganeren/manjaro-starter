@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { StepsStyleConfig as Steps } from 'chakra-ui-steps';
 import { RecoilRoot } from 'recoil';
-import App from './screens/Home';
+import App from './pages/App';
 import reportWebVitals from './reportWebVitals';
 
 const theme = extendTheme({
@@ -16,7 +16,7 @@ const theme = extendTheme({
 });
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider theme={theme}> 
+    <ChakraProvider theme={theme}>
       <RecoilRoot>
         <App />
       </RecoilRoot>

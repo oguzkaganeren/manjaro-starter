@@ -19,10 +19,10 @@ import {
   kernelState, installKernel,
 } from '../stores/KernelStore';
 
-interface KernelComponentProps {
+interface KernelListComponentProps {
 }
 
-const KernelComponent: React.FC<KernelComponentProps> = (props) => {
+const KernelListComponent: React.FC<KernelListComponentProps> = () => {
   const kernelSt = useRecoilValue(kernelState);
   const toast = useToast();
   const installKernelWithName = useRecoilCallback(({ snapshot, reset }) => async (
@@ -79,4 +79,4 @@ const KernelComponent: React.FC<KernelComponentProps> = (props) => {
     </Box>
   );
 };
-export default KernelComponent;
+export default KernelListComponent;

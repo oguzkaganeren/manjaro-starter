@@ -9,13 +9,13 @@ import {
 import React from 'react';
 import { GiProtectionGlasses } from 'react-icons/gi';
 import { invoke } from '@tauri-apps/api/tauri';
-import KernelComponent from './KernelComponent';
-import SystemInfoComponent from './SystemInfo';
+import SystemInfoComponent from '../components/SystemInfoComponent';
+import KernelListComponent from '../components/KernelListComponent';
 
-interface SystemSettingsProps {
-}
+interface SettingPageProps {
+  }
 
-const SystemSettings: React.FC<SystemSettingsProps> = (props) => (
+const SettingPage: React.FC<SettingPageProps> = (props) => (
   <Box
     px={8}
     py={20}
@@ -52,7 +52,7 @@ const SystemSettings: React.FC<SystemSettingsProps> = (props) => (
       </chakra.p>
 
     </Box>
-    <KernelComponent />
+    <KernelListComponent />
   </Box>
 );
-export default SystemSettings;
+export default SettingPage;
