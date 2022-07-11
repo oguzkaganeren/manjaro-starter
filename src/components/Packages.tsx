@@ -12,13 +12,6 @@ import {
   useToast,
   Text,
   useDisclosure,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
 } from '@chakra-ui/react';
 import React, { useState, useEffect, Suspense } from 'react';
 import { RiInstallLine, RiCheckLine } from 'react-icons/ri';
@@ -42,7 +35,6 @@ interface PackageInfoProps {
 
 const PackageInfo: React.FC<PackageInfoProps> = (props) => {
   const toast = useToast();
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const packageStatusUpdate = useRecoilCallback(({ snapshot, set }) => async (
     catId:string,
     pkId:string,
