@@ -13,29 +13,16 @@ import {
   Spacer,
 } from '@chakra-ui/react';
 import React, { useState, useEffect, useLayoutEffect } from 'react';
-import { FaLinux } from 'react-icons/fa';
-import { RiAddLine } from 'react-icons/ri';
-import { MdOutlineDownloadDone } from 'react-icons/md';
-import {
-  useRecoilCallback, useRecoilValue,
-} from 'recoil';
-import _ from 'lodash';
-import {
-  systemState,
-} from '../stores/SystemStore';
+import { invoke } from '@tauri-apps/api/tauri';
 
 interface SystemInfoComponentProps {
 }
 
 const SystemInfoComponent: React.FC<SystemInfoComponentProps> = (props) => {
-  const systemSt = useRecoilValue(systemState);
-  const [systemInfoRaw, setSystemInfoRaw] = useState('');
   useEffect(() => {
-    let htmlRaw = '';
-    systemSt.split('\\n').map((item, idx) => {
-      htmlRaw += `${item.replaceAll('\\u{3}12', '<b>').replaceAll('\\u{3}', '</b>')}<br/>`;
+    invoke('get_sys_info').then((result) => {
+      console.log(result);
     });
-    setSystemInfoRaw(htmlRaw);
   }, []);
   return (
     <Box mt={5} mb={5} textAlign={{ lg: 'left' }}>
@@ -51,7 +38,7 @@ const SystemInfoComponent: React.FC<SystemInfoComponentProps> = (props) => {
       >
         System Details
       </chakra.p>
-      <div dangerouslySetInnerHTML={{ __html: systemInfoRaw }} />
+      {}
     </Box>
   );
 };
