@@ -70,7 +70,7 @@ yarn tauri dev
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-PKGBUILD file can be found at [manjaro-starter](https://github.com/yochananmarqos/pkgbuilds/tree/master/manjaro-starter). Also, Bin files will be uploaded to release page each release.
+A PKGBUILD can be found on [Manjaro GitLab](https://gitlab.manjaro.org/packages/extra/manjaro-starter). Also, Binary files will be uploaded to release page each release.
 
 
 
@@ -112,7 +112,7 @@ Project Link: [https://github.com/oguzkaganeren/manjaro-starter](https://github.
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* [yochananmarqos](https://github.com/yochananmarqos/pkgbuilds/tree/master/manjaro-starter)
+* [yochananmarqos](https://github.com/yochananmarqos)
 
 
 
