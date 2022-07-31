@@ -31,15 +31,15 @@ fn get_sys_info() -> String {
   // First we update all information of our `System` struct.
   sys.refresh_all();
   let sys_info = json!( {
-    "total_memory": sys.total_memory().to_string(),
-    "used_memory": sys.used_memory().to_string(),
-    "total_swap": sys.total_swap().to_string(), 
-    "used_swap": sys.used_swap().to_string(),
-    "sys_name":sys.name(),
-    "sys_kernel_version":sys.kernel_version(),
-    "sys_os_version":sys.os_version(),
-    "sys_host_name":sys.host_name(),
-    "number_of_cpu":sys.cpus().len().to_string()
+    "totalMemory": sys.total_memory().to_string(),
+    "usedMemory": sys.used_memory().to_string(),
+    "totalSwap": sys.total_swap().to_string(), 
+    "usedSwap": sys.used_swap().to_string(),
+    "sysName":sys.name(),
+    "sysKernelVersion":sys.kernel_version(),
+    "sysOsVersion":sys.os_version(),
+    "sysHostName":sys.host_name(),
+    "numberOfCpu":sys.cpus().len().to_string()
   });
   return sys_info.to_string();
 }

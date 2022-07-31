@@ -19,9 +19,13 @@ interface SystemInfoComponentProps {
 }
 
 const SystemInfoComponent: React.FC<SystemInfoComponentProps> = (props) => {
+  const [systemInfo, setSystemInfo] = useState({ numberOfCpu: '' });
   useEffect(() => {
-    invoke('get_sys_info').then((result) => {
-      console.log(result);
+    invoke('get_sys_info').then((response) => {
+      // why two parse???
+      const responseJson = JSON.parse(JSON.parse(JSON.stringify(response)));
+      console.log(typeof responseJson);
+      setSystemInfo(responseJson);
     });
   }, []);
   return (
@@ -38,7 +42,7 @@ const SystemInfoComponent: React.FC<SystemInfoComponentProps> = (props) => {
       >
         System Details
       </chakra.p>
-      {}
+      {systemInfo.numberOfCpu}
     </Box>
   );
 };
