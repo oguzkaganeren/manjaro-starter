@@ -14,7 +14,10 @@ import {
 import React, {
   ReactNode, useState, useEffect, useLayoutEffect,
 } from 'react';
-import { FiCpu } from 'react-icons/fi';
+import { FiCpu, FiDatabase } from 'react-icons/fi';
+import { FaMemory } from 'react-icons/fa';
+import { HiOutlineDesktopComputer } from 'react-icons/hi';
+import { AiFillCode } from 'react-icons/ai';
 import { invoke } from '@tauri-apps/api/tauri';
 
 interface StatsCardProps {
@@ -55,8 +58,22 @@ function StatsCard(props: StatsCardProps) {
     </Stat>
   );
 }
+function formatBytes(bytes:number, decimals = 2) {
+  if (bytes === 0) return '0 Bytes';
+
+  const k = 1024;
+  const dm = decimals < 0 ? 0 : decimals;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+  return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
+}
+
 const SystemInfoComponent: React.FC<SystemInfoComponentProps> = (props) => {
-  const [systemInfo, setSystemInfo] = useState({ numberOfCpu: '' });
+  const [systemInfo, setSystemInfo] = useState({
+    numberOfCpu: '', totalMemory: 0, usedMemory: 0, totalSwap: 0, usedSwap: 0, sysName: '', sysKernelVersion: '', sysOsVersion: '', sysHostName: '', nameOfCpu: '',
+  });
   useEffect(() => {
     invoke('get_sys_info').then((response) => {
       // why two parse???
@@ -77,11 +94,32 @@ const SystemInfoComponent: React.FC<SystemInfoComponentProps> = (props) => {
       >
         System Details
       </chakra.p>
-      <SimpleGrid columns={{ base: 1, md: 4 }} spacing={{ base: 5, lg: 8 }}>
+      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 5, lg: 8 }}>
+        <StatsCard
+          title="System"
+          stat={`${systemInfo.sysName} ${systemInfo.sysOsVersion}`}
+          icon={<HiOutlineDesktopComputer size="3em" />}
+        />
+        <StatsCard
+          title="Kernel"
+          stat={systemInfo.sysKernelVersion}
+          icon={<AiFillCode size="3em" />}
+        />
         <StatsCard
           title="CPU"
-          stat={`${systemInfo.numberOfCpu} Core`}
+          stat={`${systemInfo.nameOfCpu} 
+          ${systemInfo.numberOfCpu} Core`}
           icon={<FiCpu size="3em" />}
+        />
+        <StatsCard
+          title="Memory"
+          stat={`${formatBytes(systemInfo.usedMemory * 1024)} / ${formatBytes(systemInfo.totalMemory * 1024)}`}
+          icon={<FaMemory size="3em" />}
+        />
+        <StatsCard
+          title="Swap"
+          stat={`${formatBytes(systemInfo.usedSwap * 1024)} / ${formatBytes(systemInfo.totalSwap * 1024)}`}
+          icon={<FiDatabase size="3em" />}
         />
       </SimpleGrid>
 

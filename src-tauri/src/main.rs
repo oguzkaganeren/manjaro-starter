@@ -2,7 +2,7 @@
   all(not(debug_assertions), target_os = "windows"),
   windows_subsystem = "windows"
 )]
-use sysinfo::{NetworkExt, NetworksExt, ProcessExt, System, SystemExt};
+use sysinfo::{CpuRefreshKind, CpuExt, RefreshKind, NetworkExt, NetworksExt, ProcessExt, System, SystemExt};
 use std::process::Command;
 use serde_json::json;
 
@@ -26,7 +26,9 @@ fn run_shell_command_with_result(command: String) -> String {
 }
 #[tauri::command]
 fn get_sys_info() -> String {
-  let mut sys = System::new_all();
+  let mut sys = System::new_with_specifics(
+    RefreshKind::new().with_cpu(CpuRefreshKind::everything()),
+);
 
   // First we update all information of our `System` struct.
   sys.refresh_all();
@@ -39,7 +41,8 @@ fn get_sys_info() -> String {
     "sysKernelVersion":sys.kernel_version(),
     "sysOsVersion":sys.os_version(),
     "sysHostName":sys.host_name(),
-    "numberOfCpu":sys.cpus().len().to_string()
+    "numberOfCpu":sys.cpus().len().to_string(),
+    "nameOfCpu":sys.global_cpu_info().brand(),
   });
   return sys_info.to_string();
 }
