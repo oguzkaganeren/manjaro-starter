@@ -16,7 +16,7 @@ import React, {
 } from 'react';
 import { FiCpu, FiDatabase } from 'react-icons/fi';
 import { FaMemory } from 'react-icons/fa';
-import { HiOutlineDesktopComputer } from 'react-icons/hi';
+import { HiOutlineDesktopComputer, HiOutlineUser } from 'react-icons/hi';
 import { AiFillCode } from 'react-icons/ai';
 import { invoke } from '@tauri-apps/api/tauri';
 
@@ -104,6 +104,11 @@ const SystemInfoComponent: React.FC<SystemInfoComponentProps> = (props) => {
           title="Kernel"
           stat={systemInfo.sysKernelVersion}
           icon={<AiFillCode size="3em" />}
+        />
+        <StatsCard
+          title="Host"
+          stat={systemInfo.sysHostName}
+          icon={<HiOutlineUser size="3em" />}
         />
         <StatsCard
           title="CPU"
