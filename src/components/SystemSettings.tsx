@@ -1,6 +1,6 @@
 import {
   Box,
-  CircularProgress,
+  Center,
   Icon,
   Button,
   SimpleGrid,
@@ -28,22 +28,16 @@ const SystemSettings: React.FC<SystemSettingsProps> = (props) => (
   >
     <SystemInfoComponent />
     <Box textAlign={{ lg: 'center' }}>
-      <Flex>
-        <chakra.p
-          mt={2}
-          fontSize={{ base: '3xl', sm: '4xl' }}
-          lineHeight="8"
-          fontWeight="extrabold"
-          letterSpacing="tight"
-          color={useColorModeValue('white.900', 'white.100')}
-        >
-          Settings
-        </chakra.p>
-        <Spacer />
-        <Button colorScheme="red" onClick={() => invoke('run_shell_command_with_result', { command: 'manjaro-settings-manager' })} leftIcon={<GiProtectionGlasses />}>
-          Advanced
-        </Button>
-      </Flex>
+      <chakra.p
+        mt={2}
+        fontSize={{ base: '3xl', sm: '4xl' }}
+        lineHeight="8"
+        fontWeight="extrabold"
+        letterSpacing="tight"
+        color={useColorModeValue('white.900', 'white.100')}
+      >
+        Settings
+      </chakra.p>
       <chakra.p
         mt={4}
         maxW="2xl"
@@ -56,6 +50,20 @@ const SystemSettings: React.FC<SystemSettingsProps> = (props) => (
 
     </Box>
     <KernelComponent />
+    <Center>
+      <Button
+        mt={10}
+        size="md"
+        height="48px"
+        width="200px"
+        border="2px"
+        borderColor="green.500"
+        onClick={() => invoke('run_shell_command_with_result', { command: 'manjaro-settings-manager' })}
+        leftIcon={<GiProtectionGlasses />}
+      >
+        More Settings
+      </Button>
+    </Center>
   </Box>
 );
 export default SystemSettings;
