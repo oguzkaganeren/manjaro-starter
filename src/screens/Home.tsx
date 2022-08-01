@@ -2,7 +2,7 @@ import './home.css';
 import React, { Suspense, useState } from 'react';
 import {
   Text, Flex, VStack, CircularProgress, useColorMode,
-  Button, useColorModeValue, ButtonGroup, Spacer,
+  Button, useColorModeValue, ButtonGroup,
   Switch, FormControl, FormLabel,
 } from '@chakra-ui/react';
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
@@ -47,6 +47,9 @@ const settingContent = (
 const App: React.FC<AppProps> = (props) => {
   const STEPCOUNT = 3;
   const [launch, setLaunch] = useState(LocalData.launchAtStart);
+  const handleLaunchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setLaunch(event.target.checked);
+  };
   const steps = [
     { label: 'Welcome', icon: FiHome, content: homeContent },
     { label: 'Explorer', icon: FiPackage, content: <PackageContent /> },
@@ -98,12 +101,19 @@ const App: React.FC<AppProps> = (props) => {
             bg={bg}
             bottom={0}
             w="100%"
+            css={{
+              backdropFilter: 'saturate(180%) blur(5px)',
+              backgroundColor: useColorModeValue(
+                'rgba(255, 255, 255, 0.8)',
+                'rgba(26, 32, 44, 0.8)',
+              ),
+            }}
           >
             <FormControl display="flex" alignItems="center" ml={2}>
               <FormLabel htmlFor="launch-start" mb="0" fontSize="sm">
                 Launch at start
               </FormLabel>
-              <Switch isChecked={launch} id="launch-start" />
+              <Switch isChecked={launch} onChange={handleLaunchChange} id="launch-start" />
             </FormControl>
             <ButtonGroup variant="outline" spacing="2">
 
