@@ -32,7 +32,7 @@
 ## About The Project
 
 <img src="./Screenshots/mainscreen.png" width="400"/>
-
+<img src="./Screenshots/mainscreen2.png" width="400"/>
 
 ### Dependency
 

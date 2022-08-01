@@ -20,7 +20,6 @@ export default function Nav() {
         top="0"
         w="full"
         boxShadow="sm"
-        zIndex="999"
         justify="flex-end"
         css={{
           backdropFilter: 'saturate(180%) blur(5px)',
