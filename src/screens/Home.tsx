@@ -17,6 +17,7 @@ import SystemSettings from '../components/SystemSettings';
 import packageJson from '../../package.json';
 import LocalData from '../assets/LocalData.json';
 import AboutComponent from '../components/AboutComponent';
+import Nav from '../components/NavbarComponent';
 
 interface AppProps {
 }
@@ -59,64 +60,66 @@ const App: React.FC<AppProps> = (props) => {
     initialStep: 0,
   });
   return (
-    <VStack>
+    <div className="data-tauri-drag-region">
+      <Nav />
+      <VStack>
+        <VStack width="100%">
 
-      <VStack width="100%">
+          <Steps
+            bg={bg}
+            position="fixed"
+            padding={5}
+            activeStep={activeStep}
+          >
 
-        <Steps
-          bg={bg}
-          position="fixed"
-          padding={5}
-          activeStep={activeStep}
-        >
+            {steps.map(({ label, content, icon }) => (
+              <Step label={label} key={label} icon={icon}>
+                {content}
+              </Step>
+            ))}
+          </Steps>
 
-          {steps.map(({ label, content, icon }) => (
-            <Step label={label} key={label} icon={icon}>
-              {content}
-            </Step>
-          ))}
-        </Steps>
+        </VStack>
+
+        {activeStep === STEPCOUNT ? (
+          <ResultComponent onReset={reset} />
+        ) : (
+          <Flex
+            position="fixed"
+            padding={5}
+            bg={bg}
+            bottom={0}
+            w="100%"
+          >
+            <FormControl display="flex" alignItems="center" ml={2}>
+              <FormLabel htmlFor="launch-start" mb="0" fontSize="sm">
+                Launch at start
+              </FormLabel>
+              <Switch isChecked={launch} id="launch-start" />
+            </FormControl>
+            <ButtonGroup variant="outline" spacing="2">
+
+              <Button onClick={toggleColorMode}>
+                {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+              </Button>
+              <AboutComponent />
+
+            </ButtonGroup>
+
+            <StepButtons
+              {...{ nextStep, prevStep }}
+              prevDisabled={activeStep === 0}
+              isLast={activeStep === STEPCOUNT - 1}
+            />
+            <Text position="absolute" ml={3} fontSize="xs" mt={10} color="gray.500">
+              {packageJson.version}
+            </Text>
+
+          </Flex>
+        )}
 
       </VStack>
-
-      {activeStep === STEPCOUNT ? (
-        <ResultComponent onReset={reset} />
-      ) : (
-        <Flex
-          position="fixed"
-          padding={5}
-          bg={bg}
-          bottom={0}
-          w="100%"
-        >
-          <FormControl display="flex" alignItems="center" ml={2}>
-            <FormLabel htmlFor="launch-start" mb="0" fontSize="sm">
-              Launch at start
-            </FormLabel>
-            <Switch isChecked={launch} id="launch-start" />
-          </FormControl>
-          <ButtonGroup variant="outline" spacing="2">
-
-            <Button onClick={toggleColorMode}>
-              {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-            </Button>
-            <AboutComponent />
-
-          </ButtonGroup>
-
-          <StepButtons
-            {...{ nextStep, prevStep }}
-            prevDisabled={activeStep === 0}
-            isLast={activeStep === STEPCOUNT - 1}
-          />
-          <Text position="absolute" ml={3} fontSize="xs" mt={10} color="gray.500">
-            {packageJson.version}
-          </Text>
-
-        </Flex>
-      )}
-
-    </VStack>
+    </div>
 
   );
 };

@@ -48,14 +48,18 @@
             "active": false
         },
         "allowlist": {
-            "all": true
+            "all": true,
+            "window": {
+                "startDragging": true
+            }
         },
         "windows": [{
             "title": "Manjaro Starter",
             "width": 950,
             "height": 650,
             "resizable": true,
-            "fullscreen": false
+            "fullscreen": false,
+            "decorations": false
         }],
         "security": {
             "csp": "default-src blob: data: filesystem: ws: wss: http: https: tauri: 'unsafe-eval' 'unsafe-inline' 'self' img-src: 'self'"
