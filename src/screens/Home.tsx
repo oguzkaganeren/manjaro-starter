@@ -60,15 +60,23 @@ const App: React.FC<AppProps> = (props) => {
     initialStep: 0,
   });
   return (
-    <div className="data-tauri-drag-region">
+    <>
       <Nav />
-      <VStack>
+      <VStack mt={63}>
         <VStack width="100%">
 
           <Steps
             bg={bg}
             position="fixed"
             padding={5}
+            boxShadow="sm"
+            css={{
+              backdropFilter: 'saturate(180%) blur(5px)',
+              backgroundColor: useColorModeValue(
+                'rgba(255, 255, 255, 0.8)',
+                'rgba(26, 32, 44, 0.8)',
+              ),
+            }}
             activeStep={activeStep}
           >
 
@@ -119,7 +127,7 @@ const App: React.FC<AppProps> = (props) => {
         )}
 
       </VStack>
-    </div>
+    </>
 
   );
 };

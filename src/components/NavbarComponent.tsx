@@ -15,24 +15,13 @@ import {
   Stack,
   useColorMode,
   Center,
+  IconButton,
+  ButtonGroup,
 } from '@chakra-ui/react';
-import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { MoonIcon, SunIcon, CloseIcon } from '@chakra-ui/icons';
 import { appWindow } from '@tauri-apps/api/window';
-
-const NavLink = ({ children }: { children: ReactNode }) => (
-  <Link
-    px={2}
-    py={1}
-    rounded="md"
-    _hover={{
-      textDecoration: 'none',
-      bg: useColorModeValue('gray.200', 'gray.700'),
-    }}
-    href="#"
-  >
-    {children}
-  </Link>
-);
+import { BiWindow } from 'react-icons/bi';
+import { MdOutlineMinimize } from 'react-icons/md';
 
 export default function Nav() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -40,52 +29,32 @@ export default function Nav() {
 
   return (
     <>
-      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
-        <Flex h={16} alignItems="center" justifyContent="space-between">
-          <Box>Logo</Box>
-
-          <Flex alignItems="center">
-            <Stack direction="row" spacing={7}>
-              <Button onClick={toggleColorMode}>
-                {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-              </Button>
-
-              <Menu>
-                <MenuButton
-                  as={Button}
-                  rounded="full"
-                  variant="link"
-                  cursor="pointer"
-                  minW={0}
-                >
-                  <Avatar
-                    size="sm"
-                    src="https://avatars.dicebear.com/api/male/username.svg"
-                  />
-                </MenuButton>
-                <MenuList alignItems="center">
-                  <br />
-                  <Center>
-                    <Avatar
-                      size="2xl"
-                      src="https://avatars.dicebear.com/api/male/username.svg"
-                    />
-                  </Center>
-                  <br />
-                  <Center>
-                    <p>Username</p>
-                  </Center>
-                  <br />
-                  <MenuDivider />
-                  <MenuItem>Your Servers</MenuItem>
-                  <MenuItem>Account Settings</MenuItem>
-                  <MenuItem>Logout</MenuItem>
-                </MenuList>
-              </Menu>
-            </Stack>
-          </Flex>
+      <Flex
+        as="header"
+        pos="fixed"
+        top="0"
+        w="full"
+        boxShadow="sm"
+        zIndex="999"
+        justify="flex-end"
+        css={{
+          backdropFilter: 'saturate(180%) blur(5px)',
+          backgroundColor: useColorModeValue(
+            'rgba(255, 255, 255, 0.8)',
+            'rgba(26, 32, 44, 0.8)',
+          ),
+        }}
+      >
+        <Flex h={16} mr={5} alignItems="center" justifyContent="space-between">
+          <Stack direction="row" spacing={7}>
+            <ButtonGroup>
+              <IconButton aria-label="Minimize" size="sm" icon={<MdOutlineMinimize />} />
+              <IconButton aria-label="Window" size="sm" icon={<BiWindow />} />
+              <IconButton aria-label="Close" size="sm" icon={<CloseIcon />} />
+            </ButtonGroup>
+          </Stack>
         </Flex>
-      </Box>
+      </Flex>
     </>
   );
 }
