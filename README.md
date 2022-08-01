@@ -34,6 +34,13 @@
 <img src="./Screenshots/mainscreen.png" width="400"/>
 
 
+### Dependency
+
+* gtk3
+* manjaro-settings-manager
+* pamac-cli
+* webkit2gtk
+
 ### Built With
 
 * [React](https://reactjs.org)
