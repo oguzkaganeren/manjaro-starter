@@ -1,7 +1,9 @@
 import './home.css';
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import {
-  Text, Flex, VStack, CircularProgress, useColorMode, Button, useColorModeValue, ButtonGroup, Spacer,
+  Text, Flex, VStack, CircularProgress, useColorMode,
+  Button, useColorModeValue, ButtonGroup, Spacer,
+  Switch, FormControl, FormLabel,
 } from '@chakra-ui/react';
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
 import { FiPackage, FiHome } from 'react-icons/fi';
@@ -13,6 +15,7 @@ import PackagesView from '../components/Packages';
 import ResultComponent from '../components/ResultComponent';
 import SystemSettings from '../components/SystemSettings';
 import packageJson from '../../package.json';
+import LocalData from '../assets/LocalData.json';
 import AboutComponent from '../components/AboutComponent';
 
 interface AppProps {
@@ -42,6 +45,7 @@ const settingContent = (
 
 const App: React.FC<AppProps> = (props) => {
   const STEPCOUNT = 3;
+  const [launch, setLaunch] = useState(LocalData.launchAtStart);
   const steps = [
     { label: 'Welcome', icon: FiHome, content: homeContent },
     { label: 'Explorer', icon: FiPackage, content: <PackageContent /> },
@@ -85,11 +89,19 @@ const App: React.FC<AppProps> = (props) => {
           bottom={0}
           w="100%"
         >
+          <FormControl display="flex" alignItems="center" ml={2}>
+            <FormLabel htmlFor="launch-start" mb="0" fontSize="sm">
+              Launch at start
+            </FormLabel>
+            <Switch isChecked={launch} id="launch-start" />
+          </FormControl>
           <ButtonGroup variant="outline" spacing="2">
+
             <Button onClick={toggleColorMode}>
               {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
             </Button>
             <AboutComponent />
+
           </ButtonGroup>
 
           <StepButtons
