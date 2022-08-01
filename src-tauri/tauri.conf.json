@@ -53,7 +53,7 @@
         "windows": [{
             "title": "Manjaro Starter",
             "width": 950,
-            "height": 600,
+            "height": 650,
             "resizable": true,
             "fullscreen": false
         }],
