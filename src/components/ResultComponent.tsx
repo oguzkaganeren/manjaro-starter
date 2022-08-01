@@ -34,7 +34,7 @@ const ResultComponent: React.FC<ResultProps> = (props) => (
     </Button>
     <Button mt={5} mr={5} colorScheme="orange" onClick={async () => { await open('https://wiki.manjaro.org/'); }} leftIcon={<SiWikipedia />}>
       <Center>
-        <Text>Read Docs</Text>
+        <Text>Read Wiki</Text>
       </Center>
     </Button>
     <Button mt={5} mr={5} colorScheme="teal" onClick={async () => { await open('https://gitlab.manjaro.org/'); }} leftIcon={<SiGit />}>
