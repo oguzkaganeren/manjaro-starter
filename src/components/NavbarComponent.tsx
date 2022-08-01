@@ -48,9 +48,9 @@ export default function Nav() {
         <Flex h={16} mr={5} alignItems="center" justifyContent="space-between">
           <Stack direction="row" spacing={7}>
             <ButtonGroup>
-              <IconButton aria-label="Minimize" size="sm" icon={<MdOutlineMinimize />} />
-              <IconButton aria-label="Window" size="sm" icon={<BiWindow />} />
-              <IconButton aria-label="Close" size="sm" icon={<CloseIcon />} />
+              <IconButton aria-label="Minimize" onClick={() => { appWindow.minimize(); }} size="sm" icon={<MdOutlineMinimize />} />
+              <IconButton aria-label="Window" onClick={() => { appWindow.toggleMaximize(); }} size="sm" icon={<BiWindow />} />
+              <IconButton aria-label="Close" onClick={() => { appWindow.close(); }} size="sm" icon={<CloseIcon />} />
             </ButtonGroup>
           </Stack>
         </Flex>
