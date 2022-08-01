@@ -1,7 +1,7 @@
 import './home.css';
 import React, { Suspense } from 'react';
 import {
-  Text, Flex, VStack, CircularProgress, useColorMode, Button, useColorModeValue, Center, Spacer,
+  Text, Flex, VStack, CircularProgress, useColorMode, Button, useColorModeValue, ButtonGroup, Spacer,
 } from '@chakra-ui/react';
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
 import { FiPackage, FiHome } from 'react-icons/fi';
@@ -13,6 +13,7 @@ import PackagesView from '../components/Packages';
 import ResultComponent from '../components/ResultComponent';
 import SystemSettings from '../components/SystemSettings';
 import packageJson from '../../package.json';
+import AboutComponent from '../components/AboutComponent';
 
 interface AppProps {
 }
@@ -84,9 +85,12 @@ const App: React.FC<AppProps> = (props) => {
           bottom={0}
           w="100%"
         >
-          <Button onClick={toggleColorMode}>
-            {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-          </Button>
+          <ButtonGroup variant="outline" spacing="2">
+            <Button onClick={toggleColorMode}>
+              {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+            </Button>
+            <AboutComponent />
+          </ButtonGroup>
 
           <StepButtons
             {...{ nextStep, prevStep }}
