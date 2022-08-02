@@ -9,6 +9,8 @@ import { Step, Steps, useSteps } from 'chakra-ui-steps';
 import { FiPackage, FiHome } from 'react-icons/fi';
 import { GiSettingsKnobs } from 'react-icons/gi';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { copyFile, removeFile } from '@tauri-apps/api/fs';
+import { resolveResource, configDir } from '@tauri-apps/api/path';
 import StepButtons from '../components/StepButtons';
 import HomeContent from '../components/HomeContent';
 import PackagesView from '../components/Packages';
@@ -47,8 +49,17 @@ const settingContent = (
 const App: React.FC<AppProps> = (props) => {
   const STEPCOUNT = 3;
   const [launch, setLaunch] = useState(LocalData.launchAtStart);
-  const handleLaunchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleLaunchChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     setLaunch(event.target.checked);
+    const configDirPath = await configDir();
+    if (event.target.checked) {
+      // copy desktop file to autostart folder
+      const resourcePath = await resolveResource('resources/manjaro-starter.desktop');
+      await copyFile(resourcePath, `${configDirPath}autostart/manjaro-starter.desktop`);
+    } else {
+      // remove desktop file from autostart folder
+      await removeFile(`${configDirPath}autostart/manjaro-starter.desktop`);
+    }
   };
   const steps = [
     { label: 'Welcome', icon: FiHome, content: homeContent },

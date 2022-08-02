@@ -11,7 +11,7 @@ import {
 } from 'react-icons/fi';
 import { open } from '@tauri-apps/api/shell';
 import { BiDonateHeart } from 'react-icons/bi';
-import { urls } from '../assets/Preferences.json';
+import { urls } from '../assets/SocialUrls.json';
 
 interface ResultProps {
     onReset: () => void;

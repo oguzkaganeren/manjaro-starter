@@ -22,7 +22,7 @@
                 "icons/icon.icns",
                 "icons/icon.ico"
             ],
-            "resources": [],
+            "resources": ["./resources/manjaro-starter.desktop"],
             "externalBin": [],
             "copyright": "© Copyright 2022 Manjaro GmbH & Co. KG All rights reserved.",
             "category": "DeveloperTool",
@@ -51,6 +51,36 @@
             "all": true,
             "window": {
                 "startDragging": true
+            },
+            "fs": {
+                "all": true,
+                "readFile": true,
+                "writeFile": true,
+                "readDir": true,
+                "copyFile": true,
+                "createDir": true,
+                "removeDir": true,
+                "removeFile": true,
+                "renameFile": true,
+                "scope": [
+                    "$CACHE",
+                    "$CONFIG/*",
+                    "$DATA",
+                    "$LOCALDATA",
+                    "$EXE",
+                    "$FONT",
+                    "$HOME",
+                    "$PUBLIC",
+                    "$RUNTIME",
+                    "$TEMPLATE",
+                    "$RESOURCE",
+                    "$APP",
+                    "$LOG/*",
+                    "$TEMP"
+                ]
+            },
+            "path": {
+                "all": true
             }
         },
         "windows": [{
