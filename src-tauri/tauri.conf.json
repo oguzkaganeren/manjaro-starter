@@ -49,6 +49,25 @@
         },
         "allowlist": {
             "all": true,
+            "shell": {
+                "all": true,
+                "execute": true,
+                "sidecar": true,
+                "open": true,
+                "scope": [{
+                    "name": "gnome-layout-switcher",
+                    "cmd": "gnome-layout-switcher"
+                }, {
+                    "name": "manjaro-settings-manager",
+                    "cmd": "manjaro-settings-manager"
+                }, {
+                    "name": "installed-control",
+                    "cmd": "which",
+                    "args": [{
+                        "validator": "\\S+"
+                    }]
+                }]
+            },
             "window": {
                 "startDragging": true
             },
