@@ -32,7 +32,14 @@
 ## About The Project
 
 <img src="./Screenshots/mainscreen.png" width="400"/>
+<img src="./Screenshots/mainscreen2.png" width="400"/>
 
+### Dependency
+
+* gtk3
+* manjaro-settings-manager
+* pamac-cli
+* webkit2gtk
 
 ### Built With
 

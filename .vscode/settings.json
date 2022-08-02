@@ -1,6 +1,6 @@
 {
     "editor.multiCursorModifier": "ctrlCmd",
-    "files.autoSave": "afterDelay",
+    "files.autoSave": "onFocusChange",
     "eslint.format.enable": true,
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true

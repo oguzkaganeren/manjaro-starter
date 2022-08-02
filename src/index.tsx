@@ -16,7 +16,7 @@ const theme = extendTheme({
 });
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider theme={theme}> 
+    <ChakraProvider theme={theme}>
       <RecoilRoot>
         <App />
       </RecoilRoot>

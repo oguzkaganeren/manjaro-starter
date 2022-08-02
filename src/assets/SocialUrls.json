@@ -1,0 +1,14 @@
+{
+    "urls": {
+        "development": "https://gitlab.manjaro.org",
+        "software": "https://software.manjaro.org/",
+        "donate": "https://manjaro.org/donate",
+        "facebook": "https://www.facebook.com/ManjaroLinux",
+        "forum": "https://forum.manjaro.org",
+        "telegram": "https://t.me/manjaro_official",
+        "mailing": "https://lists.manjaro.org/cgi-bin/mailman/listinfo",
+        "reddit": "https://www.reddit.com/r/ManjaroLinux",
+        "twitter": "https://twitter.com/ManjaroLinux",
+        "wiki": "https://wiki.manjaro.org"
+    }
+}

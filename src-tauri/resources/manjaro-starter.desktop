@@ -1,0 +1,19 @@
+[Desktop Entry]
+Type=Application
+Icon=manjaro
+Name=Manjaro Starter
+Exec=manjaro-starter
+Terminal=false
+Hidden=false
+Comment=A tool providing access to documentation and support for new Manjaro users.
+Comment[da]=En app med adgang til dokumentation og support for nye Manjaro brugere.
+Comment[de]=Ein Tool für schnellen Zugriff auf Support und Dokumentation für neue Manjaro-Nutzer.
+Comment[es]=Una herramienta que provee acceso a la documentación y soporte para nuevos usuarios de Manjaro.
+Comment[fr]=Outil d'accès à la documentation et support aux nouveaux utilisateurs de Manjaro.
+Comment[nl]=Een manier voor nieuwe Manjaro gebruikers om toegang tot documentatie en support te krijgen.
+Comment[pl]=Narzędzie ułatwiające dostęp do dokumentacji i pomocy przeznaczone dla nowych użytkowników Manjaro.
+Comment[pt_BR]=Uma ferramenta que fornece acesso à documentação e suporte para novos usuários Manjaro.
+Comment[pt_PT]=Uma ferramenta que fornece acesso à documentação e suporte para novos usuários Manjaro.
+Comment[ru]=Средство доступа к документации и поддержке для новых пользователей Manjaro.
+Comment[it]=Strumento per accedere alla documentazione e supporto per nuovi utenti Manjaro.
+Comment[tr]=Yeni Manjaro kullanıcıları için dökümantasyon ve destek sağlayan bir araç.% 
