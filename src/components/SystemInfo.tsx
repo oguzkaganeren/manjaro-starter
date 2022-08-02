@@ -19,6 +19,9 @@ import { FaMemory } from 'react-icons/fa';
 import { HiOutlineDesktopComputer, HiOutlineUser } from 'react-icons/hi';
 import { AiFillCode } from 'react-icons/ai';
 import { invoke } from '@tauri-apps/api/tauri';
+import {
+  trace, info, error, attachConsole,
+} from 'tauri-plugin-log-api';
 
 interface StatsCardProps {
   title: string;
@@ -79,6 +82,7 @@ const SystemInfoComponent: React.FC<SystemInfoComponentProps> = (props) => {
       // why two parse???
       const responseJson = JSON.parse(JSON.parse(JSON.stringify(response)));
       setSystemInfo(responseJson);
+      info(responseJson);
     });
   }, []);
   return (

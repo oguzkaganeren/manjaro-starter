@@ -79,7 +79,8 @@ yarn tauri dev
 
 A PKGBUILD can be found on [Manjaro GitLab](https://gitlab.manjaro.org/packages/extra/manjaro-starter). Also, Binary files will be uploaded to release page each release.
 
-
+## Logs location
+`/home/<host>/.config/com.manjaro.starter`  
 
 <!-- ROADMAP -->
 ## 🚧 Roadmap

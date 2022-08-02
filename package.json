@@ -25,6 +25,7 @@
         "react-router-dom": "^5.3.0",
         "react-scripts": "4.0.3",
         "recoil": "^0.5.2",
+        "tauri-plugin-log-api": "github:oguzkaganeren/tauri-plugin-log#dev",
         "typescript": "^4.4.3",
         "web-vitals": "^1.0.1"
     },

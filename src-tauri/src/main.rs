@@ -5,7 +5,7 @@
 use sysinfo::{CpuRefreshKind, CpuExt, RefreshKind, NetworkExt, NetworksExt, ProcessExt, System, SystemExt};
 use std::process::Command;
 use serde_json::json;
-
+use tauri_plugin_log::{LogTarget, LoggerBuilder};
 #[tauri::command]
 fn run_shell_command(command: String) -> String {
   let output= Command::new("sh")
@@ -47,7 +47,11 @@ fn get_sys_info() -> String {
   return sys_info.to_string();
 }
 fn main() {
-  tauri::Builder::default()
+  tauri::Builder::default().plugin(LoggerBuilder::default().targets([
+    LogTarget::LogDir,
+    LogTarget::Stdout,
+    LogTarget::Webview,
+  ]).build())
   // This is where you pass in your commands
   .invoke_handler(tauri::generate_handler![run_shell_command,run_shell_command_with_result,get_sys_info])
     .run(tauri::generate_context!())
