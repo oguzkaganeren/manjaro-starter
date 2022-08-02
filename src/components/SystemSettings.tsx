@@ -1,18 +1,13 @@
 import {
   Box,
   Center,
-  Icon,
   Button,
-  SimpleGrid,
   useColorModeValue,
   chakra,
-  Spacer,
-  Flex,
   ButtonGroup,
 } from '@chakra-ui/react';
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { GiProtectionGlasses } from 'react-icons/gi';
-import { invoke } from '@tauri-apps/api/tauri';
 import { Command } from '@tauri-apps/api/shell';
 import KernelComponent from './KernelComponent';
 import SystemInfoComponent from './SystemInfo';
@@ -22,11 +17,18 @@ interface SystemSettingsProps {
 
 const SystemSettings: React.FC<SystemSettingsProps> = (props) => {
   const [isVisibleGnomeLayout, setIsVisibleGnomeLayout] = useState(false);
+  const [isVisibleMSM, setIsVisibleMSM] = useState(false);
   useEffect(() => {
-    const result = new Command('installed-control', ['gnome-layout-switcher']).execute();
-    result.then((response) => {
+    const resultOfGnome = new Command('installed-control', ['gnome-layout-switcher']).execute();
+    resultOfGnome.then((response) => {
       if (response.stdout) {
         setIsVisibleGnomeLayout(true);
+      }
+    });
+    const resultOfMSM = new Command('installed-control', ['manjaro-settings-manager']).execute();
+    resultOfMSM.then((response) => {
+      if (response.stdout) {
+        setIsVisibleMSM(true);
       }
     });
   });
@@ -65,17 +67,22 @@ const SystemSettings: React.FC<SystemSettingsProps> = (props) => {
 
       <Center>
         <ButtonGroup>
+          {isVisibleMSM && (
           <Button
             mt={10}
             size="md"
             height="48px"
             border="2px"
             borderColor="green.500"
-            onClick={() => invoke('run_shell_command_with_result', { command: 'manjaro-settings-manager' })}
+            onClick={async () => {
+              const result = new Command('manjaro-settings-manager').execute();
+              console.log(result);
+            }}
             leftIcon={<GiProtectionGlasses />}
           >
             More Settings
           </Button>
+          )}
           {isVisibleGnomeLayout && (
           <Button
             mt={10}

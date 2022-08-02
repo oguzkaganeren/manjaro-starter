@@ -58,6 +58,9 @@
                     "name": "gnome-layout-switcher",
                     "cmd": "gnome-layout-switcher"
                 }, {
+                    "name": "manjaro-settings-manager",
+                    "cmd": "manjaro-settings-manager"
+                }, {
                     "name": "installed-control",
                     "cmd": "which",
                     "args": [{
