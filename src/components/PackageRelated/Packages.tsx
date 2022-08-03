@@ -18,14 +18,15 @@ import { invoke } from '@tauri-apps/api/tauri';
 import {
   packageState,
 } from '../../stores/PackageStore';
-import PackageUnit from './PackageUnit';
+import PackageStatus from './PackageStatus';
+import PackageDetail from './PackageDetail';
 
 interface PackageProps {
 }
 
 const PackagesList: React.FC<PackageProps> = (props) => {
   const [packageSt, setPackageSt] = useRecoilState(packageState);
-  const [pkStatus, setPkStatus] = useState(false);
+  const [pkStatusLoading, setPkStatusLoading] = useState(false);
 
   useEffect(() => {
     const getAllPackageStatus = async () => {
@@ -37,61 +38,12 @@ const PackagesList: React.FC<PackageProps> = (props) => {
         }));
       }));
       setPackageSt(temp);
-      setPkStatus(true);
+      setPkStatusLoading(true);
     };
     setTimeout(getAllPackageStatus,
       1000);
   }, []);
-  const Feature = (props:any) => (
-    <Box
-      p={5}
-      shadow="md"
-      borderWidth="1px"
-      flex="1"
-      borderRadius="md"
-    >
-      <HStack spacing={3}>
-        <Icon
-          boxSize={5}
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          aria-hidden="true"
-        >
-          {props.icon}
-        </Icon>
-        <chakra.h3
-          mb={2}
-          fontWeight="semibold"
-          lineHeight="shorter"
-        >
-          {props.title}
-        </chakra.h3>
-        <Spacer />
-        {pkStatus ? (
-          <PackageUnit
-            catId={props.catId}
-            pkId={props.uniqueId}
-            pkgName={props.pkg}
-            isInstalled={props.isInstalled}
-          />
-        ) : (
-          <Button
-            isLoading
-            variant="outline"
-          />
-        )}
 
-      </HStack>
-      <chakra.p
-        fontSize="sm"
-        mt={6}
-        color={useColorModeValue('gray.500', 'gray.400')}
-      >
-        {props.children}
-      </chakra.p>
-
-    </Box>
-  );
   const Features = packageSt.map((category:any) => (
     <Box mt={8} key={category.id}>
       <Box textAlign={{ lg: 'left' }}>
@@ -122,14 +74,14 @@ const PackagesList: React.FC<PackageProps> = (props) => {
           mt={6}
         >
           {category.packages.map((app:any) => (
-            <Feature
-              color="red"
+            <PackageDetail
               title={app.name}
               pkg={app.pkg}
               key={app.id}
               uniqueId={app.id}
               isInstalled={app.isInstalled}
               catId={category.id}
+              pkStatusLoading={pkStatusLoading}
               icon={(
                 <path
                   fillRule="evenodd"
@@ -140,7 +92,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
           )}
             >
               {app.description}
-            </Feature>
+            </PackageDetail>
           ))}
         </SimpleGrid>
       </Box>

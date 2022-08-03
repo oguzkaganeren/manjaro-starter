@@ -13,13 +13,13 @@ import {
   getPackageStatus, installPackage, packageState,
 } from '../../stores/PackageStore';
 
-interface PackageUnitProps {
+interface PackageStatusProps {
     isInstalled:boolean,
     catId:string,
     pkId:string,
     pkgName:string,
   }
-const PackageUnit: React.FC<PackageUnitProps> = (props) => {
+const PackageStatus: React.FC<PackageStatusProps> = (props) => {
   const toast = useToast();
   const packageStatusUpdate = useRecoilCallback(({ snapshot, set }) => async (
     catId:string,
@@ -98,4 +98,4 @@ const PackageUnit: React.FC<PackageUnitProps> = (props) => {
   );
 };
 
-export default PackageUnit;
+export default PackageStatus;
