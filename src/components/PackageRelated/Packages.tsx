@@ -6,19 +6,18 @@ import {
   SimpleGrid,
   useColorModeValue,
   chakra,
-  Spacer,
-  HStack,
 } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import {
   useRecoilState,
 } from 'recoil';
 import _ from 'lodash';
-import { invoke } from '@tauri-apps/api/tauri';
+import { Command } from '@tauri-apps/api/shell';
 import {
   packageState,
+  Category,
+  Package,
 } from '../../stores/PackageStore';
-import PackageStatus from './PackageStatus';
 import PackageDetail from './PackageDetail';
 
 interface PackageProps {
@@ -33,8 +32,17 @@ const PackagesList: React.FC<PackageProps> = (props) => {
       const temp = _.cloneDeep(packageSt);
       await Promise.all(temp.map(async (cat) => {
         await Promise.all(cat.packages.map(async (pk) => {
-          const packageStatus = await invoke('run_shell_command', { command: `pacman -Qe ${pk.pkg}` });
-          pk.isInstalled = packageStatus === 'true';
+          const cmd = new Command('installed-control', [pk.pkg]);
+          const cmdResult = await cmd.execute();
+          if (cmdResult.stdout) {
+            pk.isInstalled = true;
+            const cmdVersion = new Command('version-control', ['-Qe', pk.pkg]);
+            const cmdVersionResult = await cmdVersion.execute();
+            if (cmdVersionResult.stdout) {
+              const spStd = cmdVersionResult.stdout.split(' ')[1];
+              pk.installedVersion = spStd;
+            }
+          }
         }));
       }));
       setPackageSt(temp);
@@ -44,7 +52,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
       1000);
   }, []);
 
-  const Features = packageSt.map((category:any) => (
+  const Apps = packageSt.map((category:Category) => (
     <Box mt={8} key={category.id}>
       <Box textAlign={{ lg: 'left' }}>
         <chakra.p
@@ -73,7 +81,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
           spacingY={10}
           mt={6}
         >
-          {category.packages.map((app:any) => (
+          {category.packages.map((app:Package) => (
             <PackageDetail
               title={app.name}
               pkg={app.pkg}
@@ -82,6 +90,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
               isInstalled={app.isInstalled}
               catId={category.id}
               pkStatusLoading={pkStatusLoading}
+              installedVersion={app.installedVersion}
               icon={(
                 <path
                   fillRule="evenodd"
@@ -129,7 +138,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
           Install packages to set up your environment.
         </chakra.p>
       </Box>
-      {Features}
+      {Apps}
       <Center>
         <a href="https://software.manjaro.org/applications" target="_blank" rel="noreferrer">
           <Button

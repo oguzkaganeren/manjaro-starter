@@ -4,11 +4,12 @@ import {
   Link,
   Icon,
   Button,
-  SimpleGrid,
+  Badge,
   useColorModeValue,
   chakra,
   Spacer,
   HStack,
+  Stack,
 } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import PackageStatus from './PackageStatus';
@@ -21,11 +22,12 @@ import PackageStatus from './PackageStatus';
     pkg:string;
     isInstalled:boolean;
     pkStatusLoading:boolean;
+    installedVersion:string;
   }
 
 const PackageDetail: React.FC<PackageDetailProps> = (props) => {
   const {
-    icon, title, catId, uniqueId, pkg, isInstalled, pkStatusLoading, children,
+    icon, title, catId, uniqueId, pkg, isInstalled, pkStatusLoading, installedVersion, children,
   } = props;
   return (
     <Box
@@ -35,6 +37,7 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
       flex="1"
       borderRadius="md"
     >
+
       <HStack spacing={3}>
         <Icon
           boxSize={5}
@@ -75,6 +78,12 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
       >
         {children}
       </chakra.p>
+      <Stack mt={5} direction="row" alignItems="center" justifyContent="right">
+        <Badge placeSelf="bottom-end" variant="outline" colorScheme="green">
+          {installedVersion}
+        </Badge>
+      </Stack>
+
     </Box>
   );
 };
