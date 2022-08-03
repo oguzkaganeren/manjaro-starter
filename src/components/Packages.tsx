@@ -268,7 +268,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
       </Box>
       {Features}
       <Center>
-        <a href="https://discover.manjaro.org/applications" target="_blank" rel="noreferrer">
+        <a href="https://software.manjaro.org/applications" target="_blank" rel="noreferrer">
           <Button
             mt={10}
             size="md"
