@@ -13,6 +13,7 @@ export interface Package {
   pkg: string,
   extra: Array<string>,
   isInstalled: boolean,
+  installedVersion:string
 }
 
 export interface Category {
@@ -45,6 +46,7 @@ export const getPackages = selector({
           icon: app.icon,
           isInstalled: false,
           name: app.name,
+          installedVersion: '',
         });
       });
       cats.push({

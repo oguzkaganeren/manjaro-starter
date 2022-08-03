@@ -66,6 +66,12 @@
                     "args": [{
                         "validator": "\\S+"
                     }]
+                }, {
+                    "name": "version-control",
+                    "cmd": "pacman",
+                    "args": ["-Qe", {
+                        "validator": "\\S+"
+                    }]
                 }]
             },
             "window": {
