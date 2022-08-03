@@ -13,7 +13,7 @@ import { copyFile, removeFile } from '@tauri-apps/api/fs';
 import { resolveResource, configDir } from '@tauri-apps/api/path';
 import StepButtons from '../components/StepButtons';
 import HomeContent from '../components/HomeContent';
-import PackagesView from '../components/Packages';
+import PackagesView from '../components/PackageRelated/Packages';
 import ResultComponent from '../components/ResultComponent';
 import SystemSettings from '../components/SystemSettings';
 import packageJson from '../../package.json';

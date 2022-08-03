@@ -22,7 +22,7 @@ import _ from 'lodash';
 import { invoke } from '@tauri-apps/api/tauri';
 import {
   Category, getPackages, getPackageStatus, installPackage, packageState,
-} from '../stores/PackageStore';
+} from '../../stores/PackageStore';
 
 interface PackageProps {
 }
