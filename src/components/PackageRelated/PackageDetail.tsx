@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Box,
   Link,
-  Icon,
+  Image,
   Button,
   Badge,
   useColorModeValue,
@@ -39,14 +39,11 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
     >
 
       <HStack spacing={3}>
-        <Icon
-          boxSize={5}
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          aria-hidden="true"
-        >
-          {icon}
-        </Icon>
+        <Image
+          boxSize="30px"
+          src={`${process.env.PUBLIC_URL}/AppIcons/${icon}.svg`}
+          alt="Dan Abramov"
+        />
         <chakra.h3
           fontWeight="semibold"
           lineHeight="shorter"

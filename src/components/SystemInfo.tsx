@@ -22,6 +22,7 @@ import { invoke } from '@tauri-apps/api/tauri';
 import {
   trace, info, error, attachConsole,
 } from 'tauri-plugin-log-api';
+import { useTranslation } from 'react-i18next';
 
 interface StatsCardProps {
   title: string;
@@ -74,6 +75,7 @@ function formatBytes(bytes:number, decimals = 2) {
 }
 
 const SystemInfoComponent: React.FC<SystemInfoComponentProps> = (props) => {
+  const { t } = useTranslation();
   const [systemInfo, setSystemInfo] = useState({
     numberOfCpu: '', totalMemory: 0, usedMemory: 0, totalSwap: 0, usedSwap: 0, sysName: '', sysKernelVersion: '', sysOsVersion: '', sysHostName: '', nameOfCpu: '',
   });
@@ -96,37 +98,37 @@ const SystemInfoComponent: React.FC<SystemInfoComponentProps> = (props) => {
         letterSpacing="tight"
         color={useColorModeValue('white.900', 'white.100')}
       >
-        System Details
+        {t('systemDetails')}
       </chakra.p>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 5, lg: 8 }}>
         <StatsCard
-          title="System"
+          title={t('system')}
           stat={`${systemInfo.sysName} ${systemInfo.sysOsVersion}`}
           icon={<HiOutlineDesktopComputer size="3em" />}
         />
         <StatsCard
-          title="Kernel"
+          title={t('kernel')}
           stat={systemInfo.sysKernelVersion}
           icon={<AiFillCode size="3em" />}
         />
         <StatsCard
-          title="Host"
+          title={t('host')}
           stat={systemInfo.sysHostName}
           icon={<HiOutlineUser size="3em" />}
         />
         <StatsCard
-          title="CPU"
+          title={t('cpu')}
           stat={`${systemInfo.nameOfCpu} 
           ${systemInfo.numberOfCpu} Core`}
           icon={<FiCpu size="3em" />}
         />
         <StatsCard
-          title="Memory"
+          title={t('memory')}
           stat={`${formatBytes(systemInfo.usedMemory * 1024)} / ${formatBytes(systemInfo.totalMemory * 1024)}`}
           icon={<FaMemory size="3em" />}
         />
         <StatsCard
-          title="Swap"
+          title={t('swap')}
           stat={`${formatBytes(systemInfo.usedSwap * 1024)} / ${formatBytes(systemInfo.totalSwap * 1024)}`}
           icon={<FiDatabase size="3em" />}
         />

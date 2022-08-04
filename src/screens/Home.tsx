@@ -11,6 +11,7 @@ import { GiSettingsKnobs } from 'react-icons/gi';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { copyFile, removeFile } from '@tauri-apps/api/fs';
 import { resolveResource, configDir } from '@tauri-apps/api/path';
+import { useTranslation } from 'react-i18next';
 import StepButtons from '../components/StepButtons';
 import HomeContent from '../components/HomeContent';
 import PackagesView from '../components/PackageRelated/Packages';
@@ -47,6 +48,7 @@ const settingContent = (
 );
 
 const App: React.FC<AppProps> = (props) => {
+  const { t, i18n } = useTranslation();
   const STEPCOUNT = 3;
   const [launch, setLaunch] = useState(LocalData.launchAtStart);
   const handleLaunchChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,9 +64,9 @@ const App: React.FC<AppProps> = (props) => {
     }
   };
   const steps = [
-    { label: 'Welcome', icon: FiHome, content: homeContent },
-    { label: 'Explorer', icon: FiPackage, content: <PackageContent /> },
-    { label: 'Settings', icon: GiSettingsKnobs, content: settingContent },
+    { label: t('welcome'), icon: FiHome, content: homeContent },
+    { label: t('explorer'), icon: FiPackage, content: <PackageContent /> },
+    { label: t('settings'), icon: GiSettingsKnobs, content: settingContent },
   ];
   const { colorMode, toggleColorMode } = useColorMode();
   const bg = useColorModeValue('white', 'gray.800');
@@ -122,7 +124,7 @@ const App: React.FC<AppProps> = (props) => {
           >
             <FormControl display="flex" alignItems="center" ml={2}>
               <FormLabel htmlFor="launch-start" mb="0" fontSize="sm">
-                Launch at start
+                {t('launchStart')}
               </FormLabel>
               <Switch isChecked={launch} onChange={handleLaunchChange} id="launch-start" />
             </FormControl>
