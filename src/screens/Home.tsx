@@ -64,9 +64,9 @@ const App: React.FC<AppProps> = (props) => {
     }
   };
   const steps = [
-    { label: 'Welcome', icon: FiHome, content: homeContent },
-    { label: 'Explorer', icon: FiPackage, content: <PackageContent /> },
-    { label: 'Settings', icon: GiSettingsKnobs, content: settingContent },
+    { label: t('welcome'), icon: FiHome, content: homeContent },
+    { label: t('explorer'), icon: FiPackage, content: <PackageContent /> },
+    { label: t('settings'), icon: GiSettingsKnobs, content: settingContent },
   ];
   const { colorMode, toggleColorMode } = useColorMode();
   const bg = useColorModeValue('white', 'gray.800');

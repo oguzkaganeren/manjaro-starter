@@ -45,7 +45,9 @@
         "setupEnv": "Set up your environment.",
         "moreSettings": "More Settings",
         "gnomeLayoutSwitcher": "Gnome Layout Switcher",
-        "launchStart": "Launch at start"
+        "launchStart": "Launch at start",
+        "welcome": "Welcome",
+        "explorer": "Explorer"
 
     }
 }
