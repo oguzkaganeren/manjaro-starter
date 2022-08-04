@@ -1,10 +1,8 @@
-[
-    {
+[{
         "name": "Browsers",
         "icon": "browser",
         "description": "Web browsing and communication",
-        "apps": [
-            {
+        "apps": [{
                 "name": "Vivaldi",
                 "icon": "vivaldi",
                 "description": "Configurable browser for power users",
@@ -81,8 +79,7 @@
         "name": "E-mail",
         "icon": "mail-client",
         "description": "E-mail, Calendar, Tasks",
-        "apps": [
-            {
+        "apps": [{
                 "name": "Claws Mail",
                 "icon": "claws-mail",
                 "description": "Lightweight and fast GTK+ based Mail Client",
@@ -136,8 +133,7 @@
         "name": "Office Suites",
         "icon": "applications-office",
         "description": "Office suites like MS Office",
-        "apps": [
-            {
+        "apps": [{
                 "name": "FreeOffice",
                 "icon": "ms-word",
                 "description": "Microsoft Office compatible suite",
@@ -178,29 +174,27 @@
         "name": "Extended language support",
         "icon": "gnumeric",
         "description": "Manjaro extended language support",
-        "apps": [
-          {
-            "name": "Manjaro Asian Input Support Fcitx",
-            "icon": "gnumeric",
-            "description": "Manjaro extended language support with fcitx support",
-            "pkg": "manjaro-asian-input-support-fcitx",
-            "extra": []
-          },
-          {
-            "name": "Manjaro Asian Input Support Ibus",
-            "icon": "gnumeric",
-            "description": "Manjaro extended language support with ibus support",
-            "pkg": "manjaro-asian-input-support-ibus",
-            "extra": []
-          }
+        "apps": [{
+                "name": "Manjaro Asian Input Support Fcitx",
+                "icon": "gnumeric",
+                "description": "Manjaro extended language support with fcitx support",
+                "pkg": "manjaro-asian-input-support-fcitx",
+                "extra": []
+            },
+            {
+                "name": "Manjaro Asian Input Support Ibus",
+                "icon": "gnumeric",
+                "description": "Manjaro extended language support with ibus support",
+                "pkg": "manjaro-asian-input-support-ibus",
+                "extra": []
+            }
         ]
     },
     {
         "name": "E-Book",
         "icon": "calibre",
         "description": "E-book library apps",
-        "apps": [
-            {
+        "apps": [{
                 "name": "Calibre",
                 "icon": "calibre-viewer",
                 "description": "The one stop solution to your e-book needs",
@@ -220,8 +214,7 @@
         "name": "Text Editors",
         "icon": "text-editor",
         "description": "Various editors for text or code",
-        "apps": [
-            {
+        "apps": [{
                 "name": "Atom",
                 "icon": "atom",
                 "description": "A hackable text editor for the 21st Century",
@@ -245,7 +238,7 @@
                 "pkg": "micro-manjaro",
                 "extra": []
             },
-                        {
+            {
                 "name": "Vim",
                 "icon": "gvim",
                 "description": "Keyboard controlled text-editor",
@@ -288,22 +281,19 @@
         "name": "Printing",
         "icon": "printer",
         "description": "Support for printing CUPS, HPLIP",
-        "apps": [
-            {
-                "name": "Manjaro Printing",
-                "icon": "printer",
-                "description": "Printing Meta Package",
-                "pkg": "manjaro-printer",
-                "extra": []
-            }
-        ]
+        "apps": [{
+            "name": "Manjaro Printing",
+            "icon": "printer1",
+            "description": "Printing Meta Package",
+            "pkg": "manjaro-printer",
+            "extra": []
+        }]
     },
     {
         "name": "PDF",
         "icon": "pdfeditor",
         "description": "PDF applications applications",
-        "apps": [
-            {
+        "apps": [{
                 "name": "Evince",
                 "icon": "evince",
                 "description": "View multi page documents",
@@ -355,8 +345,7 @@
         "name": "Graphics Creating",
         "icon": "applications-accessories",
         "description": "Creating and editing graphics",
-        "apps": [
-            {
+        "apps": [{
                 "name": "Blender",
                 "icon": "blender",
                 "description": "3D modeling and animation",
@@ -404,8 +393,7 @@
         "name": "Photos",
         "icon": "applications-graphics",
         "description": "Viewers and organizers",
-        "apps": [
-            {
+        "apps": [{
                 "name": "Gpicview",
                 "icon": "gpicview",
                 "description": "Lightweight Image Viewer",
@@ -460,8 +448,7 @@
         "name": "Video/Movie",
         "icon": "video-player",
         "description": "Organize and play videos and movies",
-        "apps": [
-            {
+        "apps": [{
                 "name": "Kodi",
                 "icon": "kodi",
                 "description": "Manage and view your media",
@@ -484,7 +471,7 @@
             },
             {
                 "name": "Totem",
-                "icon": "totem",
+                "icon": "org.gnome.Totem",
                 "description": "Play movies",
                 "pkg": "totem",
                 "extra": []
@@ -509,8 +496,7 @@
         "name": "Audio",
         "icon": "musicbrainz",
         "description": "Audio players",
-        "apps": [
-            {
+        "apps": [{
                 "name": "Audacious",
                 "icon": "audacious",
                 "description": "Listen to music",
@@ -551,8 +537,7 @@
         "name": "Media recording/editing",
         "icon": "kdenlive",
         "description": "Audio and Video editing",
-        "apps": [
-            {
+        "apps": [{
                 "name": "Audacity",
                 "icon": "audacity",
                 "description": "Record and Edit Audio files",
@@ -614,8 +599,7 @@
         "name": "Chat",
         "icon": "internet-chat",
         "description": "Online messaging and chat",
-        "apps": [
-            {
+        "apps": [{
                 "name": "HexChat",
                 "icon": "hexchat",
                 "description": "Graphic IRC Client",
@@ -631,14 +615,14 @@
             },
             {
                 "name": "Whatsapp web",
-                "icon": "whatsapp-web-jak",
+                "icon": "whatsapp",
                 "description": "Wrapper for whatsapp online",
                 "pkg": "whatsapp-web-jak",
                 "extra": []
             },
             {
                 "name": "Slack web",
-                "icon": "slack-web-jak",
+                "icon": "slack",
                 "description": "Wrapper for slack online",
                 "pkg": "slack-web-jak",
                 "extra": []
@@ -659,8 +643,7 @@
         "filter": [
             "advanced"
         ],
-        "apps": [
-            {
+        "apps": [{
                 "name": "Deluge",
                 "icon": "deluge",
                 "description": "Python based Bittorrent Client",
@@ -704,8 +687,7 @@
         "name": "Backup",
         "icon": "deja-dup",
         "description": "Backup utilites",
-        "apps": [
-            {
+        "apps": [{
                 "name": "Deja Dup",
                 "icon": "deja-dup",
                 "description": "Keep your important documents safe from disater",
@@ -752,8 +734,7 @@
         "name": "Password Manager",
         "icon": "security-high",
         "description": "Password Managers",
-        "apps": [
-            {
+        "apps": [{
                 "name": "KeePassXC",
                 "icon": "keepassxc",
                 "description": "Cross Platform Password Manager",
@@ -783,8 +764,7 @@
         "filter": [
             "advanced"
         ],
-        "apps": [
-            {
+        "apps": [{
                 "name": "Popsicle",
                 "icon": "mintstick",
                 "description": "Graphical tool to write ISO to USB",
@@ -845,8 +825,7 @@
         "filter": [
             "advanced"
         ],
-        "apps": [
-            {
+        "apps": [{
                 "name": "VirtualBox",
                 "icon": "virtualbox",
                 "description": "Run several virtual systems on a single host computer",

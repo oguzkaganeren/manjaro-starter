@@ -41,6 +41,10 @@
 * pamac-cli
 * webkit2gtk
 
+### Used
+
+* For app icons [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
+
 ### Built With
 
 * [React](https://reactjs.org)
@@ -105,7 +109,7 @@ Contributions are what make the open source community such an amazing place to b
 <!-- LICENSE -->
 ## 📝 License
 
-Distributed under the GNU License. See `LICENSE` for more information.
+Distributed under the GNU License. See `LICENSE.md` for more information.
 
 
 
