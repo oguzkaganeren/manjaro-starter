@@ -11,6 +11,7 @@ import { GiSettingsKnobs } from 'react-icons/gi';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { copyFile, removeFile } from '@tauri-apps/api/fs';
 import { resolveResource, configDir } from '@tauri-apps/api/path';
+import { useTranslation } from 'react-i18next';
 import StepButtons from '../components/StepButtons';
 import HomeContent from '../components/HomeContent';
 import PackagesView from '../components/PackageRelated/Packages';
@@ -47,6 +48,7 @@ const settingContent = (
 );
 
 const App: React.FC<AppProps> = (props) => {
+  const { t, i18n } = useTranslation();
   const STEPCOUNT = 3;
   const [launch, setLaunch] = useState(LocalData.launchAtStart);
   const handleLaunchChange = async (event: React.ChangeEvent<HTMLInputElement>) => {

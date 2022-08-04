@@ -5,11 +5,13 @@ import {
   Stack,
   IconButton,
   ButtonGroup,
+  Spacer,
 } from '@chakra-ui/react';
 import { CloseIcon } from '@chakra-ui/icons';
 import { appWindow } from '@tauri-apps/api/window';
 import { BiWindow } from 'react-icons/bi';
 import { MdOutlineMinimize } from 'react-icons/md';
+import LanguageComponent from './LanguageComponent';
 
 export default function Nav() {
   return (
@@ -29,6 +31,11 @@ export default function Nav() {
           ),
         }}
       >
+        <Flex h={16} alignItems="center" justifyContent="space-between">
+          <LanguageComponent />
+        </Flex>
+
+        <Spacer />
         <Flex h={16} mr={5} alignItems="center" justifyContent="space-between">
           <Stack direction="row" spacing={7}>
             <ButtonGroup>
