@@ -124,7 +124,7 @@ const App: React.FC<AppProps> = (props) => {
           >
             <FormControl display="flex" alignItems="center" ml={2}>
               <FormLabel htmlFor="launch-start" mb="0" fontSize="sm">
-                Launch at start
+                {t('launchStart')}
               </FormLabel>
               <Switch isChecked={launch} onChange={handleLaunchChange} id="launch-start" />
             </FormControl>

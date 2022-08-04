@@ -105,6 +105,14 @@ Contributions are what make the open source community such an amazing place to b
 5. Open a Pull Request
 
 
+### Translations
+
+1. Save as `src/translations/en.json` with your local json name
+2. Translate only values(do not change keys)
+3. Import it at i18n.ts file and add it to resources variable
+4. Run `yarn tauri dev` and check your changes
+5. Commit all changes
+6. Send pull request
 
 <!-- LICENSE -->
 ## 📝 License

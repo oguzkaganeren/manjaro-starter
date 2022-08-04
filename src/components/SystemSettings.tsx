@@ -9,6 +9,7 @@ import {
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { GiProtectionGlasses } from 'react-icons/gi';
 import { Command } from '@tauri-apps/api/shell';
+import { useTranslation } from 'react-i18next';
 import KernelComponent from './KernelComponent';
 import SystemInfoComponent from './SystemInfo';
 
@@ -18,6 +19,7 @@ interface SystemSettingsProps {
 const SystemSettings: React.FC<SystemSettingsProps> = (props) => {
   const [isVisibleGnomeLayout, setIsVisibleGnomeLayout] = useState(false);
   const [isVisibleMSM, setIsVisibleMSM] = useState(false);
+  const { t } = useTranslation();
   useEffect(() => {
     const resultOfGnome = new Command('installed-control', ['gnome-layout-switcher']).execute();
     resultOfGnome.then((response) => {
@@ -50,7 +52,7 @@ const SystemSettings: React.FC<SystemSettingsProps> = (props) => {
           letterSpacing="tight"
           color={useColorModeValue('white.900', 'white.100')}
         >
-          Settings
+          {t('settings')}
         </chakra.p>
         <chakra.p
           mt={4}
@@ -59,7 +61,7 @@ const SystemSettings: React.FC<SystemSettingsProps> = (props) => {
           mx={{ lg: 'auto' }}
           color={useColorModeValue('gray.500', 'gray.400')}
         >
-          Set up your environment.
+          {t('setupEnv')}
         </chakra.p>
 
       </Box>
@@ -80,7 +82,7 @@ const SystemSettings: React.FC<SystemSettingsProps> = (props) => {
             }}
             leftIcon={<GiProtectionGlasses />}
           >
-            More Settings
+            {t('moreSettings')}
           </Button>
           )}
           {isVisibleGnomeLayout && (
@@ -94,7 +96,7 @@ const SystemSettings: React.FC<SystemSettingsProps> = (props) => {
               console.log(result);
             }}
           >
-            Gnome Layout Switcher
+            {t('gnomeLayoutSwitcher')}
           </Button>
           )}
         </ButtonGroup>

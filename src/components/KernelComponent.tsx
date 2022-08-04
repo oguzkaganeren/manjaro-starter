@@ -20,6 +20,7 @@ import {
   useRecoilCallback, useRecoilValue,
 } from 'recoil';
 import _ from 'lodash';
+import { useTranslation } from 'react-i18next';
 import {
   kernelState, installKernel,
 } from '../stores/KernelStore';
@@ -30,6 +31,7 @@ interface KernelComponentProps {
 const KernelComponent: React.FC<KernelComponentProps> = (props) => {
   const kernelSt = useRecoilValue(kernelState);
   const toast = useToast();
+  const { t } = useTranslation();
   const installKernelWithName = useRecoilCallback(({ snapshot, reset }) => async (
     id:string,
     kernelName:string,
@@ -43,7 +45,7 @@ const KernelComponent: React.FC<KernelComponentProps> = (props) => {
     ));
     reset(kernelState);
     toast({
-      title: `Installing ${kernelName}`,
+      title: `${t('installing')} ${kernelName}`,
       description: desc,
       status: 'success',
       duration: 9000,

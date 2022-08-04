@@ -17,7 +17,7 @@ const StepButtons = ({
   nextDisabled,
   isLast,
 }: StepButtonsProps): JSX.Element => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <Flex width="100%" justify="flex-end">
       <Button
@@ -27,10 +27,10 @@ const StepButtons = ({
         onClick={prevStep}
         isDisabled={prevDisabled}
       >
-        Prev
+        {t('prev')}
       </Button>
       <Button isDisabled={nextDisabled} size="sm" onClick={nextStep}>
-        {isLast ? 'Finish' : t('next')}
+        {isLast ? t('finish') : t('next')}
       </Button>
     </Flex>
   );
