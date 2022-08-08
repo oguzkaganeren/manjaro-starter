@@ -16,7 +16,7 @@ import StepButtons from '../components/StepButtons';
 import HomeContent from '../components/HomeContent';
 import PackagesView from '../components/PackageRelated/Packages';
 import ResultComponent from '../components/ResultComponent';
-import SystemSettings from '../components/SystemSettings';
+import SystemConfig from '../components/SystemConfig';
 import packageJson from '../../package.json';
 import LocalData from '../assets/LocalData.json';
 import AboutComponent from '../components/AboutComponent';
@@ -42,7 +42,7 @@ const settingContent = (
   <Flex py={4}>
     <Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}>
 
-      <SystemSettings />
+      <SystemConfig />
     </Suspense>
   </Flex>
 );
@@ -66,7 +66,7 @@ const App: React.FC<AppProps> = (props) => {
   const steps = [
     { label: t('welcome'), icon: FiHome, content: homeContent },
     { label: t('explorer'), icon: FiPackage, content: <PackageContent /> },
-    { label: t('settings'), icon: GiSettingsKnobs, content: settingContent },
+    { label: t('configurations'), icon: GiSettingsKnobs, content: settingContent },
   ];
   const { colorMode, toggleColorMode } = useColorMode();
   const bg = useColorModeValue('white', 'gray.800');

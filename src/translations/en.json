@@ -41,7 +41,7 @@
         "cpu": "CPU",
         "memory": "Memory",
         "swap": "Swap",
-        "settings": "Settings",
+        "configurations": "Configurations",
         "setupEnv": "Set up your environment.",
         "moreSettings": "More Settings",
         "gnomeLayoutSwitcher": "Gnome Layout Switcher",
