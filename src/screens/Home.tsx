@@ -1,5 +1,5 @@
 import './home.css';
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import {
   Text, Flex, VStack, CircularProgress, useColorMode,
   Button, useColorModeValue, ButtonGroup,
@@ -12,13 +12,13 @@ import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { copyFile, removeFile } from '@tauri-apps/api/fs';
 import { resolveResource, configDir } from '@tauri-apps/api/path';
 import { useTranslation } from 'react-i18next';
+import { forage } from '@tauri-apps/tauri-forage';
 import StepButtons from '../components/StepButtons';
 import HomeContent from '../components/HomeContent';
 import PackagesView from '../components/PackageRelated/Packages';
 import ResultComponent from '../components/ResultComponent';
 import SystemConfig from '../components/SystemConfig';
 import packageJson from '../../package.json';
-import LocalData from '../assets/LocalData.json';
 import AboutComponent from '../components/AboutComponent';
 import Nav from '../components/NavbarComponent';
 
@@ -48,21 +48,45 @@ const settingContent = (
 );
 
 const App: React.FC<AppProps> = (props) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const STEPCOUNT = 3;
-  const [launch, setLaunch] = useState(LocalData.launchAtStart);
+  const [launch, setLaunch] = useState(false);
   const handleLaunchChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     setLaunch(event.target.checked);
     const configDirPath = await configDir();
     if (event.target.checked) {
+      // localdata set
+      forage.setItem({
+        key: 'launchStart',
+        value: 'true',
+      })();
       // copy desktop file to autostart folder
       const resourcePath = await resolveResource('resources/manjaro-starter.desktop');
       await copyFile(resourcePath, `${configDirPath}autostart/manjaro-starter.desktop`);
     } else {
+      // localdata set
+      forage.setItem({
+        key: 'launchStart',
+        value: 'false',
+      })();
       // remove desktop file from autostart folder
       await removeFile(`${configDirPath}autostart/manjaro-starter.desktop`);
     }
   };
+  useEffect(() => {
+    const getLocalData = async () => {
+      const launchStart = await forage.getItem({ key: 'launchStart' })();
+      if (launchStart) {
+        setLaunch(launchStart === 'true');
+      } else {
+        forage.setItem({
+          key: 'launchStart',
+          value: 'false',
+        })();
+      }
+    };
+    getLocalData();
+  }, []);
   const steps = [
     { label: t('welcome'), icon: FiHome, content: homeContent },
     { label: t('explorer'), icon: FiPackage, content: <PackageContent /> },
