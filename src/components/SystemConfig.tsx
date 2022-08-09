@@ -13,10 +13,10 @@ import { useTranslation } from 'react-i18next';
 import KernelComponent from './KernelComponent';
 import SystemInfoComponent from './SystemInfo';
 
-interface SystemSettingsProps {
+interface SystemConfigProps {
 }
 
-const SystemSettings: React.FC<SystemSettingsProps> = (props) => {
+const SystemConfig: React.FC<SystemConfigProps> = (props) => {
   const [isVisibleGnomeLayout, setIsVisibleGnomeLayout] = useState(false);
   const [isVisibleMSM, setIsVisibleMSM] = useState(false);
   const { t } = useTranslation();
@@ -52,7 +52,7 @@ const SystemSettings: React.FC<SystemSettingsProps> = (props) => {
           letterSpacing="tight"
           color={useColorModeValue('white.900', 'white.100')}
         >
-          {t('settings')}
+          {t('configurations')}
         </chakra.p>
         <chakra.p
           mt={4}
@@ -105,4 +105,4 @@ const SystemSettings: React.FC<SystemSettingsProps> = (props) => {
     </Box>
   );
 };
-export default SystemSettings;
+export default SystemConfig;

@@ -2,7 +2,7 @@
   all(not(debug_assertions), target_os = "windows"),
   windows_subsystem = "windows"
 )]
-use sysinfo::{CpuRefreshKind, CpuExt, RefreshKind, NetworkExt, NetworksExt, ProcessExt, System, SystemExt};
+use sysinfo::{CpuRefreshKind, CpuExt, RefreshKind, System, SystemExt};
 use std::process::Command;
 use serde_json::json;
 use tauri_plugin_log::{LogTarget, LoggerBuilder};
