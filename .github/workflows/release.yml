@@ -11,7 +11,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: fregante/setup-git-user@v1
-      - uses: paulhatch/semantic-version@v5.0.0-alpha
+      - uses: paulhatch/semantic-version@v4.0.2
         id: versioning
         with:
           # The prefix to use to identify tags
