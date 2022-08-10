@@ -4,7 +4,7 @@ on:
 
 jobs:
   build:
-    name: Publish Release
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -20,3 +20,28 @@ jobs:
         yarn install
         yarn build
         cargo-tauri build
+  Tag:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: fregante/daily-version-action@v2
+        name: Create tag if necessary
+        id: daily-version
+    outputs: # Shares the action’s outputs to the Next jobs
+      created: ${{ steps.daily-version.outputs.created }}
+      version: ${{ steps.daily-version.outputs.version }}
+
+  Next:
+    needs: Tag
+    if: needs.Tag.outputs.created
+    name: Upload release files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload the artifacts
+        uses: skx/github-action-publish-binaries@release-1.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          releaseId: ${{ needs.Tag.outputs.version }}
+          args: '*.deb'
