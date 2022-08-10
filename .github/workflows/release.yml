@@ -21,14 +21,13 @@ jobs:
           major_pattern: "(MAJOR)"
           # Same as above except indicating a minor change, supports regular expressions wrapped with '/'
           minor_pattern: "(MINOR)"
-          # A string to determine the format of the version output
-          format: "${major}.${minor}.${patch}"
           # Named version, will be used as suffix for name version tag
           namespace: ""
           # If this is set to true, *every* commit will be treated as a new version.
           bump_each_commit: false
       - name: Update version of Package.json
         run: |     
+          ls
           NEW_VERSION=${{ steps.versioning.outputs.version }}
           CURRENT_VERSION=$(node -p "require('./package.json').version") 
           sed -i '' "s/${CURRENT_VERSION}/${NEW_VERSION}/" package.json
