@@ -8,29 +8,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build
-      run: |
-        sudo apt update
-        sudo apt-get -y install cargo
-        sudo apt install libwebkit2gtk-4.0-dev build-essential curl wget libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
-        cargo install tauri-cli
-        sudo yarn global add react-scripts
-        rm -f package-lock.json
-        yarn install
-        yarn build
-        cargo-tauri build
+      - uses: actions/checkout@v2
+      - name: Build
+        run: |
+          sudo apt update
+          sudo apt-get -y install cargo
+          sudo apt install libwebkit2gtk-4.0-dev build-essential curl wget libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
+          cargo install tauri-cli
+          sudo yarn global add react-scripts
+          rm -f package-lock.json
+          yarn install
+          yarn build
+          cargo-tauri build
 
-    - uses: fregante/daily-version-action@v2
-      name: Create tag if necessary
-      id: daily-version
-    outputs: # Shares the action’s outputs to the Next jobs
-      created: ${{ steps.daily-version.outputs.created }}
-      version: ${{ steps.daily-version.outputs.version }}
+      - uses: fregante/daily-version-action@v2
+        name: Create tag if necessary
+        id: daily-version
+      outputs: # Shares the action’s outputs to the Next jobs
+        created: ${{ steps.daily-version.outputs.created }}
+        version: ${{ steps.daily-version.outputs.version }}
 
-    - uses: skx/github-action-publish-binaries@release-1.3
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        releaseId: ${{ needs.Tag.outputs.version }}
-        args: '*.deb'
+      - uses: skx/github-action-publish-binaries@release-1.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          releaseId: ${{ needs.Tag.outputs.version }}
+          args: '*.deb'
