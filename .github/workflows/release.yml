@@ -19,7 +19,7 @@ jobs:
         rm -f package-lock.json
         yarn install
         yarn build
-        RUSTFLAGS="-C link-arg=-fuse-ld=lld" && cargo-tauri build
+        cargo-tauri build
   Tag:
     needs: build
     runs-on: ubuntu-latest
