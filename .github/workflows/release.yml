@@ -1,13 +1,15 @@
+name: Publish
 on:
   workflow_dispatch:
 
 jobs:
-  build-starter:
+  build:
     name: Publish Release
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Build
-      - run: |
-          ls
-          yarn tauri build
+    - uses: actions/checkout@v2
+    - name: Build
+      run: |
+        ls
+        yarn tauri build
