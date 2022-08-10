@@ -28,7 +28,7 @@ jobs:
           namespace: ""
           # If this is set to true, *every* commit will be treated as a new version.
           bump_each_commit: false
-            - name: Update version of Package.json
+      - name: Update version of Package.json
         run: |     
           NEW_VERSION=${{ steps.versioning.outputs.version }}
           CURRENT_VERSION=$(node -p "require('./package.json').version") 
