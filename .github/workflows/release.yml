@@ -21,7 +21,6 @@ jobs:
         yarn build
         cargo-tauri build
 
-    - uses: actions/checkout@v2
     - uses: fregante/daily-version-action@v2
       name: Create tag if necessary
       id: daily-version
