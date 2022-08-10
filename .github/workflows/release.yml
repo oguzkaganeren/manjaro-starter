@@ -30,6 +30,6 @@ jobs:
           automatic_release_tag: ${{ steps.version.outputs.version }}
           title: ${{ steps.version.outputs.version }}
           files: |
-            LICENSE.txt
+            LICENSE.md
             *.deb
             *.AppImage
