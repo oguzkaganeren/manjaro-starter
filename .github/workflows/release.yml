@@ -15,5 +15,6 @@ jobs:
         sudo apt-get -y install cargo
         cargo install tauri-cli
         sudo yarn global add react-scripts
+        yarn install
         yarn build
         cargo-tauri build
