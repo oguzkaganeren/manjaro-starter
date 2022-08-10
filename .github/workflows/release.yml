@@ -17,5 +17,5 @@ jobs:
         sudo yarn global add react-scripts
         rm -f package-lock.json
         yarn install
-        yarn build
+        CI=false yarn build
         cargo-tauri build
