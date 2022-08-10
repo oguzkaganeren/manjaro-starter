@@ -20,13 +20,15 @@ jobs:
         yarn install
         yarn build
         cargo-tauri build
+
     - uses: actions/checkout@v2
     - uses: fregante/daily-version-action@v2
       name: Create tag if necessary
       id: daily-version
-    outputs: # Shares the action’s outputs to the Next jobs
-      created: ${{ steps.daily-version.outputs.created }}
-      version: ${{ steps.daily-version.outputs.version }}
+  outputs: # Shares the action’s outputs to the Next jobs
+    created: ${{ steps.daily-version.outputs.created }}
+    version: ${{ steps.daily-version.outputs.version }}
+
     - uses: skx/github-action-publish-binaries@release-1.3
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
