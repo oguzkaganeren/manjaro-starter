@@ -8,18 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build
-        run: |
-          sudo apt update
-          sudo apt-get -y install cargo
-          sudo apt install libwebkit2gtk-4.0-dev build-essential curl wget libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
-          cargo install tauri-cli
-          sudo yarn global add react-scripts
-          rm -f package-lock.json
-          yarn install
-          yarn build
-          cargo-tauri build
-
+      - uses: fregante/setup-git-user@v1
       - uses: paulhatch/semantic-version@v4.0.2
         id: versioning
         with:
@@ -39,6 +28,27 @@ jobs:
           namespace: ""
           # If this is set to true, *every* commit will be treated as a new version.
           bump_each_commit: false
+            - name: Update version of Package.json
+        run: |     
+          NEW_VERSION=${{ steps.versioning.outputs.version }}
+          CURRENT_VERSION=$(node -p "require('./package.json').version") 
+          sed -i '' "s/${CURRENT_VERSION}/${NEW_VERSION}/" package.json
+          git add package.json
+          git commit -m "bump version"
+          cat package.json
+          git push
+      - name: Build
+        run: |
+          sudo apt update
+          sudo apt-get -y install cargo
+          sudo apt install libwebkit2gtk-4.0-dev build-essential curl wget libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
+          cargo install tauri-cli
+          sudo yarn global add react-scripts
+          rm -f package-lock.json
+          yarn install
+          yarn build
+          cargo-tauri build
+
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
