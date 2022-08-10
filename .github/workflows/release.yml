@@ -30,7 +30,7 @@ jobs:
           ls
           NEW_VERSION=${{ steps.versioning.outputs.version }}
           CURRENT_VERSION=$(node -p "require('./package.json').version") 
-          sed -i '' "s/${CURRENT_VERSION}/${NEW_VERSION}/" package.json
+          sed -i "s/${CURRENT_VERSION}/${NEW_VERSION}/" package.json
           git add package.json
           git commit -m "bump version"
           cat package.json
