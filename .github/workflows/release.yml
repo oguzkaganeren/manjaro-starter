@@ -14,4 +14,5 @@ jobs:
         sudo apt update
         sudo apt-get -y install cargo
         cargo install tauri-cli
-        yarn tauri build
+        yarn build
+        cargo-tauri build
