@@ -48,7 +48,11 @@
         "launchStart": "Launch at start",
         "welcome": "Welcome",
         "explorer": "Explorer",
-        "releaseNotes": "Release Notes"
+        "releaseNotes": "Release Notes",
+        "updates": "Updates",
+        "updateYourSystem": "Update your system",
+        "kernels": "Kernels",
+        "installKernel": "Install Kernel(s)"
 
     }
 }

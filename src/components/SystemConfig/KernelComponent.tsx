@@ -103,7 +103,7 @@ const KernelComponent: React.FC = (props) => {
         letterSpacing="tight"
         color={useColorModeValue('white.900', 'white.100')}
       >
-        Kernels
+        {t('kernels')}
       </chakra.p>
 
       <chakra.p
@@ -112,7 +112,7 @@ const KernelComponent: React.FC = (props) => {
         fontSize="xl"
         color={useColorModeValue('gray.500', 'gray.400')}
       >
-        Install kernel(s)
+        {t('installKernel')}
       </chakra.p>
       <Skeleton isLoaded={kernelSt !== null}>
         {kernelSt && kernelSt.map((kernel) => (
