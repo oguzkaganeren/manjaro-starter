@@ -23,7 +23,7 @@ jobs:
           major_pattern: "(MAJOR)"
           # Same as above except indicating a minor change, supports regular expressions wrapped with '/'
           minor_pattern: "(MINOR)"
-          format: "${major}.${minor}.${increment}"
+          format: "${major}.${minor}.${patch}-${increment}"
           # Named version, will be used as suffix for name version tag
           namespace: ""
           # If this is set to true, *every* commit will be treated as a new version.
