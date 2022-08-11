@@ -109,7 +109,6 @@ const App: React.FC<AppProps> = (props) => {
             bg={bg}
             position="fixed"
             padding={5}
-            zIndex={1}
             boxShadow="sm"
             css={{
               backdropFilter: 'saturate(180%) blur(5px)',

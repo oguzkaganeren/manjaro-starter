@@ -9,6 +9,7 @@ import {
   MenuList,
   MenuItem,
   MenuButton,
+  Portal,
 } from '@chakra-ui/react';
 import { CloseIcon } from '@chakra-ui/icons';
 import { appWindow } from '@tauri-apps/api/window';
@@ -26,11 +27,14 @@ export default function Nav() {
         aria-label="Options"
         icon={<GiHamburgerMenu />}
       />
-      <MenuList>
-        <MenuItem>
-          New Tab
-        </MenuItem>
-      </MenuList>
+      <Portal>
+        <MenuList zIndex="popover">
+          <MenuItem>
+            New Tab
+          </MenuItem>
+        </MenuList>
+      </Portal>
+
     </Menu>
   );
   return (
@@ -57,9 +61,7 @@ export default function Nav() {
         <Spacer />
         <Flex h={16} mr={5} alignItems="center" justifyContent="space-between">
           <Stack direction="row" spacing={7}>
-            <Flex zIndex={50}>
-              <AppMenu />
-            </Flex>
+            <AppMenu />
             <ButtonGroup>
 
               <IconButton aria-label="Minimize" onClick={() => { appWindow.minimize(); }} size="sm" icon={<MdOutlineMinimize />} />
