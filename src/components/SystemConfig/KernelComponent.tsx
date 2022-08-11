@@ -2,7 +2,7 @@ import {
   Box,
   CircularProgress,
   Flex,
-  Button,
+  Skeleton,
   TagLabel,
   useColorModeValue,
   chakra,
@@ -12,47 +12,86 @@ import {
   useToast,
   Spacer,
 } from '@chakra-ui/react';
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaLinux } from 'react-icons/fa';
 import { RiAddLine } from 'react-icons/ri';
 import { MdOutlineDownloadDone } from 'react-icons/md';
-import {
-  useRecoilCallback, useRecoilValue,
-} from 'recoil';
 import _ from 'lodash';
 import { useTranslation } from 'react-i18next';
-import {
-  kernelState, installKernel,
-} from '../../stores/KernelStore';
+import { Command } from '@tauri-apps/api/shell';
 
-interface KernelComponentProps {
+interface Kernel {
+  id: string;
+  name: string;
+  isInstalled:boolean;
 }
 
-const KernelComponent: React.FC<KernelComponentProps> = (props) => {
-  const kernelSt = useRecoilValue(kernelState);
+const KernelComponent: React.FC = (props) => {
+  const [kernelSt, setKernelSt] = useState<Kernel[]>();
   const toast = useToast();
   const { t } = useTranslation();
-  const installKernelWithName = useRecoilCallback(({ snapshot, reset }) => async (
-    id:string,
-    kernelName:string,
-  ) => {
-    const result:string = await snapshot.getPromise(installKernel(kernelName));
-    const desc = result.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item, index) => (
-      <span>
-        {item}
-        <br />
-      </span>
-    ));
-    reset(kernelState);
-    toast({
-      title: `${t('installing')} ${kernelName}`,
-      description: desc,
-      status: 'success',
-      duration: 9000,
-      isClosable: true,
-      position: 'bottom-right',
+  const getKernelList = async () => {
+    const cmd = new Command('mhwd-kernel', ['-l']);
+    const kernelList = await cmd.execute();
+    const kernels = [] as Kernel[];
+    const installedCmd = new Command('mhwd-kernel', ['-li']);
+    const kernelInstalled = await installedCmd.execute();
+    const splitKernels = kernelList.stdout.split('*').filter((item) => item.indexOf('linux') > 0);
+    const splitInstalledKernels = kernelInstalled.stdout.split('*').filter((item) => item.indexOf('linux') > 0);
+    splitKernels.map((item) => {
+      const temp = item.replaceAll(' ', '').replaceAll('\\n', '').replaceAll('\"', '');
+      const isInstalled = splitInstalledKernels.some((item) => item.indexOf(temp) > 0);
+      const kernel:Kernel = { id: _.uniqueId(), name: temp, isInstalled };
+      kernels.push(kernel);
     });
+    return kernels;
+  };
+  const setKernelList = async () => {
+    const kernelList:Kernel[] = await getKernelList();
+    setKernelSt(kernelList);
+  };
+  const installKernel = async (kernelName:string) => {
+    const cmd = new Command('pamac', ['install', '--no-confirm', kernelName]);
+    const cmdResult = await cmd.execute();
+    if (cmdResult.stdout) {
+      const desc = cmdResult.stdout.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item, index) => (
+        <span>
+          {item}
+          <br />
+        </span>
+      ));
+      toast({
+        title: `${t('installing')} ${kernelName}`,
+        description: desc,
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+        position: 'bottom-right',
+      });
+    } else {
+      const desc = cmdResult.stderr.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item, index) => (
+        <span>
+          {item}
+          <br />
+        </span>
+      ));
+      toast({
+        title: kernelName,
+        description: desc,
+        status: 'error',
+        duration: 9000,
+        isClosable: true,
+        position: 'bottom-right',
+      });
+    }
+    setKernelList();
+    return cmdResult;
+  };
+
+  useEffect(() => {
+    setKernelList();
   });
+
   return (
     <Box mt={5} textAlign={{ lg: 'left' }}>
 
@@ -75,13 +114,15 @@ const KernelComponent: React.FC<KernelComponentProps> = (props) => {
       >
         Install kernel(s)
       </chakra.p>
-      {kernelSt.map((kernel) => (
-        <Tag size="md" ml={5} mt={5} key={kernel.id} colorScheme={kernel.isInstalled ? 'whatsapp' : 'gray'}>
-          <TagLeftIcon boxSize="12px" as={FaLinux} />
-          <TagLabel>{kernel.name}</TagLabel>
-          {!kernel.isInstalled ? <IconButton ml={5} mr={-2} aria-label="Install Kernel" onClick={() => installKernelWithName(kernel.id, kernel.name)} icon={<RiAddLine />} /> : <IconButton ml={5} mr={-2} disabled aria-label="" icon={<MdOutlineDownloadDone />} />}
-        </Tag>
-      ))}
+      <Skeleton isLoaded={kernelSt !== null}>
+        {kernelSt && kernelSt.map((kernel) => (
+          <Tag size="md" ml={5} mt={5} key={kernel.id} colorScheme={kernel.isInstalled ? 'whatsapp' : 'gray'}>
+            <TagLeftIcon boxSize="12px" as={FaLinux} />
+            <TagLabel>{kernel.name}</TagLabel>
+            {!kernel.isInstalled ? <IconButton ml={5} mr={-2} aria-label="Install Kernel" onClick={() => installKernel(kernel.name)} icon={<RiAddLine />} /> : <IconButton ml={5} mr={-2} disabled aria-label="" icon={<MdOutlineDownloadDone />} />}
+          </Tag>
+        ))}
+      </Skeleton>
 
     </Box>
   );

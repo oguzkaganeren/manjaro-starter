@@ -40,6 +40,8 @@
 * manjaro-settings-manager
 * pamac-cli
 * webkit2gtk
+* mhwd
+* pacman
 
 ### Used
 

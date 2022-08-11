@@ -72,6 +72,16 @@
                     "args": ["-Qe", {
                         "validator": "\\S+"
                     }]
+                }, {
+                    "name": "mhwd-kernel",
+                    "cmd": "mhwd-kernel",
+                    "args": [{
+                        "validator": "\\S+"
+                    }]
+                }, {
+                    "name": "pamac",
+                    "cmd": "pamac",
+                    "args": true
                 }]
             },
             "window": {
