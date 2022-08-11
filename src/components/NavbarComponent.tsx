@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import {
   Flex,
   useColorModeValue,
@@ -6,14 +5,34 @@ import {
   IconButton,
   ButtonGroup,
   Spacer,
+  Menu,
+  MenuList,
+  MenuItem,
+  MenuButton,
 } from '@chakra-ui/react';
 import { CloseIcon } from '@chakra-ui/icons';
 import { appWindow } from '@tauri-apps/api/window';
 import { BiWindow } from 'react-icons/bi';
+import { GiHamburgerMenu } from 'react-icons/gi';
 import { MdOutlineMinimize } from 'react-icons/md';
 import LanguageComponent from './LanguageComponent';
 
 export default function Nav() {
+  const AppMenu = () => (
+    <Menu>
+      <MenuButton
+        as={IconButton}
+        size="sm"
+        aria-label="Options"
+        icon={<GiHamburgerMenu />}
+      />
+      <MenuList>
+        <MenuItem>
+          New Tab
+        </MenuItem>
+      </MenuList>
+    </Menu>
+  );
   return (
     <>
       <Flex
@@ -38,7 +57,11 @@ export default function Nav() {
         <Spacer />
         <Flex h={16} mr={5} alignItems="center" justifyContent="space-between">
           <Stack direction="row" spacing={7}>
+            <Flex zIndex={50}>
+              <AppMenu />
+            </Flex>
             <ButtonGroup>
+
               <IconButton aria-label="Minimize" onClick={() => { appWindow.minimize(); }} size="sm" icon={<MdOutlineMinimize />} />
               <IconButton aria-label="Window" onClick={() => { appWindow.toggleMaximize(); }} size="sm" icon={<BiWindow />} />
               <IconButton aria-label="Close" onClick={() => { appWindow.close(); }} size="sm" icon={<CloseIcon />} />
