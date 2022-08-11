@@ -11,7 +11,6 @@ import {
   HStack,
   Stack,
 } from '@chakra-ui/react';
-import { ExternalLinkIcon } from '@chakra-ui/icons';
 import PackageStatus from './PackageStatus';
 
   interface PackageDetailProps {

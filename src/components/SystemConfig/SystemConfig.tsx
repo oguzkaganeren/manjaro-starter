@@ -12,6 +12,7 @@ import { Command } from '@tauri-apps/api/shell';
 import { useTranslation } from 'react-i18next';
 import KernelComponent from './KernelComponent';
 import SystemInfoComponent from './SystemInfo';
+import SystemUpdate from './SystemUpdate';
 
 interface SystemConfigProps {
 }
@@ -65,6 +66,7 @@ const SystemConfig: React.FC<SystemConfigProps> = (props) => {
         </chakra.p>
 
       </Box>
+      <SystemUpdate />
       <KernelComponent />
 
       <Center>
