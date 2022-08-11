@@ -17,7 +17,7 @@ import StepButtons from '../components/StepButtons';
 import HomeContent from '../components/HomeContent';
 import PackagesView from '../components/PackageRelated/Packages';
 import ResultComponent from '../components/ResultComponent';
-import SystemConfig from '../components/SystemConfig';
+import SystemConfig from '../components/SystemConfig/SystemConfig';
 import packageJson from '../../package.json';
 import AboutComponent from '../components/AboutComponent';
 import Nav from '../components/NavbarComponent';
