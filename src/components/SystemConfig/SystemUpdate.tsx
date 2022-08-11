@@ -1,11 +1,8 @@
 import {
   Box,
   Button,
-  useToast,
   useColorModeValue,
   chakra,
-  Code,
-  Tag,
   Badge,
 } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
@@ -15,7 +12,6 @@ import { Command } from '@tauri-apps/api/shell';
 const SystemUpdate: React.FC = (props) => {
   const { t } = useTranslation();
   const [checkUpdate, setCheckUpdate] = useState('');
-  const toast = useToast();
   const checkUpdates = async () => {
     const cmd = new Command('pamac', ['checkupdates']);
     const cmdResult = await cmd.execute();
