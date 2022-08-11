@@ -42,6 +42,7 @@
 * webkit2gtk
 * mhwd
 * pacman
+* pamac-manager
 
 ### Used
 

@@ -1,25 +1,36 @@
 import {
   Box,
-  Skeleton,
-  TagLabel,
+  Button,
+  useToast,
   useColorModeValue,
   chakra,
-  TagLeftIcon,
+  Code,
   Tag,
-  IconButton,
+  Badge,
 } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
-import { FaLinux } from 'react-icons/fa';
-import { RiAddLine } from 'react-icons/ri';
-import { MdOutlineDownloadDone } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
 
 const SystemUpdate: React.FC = (props) => {
   const { t } = useTranslation();
-    
+  const [checkUpdate, setCheckUpdate] = useState('');
+  const toast = useToast();
+  const checkUpdates = async () => {
+    const cmd = new Command('pamac', ['checkupdates']);
+    const cmdResult = await cmd.execute();
+    if (cmdResult.stdout) {
+      const updateSp = cmdResult.stdout.split(':');
+      const updateCount = updateSp[0];
+      setCheckUpdate(updateCount);
+    }
+  };
+  const updateSystem = async () => {
+    const cmd = new Command('pamac-manager', ['--updates']);
+    cmd.execute();
+  };
   useEffect(() => {
-
+    checkUpdates();
   });
 
   return (
@@ -43,8 +54,21 @@ const SystemUpdate: React.FC = (props) => {
         color={useColorModeValue('gray.500', 'gray.400')}
       >
         {t('updateYourSystem')}
+        <Badge ml={5}>
+          {checkUpdate}
+        </Badge>
       </chakra.p>
-
+      <Button
+        size="md"
+        height="48px"
+        width="200px"
+        border="2px"
+        mt={5}
+        borderColor="green.500"
+        onClick={updateSystem}
+      >
+        {t('update')}
+      </Button>
     </Box>
   );
 };

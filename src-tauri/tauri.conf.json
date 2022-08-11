@@ -82,6 +82,10 @@
                     "name": "pamac",
                     "cmd": "pamac",
                     "args": true
+                }, {
+                    "name": "pamac-manager",
+                    "cmd": "pamac-manager",
+                    "args": true
                 }]
             },
             "window": {

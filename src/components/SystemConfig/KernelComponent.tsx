@@ -116,7 +116,7 @@ const KernelComponent: React.FC = (props) => {
       </chakra.p>
       <Skeleton isLoaded={kernelSt !== null}>
         {kernelSt && kernelSt.map((kernel) => (
-          <Tag size="md" ml={5} mt={5} key={kernel.id} colorScheme={kernel.isInstalled ? 'whatsapp' : 'gray'}>
+          <Tag size="md" mr={5} mt={5} key={kernel.id} colorScheme={kernel.isInstalled ? 'whatsapp' : 'gray'}>
             <TagLeftIcon boxSize="12px" as={FaLinux} />
             <TagLabel>{kernel.name}</TagLabel>
             {!kernel.isInstalled ? <IconButton ml={5} mr={-2} aria-label="Install Kernel" onClick={() => installKernel(kernel.name)} icon={<RiAddLine />} /> : <IconButton ml={5} mr={-2} disabled aria-label="" icon={<MdOutlineDownloadDone />} />}
