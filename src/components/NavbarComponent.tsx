@@ -1,6 +1,7 @@
 import {
   Flex,
   useColorModeValue,
+  useColorMode,
   Stack,
   IconButton,
   ButtonGroup,
@@ -10,17 +11,26 @@ import {
   MenuItem,
   MenuButton,
   Portal,
+  Button,
+  Box,
+  FormLabel,
+  HStack,
 } from '@chakra-ui/react';
-import { CloseIcon } from '@chakra-ui/icons';
+import { CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { appWindow } from '@tauri-apps/api/window';
 import { BiWindow } from 'react-icons/bi';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { MdOutlineMinimize } from 'react-icons/md';
+import { useTranslation } from 'react-i18next';
 import LanguageComponent from './LanguageComponent';
+import StartLaunch from './StartLaunch';
+import AboutComponent from './AboutComponent';
 
 export default function Nav() {
+  const { t } = useTranslation();
+  const { colorMode, toggleColorMode } = useColorMode();
   const AppMenu = () => (
-    <Menu>
+    <Menu closeOnSelect={false}>
       <MenuButton
         as={IconButton}
         size="sm"
@@ -30,7 +40,23 @@ export default function Nav() {
       <Portal>
         <MenuList zIndex="popover">
           <MenuItem>
-            New Tab
+            <LanguageComponent />
+          </MenuItem>
+          <MenuItem>
+            <StartLaunch />
+          </MenuItem>
+          <MenuItem>
+            <HStack>
+              <span>{t('colorMode')}</span>
+              <Spacer />
+              <Button onClick={toggleColorMode}>
+                {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+              </Button>
+            </HStack>
+
+          </MenuItem>
+          <MenuItem>
+            <AboutComponent />
           </MenuItem>
         </MenuList>
       </Portal>
@@ -54,9 +80,7 @@ export default function Nav() {
           ),
         }}
       >
-        <Flex h={16} alignItems="center" justifyContent="space-between">
-          <LanguageComponent />
-        </Flex>
+        <Flex h={16} alignItems="center" justifyContent="space-between" />
 
         <Spacer />
         <Flex h={16} mr={5} alignItems="center" justifyContent="space-between">

@@ -19,7 +19,6 @@ import {
   Wrap,
   StatNumber,
 } from '@chakra-ui/react';
-import { InfoOutlineIcon } from '@chakra-ui/icons';
 import {
   SiGit,
 } from 'react-icons/si';
@@ -37,7 +36,7 @@ const AboutComponent = (): JSX.Element => {
   const { t } = useTranslation();
   return (
     <>
-      <Button onClick={onOpen}><InfoOutlineIcon /></Button>
+      <Button w="full" onClick={onOpen}>About</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

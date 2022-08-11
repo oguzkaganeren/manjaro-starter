@@ -53,7 +53,9 @@
         "updateYourSystem": "Update your system",
         "kernels": "Kernels",
         "installKernel": "Install Kernel(s)",
-        "update": "Update"
+        "update": "Update",
+        "language": "Language",
+        "colorMode": "Color Mode"
 
     }
 }

@@ -1,5 +1,5 @@
 import {
-  Container, Select,
+  Container, Select, FormLabel, HStack, Spacer,
 } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -8,15 +8,17 @@ import { availableLanguages } from '../i18n';
 interface LanguageProps {
   }
 const LanguageComponent: React.FC<LanguageProps> = (props) => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   return (
-    <Container textAlign="center">
-      <Select variant="filled" defaultValue={i18n.language} onChange={(e) => i18n.changeLanguage(e.target.value)}>
+    <HStack>
+      <span>{t('language')}</span>
+      <Spacer />
+      <Select id="lan" variant="filled" defaultValue={i18n.language} onChange={(e) => i18n.changeLanguage(e.target.value)}>
         {availableLanguages.map((language) => (
           <option key={language}>{language}</option>
         ))}
       </Select>
-    </Container>
+    </HStack>
   );
 };
 export default LanguageComponent;
