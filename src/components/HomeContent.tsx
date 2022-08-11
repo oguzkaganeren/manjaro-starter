@@ -13,6 +13,7 @@ import {
   FcElectronics, FcInfo, FcGlobe, FcCollaboration, FcFeedback, FcInvite,
 } from 'react-icons/fc';
 import { useTranslation } from 'react-i18next';
+import ReleaseNotes from './ReleaseNotes';
 
 interface FeatureProps {
   title: string;
@@ -45,6 +46,7 @@ export default function HomeContent() {
   const { t } = useTranslation();
   return (
     <Flex p={4} marginTop={90}>
+
       <Stack spacing={4} as={Container} maxW="3xl" textAlign="center">
         <Heading fontSize="3xl">
           {t('welcomeManjaro')}
@@ -54,6 +56,7 @@ export default function HomeContent() {
         </Text>
 
         <Divider orientation="horizontal" />
+        <ReleaseNotes />
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
           <Feature
             icon={<Icon as={FcElectronics} w={10} h={10} />}

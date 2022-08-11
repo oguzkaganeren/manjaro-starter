@@ -9,6 +9,7 @@
         "mailing": "https://lists.manjaro.org/cgi-bin/mailman/listinfo",
         "reddit": "https://www.reddit.com/r/ManjaroLinux",
         "twitter": "https://twitter.com/ManjaroLinux",
-        "wiki": "https://wiki.manjaro.org"
+        "wiki": "https://wiki.manjaro.org",
+        "blog": "https://blog.manjaro.org/"
     }
 }

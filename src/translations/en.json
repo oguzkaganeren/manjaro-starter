@@ -47,7 +47,8 @@
         "gnomeLayoutSwitcher": "Gnome Layout Switcher",
         "launchStart": "Launch at start",
         "welcome": "Welcome",
-        "explorer": "Explorer"
+        "explorer": "Explorer",
+        "releaseNotes": "Release Notes"
 
     }
 }
