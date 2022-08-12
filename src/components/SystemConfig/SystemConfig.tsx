@@ -14,7 +14,7 @@ import KernelComponent from './KernelComponent';
 import SystemInfoComponent from './SystemInfo';
 import SystemUpdate from './SystemUpdate';
 import SystemFastestMirror from './SystemFastestMirror';
-import InstallDrivers from './InstallDrivers';
+import ManjaroSettingsModule from './ManjaroSettingsModule';
 
 interface SystemConfigProps {
 }
@@ -48,7 +48,7 @@ const SystemConfig: React.FC<SystemConfigProps> = (props) => {
       <SystemInfoComponent />
       <SystemFastestMirror />
       <SystemUpdate />
-      <InstallDrivers />
+      <ManjaroSettingsModule />
       <KernelComponent />
 
       <Center>

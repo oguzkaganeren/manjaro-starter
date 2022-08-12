@@ -58,6 +58,9 @@
         "fastestMirror": "Fastest Mirror",
         "setFastestMirrors": "Set fastest mirrors",
         "processing": "Processing",
-        "installDrivers": "Install Drivers"
+        "installDrivers": "Install Drivers",
+        "setDateTime": "Set Date and Time",
+        "installLanguagePackages": "Install Language Packages",
+        "languagePackages": "Language Packages"
     }
 }
