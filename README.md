@@ -43,6 +43,7 @@
 * mhwd
 * pacman
 * pamac-manager
+* pkexec
 
 ### Used
 

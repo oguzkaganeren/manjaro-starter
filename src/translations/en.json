@@ -54,7 +54,9 @@
         "installKernel": "Install Kernel(s)",
         "update": "Update",
         "language": "Language",
-        "colorMode": "Color Mode"
-
+        "colorMode": "Color Mode",
+        "fastestMirror": "Fastest Mirror",
+        "setFastestMirrors": "Set fastest mirrors",
+        "processing": "Processing"
     }
 }

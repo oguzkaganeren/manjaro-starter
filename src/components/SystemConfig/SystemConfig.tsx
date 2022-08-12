@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next';
 import KernelComponent from './KernelComponent';
 import SystemInfoComponent from './SystemInfo';
 import SystemUpdate from './SystemUpdate';
+import SystemFastestMirror from './SystemFastestMirror';
 
 interface SystemConfigProps {
 }
@@ -44,6 +45,7 @@ const SystemConfig: React.FC<SystemConfigProps> = (props) => {
       shadow="xl"
     >
       <SystemInfoComponent />
+      <SystemFastestMirror />
       <SystemUpdate />
       <KernelComponent />
 
