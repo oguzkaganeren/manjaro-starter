@@ -9,8 +9,9 @@ import {
   useRecoilCallback,
 } from 'recoil';
 import _ from 'lodash';
+import { Command } from '@tauri-apps/api/shell';
 import {
-  getPackageStatus, installPackage, packageState,
+  getPackageStatus, packageState,
 } from '../../stores/PackageStore';
 
 interface PackageStatusProps {
@@ -42,39 +43,38 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
       };
     }));
   }, []);
-  const installPackageWithName = useRecoilCallback(({ snapshot }) => async (
-    catId:string,
+  const installPackageWithName = async (catId:string,
     pkId:string,
-    pkgName:string,
-  ) => {
-    const result:string = await snapshot.getPromise(installPackage(pkgName));
+    pkgName:string) => {
+    const cmd = new Command('pamac', ['install', '--no-confirm', '--no-upgrade', pkgName]);
+    const cmdResult = await cmd.execute();
 
-    const desc = result.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item, index) => (
-      <span>
-        {item}
-        <br />
-      </span>
-    ));
-    const colDesc = (
-      <>
-        <Text noOfLines={[1, 2, 3]}>
-          {desc}
-        </Text>
-      </>
-    );
-    packageStatusUpdate(catId, pkId);
-    if (result.toUpperCase().includes('ERROR')) {
+    if (cmdResult.stderr) {
       toast({
-        title: `Installing ${pkgName}`,
-        description: desc,
+        title: `${pkgName}`,
+        description: cmdResult.stderr,
         status: 'error',
         duration: 9000,
         isClosable: true,
         position: 'bottom-right',
       });
     } else {
+      const desc = cmdResult.stdout.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item, index) => (
+        <span>
+          {item}
+          <br />
+        </span>
+      ));
+      const colDesc = (
+        <>
+          <Text noOfLines={[1, 2, 3]}>
+            {desc}
+          </Text>
+        </>
+      );
+      packageStatusUpdate(catId, pkId);
       toast({
-        title: `Installing ${pkgName}`,
+        title: `${pkgName}`,
         description: colDesc,
         status: 'success',
         duration: 9000,
@@ -82,7 +82,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
         position: 'bottom-right',
       });
     }
-  });
+  };
   const {
     isInstalled, catId, pkId, pkgName,
   } = props;

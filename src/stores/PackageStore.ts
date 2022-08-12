@@ -1,8 +1,8 @@
 import {
-  atom, selector, selectorFamily, useRecoilValue,
+  atom, selector, selectorFamily,
 } from 'recoil';
-import { invoke } from '@tauri-apps/api/tauri';
 import _ from 'lodash';
+import { Command } from '@tauri-apps/api/shell';
 import apps from '../data/apps.json';
 
 export interface Package {
@@ -27,8 +27,9 @@ export interface Category {
 export const getPackageStatus = selectorFamily({
   key: 'getPackageStatus',
   get: (pkgName:string) => async () => {
-    const result = await invoke('run_shell_command', { command: `pacman -Qe ${pkgName}` });
-    return result;
+    const cmd = new Command('version-control', ['-Qe', pkgName]);
+    const cmdResult = await cmd.execute();
+    return cmdResult.stdout;
   },
 });
 export const getPackages = selector({
@@ -58,14 +59,6 @@ export const getPackages = selector({
       });
     });
     return cats;
-  },
-});
-
-export const installPackage = selectorFamily({
-  key: 'installPackage',
-  get: (pkgName:string) => async () => {
-    const result:string = await invoke('run_shell_command_with_result', { command: `pamac install --no-confirm ${pkgName}` });
-    return result;
   },
 });
 

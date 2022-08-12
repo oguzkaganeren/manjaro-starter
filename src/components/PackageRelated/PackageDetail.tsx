@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Box,
-  Link,
+  Text,
   Image,
   Button,
   Badge,
@@ -11,6 +11,7 @@ import {
   HStack,
   Stack,
 } from '@chakra-ui/react';
+import { Command } from '@tauri-apps/api/shell';
 import PackageStatus from './PackageStatus';
 
   interface PackageDetailProps {
@@ -47,9 +48,17 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
           fontWeight="semibold"
           lineHeight="shorter"
         >
-          <Link href={`https://software.manjaro.org/package/${pkg}`} isExternal>
+          <Button
+            variant="link"
+            whiteSpace="initial"
+            onClick={() => {
+              const cmd = new Command('pamac-manager', [`--details=${pkg}`]);
+              cmd.execute();
+            }}
+
+          >
             {title}
-          </Link>
+          </Button>
         </chakra.h3>
         <Spacer />
         {pkStatusLoading ? (
