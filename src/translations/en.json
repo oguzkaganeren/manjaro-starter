@@ -57,6 +57,7 @@
         "colorMode": "Color Mode",
         "fastestMirror": "Fastest Mirror",
         "setFastestMirrors": "Set fastest mirrors",
-        "processing": "Processing"
+        "processing": "Processing",
+        "installDrivers": "Install Drivers"
     }
 }

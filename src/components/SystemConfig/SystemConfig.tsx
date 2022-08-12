@@ -14,6 +14,7 @@ import KernelComponent from './KernelComponent';
 import SystemInfoComponent from './SystemInfo';
 import SystemUpdate from './SystemUpdate';
 import SystemFastestMirror from './SystemFastestMirror';
+import InstallDrivers from './InstallDrivers';
 
 interface SystemConfigProps {
 }
@@ -47,6 +48,7 @@ const SystemConfig: React.FC<SystemConfigProps> = (props) => {
       <SystemInfoComponent />
       <SystemFastestMirror />
       <SystemUpdate />
+      <InstallDrivers />
       <KernelComponent />
 
       <Center>
