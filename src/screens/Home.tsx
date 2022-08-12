@@ -29,15 +29,13 @@ const homeContent = (
 const PackageContent: React.FC<AppProps> = (props) => (
   <Flex py={4}>
     <Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}>
-
       <PackagesView />
     </Suspense>
   </Flex>
 );
-const settingContent = (
+const configContent = (
   <Flex py={4}>
     <Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}>
-
       <SystemConfig />
     </Suspense>
   </Flex>
@@ -49,8 +47,8 @@ const App: React.FC<AppProps> = (props) => {
 
   const steps = [
     { label: t('welcome'), icon: FiHome, content: homeContent },
+    { label: t('configurations'), icon: GiSettingsKnobs, content: configContent },
     { label: t('explorer'), icon: FiPackage, content: <PackageContent /> },
-    { label: t('configurations'), icon: GiSettingsKnobs, content: settingContent },
   ];
   const bg = useColorModeValue('white', 'gray.800');
   const {

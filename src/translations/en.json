@@ -42,7 +42,6 @@
         "memory": "Memory",
         "swap": "Swap",
         "configurations": "Configurations",
-        "setupEnv": "Set up your environment.",
         "moreSettings": "More Settings",
         "gnomeLayoutSwitcher": "Gnome Layout Switcher",
         "launchStart": "Launch at start",
