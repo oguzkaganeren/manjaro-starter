@@ -3,7 +3,7 @@ import {
   Button,
   useColorModeValue,
   chakra,
-  useToast,
+  SimpleGrid,
 } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -17,7 +17,19 @@ const ManjaroSettingsModule: React.FC = (props) => {
   };
 
   return (
-    <>
+    <SimpleGrid
+      columns={{
+        base: 1,
+        sm: 2,
+        md: 3,
+        lg: 4,
+      }}
+      spacingX={{
+        base: 10,
+        lg: 24,
+      }}
+      spacingY={10}
+    >
       <Box mt={5} textAlign={{ lg: 'left' }}>
 
         <chakra.p
@@ -76,7 +88,7 @@ const ManjaroSettingsModule: React.FC = (props) => {
           letterSpacing="tight"
           color={useColorModeValue('white.900', 'white.100')}
         >
-          {t('installLanguagePackages')}
+          {t('installLanguage')}
         </chakra.p>
 
         <Button
@@ -91,7 +103,7 @@ const ManjaroSettingsModule: React.FC = (props) => {
           {t('languagePackages')}
         </Button>
       </Box>
-    </>
+    </SimpleGrid>
 
   );
 };

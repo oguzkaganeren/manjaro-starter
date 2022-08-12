@@ -60,7 +60,7 @@
         "processing": "Processing",
         "installDrivers": "Install Drivers",
         "setDateTime": "Set Date and Time",
-        "installLanguagePackages": "Install Language Packages",
+        "installLanguage": "Install Language",
         "languagePackages": "Language Packages"
     }
 }
