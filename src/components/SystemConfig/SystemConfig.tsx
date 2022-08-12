@@ -13,6 +13,8 @@ import { useTranslation } from 'react-i18next';
 import KernelComponent from './KernelComponent';
 import SystemInfoComponent from './SystemInfo';
 import SystemUpdate from './SystemUpdate';
+import SystemFastestMirror from './SystemFastestMirror';
+import ManjaroSettingsModule from './ManjaroSettingsModule';
 
 interface SystemConfigProps {
 }
@@ -44,29 +46,9 @@ const SystemConfig: React.FC<SystemConfigProps> = (props) => {
       shadow="xl"
     >
       <SystemInfoComponent />
-      <Box textAlign={{ lg: 'center' }}>
-        <chakra.p
-          mt={2}
-          fontSize={{ base: '3xl', sm: '4xl' }}
-          lineHeight="8"
-          fontWeight="extrabold"
-          letterSpacing="tight"
-          color={useColorModeValue('white.900', 'white.100')}
-        >
-          {t('configurations')}
-        </chakra.p>
-        <chakra.p
-          mt={4}
-          maxW="2xl"
-          fontSize="xl"
-          mx={{ lg: 'auto' }}
-          color={useColorModeValue('gray.500', 'gray.400')}
-        >
-          {t('setupEnv')}
-        </chakra.p>
-
-      </Box>
+      <SystemFastestMirror />
       <SystemUpdate />
+      <ManjaroSettingsModule />
       <KernelComponent />
 
       <Center>

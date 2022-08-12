@@ -59,7 +59,8 @@
                     "cmd": "gnome-layout-switcher"
                 }, {
                     "name": "manjaro-settings-manager",
-                    "cmd": "manjaro-settings-manager"
+                    "cmd": "manjaro-settings-manager",
+                    "args": true
                 }, {
                     "name": "installed-control",
                     "cmd": "which",
@@ -85,6 +86,10 @@
                 }, {
                     "name": "pamac-manager",
                     "cmd": "pamac-manager",
+                    "args": true
+                }, {
+                    "name": "sudo",
+                    "cmd": "pkexec",
                     "args": true
                 }]
             },
