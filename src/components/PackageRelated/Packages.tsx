@@ -1,7 +1,6 @@
 import {
   Box,
   Center,
-  Icon,
   Button,
   SimpleGrid,
   useColorModeValue,
@@ -24,6 +23,16 @@ interface PackageProps {
 const PackagesList: React.FC<PackageProps> = (props) => {
   const [packageSt, setPackageSt] = useRecoilState(packageState);
 
+  useEffect(() => {
+    /* const updatePkStatus = async () => {
+
+      let pkData = Array.from(packageSt.values()).map((category:Category) => {
+        Array.from(category.packages.values()).map((app:Package) => {
+
+        });
+      });
+    }; */
+  });
   const Apps = Array.from(packageSt.values()).map((category:Category) => (
     <Box mt={8} key={category.id}>
       <Box textAlign={{ lg: 'left' }}>
@@ -103,6 +112,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
         </chakra.p>
       </Box>
       {Apps}
+
       <Center>
         <a href="https://software.manjaro.org/applications" target="_blank" rel="noreferrer">
           <Button

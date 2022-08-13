@@ -6,9 +6,9 @@ import { Command } from '@tauri-apps/api/shell';
 import apps from '../data/apps.json';
 
 export interface Package {
-  id: string;
-  name: string;
-  icon: string;
+  id: string,
+  name: string,
+  icon: string,
   description: string,
   pkg: string,
   extra: Array<string>,
@@ -17,44 +17,32 @@ export interface Package {
 }
 
 export interface Category {
-  id: string;
-  name: string;
-  icon: string;
+  id: string,
+  name: string,
+  icon: string,
   description: string,
   packages:Map<string, Package>
 }
 
-export const getPackageStatus = selectorFamily({
-  key: 'getPackageStatus',
-  get: (pkgName:string) => async () => {
-    const cmd = new Command('version-control', ['-Qe', pkgName]);
-    const cmdResult = await cmd.execute();
-    return cmdResult.stdout;
-  },
-});
 export const getPackages = selector({
   key: 'getPackages',
-  get: async ({ get }) => {
+  get: ({ get }) => {
     const categories = new Map<string, Category>();
-    apps.map((category) => {
+    apps.map(async (category) => {
       const packs = new Map<string, Package>();
       Promise.all(category.apps.map(async (app) => {
         const id = _.uniqueId();
-        let pkInstalled = false;
-        let pkVer = '';
-        const cmd = new Command('installed-control', [app.pkg]);
-        const cmdResult = await cmd.execute();
-        if (cmdResult.stdout) {
+        const pkInstalled = false;
+        const pkVer = '';
+        /* const cmdVersion = new Command('version-control', ['-Q', app.pkg]);
+        const cmdVersionResult = await cmdVersion.execute();
+        if (cmdVersionResult.stdout) {
+          const spStd = cmdVersionResult.stdout.split(' ')[1];
+          pkVer = spStd;
           pkInstalled = true;
-          const cmdVersion = new Command('version-control', ['-Qe', app.pkg]);
-          const cmdVersionResult = await cmdVersion.execute();
-          if (cmdVersionResult.stdout) {
-            const spStd = cmdVersionResult.stdout.split(' ')[1];
-            pkVer = spStd;
-          }
-        }
+        } */
         packs.set(id, {
-          id: _.uniqueId(),
+          id,
           pkg: app.pkg,
           description: app.description,
           extra: app.extra,
@@ -66,7 +54,7 @@ export const getPackages = selector({
       }));
       const cateId = _.uniqueId();
       categories.set(cateId, {
-        id: _.uniqueId(),
+        id: cateId,
         description: category.description,
         icon: category.icon,
         name: category.name,

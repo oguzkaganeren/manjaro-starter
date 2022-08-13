@@ -62,15 +62,9 @@
                     "cmd": "manjaro-settings-manager",
                     "args": true
                 }, {
-                    "name": "installed-control",
-                    "cmd": "which",
-                    "args": [{
-                        "validator": "\\S+"
-                    }]
-                }, {
                     "name": "version-control",
                     "cmd": "pacman",
-                    "args": ["-Qe", {
+                    "args": ["-Q", {
                         "validator": "\\S+"
                     }]
                 }, {

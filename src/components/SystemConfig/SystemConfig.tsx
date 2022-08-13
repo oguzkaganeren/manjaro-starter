@@ -24,13 +24,13 @@ const SystemConfig: React.FC<SystemConfigProps> = (props) => {
   const [isVisibleMSM, setIsVisibleMSM] = useState(false);
   const { t } = useTranslation();
   useEffect(() => {
-    const resultOfGnome = new Command('installed-control', ['gnome-layout-switcher']).execute();
+    const resultOfGnome = new Command('version-control', ['-Q', 'gnome-layout-switcher']).execute();
     resultOfGnome.then((response) => {
       if (response.stdout) {
         setIsVisibleGnomeLayout(true);
       }
     });
-    const resultOfMSM = new Command('installed-control', ['manjaro-settings-manager']).execute();
+    const resultOfMSM = new Command('version-control', ['-Q', 'manjaro-settings-manager']).execute();
     resultOfMSM.then((response) => {
       if (response.stdout) {
         setIsVisibleMSM(true);
