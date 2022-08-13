@@ -32,15 +32,15 @@ export const getPackages = selector({
       const packs = new Map<string, Package>();
       Promise.all(category.apps.map(async (app) => {
         const id = _.uniqueId();
-        const pkInstalled = false;
-        const pkVer = '';
-        /* const cmdVersion = new Command('version-control', ['-Q', app.pkg]);
+        let pkInstalled = false;
+        let pkVer = '';
+        const cmdVersion = new Command('version-control', ['-Q', app.pkg]);
         const cmdVersionResult = await cmdVersion.execute();
         if (cmdVersionResult.stdout) {
           const spStd = cmdVersionResult.stdout.split(' ')[1];
           pkVer = spStd;
           pkInstalled = true;
-        } */
+        }
         packs.set(id, {
           id,
           pkg: app.pkg,
@@ -51,14 +51,15 @@ export const getPackages = selector({
           name: app.name,
           installedVersion: pkVer,
         });
-      }));
-      const cateId = _.uniqueId();
-      categories.set(cateId, {
-        id: cateId,
-        description: category.description,
-        icon: category.icon,
-        name: category.name,
-        packages: packs,
+      })).then(() => {
+        const cateId = _.uniqueId();
+        categories.set(cateId, {
+          id: cateId,
+          description: category.description,
+          icon: category.icon,
+          name: category.name,
+          packages: packs,
+        });
       });
     });
     return categories;
