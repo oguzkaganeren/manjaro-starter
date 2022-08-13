@@ -21,7 +21,7 @@ export interface Category {
   name: string;
   icon: string;
   description: string,
-  packages:Array<Package>
+  packages:Map<string, Package>
 }
 
 export const getPackageStatus = selectorFamily({
@@ -35,22 +35,37 @@ export const getPackageStatus = selectorFamily({
 export const getPackages = selector({
   key: 'getPackages',
   get: async ({ get }) => {
-    const cats = [] as Category[];
+    const categories = new Map<string, Category>();
     apps.map((category) => {
-      const packs = [] as Package[];
-      category.apps.map((app) => {
-        packs.push({
+      const packs = new Map<string, Package>();
+      Promise.all(category.apps.map(async (app) => {
+        const id = _.uniqueId();
+        let pkInstalled = false;
+        let pkVer = '';
+        const cmd = new Command('installed-control', [app.pkg]);
+        const cmdResult = await cmd.execute();
+        if (cmdResult.stdout) {
+          pkInstalled = true;
+          const cmdVersion = new Command('version-control', ['-Qe', app.pkg]);
+          const cmdVersionResult = await cmdVersion.execute();
+          if (cmdVersionResult.stdout) {
+            const spStd = cmdVersionResult.stdout.split(' ')[1];
+            pkVer = spStd;
+          }
+        }
+        packs.set(id, {
           id: _.uniqueId(),
           pkg: app.pkg,
           description: app.description,
           extra: app.extra,
           icon: app.icon,
-          isInstalled: false,
+          isInstalled: pkInstalled,
           name: app.name,
-          installedVersion: '',
+          installedVersion: pkVer,
         });
-      });
-      cats.push({
+      }));
+      const cateId = _.uniqueId();
+      categories.set(cateId, {
         id: _.uniqueId(),
         description: category.description,
         icon: category.icon,
@@ -58,7 +73,7 @@ export const getPackages = selector({
         packages: packs,
       });
     });
-    return cats;
+    return categories;
   },
 });
 

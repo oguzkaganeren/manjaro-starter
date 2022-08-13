@@ -3,16 +3,9 @@ import {
   useToast,
   Text,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { RiInstallLine, RiCheckLine } from 'react-icons/ri';
-import {
-  useRecoilCallback,
-} from 'recoil';
-import _ from 'lodash';
 import { Command } from '@tauri-apps/api/shell';
-import {
-  getPackageStatus, packageState,
-} from '../../stores/PackageStore';
 
 interface PackageStatusProps {
     isInstalled:boolean,
@@ -22,30 +15,11 @@ interface PackageStatusProps {
   }
 const PackageStatus: React.FC<PackageStatusProps> = (props) => {
   const toast = useToast();
-  const packageStatusUpdate = useRecoilCallback(({ snapshot, set }) => async (
-    catId:string,
-    pkId:string,
-  ) => {
-    const packages = await snapshot.getPromise(packageState);
-    const cats = _.cloneDeep(packages);
-    const catIndex = cats.findIndex((element) => element.id === catId);
-    const pkIndex = cats[catIndex].packages.findIndex((element) => element.id === pkId);
-    const updatedPk = cats[catIndex].packages[pkIndex];
-    const packageStatus = await snapshot.getPromise(getPackageStatus(updatedPk.pkg));
-    updatedPk.isInstalled = packageStatus === 'true';
-    set(packageState, (prev) => prev.map((item, index) => {
-      if (index !== catIndex) {
-        return item;
-      }
-      return {
-        ...item,
-        packages: item.packages.map((pk, index2) => (pkIndex !== index2 ? pk : updatedPk)),
-      };
-    }));
-  }, []);
+  const [isLoading, setIsLoading] = useState<Map<string, boolean>>();
   const installPackageWithName = async (catId:string,
     pkId:string,
     pkgName:string) => {
+    setIsLoading(new Map(isLoading?.set(pkId, true)));
     const cmd = new Command('pamac', ['install', '--no-confirm', '--no-upgrade', pkgName]);
     const cmdResult = await cmd.execute();
 
@@ -72,7 +46,6 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
           </Text>
         </>
       );
-      packageStatusUpdate(catId, pkId);
       toast({
         title: `${pkgName}`,
         description: colDesc,
@@ -91,7 +64,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
       {isInstalled ? (
         <IconButton aria-label="installed" disabled icon={<RiCheckLine />} colorScheme="gray" variant="solid" />
       ) : (
-        <IconButton aria-label="install" icon={<RiInstallLine />} onClick={() => installPackageWithName(catId, pkId, pkgName)} colorScheme="green" variant="solid" />
+        <IconButton aria-label="install" icon={<RiInstallLine />} isLoading={isLoading?.get(pkId) || false} onClick={() => installPackageWithName(catId, pkId, pkgName)} colorScheme="green" variant="solid" />
       )}
 
     </div>

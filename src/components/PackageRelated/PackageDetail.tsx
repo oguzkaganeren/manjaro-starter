@@ -21,13 +21,12 @@ import PackageStatus from './PackageStatus';
     uniqueId:string;
     pkg:string;
     isInstalled:boolean;
-    pkStatusLoading:boolean;
     installedVersion:string;
   }
 
 const PackageDetail: React.FC<PackageDetailProps> = (props) => {
   const {
-    icon, title, catId, uniqueId, pkg, isInstalled, pkStatusLoading, installedVersion, children,
+    icon, title, catId, uniqueId, pkg, isInstalled, installedVersion, children,
   } = props;
   return (
     <Box
@@ -61,19 +60,12 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
           </Button>
         </chakra.h3>
         <Spacer />
-        {pkStatusLoading ? (
-          <PackageStatus
-            catId={catId}
-            pkId={uniqueId}
-            pkgName={pkg}
-            isInstalled={isInstalled}
-          />
-        ) : (
-          <Button
-            isLoading
-            variant="outline"
-          />
-        )}
+        <PackageStatus
+          catId={catId}
+          pkId={uniqueId}
+          pkgName={pkg}
+          isInstalled={isInstalled}
+        />
 
       </HStack>
       <chakra.p

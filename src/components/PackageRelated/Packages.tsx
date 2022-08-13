@@ -11,8 +11,6 @@ import React, { useState, useEffect } from 'react';
 import {
   useRecoilState,
 } from 'recoil';
-import _ from 'lodash';
-import { Command } from '@tauri-apps/api/shell';
 import {
   packageState,
   Category,
@@ -25,34 +23,8 @@ interface PackageProps {
 
 const PackagesList: React.FC<PackageProps> = (props) => {
   const [packageSt, setPackageSt] = useRecoilState(packageState);
-  const [pkStatusLoading, setPkStatusLoading] = useState(false);
 
-  useEffect(() => {
-    const getAllPackageStatus = async () => {
-      const temp = _.cloneDeep(packageSt);
-      await Promise.all(temp.map(async (cat) => {
-        await Promise.all(cat.packages.map(async (pk) => {
-          const cmd = new Command('installed-control', [pk.pkg]);
-          const cmdResult = await cmd.execute();
-          if (cmdResult.stdout) {
-            pk.isInstalled = true;
-            const cmdVersion = new Command('version-control', ['-Qe', pk.pkg]);
-            const cmdVersionResult = await cmdVersion.execute();
-            if (cmdVersionResult.stdout) {
-              const spStd = cmdVersionResult.stdout.split(' ')[1];
-              pk.installedVersion = spStd;
-            }
-          }
-        }));
-      }));
-      setPackageSt(temp);
-      setPkStatusLoading(true);
-    };
-    setTimeout(getAllPackageStatus,
-      1000);
-  }, []);
-
-  const Apps = packageSt.map((category:Category) => (
+  const Apps = Array.from(packageSt.values()).map((category:Category) => (
     <Box mt={8} key={category.id}>
       <Box textAlign={{ lg: 'left' }}>
         <chakra.p
@@ -81,7 +53,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
           spacingY={10}
           mt={6}
         >
-          {category.packages.map((app:Package) => (
+          {Array.from(category.packages.values()).map((app:Package) => (
             <PackageDetail
               title={app.name}
               pkg={app.pkg}
@@ -89,7 +61,6 @@ const PackagesList: React.FC<PackageProps> = (props) => {
               uniqueId={app.id}
               isInstalled={app.isInstalled}
               catId={category.id}
-              pkStatusLoading={pkStatusLoading}
               installedVersion={app.installedVersion}
               icon={app.icon}
             >
