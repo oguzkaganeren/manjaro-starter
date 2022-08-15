@@ -16,9 +16,11 @@ interface PackageStatusProps {
 const PackageStatus: React.FC<PackageStatusProps> = (props) => {
   const toast = useToast();
   const [isLoading, setIsLoading] = useState<Map<string, boolean>>();
-  const installPackageWithName = async (catId:string,
+  const installPackageWithName = async (
+    catId:string,
     pkId:string,
-    pkgName:string) => {
+    pkgName:string,
+  ) => {
     setIsLoading(new Map(isLoading?.set(pkId, true)));
     const cmd = new Command('pamac', ['install', '--no-confirm', '--no-upgrade', pkgName]);
     const cmdResult = await cmd.execute();
@@ -40,11 +42,9 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
         </span>
       ));
       const colDesc = (
-        <>
-          <Text noOfLines={[1, 2, 3]}>
-            {desc}
-          </Text>
-        </>
+        <Text noOfLines={[1, 2, 3]}>
+          {desc}
+        </Text>
       );
       toast({
         title: `${pkgName}`,

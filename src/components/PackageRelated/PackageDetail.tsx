@@ -22,6 +22,7 @@ import PackageStatus from './PackageStatus';
     pkg:string;
     isInstalled:boolean;
     installedVersion:string;
+    children:any;
   }
 
 const PackageDetail: React.FC<PackageDetailProps> = (props) => {

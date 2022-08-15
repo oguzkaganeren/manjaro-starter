@@ -31,7 +31,7 @@ interface StatsCardProps {
 }
 interface SystemInfoComponentProps {
 }
-function StatsCard(props: StatsCardProps) {
+const StatsCard = (props: StatsCardProps) => {
   const { title, stat, icon } = props;
   return (
     <Stat
@@ -44,7 +44,7 @@ function StatsCard(props: StatsCardProps) {
     >
       <Flex justifyContent="space-between">
         <Box pl={{ base: 2, md: 4 }}>
-          <StatLabel fontWeight="medium" isTruncated>
+          <StatLabel fontWeight="medium">
             {title}
           </StatLabel>
           <StatNumber fontSize="2xl" fontWeight="medium">
@@ -61,7 +61,7 @@ function StatsCard(props: StatsCardProps) {
       </Flex>
     </Stat>
   );
-}
+};
 function formatBytes(bytes:number, decimals = 2) {
   if (bytes === 0) return '0 Bytes';
 
@@ -71,7 +71,7 @@ function formatBytes(bytes:number, decimals = 2) {
 
   const i = Math.floor(Math.log(bytes) / Math.log(k));
 
-  return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
+  return `${parseFloat((bytes / k ** i).toFixed(dm))} ${sizes[i]}`;
 }
 
 const SystemInfoComponent: React.FC<SystemInfoComponentProps> = (props) => {

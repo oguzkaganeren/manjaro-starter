@@ -16,7 +16,7 @@ import {
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/api/shell';
-import { urls } from '../assets/SocialUrls.json';
+import { default as SocialLinks } from '../assets/SocialUrls.json';
 
   interface ReleaseNotesProps {
   }
@@ -104,7 +104,6 @@ const ReleaseNotes: React.FC<ReleaseNotesProps> = (props) => {
 
       </Box>
     </Flex>
-
   );
   return (
     <Flex
@@ -117,7 +116,7 @@ const ReleaseNotes: React.FC<ReleaseNotesProps> = (props) => {
         fontSize="sm"
         fontWeight="700"
         rounded="md"
-        onClick={async () => { await open(urls.blog); }}
+        onClick={async () => { await open(SocialLinks.urls.blog); }}
       >
         {t('releaseNotes')}
       </Button>

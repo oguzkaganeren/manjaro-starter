@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 
 import StepButtons from '../components/StepButtons';
 import HomeContent from '../components/HomeContent';
-import PackagesView from '../components/PackageRelated/Packages';
+import PackagesList from '../components/PackageRelated/Packages';
 import ResultComponent from '../components/ResultComponent';
 import SystemConfig from '../components/SystemConfig/SystemConfig';
 import packageJson from '../../package.json';
@@ -29,7 +29,7 @@ const homeContent = (
 const PackageContent: React.FC<AppProps> = (props) => (
   <Flex py={4}>
     <Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}>
-      <PackagesView />
+      <PackagesList />
     </Suspense>
   </Flex>
 );
@@ -41,7 +41,7 @@ const configContent = (
   </Flex>
 );
 
-const App: React.FC<AppProps> = (props) => {
+const App: React.FC<AppProps> = () => {
   const { t } = useTranslation();
   const STEPCOUNT = 3;
 

@@ -26,9 +26,9 @@ export interface Category {
 
 export const getPackages = selector({
   key: 'getPackages',
-  get: ({ get }) => {
+  get: async ({ get }) => {
     const categories = new Map<string, Category>();
-    apps.map(async (category) => {
+    const pks = await Promise.all(apps.map(async (category) => {
       const packs = new Map<string, Package>();
       Promise.all(category.apps.map(async (app) => {
         const id = _.uniqueId();
@@ -61,8 +61,8 @@ export const getPackages = selector({
           packages: packs,
         });
       });
-    });
-    return categories;
+    })).then(() => categories);
+    return pks;
   },
 });
 

@@ -54,7 +54,7 @@ const AboutComponent = (): JSX.Element => {
             >
               <Flex justifyContent="space-between">
                 <Box pl={{ base: 2, md: 4 }}>
-                  <StatLabel fontWeight="medium" isTruncated>
+                  <StatLabel fontWeight="medium">
                     {t('manjaroStarter')}
                   </StatLabel>
                   <StatNumber fontSize="2xl" fontWeight="medium">
