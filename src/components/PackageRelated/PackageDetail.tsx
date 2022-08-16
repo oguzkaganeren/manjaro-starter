@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Box,
-  Link,
   Image,
   Button,
   Badge,
@@ -11,22 +10,23 @@ import {
   HStack,
   Stack,
 } from '@chakra-ui/react';
+import { Command } from '@tauri-apps/api/shell';
 import PackageStatus from './PackageStatus';
 
   interface PackageDetailProps {
-    icon:any;
+    icon:string;
     title:string;
     catId:string;
     uniqueId:string;
     pkg:string;
     isInstalled:boolean;
-    pkStatusLoading:boolean;
     installedVersion:string;
+    children: React.ReactNode;
   }
 
 const PackageDetail: React.FC<PackageDetailProps> = (props) => {
   const {
-    icon, title, catId, uniqueId, pkg, isInstalled, pkStatusLoading, installedVersion, children,
+    icon, title, catId, uniqueId, pkg, isInstalled, installedVersion, children,
   } = props;
   return (
     <Box
@@ -41,30 +41,30 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
         <Image
           boxSize="30px"
           src={`${process.env.PUBLIC_URL}/AppIcons/${icon}.svg`}
-          alt="Dan Abramov"
         />
         <chakra.h3
           fontWeight="semibold"
           lineHeight="shorter"
         >
-          <Link href={`https://software.manjaro.org/package/${pkg}`} isExternal>
+          <Button
+            variant="link"
+            whiteSpace="initial"
+            onClick={() => {
+              const cmd = new Command('pamac-manager', [`--details=${pkg}`]);
+              cmd.execute();
+            }}
+
+          >
             {title}
-          </Link>
+          </Button>
         </chakra.h3>
         <Spacer />
-        {pkStatusLoading ? (
-          <PackageStatus
-            catId={catId}
-            pkId={uniqueId}
-            pkgName={pkg}
-            isInstalled={isInstalled}
-          />
-        ) : (
-          <Button
-            isLoading
-            variant="outline"
-          />
-        )}
+        <PackageStatus
+          catId={catId}
+          pkId={uniqueId}
+          pkgName={pkg}
+          isInstalled={isInstalled}
+        />
 
       </HStack>
       <chakra.p

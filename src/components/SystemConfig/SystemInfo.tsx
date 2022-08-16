@@ -1,9 +1,6 @@
 import {
   Box,
-  CircularProgress,
   Flex,
-  Button,
-  TagLabel,
   useColorModeValue,
   chakra,
   SimpleGrid,
@@ -12,16 +9,13 @@ import {
   StatNumber,
 } from '@chakra-ui/react';
 import React, {
-  ReactNode, useState, useEffect, useLayoutEffect,
+  ReactNode, useState, useEffect,
 } from 'react';
 import { FiCpu, FiDatabase } from 'react-icons/fi';
 import { FaMemory } from 'react-icons/fa';
 import { HiOutlineDesktopComputer, HiOutlineUser } from 'react-icons/hi';
 import { AiFillCode } from 'react-icons/ai';
 import { invoke } from '@tauri-apps/api/tauri';
-import {
-  trace, info, error, attachConsole,
-} from 'tauri-plugin-log-api';
 import { useTranslation } from 'react-i18next';
 
 interface StatsCardProps {
@@ -29,9 +23,7 @@ interface StatsCardProps {
   stat: string;
   icon: ReactNode;
 }
-interface SystemInfoComponentProps {
-}
-function StatsCard(props: StatsCardProps) {
+const StatsCard = (props: StatsCardProps) => {
   const { title, stat, icon } = props;
   return (
     <Stat
@@ -44,7 +36,7 @@ function StatsCard(props: StatsCardProps) {
     >
       <Flex justifyContent="space-between">
         <Box pl={{ base: 2, md: 4 }}>
-          <StatLabel fontWeight="medium" isTruncated>
+          <StatLabel fontWeight="medium">
             {title}
           </StatLabel>
           <StatNumber fontSize="2xl" fontWeight="medium">
@@ -61,7 +53,7 @@ function StatsCard(props: StatsCardProps) {
       </Flex>
     </Stat>
   );
-}
+};
 function formatBytes(bytes:number, decimals = 2) {
   if (bytes === 0) return '0 Bytes';
 
@@ -71,10 +63,10 @@ function formatBytes(bytes:number, decimals = 2) {
 
   const i = Math.floor(Math.log(bytes) / Math.log(k));
 
-  return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
+  return `${parseFloat((bytes / k ** i).toFixed(dm))} ${sizes[i]}`;
 }
 
-const SystemInfoComponent: React.FC<SystemInfoComponentProps> = (props) => {
+const SystemInfoComponent: React.FC = () => {
   const { t } = useTranslation();
   const [systemInfo, setSystemInfo] = useState({
     numberOfCpu: '', totalMemory: 0, usedMemory: 0, totalSwap: 0, usedSwap: 0, sysName: '', sysKernelVersion: '', sysOsVersion: '', sysHostName: '', nameOfCpu: '',
@@ -84,7 +76,6 @@ const SystemInfoComponent: React.FC<SystemInfoComponentProps> = (props) => {
       // why two parse???
       const responseJson = JSON.parse(JSON.parse(JSON.stringify(response)));
       setSystemInfo(responseJson);
-      info(responseJson);
     });
   }, []);
   return (

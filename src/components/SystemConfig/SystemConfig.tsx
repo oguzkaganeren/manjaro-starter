@@ -3,10 +3,9 @@ import {
   Center,
   Button,
   useColorModeValue,
-  chakra,
   ButtonGroup,
 } from '@chakra-ui/react';
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GiProtectionGlasses } from 'react-icons/gi';
 import { Command } from '@tauri-apps/api/shell';
 import { useTranslation } from 'react-i18next';
@@ -24,13 +23,13 @@ const SystemConfig: React.FC<SystemConfigProps> = (props) => {
   const [isVisibleMSM, setIsVisibleMSM] = useState(false);
   const { t } = useTranslation();
   useEffect(() => {
-    const resultOfGnome = new Command('installed-control', ['gnome-layout-switcher']).execute();
+    const resultOfGnome = new Command('version-control', ['-Q', 'gnome-layout-switcher']).execute();
     resultOfGnome.then((response) => {
       if (response.stdout) {
         setIsVisibleGnomeLayout(true);
       }
     });
-    const resultOfMSM = new Command('installed-control', ['manjaro-settings-manager']).execute();
+    const resultOfMSM = new Command('version-control', ['-Q', 'manjaro-settings-manager']).execute();
     resultOfMSM.then((response) => {
       if (response.stdout) {
         setIsVisibleMSM(true);

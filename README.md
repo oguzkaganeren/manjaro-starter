@@ -31,8 +31,29 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+<p float="left"> 
 <img src="./Screenshots/mainscreen.png" width="400"/>
 <img src="./Screenshots/mainscreen2.png" width="400"/>
+<img src="./Screenshots/systemDetails.png" width="400"/>
+<img src="./Screenshots/packages.png" width="400"/>
+<img src="./Screenshots/result.png" width="400"/>
+</p>
+
+## Features
+
+* Steps mechanism
+* Release Notes (redirect to Manjaro Blog)
+* Showing System Details (System name-version, kernel info, host info, CPU, memory, swap)
+* Set fastest mirrors (`pacman-mirrors --fasttrack 5`)
+* Check system updates and update system (Open Pamac updates page)
+* Install Drivers (Open MSM drivers page)
+* Set date time (Open MSM date-time page)
+* Install Language Packages (Open MSM Language Packages page)
+* List Kernels and Install (Used MHWD cli)
+* Most used package list and install them easily
+* Translation Support
+* Launch at start
+* Dark and White color mode
 
 ### Dependency
 

@@ -1,7 +1,7 @@
 import {
-  Switch, FormControl, FormLabel, HStack, Spacer,
+  Switch, HStack, Spacer,
 } from '@chakra-ui/react';
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { forage } from '@tauri-apps/tauri-forage';
 import { useTranslation } from 'react-i18next';
 import { resolveResource, configDir } from '@tauri-apps/api/path';

@@ -3,6 +3,18 @@
         "browser": true,
         "es2021": true
     },
+    "globals": {
+        "React": true,
+        "google": true,
+        "mount": true,
+        "mountWithRouter": true,
+        "shallow": true,
+        "shallowWithRouter": true,
+        "context": true,
+        "expect": true,
+        "jsdom": true,
+        "JSX": true
+    },
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
@@ -24,11 +36,28 @@
     "plugins": [
         "react",
         "@typescript-eslint",
-        "only-warn"
+        "only-warn",
+        "react-hooks",
+        "unused-imports"
     ],
     "rules": {
         "react/react-in-jsx-scope": "off",
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx","ts","tsx"] }],
-        "import/extensions": [0]
+        "import/extensions": [0],
+        "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+        "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
+        "no-unused-vars": "off", // or "@typescript-eslint/no-unused-vars": "off",
+		"unused-imports/no-unused-imports": "error",
+		"unused-imports/no-unused-vars": [
+			"warn",
+			{ "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
+		],
+        "react/function-component-definition": [
+            2,
+            {
+              "namedComponents": "arrow-function",
+              "unnamedComponents": "arrow-function"
+            }
+          ]
     }
 }

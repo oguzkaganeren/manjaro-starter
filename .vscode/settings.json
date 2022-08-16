@@ -10,4 +10,12 @@
       "javascript",
       "typescript"
     ],
+    "cSpell.words": [
+      "chakra",
+      "languagedetector",
+      "mhwd",
+      "oguzkaganeren",
+      "STEPCOUNT",
+      "tauri"
+    ],
 }

@@ -1,18 +1,15 @@
 import {
   Box,
   Center,
-  Icon,
   Button,
   SimpleGrid,
   useColorModeValue,
   chakra,
+  Wrap,
 } from '@chakra-ui/react';
-import React, { useState, useEffect } from 'react';
-import {
-  useRecoilState,
-} from 'recoil';
-import _ from 'lodash';
-import { Command } from '@tauri-apps/api/shell';
+import React from 'react';
+import { useRecoilValue } from 'recoil';
+import { useTranslation } from 'react-i18next';
 import {
   packageState,
   Category,
@@ -20,39 +17,24 @@ import {
 } from '../../stores/PackageStore';
 import PackageDetail from './PackageDetail';
 
-interface PackageProps {
-}
+const PackagesList: React.FC = () => {
+  const packageSt = useRecoilValue(packageState);
+  const { t } = useTranslation();
+  const Categories = (
+    <Wrap mt={8} justify="center">
+      {Array.from(packageSt.values()).map((category:Category) => (
+        <Button onClick={() => {
+          const anchor = document.querySelector(`#${category.name.replaceAll(' ', '-')}`);
+          anchor?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }}
+        >
+          {category.name}
 
-const PackagesList: React.FC<PackageProps> = (props) => {
-  const [packageSt, setPackageSt] = useRecoilState(packageState);
-  const [pkStatusLoading, setPkStatusLoading] = useState(false);
-
-  useEffect(() => {
-    const getAllPackageStatus = async () => {
-      const temp = _.cloneDeep(packageSt);
-      await Promise.all(temp.map(async (cat) => {
-        await Promise.all(cat.packages.map(async (pk) => {
-          const cmd = new Command('installed-control', [pk.pkg]);
-          const cmdResult = await cmd.execute();
-          if (cmdResult.stdout) {
-            pk.isInstalled = true;
-            const cmdVersion = new Command('version-control', ['-Qe', pk.pkg]);
-            const cmdVersionResult = await cmdVersion.execute();
-            if (cmdVersionResult.stdout) {
-              const spStd = cmdVersionResult.stdout.split(' ')[1];
-              pk.installedVersion = spStd;
-            }
-          }
-        }));
-      }));
-      setPackageSt(temp);
-      setPkStatusLoading(true);
-    };
-    setTimeout(getAllPackageStatus,
-      1000);
-  }, []);
-
-  const Apps = packageSt.map((category:Category) => (
+        </Button>
+      ))}
+    </Wrap>
+  );
+  const Apps = Array.from(packageSt.values()).map((category:Category) => (
     <Box mt={8} key={category.id}>
       <Box textAlign={{ lg: 'left' }}>
         <chakra.p
@@ -61,7 +43,9 @@ const PackagesList: React.FC<PackageProps> = (props) => {
           lineHeight="8"
           fontWeight="extrabold"
           letterSpacing="tight"
-          color={useColorModeValue('white.900', 'white.100')}
+          id={category.name.replaceAll(' ', '-')}
+          color="white.900"
+          _dark={{ color: 'white.100' }}
         >
           {category.name}
         </chakra.p>
@@ -69,7 +53,8 @@ const PackagesList: React.FC<PackageProps> = (props) => {
           mt={4}
           maxW="2xl"
           fontSize="xl"
-          color={useColorModeValue('gray.500', 'gray.400')}
+          color="gray.500"
+          _dark={{ color: 'gray.400' }}
         >
           {category.description}
         </chakra.p>
@@ -81,7 +66,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
           spacingY={10}
           mt={6}
         >
-          {category.packages.map((app:Package) => (
+          {Array.from(category.packages.values()).map((app:Package) => (
             <PackageDetail
               title={app.name}
               pkg={app.pkg}
@@ -89,7 +74,6 @@ const PackagesList: React.FC<PackageProps> = (props) => {
               uniqueId={app.id}
               isInstalled={app.isInstalled}
               catId={category.id}
-              pkStatusLoading={pkStatusLoading}
               installedVersion={app.installedVersion}
               icon={app.icon}
             >
@@ -107,7 +91,6 @@ const PackagesList: React.FC<PackageProps> = (props) => {
       py={20}
       mx="auto"
       bg={useColorModeValue('white', 'gray.800')}
-      shadow="xl"
     >
       <Box textAlign={{ lg: 'center' }}>
         <chakra.p
@@ -118,7 +101,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
           letterSpacing="tight"
           color={useColorModeValue('white.900', 'white.100')}
         >
-          Packages
+          {t('packages')}
         </chakra.p>
 
         <chakra.p
@@ -128,10 +111,12 @@ const PackagesList: React.FC<PackageProps> = (props) => {
           mx={{ lg: 'auto' }}
           color={useColorModeValue('gray.500', 'gray.400')}
         >
-          Install packages to set up your environment.
+          {t('installPackagesText')}
         </chakra.p>
       </Box>
-      {Apps}
+      {Categories}
+      { Apps}
+
       <Center>
         <a href="https://software.manjaro.org/applications" target="_blank" rel="noreferrer">
           <Button
@@ -142,7 +127,7 @@ const PackagesList: React.FC<PackageProps> = (props) => {
             border="2px"
             borderColor="green.500"
           >
-            Discover More
+            {t('discoverMore')}
           </Button>
         </a>
       </Center>

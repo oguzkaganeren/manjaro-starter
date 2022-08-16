@@ -27,10 +27,10 @@
         "discoverSoftware": "Discover Software",
         "readWiki": "Read Wiki",
         "contribute": "Contribute",
-        "telegram": "telegram",
-        "facebook": "facebook",
-        "twitter": "twitter",
-        "reddit": "reddit",
+        "telegram": "Telegram",
+        "facebook": "Facebook",
+        "twitter": "Twitter",
+        "reddit": "Reddit",
         "joinMail": "Join Mailing List",
         "donate": "Donate",
         "returnFirstStep": "Return First Step",
@@ -61,6 +61,10 @@
         "installDrivers": "Install Drivers",
         "setDateTime": "Set Date and Time",
         "installLanguage": "Install Language",
-        "languagePackages": "Language Packages"
+        "languagePackages": "Language Packages",
+        "about": "About",
+        "packages": "Packages",
+        "installPackagesText": "Install packages to set up your environment.",
+        "discoverMore": "Discover More"
     }
 }

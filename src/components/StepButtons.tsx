@@ -3,11 +3,11 @@ import { Button, Flex } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
 type StepButtonsProps = {
-  nextStep?: () => void;
-  prevStep?: () => void;
-  prevDisabled?: boolean;
-  nextDisabled?: boolean;
-  isLast?: boolean;
+  nextStep: () => void;
+  prevStep: () => void;
+  prevDisabled: boolean;
+  nextDisabled: boolean;
+  isLast: boolean;
 };
 
 const StepButtons = ({

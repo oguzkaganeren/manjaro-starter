@@ -5,7 +5,7 @@ import {
   chakra,
   useToast,
 } from '@chakra-ui/react';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
 

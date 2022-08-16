@@ -3,14 +3,12 @@ import {
   useToast,
   Text,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { RiInstallLine, RiCheckLine } from 'react-icons/ri';
+import { Command } from '@tauri-apps/api/shell';
+import { useRecoilState } from 'recoil';
 import {
-  useRecoilCallback,
-} from 'recoil';
-import _ from 'lodash';
-import {
-  getPackageStatus, installPackage, packageState,
+  packageState,
 } from '../../stores/PackageStore';
 
 interface PackageStatusProps {
@@ -21,60 +19,61 @@ interface PackageStatusProps {
   }
 const PackageStatus: React.FC<PackageStatusProps> = (props) => {
   const toast = useToast();
-  const packageStatusUpdate = useRecoilCallback(({ snapshot, set }) => async (
-    catId:string,
-    pkId:string,
-  ) => {
-    const packages = await snapshot.getPromise(packageState);
-    const cats = _.cloneDeep(packages);
-    const catIndex = cats.findIndex((element) => element.id === catId);
-    const pkIndex = cats[catIndex].packages.findIndex((element) => element.id === pkId);
-    const updatedPk = cats[catIndex].packages[pkIndex];
-    const packageStatus = await snapshot.getPromise(getPackageStatus(updatedPk.pkg));
-    updatedPk.isInstalled = packageStatus === 'true';
-    set(packageState, (prev) => prev.map((item, index) => {
-      if (index !== catIndex) {
-        return item;
+  const [packageSt, setPackageSt] = useRecoilState(packageState);
+  const [isLoadingPackage, setIsLoadingPackage] = useState<Map<string, boolean>>(new Map());
+
+  const packageInstallStatusControl = async (catId:string, pkId:string) => {
+    const pack = packageSt.get(catId)?.packages.get(pkId);
+    const pkName = pack?.pkg || '';
+    const cmdVersion = new Command('version-control', ['-Q', pkName]);
+    const cmdVersionResult = await cmdVersion.execute();
+    if (cmdVersionResult.stdout) {
+      const spStd = cmdVersionResult.stdout.split(' ')[1];
+      const cat = packageSt.get(catId);
+      if (pack) {
+        pack.isInstalled = true;
+        pack.installedVersion = spStd;
+        cat?.packages.set(pkId, pack);
+        if (cat) {
+          setPackageSt(new Map(packageSt.set(catId, cat)));
+        }
       }
-      return {
-        ...item,
-        packages: item.packages.map((pk, index2) => (pkIndex !== index2 ? pk : updatedPk)),
-      };
-    }));
-  }, []);
-  const installPackageWithName = useRecoilCallback(({ snapshot }) => async (
+    }
+  };
+
+  const installPackageWithName = async (
     catId:string,
     pkId:string,
     pkgName:string,
   ) => {
-    const result:string = await snapshot.getPromise(installPackage(pkgName));
-
-    const desc = result.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item, index) => (
-      <span>
-        {item}
-        <br />
-      </span>
-    ));
-    const colDesc = (
-      <>
-        <Text noOfLines={[1, 2, 3]}>
-          {desc}
-        </Text>
-      </>
-    );
-    packageStatusUpdate(catId, pkId);
-    if (result.toUpperCase().includes('ERROR')) {
+    setIsLoadingPackage(new Map(isLoadingPackage?.set(pkId, true)));
+    const cmd = new Command('pamac', ['install', '--no-confirm', '--no-upgrade', pkgName]);
+    const cmdResult = await cmd.execute();
+    setIsLoadingPackage(new Map(isLoadingPackage?.set(pkId, false)));
+    if (cmdResult.stderr) {
       toast({
-        title: `Installing ${pkgName}`,
-        description: desc,
+        title: `${pkgName}`,
+        description: cmdResult.stderr,
         status: 'error',
         duration: 9000,
         isClosable: true,
         position: 'bottom-right',
       });
     } else {
+      packageInstallStatusControl(catId, pkId);
+      const desc = cmdResult.stdout.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item) => (
+        <span>
+          {item}
+          <br />
+        </span>
+      ));
+      const colDesc = (
+        <Text noOfLines={[1, 2, 3]}>
+          {desc}
+        </Text>
+      );
       toast({
-        title: `Installing ${pkgName}`,
+        title: `${pkgName}`,
         description: colDesc,
         status: 'success',
         duration: 9000,
@@ -82,7 +81,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
         position: 'bottom-right',
       });
     }
-  });
+  };
   const {
     isInstalled, catId, pkId, pkgName,
   } = props;
@@ -91,7 +90,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
       {isInstalled ? (
         <IconButton aria-label="installed" disabled icon={<RiCheckLine />} colorScheme="gray" variant="solid" />
       ) : (
-        <IconButton aria-label="install" icon={<RiInstallLine />} onClick={() => installPackageWithName(catId, pkId, pkgName)} colorScheme="green" variant="solid" />
+        <IconButton aria-label="install" icon={<RiInstallLine />} isLoading={isLoadingPackage?.get(pkId) || false} onClick={() => installPackageWithName(catId, pkId, pkgName)} colorScheme="green" variant="solid" />
       )}
 
     </div>
