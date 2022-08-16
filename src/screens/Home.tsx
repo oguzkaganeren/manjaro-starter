@@ -18,23 +18,19 @@ import SystemConfig from '../components/SystemConfig/SystemConfig';
 import packageJson from '../../package.json';
 import Nav from '../components/NavbarComponent';
 
-const homeContent = (
+const Home = (
   <Flex py={4}>
     <HomeContent />
   </Flex>
 );
-const PackageContent: React.FC = () => (
+const Package = (
   <Flex py={4}>
-    <Suspense fallback={<CircularProgress mt={20} isIndeterminate color="green.300" />}>
-      <PackagesList />
-    </Suspense>
+    <PackagesList />
   </Flex>
 );
-const configContent = (
+const Config = (
   <Flex py={4}>
-    <Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}>
-      <SystemConfig />
-    </Suspense>
+    <SystemConfig />
   </Flex>
 );
 
@@ -43,9 +39,9 @@ const App: React.FC = () => {
   const STEPCOUNT = 3;
 
   const steps = [
-    { label: t('welcome'), icon: FiHome, content: homeContent },
-    { label: t('configurations'), icon: GiSettingsKnobs, content: configContent },
-    { label: t('explorer'), icon: FiPackage, content: <PackageContent /> },
+    { label: t('welcome'), icon: FiHome, content: Home },
+    { label: t('configurations'), icon: GiSettingsKnobs, content: Config },
+    { label: t('explorer'), icon: FiPackage, content: Package },
   ];
   const bg = useColorModeValue('white', 'gray.800');
   const {
@@ -57,32 +53,33 @@ const App: React.FC = () => {
     <>
       <Nav />
       <VStack mt={63}>
-        <VStack width="100%">
+        <Suspense fallback={<CircularProgress mt={20} isIndeterminate color="green.300" />}>
+          <VStack width="100%">
 
-          <Steps
-            bg={bg}
-            position="fixed"
-            padding={5}
-            boxShadow="sm"
-            css={{
-              backdropFilter: 'saturate(180%) blur(5px)',
-              backgroundColor: useColorModeValue(
-                'rgba(255, 255, 255, 0.8)',
-                'rgba(26, 32, 44, 0.8)',
-              ),
-            }}
-            activeStep={activeStep}
-          >
+            <Steps
+              bg={bg}
+              position="fixed"
+              padding={5}
+              boxShadow="sm"
+              css={{
+                backdropFilter: 'saturate(180%) blur(5px)',
+                backgroundColor: useColorModeValue(
+                  'rgba(255, 255, 255, 0.8)',
+                  'rgba(26, 32, 44, 0.8)',
+                ),
+              }}
+              activeStep={activeStep}
+            >
 
-            {steps.map(({ label, content, icon }) => (
-              <Step label={label} key={label} icon={icon}>
-                {content}
-              </Step>
-            ))}
-          </Steps>
+              {steps.map(({ label, content, icon }) => (
+                <Step label={label} key={label} icon={icon}>
+                  {content}
+                </Step>
+              ))}
+            </Steps>
 
-        </VStack>
-
+          </VStack>
+        </Suspense>
         {activeStep === STEPCOUNT ? (
           <ResultComponent onReset={reset} />
         ) : (

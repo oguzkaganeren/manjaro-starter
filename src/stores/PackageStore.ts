@@ -30,7 +30,15 @@ export const getPackages = selector({
     const categories = new Map<string, Category>();
     const pks = await Promise.all(apps.map(async (category) => {
       const packs = new Map<string, Package>();
-      Promise.all(category.apps.map(async (app) => {
+      const cateId = _.uniqueId();
+      categories.set(cateId, {
+        id: cateId,
+        description: category.description,
+        icon: category.icon,
+        name: category.name,
+        packages: packs,
+      });
+      await Promise.all(category.apps.map(async (app) => {
         const id = _.uniqueId();
         let pkInstalled = false;
         let pkVer = '';
@@ -51,16 +59,7 @@ export const getPackages = selector({
           name: app.name,
           installedVersion: pkVer,
         });
-      })).then(() => {
-        const cateId = _.uniqueId();
-        categories.set(cateId, {
-          id: cateId,
-          description: category.description,
-          icon: category.icon,
-          name: category.name,
-          packages: packs,
-        });
-      });
+      }));
     })).then(() => categories);
     return pks;
   },
