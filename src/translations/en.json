@@ -62,6 +62,9 @@
         "setDateTime": "Set Date and Time",
         "installLanguage": "Install Language",
         "languagePackages": "Language Packages",
-        "about": "About"
+        "about": "About",
+        "packages": "Packages",
+        "installPackagesText": "Install packages to set up your environment.",
+        "discoverMore": "Discover More"
     }
 }

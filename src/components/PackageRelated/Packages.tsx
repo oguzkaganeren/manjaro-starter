@@ -10,6 +10,7 @@ import React, { useState, useEffect, Suspense } from 'react';
 import {
   useRecoilState,
 } from 'recoil';
+import { useTranslation } from 'react-i18next';
 import {
   packageState,
   Category,
@@ -19,7 +20,7 @@ import PackageDetail from './PackageDetail';
 
 const PackagesList: React.FC = () => {
   const [packageSt, setPackageSt] = useRecoilState(packageState);
-
+  const { t } = useTranslation();
   const Apps = Array.from(packageSt.values()).map((category:Category) => (
     <Box mt={8} key={category.id}>
       <Box textAlign={{ lg: 'left' }}>
@@ -84,7 +85,7 @@ const PackagesList: React.FC = () => {
           letterSpacing="tight"
           color={useColorModeValue('white.900', 'white.100')}
         >
-          Packages
+          {t('packages')}
         </chakra.p>
 
         <chakra.p
@@ -94,7 +95,7 @@ const PackagesList: React.FC = () => {
           mx={{ lg: 'auto' }}
           color={useColorModeValue('gray.500', 'gray.400')}
         >
-          Install packages to set up your environment.
+          {t('installPackagesText')}
         </chakra.p>
       </Box>
       { Apps}
@@ -109,7 +110,7 @@ const PackagesList: React.FC = () => {
             border="2px"
             borderColor="green.500"
           >
-            Discover More
+            {t('discoverMore')}
           </Button>
         </a>
       </Center>

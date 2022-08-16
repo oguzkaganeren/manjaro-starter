@@ -19,17 +19,12 @@ import { FaMemory } from 'react-icons/fa';
 import { HiOutlineDesktopComputer, HiOutlineUser } from 'react-icons/hi';
 import { AiFillCode } from 'react-icons/ai';
 import { invoke } from '@tauri-apps/api/tauri';
-import {
-  trace, info, error, attachConsole,
-} from 'tauri-plugin-log-api';
 import { useTranslation } from 'react-i18next';
 
 interface StatsCardProps {
   title: string;
   stat: string;
   icon: ReactNode;
-}
-interface SystemInfoComponentProps {
 }
 const StatsCard = (props: StatsCardProps) => {
   const { title, stat, icon } = props;
@@ -74,7 +69,7 @@ function formatBytes(bytes:number, decimals = 2) {
   return `${parseFloat((bytes / k ** i).toFixed(dm))} ${sizes[i]}`;
 }
 
-const SystemInfoComponent: React.FC<SystemInfoComponentProps> = (props) => {
+const SystemInfoComponent: React.FC = () => {
   const { t } = useTranslation();
   const [systemInfo, setSystemInfo] = useState({
     numberOfCpu: '', totalMemory: 0, usedMemory: 0, totalSwap: 0, usedSwap: 0, sysName: '', sysKernelVersion: '', sysOsVersion: '', sysHostName: '', nameOfCpu: '',
@@ -84,7 +79,6 @@ const SystemInfoComponent: React.FC<SystemInfoComponentProps> = (props) => {
       // why two parse???
       const responseJson = JSON.parse(JSON.parse(JSON.stringify(response)));
       setSystemInfo(responseJson);
-      info(responseJson);
     });
   }, []);
   return (
