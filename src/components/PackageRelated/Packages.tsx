@@ -5,9 +5,8 @@ import {
   SimpleGrid,
   useColorModeValue,
   chakra,
-  Spinner,
 } from '@chakra-ui/react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import {
   useRecoilState,
 } from 'recoil';
@@ -18,10 +17,7 @@ import {
 } from '../../stores/PackageStore';
 import PackageDetail from './PackageDetail';
 
-interface PackageProps {
-}
-
-const PackagesList: React.FC<PackageProps> = (props) => {
+const PackagesList: React.FC = () => {
   const [packageSt, setPackageSt] = useRecoilState(packageState);
 
   const Apps = Array.from(packageSt.values()).map((category:Category) => (
@@ -73,55 +69,53 @@ const PackagesList: React.FC<PackageProps> = (props) => {
     </Box>
   ));
   return (
-    <React.Suspense fallback={<Spinner size="xl" />}>
-      <Box
-        px={8}
-        py={20}
-        mx="auto"
-        bg={useColorModeValue('white', 'gray.800')}
-        shadow="xl"
-      >
-        <Box textAlign={{ lg: 'center' }}>
-          <chakra.p
-            mt={2}
-            fontSize={{ base: '3xl', sm: '4xl' }}
-            lineHeight="8"
-            fontWeight="extrabold"
-            letterSpacing="tight"
-            color={useColorModeValue('white.900', 'white.100')}
-          >
-            Packages
-          </chakra.p>
+    <Box
+      px={8}
+      py={20}
+      mx="auto"
+      bg={useColorModeValue('white', 'gray.800')}
+      shadow="xl"
+    >
+      <Box textAlign={{ lg: 'center' }}>
+        <chakra.p
+          mt={2}
+          fontSize={{ base: '3xl', sm: '4xl' }}
+          lineHeight="8"
+          fontWeight="extrabold"
+          letterSpacing="tight"
+          color={useColorModeValue('white.900', 'white.100')}
+        >
+          Packages
+        </chakra.p>
 
-          <chakra.p
-            mt={4}
-            maxW="2xl"
-            fontSize="xl"
-            mx={{ lg: 'auto' }}
-            color={useColorModeValue('gray.500', 'gray.400')}
-          >
-            Install packages to set up your environment.
-          </chakra.p>
-        </Box>
-        { Apps}
-
-        <Center>
-          <a href="https://software.manjaro.org/applications" target="_blank" rel="noreferrer">
-            <Button
-              mt={10}
-              size="md"
-              height="48px"
-              width="200px"
-              border="2px"
-              borderColor="green.500"
-            >
-              Discover More
-            </Button>
-          </a>
-        </Center>
-
+        <chakra.p
+          mt={4}
+          maxW="2xl"
+          fontSize="xl"
+          mx={{ lg: 'auto' }}
+          color={useColorModeValue('gray.500', 'gray.400')}
+        >
+          Install packages to set up your environment.
+        </chakra.p>
       </Box>
-    </React.Suspense>
+      { Apps}
+
+      <Center>
+        <a href="https://software.manjaro.org/applications" target="_blank" rel="noreferrer">
+          <Button
+            mt={10}
+            size="md"
+            height="48px"
+            width="200px"
+            border="2px"
+            borderColor="green.500"
+          >
+            Discover More
+          </Button>
+        </a>
+      </Center>
+
+    </Box>
   );
 };
 export default PackagesList;

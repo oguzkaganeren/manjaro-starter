@@ -1,5 +1,5 @@
 import {
-  atom, selector, selectorFamily,
+  atom, selector,
 } from 'recoil';
 import _ from 'lodash';
 import { Command } from '@tauri-apps/api/shell';
@@ -26,7 +26,7 @@ export interface Category {
 
 export const getPackages = selector({
   key: 'getPackages',
-  get: async ({ get }) => {
+  get: async () => {
     const categories = new Map<string, Category>();
     const pks = await Promise.all(apps.map(async (category) => {
       const packs = new Map<string, Package>();

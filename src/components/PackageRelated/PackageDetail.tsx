@@ -22,7 +22,7 @@ import PackageStatus from './PackageStatus';
     pkg:string;
     isInstalled:boolean;
     installedVersion:string;
-    children:any;
+    children: React.ReactNode;
   }
 
 const PackageDetail: React.FC<PackageDetailProps> = (props) => {
@@ -42,7 +42,6 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
         <Image
           boxSize="30px"
           src={`${process.env.PUBLIC_URL}/AppIcons/${icon}.svg`}
-          alt="Dan Abramov"
         />
         <chakra.h3
           fontWeight="semibold"

@@ -70,6 +70,7 @@
         "eslint-import-resolver-typescript": "^3.4.0",
         "eslint-plugin-import": "^2.26.0",
         "eslint-plugin-only-warn": "^1.0.3",
-        "eslint-plugin-react": "^7.26.1"
+        "eslint-plugin-react": "^7.26.1",
+        "eslint-plugin-react-hooks": "^4.6.0"
     }
 }

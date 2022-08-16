@@ -18,15 +18,12 @@ import SystemConfig from '../components/SystemConfig/SystemConfig';
 import packageJson from '../../package.json';
 import Nav from '../components/NavbarComponent';
 
-interface AppProps {
-}
-
 const homeContent = (
   <Flex py={4}>
     <HomeContent />
   </Flex>
 );
-const PackageContent: React.FC<AppProps> = (props) => (
+const PackageContent: React.FC = () => (
   <Flex py={4}>
     <Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}>
       <PackagesList />
@@ -41,7 +38,7 @@ const configContent = (
   </Flex>
 );
 
-const App: React.FC<AppProps> = () => {
+const App: React.FC = () => {
   const { t } = useTranslation();
   const STEPCOUNT = 3;
 
