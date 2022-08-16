@@ -3,7 +3,7 @@ import {
   useToast,
   Text,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RiInstallLine, RiCheckLine } from 'react-icons/ri';
 import { Command } from '@tauri-apps/api/shell';
 
@@ -15,16 +15,16 @@ interface PackageStatusProps {
   }
 const PackageStatus: React.FC<PackageStatusProps> = (props) => {
   const toast = useToast();
-  const [isLoading, setIsLoading] = useState<Map<string, boolean>>();
+  const [isLoadingPackage, setIsLoadingPackage] = useState<Map<string, boolean>>(new Map());
   const installPackageWithName = async (
     catId:string,
     pkId:string,
     pkgName:string,
   ) => {
-    setIsLoading(new Map(isLoading?.set(pkId, true)));
+    setIsLoadingPackage(new Map(isLoadingPackage?.set(pkId, true)));
     const cmd = new Command('pamac', ['install', '--no-confirm', '--no-upgrade', pkgName]);
     const cmdResult = await cmd.execute();
-
+    setIsLoadingPackage(new Map(isLoadingPackage?.set(pkId, false)));
     if (cmdResult.stderr) {
       toast({
         title: `${pkgName}`,
@@ -64,7 +64,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
       {isInstalled ? (
         <IconButton aria-label="installed" disabled icon={<RiCheckLine />} colorScheme="gray" variant="solid" />
       ) : (
-        <IconButton aria-label="install" icon={<RiInstallLine />} isLoading={isLoading?.get(pkId) || false} onClick={() => installPackageWithName(catId, pkId, pkgName)} colorScheme="green" variant="solid" />
+        <IconButton aria-label="install" icon={<RiInstallLine />} isLoading={isLoadingPackage?.get(pkId) || false} onClick={() => installPackageWithName(catId, pkId, pkgName)} colorScheme="green" variant="solid" />
       )}
 
     </div>
