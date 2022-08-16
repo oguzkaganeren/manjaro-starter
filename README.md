@@ -32,11 +32,11 @@
 ## About The Project
 
 <p float="left"> 
-<img src="./Screenshots/mainscreen.png" width="300"/>
-<img src="./Screenshots/mainscreen2.png" width="300"/>
-<img src="./Screenshots/systemDetails.png" width="300"/>
-<img src="./Screenshots/packages.png" width="300"/>
-<img src="./Screenshots/result.png" width="300"/>
+<img src="./Screenshots/mainscreen.png" width="400"/>
+<img src="./Screenshots/mainscreen2.png" width="400"/>
+<img src="./Screenshots/systemDetails.png" width="400"/>
+<img src="./Screenshots/packages.png" width="400"/>
+<img src="./Screenshots/result.png" width="400"/>
 </p>
 
 ## Features
