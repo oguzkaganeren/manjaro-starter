@@ -31,8 +31,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img src="./Screenshots/mainscreen.png" width="400"/>
-<img src="./Screenshots/mainscreen2.png" width="400"/>
+<p float="left"> 
+<img src="./Screenshots/mainscreen.png" width="300"/>
+<img src="./Screenshots/mainscreen2.png" width="300"/>
+<img src="./Screenshots/systemDetails.png" width="300"/>
+<img src="./Screenshots/packages.png" width="300"/>
+<img src="./Screenshots/result.png" width="300"/>
+</p>
 
 ## Features
 
@@ -46,7 +51,9 @@
 * Install Language Packages (Open MSM Language Packages page)
 * List Kernels and Install (Used MHWD cli)
 * Most used package list and install them easily
-* Social media links
+* Translation Support
+* Launch at start
+* Dark and White color mode
 
 ### Dependency
 
