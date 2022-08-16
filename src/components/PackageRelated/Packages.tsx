@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import React, { useState, useEffect, Suspense } from 'react';
 import {
-  useRecoilState,
+  useRecoilState, useRecoilValue,
 } from 'recoil';
 import { useTranslation } from 'react-i18next';
 import {
@@ -19,7 +19,7 @@ import {
 import PackageDetail from './PackageDetail';
 
 const PackagesList: React.FC = () => {
-  const [packageSt, setPackageSt] = useRecoilState(packageState);
+  const packageSt = useRecoilValue(packageState);
   const { t } = useTranslation();
   const Apps = Array.from(packageSt.values()).map((category:Category) => (
     <Box mt={8} key={category.id}>

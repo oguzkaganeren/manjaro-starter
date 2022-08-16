@@ -6,6 +6,10 @@ import {
 import React, { useEffect, useState } from 'react';
 import { RiInstallLine, RiCheckLine } from 'react-icons/ri';
 import { Command } from '@tauri-apps/api/shell';
+import { useRecoilState } from 'recoil';
+import {
+  packageState,
+} from '../../stores/PackageStore';
 
 interface PackageStatusProps {
     isInstalled:boolean,
@@ -15,7 +19,28 @@ interface PackageStatusProps {
   }
 const PackageStatus: React.FC<PackageStatusProps> = (props) => {
   const toast = useToast();
+  const [packageSt, setPackageSt] = useRecoilState(packageState);
   const [isLoadingPackage, setIsLoadingPackage] = useState<Map<string, boolean>>(new Map());
+
+  const packageInstallStatusControl = async (catId:string, pkId:string) => {
+    const pack = packageSt.get(catId)?.packages.get(pkId);
+    const pkName = pack?.pkg || '';
+    const cmdVersion = new Command('version-control', ['-Q', pkName]);
+    const cmdVersionResult = await cmdVersion.execute();
+    if (cmdVersionResult.stdout) {
+      const spStd = cmdVersionResult.stdout.split(' ')[1];
+      const cat = packageSt.get(catId);
+      if (pack) {
+        pack.isInstalled = true;
+        pack.installedVersion = spStd;
+        cat?.packages.set(pkId, pack);
+        if (cat) {
+          setPackageSt(new Map(packageSt.set(catId, cat)));
+        }
+      }
+    }
+  };
+
   const installPackageWithName = async (
     catId:string,
     pkId:string,
@@ -35,6 +60,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
         position: 'bottom-right',
       });
     } else {
+      packageInstallStatusControl(catId, pkId);
       const desc = cmdResult.stdout.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item, index) => (
         <span>
           {item}
