@@ -1,6 +1,4 @@
-import {
-  Container, Select, FormLabel, HStack, Spacer,
-} from '@chakra-ui/react';
+import { Select, HStack, Spacer } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { availableLanguages } from '../i18n';

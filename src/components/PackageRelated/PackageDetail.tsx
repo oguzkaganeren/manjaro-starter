@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Box,
-  Text,
   Image,
   Button,
   Badge,
@@ -15,7 +14,7 @@ import { Command } from '@tauri-apps/api/shell';
 import PackageStatus from './PackageStatus';
 
   interface PackageDetailProps {
-    icon:any;
+    icon:string;
     title:string;
     catId:string;
     uniqueId:string;

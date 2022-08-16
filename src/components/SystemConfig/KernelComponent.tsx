@@ -1,7 +1,5 @@
 import {
   Box,
-  CircularProgress,
-  Flex,
   Skeleton,
   TagLabel,
   useColorModeValue,
@@ -10,7 +8,6 @@ import {
   Tag,
   IconButton,
   useToast,
-  Spacer,
 } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import { FaLinux } from 'react-icons/fa';
@@ -26,7 +23,7 @@ interface Kernel {
   isInstalled:boolean;
 }
 
-const KernelComponent: React.FC = (props) => {
+const KernelComponent: React.FC = () => {
   const [kernelSt, setKernelSt] = useState<Kernel[]>();
   const [isLoadingKernel, setIsLoadingKernel] = useState<Map<string, boolean>>(new Map());
   const toast = useToast();
@@ -37,7 +34,7 @@ const KernelComponent: React.FC = (props) => {
     const kernels = [] as Kernel[];
     const splitKernels = kernelList.stdout.split('*').filter((item) => item.indexOf('linux') > 0);
     await Promise.all(splitKernels.map(async (item) => {
-      const kernelName = item.replace(/^\s+|\s+$/g, '').replaceAll('\"', '');
+      const kernelName = item.replace(/^\s+|\s+$/g, '').replaceAll('"', '');
       const installedCmd = new Command('version-control', ['-Q', kernelName]);
       const kernelInstalled = await installedCmd.execute();
       let isInstalled = false;
@@ -59,7 +56,7 @@ const KernelComponent: React.FC = (props) => {
     const cmdResult = await cmd.execute();
     setIsLoadingKernel(new Map(isLoadingKernel?.set(kernelName, false)));
     if (cmdResult.stdout) {
-      const desc = cmdResult.stdout.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item, index) => (
+      const desc = cmdResult.stdout.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item) => (
         <span>
           {item}
           <br />
@@ -74,7 +71,7 @@ const KernelComponent: React.FC = (props) => {
         position: 'bottom-right',
       });
     } else {
-      const desc = cmdResult.stderr.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item, index) => (
+      const desc = cmdResult.stderr.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item) => (
         <span>
           {item}
           <br />
@@ -95,6 +92,7 @@ const KernelComponent: React.FC = (props) => {
 
   useEffect(() => {
     setKernelList();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

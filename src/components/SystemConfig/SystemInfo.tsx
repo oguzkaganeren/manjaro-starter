@@ -1,9 +1,6 @@
 import {
   Box,
-  CircularProgress,
   Flex,
-  Button,
-  TagLabel,
   useColorModeValue,
   chakra,
   SimpleGrid,
@@ -12,7 +9,7 @@ import {
   StatNumber,
 } from '@chakra-ui/react';
 import React, {
-  ReactNode, useState, useEffect, useLayoutEffect,
+  ReactNode, useState, useEffect,
 } from 'react';
 import { FiCpu, FiDatabase } from 'react-icons/fi';
 import { FaMemory } from 'react-icons/fa';

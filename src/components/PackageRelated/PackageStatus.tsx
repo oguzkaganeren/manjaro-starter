@@ -3,7 +3,7 @@ import {
   useToast,
   Text,
 } from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { RiInstallLine, RiCheckLine } from 'react-icons/ri';
 import { Command } from '@tauri-apps/api/shell';
 import { useRecoilState } from 'recoil';
@@ -61,7 +61,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
       });
     } else {
       packageInstallStatusControl(catId, pkId);
-      const desc = cmdResult.stdout.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item, index) => (
+      const desc = cmdResult.stdout.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item) => (
         <span>
           {item}
           <br />

@@ -3,10 +3,9 @@ import {
   Center,
   Button,
   useColorModeValue,
-  chakra,
   ButtonGroup,
 } from '@chakra-ui/react';
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GiProtectionGlasses } from 'react-icons/gi';
 import { Command } from '@tauri-apps/api/shell';
 import { useTranslation } from 'react-i18next';

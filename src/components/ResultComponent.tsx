@@ -1,5 +1,5 @@
 import {
-  Container, Heading, Text, Button, Center, Wrap,
+  Container, Heading, Text, Button, Center,
 } from '@chakra-ui/react';
 import React from 'react';
 import { CheckCircleIcon } from '@chakra-ui/icons';
@@ -12,6 +12,7 @@ import {
 import { open } from '@tauri-apps/api/shell';
 import { BiDonateHeart } from 'react-icons/bi';
 import { useTranslation } from 'react-i18next';
+// eslint-disable-next-line import/no-named-default
 import { default as SocialLinks } from '../assets/SocialUrls.json';
 
 interface ResultProps {
@@ -19,6 +20,7 @@ interface ResultProps {
 }
 const ResultComponent: React.FC<ResultProps> = (props) => {
   const { t } = useTranslation();
+  const { onReset } = props;
   return (
     <Container textAlign="center">
       <CheckCircleIcon boxSize="50px" color="green.500" marginTop={100} />
@@ -79,7 +81,7 @@ const ResultComponent: React.FC<ResultProps> = (props) => {
         </Center>
       </Button>
 
-      <Button mt={5} mr={5} onClick={() => props.onReset()}>
+      <Button mt={5} mr={5} onClick={() => onReset()}>
         {t('returnFirstStep')}
       </Button>
 

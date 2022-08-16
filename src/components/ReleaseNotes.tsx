@@ -10,12 +10,12 @@ import {
   DrawerCloseButton,
   Box,
   chakra,
-  Link,
   DrawerFooter,
 } from '@chakra-ui/react';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/api/shell';
+// eslint-disable-next-line import/no-named-default
 import { default as SocialLinks } from '../assets/SocialUrls.json';
 
 const ReleaseNotesContent = () => (
@@ -50,40 +50,9 @@ const ReleaseNotesContent = () => (
         >
           -
         </chakra.span>
-        <Link
-          px={3}
-          py={1}
-          bg="gray.600"
-          color="gray.100"
-          fontSize="sm"
-          fontWeight="700"
-          rounded="md"
-          _hover={{
-            bg: 'gray.500',
-          }}
-        >
-          -
-        </Link>
       </Flex>
 
       <Box mt={2}>
-        <Link
-          fontSize="2xl"
-          color="gray.700"
-          _dark={{
-            color: 'white',
-          }}
-          fontWeight="700"
-          _hover={{
-            color: 'gray.600',
-            _dark: {
-              color: 'gray.200',
-            },
-            textDecor: 'underline',
-          }}
-        >
-          -
-        </Link>
         <chakra.p
           mt={2}
           color="gray.600"
@@ -100,7 +69,7 @@ const ReleaseNotesContent = () => (
 );
 const ReleaseNotes: React.FC = () => {
   const { t } = useTranslation();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onClose } = useDisclosure();
 
   return (
     <Flex

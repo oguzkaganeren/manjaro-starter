@@ -1,8 +1,7 @@
 import './home.css';
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense } from 'react';
 import {
-  Text, Flex, VStack, CircularProgress, useColorMode,
-  Button, useColorModeValue, ButtonGroup,
+  Text, Flex, VStack, CircularProgress, useColorModeValue,
 
 } from '@chakra-ui/react';
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
@@ -91,6 +90,7 @@ const App: React.FC = () => {
             w="100%"
             css={{
               backdropFilter: 'saturate(180%) blur(5px)',
+              // eslint-disable-next-line react-hooks/rules-of-hooks
               backgroundColor: useColorModeValue(
                 'rgba(255, 255, 255, 0.8)',
                 'rgba(26, 32, 44, 0.8)',

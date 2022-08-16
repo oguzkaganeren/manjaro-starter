@@ -5,13 +5,10 @@ import {
   SimpleGrid,
   useColorModeValue,
   chakra,
-  ButtonGroup,
   Wrap,
 } from '@chakra-ui/react';
-import React, { useState, useEffect, Suspense } from 'react';
-import {
-  useRecoilState, useRecoilValue,
-} from 'recoil';
+import React from 'react';
+import { useRecoilValue } from 'recoil';
 import { useTranslation } from 'react-i18next';
 import {
   packageState,
@@ -47,7 +44,8 @@ const PackagesList: React.FC = () => {
           fontWeight="extrabold"
           letterSpacing="tight"
           id={category.name.replaceAll(' ', '-')}
-          color={useColorModeValue('white.900', 'white.100')}
+          color="white.900"
+          _dark={{ color: 'white.100' }}
         >
           {category.name}
         </chakra.p>
@@ -55,7 +53,8 @@ const PackagesList: React.FC = () => {
           mt={4}
           maxW="2xl"
           fontSize="xl"
-          color={useColorModeValue('gray.500', 'gray.400')}
+          color="gray.500"
+          _dark={{ color: 'gray.400' }}
         >
           {category.description}
         </chakra.p>
