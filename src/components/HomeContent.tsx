@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import {
   Container,
   Heading,
@@ -42,10 +42,10 @@ const Feature = ({ title, text, icon }: FeatureProps) => (
   </Stack>
 );
 
-export default function HomeContent() {
+const HomeContent: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <Flex p={4} marginTop={90}>
+    <Flex p={4} marginTop={90} marginBottom={50}>
 
       <Stack spacing={4} as={Container} maxW="3xl" textAlign="center">
         <Heading fontSize="3xl">
@@ -93,4 +93,5 @@ export default function HomeContent() {
 
     </Flex>
   );
-}
+};
+export default HomeContent;

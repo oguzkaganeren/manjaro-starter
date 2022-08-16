@@ -102,6 +102,7 @@ const App: React.FC = () => {
               {...{ nextStep, prevStep }}
               prevDisabled={activeStep === 0}
               isLast={activeStep === STEPCOUNT - 1}
+              nextDisabled={false}
             />
             <Text position="absolute" ml={3} fontSize="xs" mt={2} color="gray.500">
               {packageJson.version}

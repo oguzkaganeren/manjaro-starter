@@ -28,22 +28,25 @@ interface Kernel {
 
 const KernelComponent: React.FC = (props) => {
   const [kernelSt, setKernelSt] = useState<Kernel[]>();
+  const [isLoadingKernel, setIsLoadingKernel] = useState<Map<string, boolean>>(new Map());
   const toast = useToast();
   const { t } = useTranslation();
   const getKernelList = async () => {
     const cmd = new Command('mhwd-kernel', ['-l']);
     const kernelList = await cmd.execute();
     const kernels = [] as Kernel[];
-    const installedCmd = new Command('mhwd-kernel', ['-li']);
-    const kernelInstalled = await installedCmd.execute();
     const splitKernels = kernelList.stdout.split('*').filter((item) => item.indexOf('linux') > 0);
-    const splitInstalledKernels = kernelInstalled.stdout.split('*').filter((item) => item.indexOf('linux') > 0);
-    splitKernels.map((item) => {
-      const temp = item.replaceAll(' ', '').replaceAll('\\n', '').replaceAll('\"', '');
-      const isInstalled = splitInstalledKernels.some((item) => item.indexOf(temp) > 0);
-      const kernel:Kernel = { id: _.uniqueId(), name: temp, isInstalled };
+    await Promise.all(splitKernels.map(async (item) => {
+      const kernelName = item.replace(/^\s+|\s+$/g, '').replaceAll('\"', '');
+      const installedCmd = new Command('version-control', ['-Q', kernelName]);
+      const kernelInstalled = await installedCmd.execute();
+      let isInstalled = false;
+      if (kernelInstalled.stdout) {
+        isInstalled = true;
+      }
+      const kernel:Kernel = { id: _.uniqueId(), name: kernelName, isInstalled };
       kernels.push(kernel);
-    });
+    }));
     return kernels;
   };
   const setKernelList = async () => {
@@ -51,8 +54,10 @@ const KernelComponent: React.FC = (props) => {
     setKernelSt(kernelList);
   };
   const installKernel = async (kernelName:string) => {
+    setIsLoadingKernel(new Map(isLoadingKernel?.set(kernelName, true)));
     const cmd = new Command('pamac', ['install', '--no-confirm', kernelName]);
     const cmdResult = await cmd.execute();
+    setIsLoadingKernel(new Map(isLoadingKernel?.set(kernelName, false)));
     if (cmdResult.stdout) {
       const desc = cmdResult.stdout.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item, index) => (
         <span>
@@ -90,7 +95,7 @@ const KernelComponent: React.FC = (props) => {
 
   useEffect(() => {
     setKernelList();
-  });
+  }, []);
 
   return (
     <Box mt={5} textAlign={{ lg: 'left' }}>
@@ -119,7 +124,7 @@ const KernelComponent: React.FC = (props) => {
           <Tag size="md" mr={5} mt={5} key={kernel.id} colorScheme={kernel.isInstalled ? 'whatsapp' : 'gray'}>
             <TagLeftIcon boxSize="12px" as={FaLinux} />
             <TagLabel>{kernel.name}</TagLabel>
-            {!kernel.isInstalled ? <IconButton ml={5} mr={-2} aria-label="Install Kernel" onClick={() => installKernel(kernel.name)} icon={<RiAddLine />} /> : <IconButton ml={5} mr={-2} disabled aria-label="" icon={<MdOutlineDownloadDone />} />}
+            {!kernel.isInstalled ? <IconButton ml={5} mr={-2} aria-label="Install Kernel" onClick={() => installKernel(kernel.name)} isLoading={isLoadingKernel?.get(kernel.name) || false} icon={<RiAddLine />} /> : <IconButton ml={5} mr={-2} disabled aria-label="" icon={<MdOutlineDownloadDone />} />}
           </Tag>
         ))}
       </Skeleton>
