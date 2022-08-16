@@ -5,9 +5,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { availableLanguages } from '../i18n';
 
-interface LanguageProps {
-  }
-const LanguageComponent: React.FC<LanguageProps> = (props) => {
+const LanguageComponent: React.FC = () => {
   const { i18n, t } = useTranslation();
   return (
     <HStack>

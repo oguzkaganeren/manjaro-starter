@@ -25,7 +25,7 @@ const homeContent = (
 );
 const PackageContent: React.FC = () => (
   <Flex py={4}>
-    <Suspense fallback={<CircularProgress isIndeterminate color="green.300" />}>
+    <Suspense fallback={<CircularProgress mt={20} isIndeterminate color="green.300" />}>
       <PackagesList />
     </Suspense>
   </Flex>

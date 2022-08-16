@@ -61,6 +61,7 @@
         "installDrivers": "Install Drivers",
         "setDateTime": "Set Date and Time",
         "installLanguage": "Install Language",
-        "languagePackages": "Language Packages"
+        "languagePackages": "Language Packages",
+        "about": "About"
     }
 }

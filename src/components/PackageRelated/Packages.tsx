@@ -74,7 +74,6 @@ const PackagesList: React.FC = () => {
       py={20}
       mx="auto"
       bg={useColorModeValue('white', 'gray.800')}
-      shadow="xl"
     >
       <Box textAlign={{ lg: 'center' }}>
         <chakra.p

@@ -1,6 +1,7 @@
 import {
   Button,
   Modal,
+  MenuItem,
   ModalOverlay,
   ModalContent,
   ModalHeader,
@@ -28,20 +29,17 @@ import { useTranslation } from 'react-i18next';
 import logo from '../assets/icon.png';
 import packageJson from '../../package.json';
 
-type AboutButtonsProps = {
-};
-
 const AboutComponent = (): JSX.Element => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { t } = useTranslation();
   return (
     <>
-      <Button w="full" onClick={onOpen}>About</Button>
+      <MenuItem w="full" onClick={onOpen}>About</MenuItem>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>About</ModalHeader>
+          <ModalHeader>{t('about')}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Stat
