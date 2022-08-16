@@ -5,6 +5,8 @@ import {
   SimpleGrid,
   useColorModeValue,
   chakra,
+  ButtonGroup,
+  Wrap,
 } from '@chakra-ui/react';
 import React, { useState, useEffect, Suspense } from 'react';
 import {
@@ -21,6 +23,20 @@ import PackageDetail from './PackageDetail';
 const PackagesList: React.FC = () => {
   const packageSt = useRecoilValue(packageState);
   const { t } = useTranslation();
+  const Categories = (
+    <Wrap mt={8} justify="center">
+      {Array.from(packageSt.values()).map((category:Category) => (
+        <Button onClick={() => {
+          const anchor = document.querySelector(`#${category.name.replaceAll(' ', '-')}`);
+          anchor?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }}
+        >
+          {category.name}
+
+        </Button>
+      ))}
+    </Wrap>
+  );
   const Apps = Array.from(packageSt.values()).map((category:Category) => (
     <Box mt={8} key={category.id}>
       <Box textAlign={{ lg: 'left' }}>
@@ -30,6 +46,7 @@ const PackagesList: React.FC = () => {
           lineHeight="8"
           fontWeight="extrabold"
           letterSpacing="tight"
+          id={category.name.replaceAll(' ', '-')}
           color={useColorModeValue('white.900', 'white.100')}
         >
           {category.name}
@@ -98,6 +115,7 @@ const PackagesList: React.FC = () => {
           {t('installPackagesText')}
         </chakra.p>
       </Box>
+      {Categories}
       { Apps}
 
       <Center>
