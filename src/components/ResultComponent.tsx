@@ -21,7 +21,7 @@ const ResultComponent: React.FC<ResultProps> = (props) => {
   const { t } = useTranslation();
   return (
     <Container textAlign="center">
-      <CheckCircleIcon boxSize="50px" color="green.500" marginTop={150} />
+      <CheckCircleIcon boxSize="50px" color="green.500" marginTop={100} />
       <Heading as="h2" size="xl" mt={6} mb={2}>
         {t('congratulations')}
       </Heading>

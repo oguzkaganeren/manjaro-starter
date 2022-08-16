@@ -34,6 +34,20 @@
 <img src="./Screenshots/mainscreen.png" width="400"/>
 <img src="./Screenshots/mainscreen2.png" width="400"/>
 
+## Features
+
+* Steps mechanism
+* Release Notes (redirect to Manjaro Blog)
+* Showing System Details (System name-version, kernel info, host info, CPU, memory, swap)
+* Set fastest mirrors (`pacman-mirrors --fasttrack 5`)
+* Check system updates and update system (Open Pamac updates page)
+* Install Drivers (Open MSM drivers page)
+* Set date time (Open MSM date-time page)
+* Install Language Packages (Open MSM Language Packages page)
+* List Kernels and Install (Used MHWD cli)
+* Most used package list and install them easily
+* Social media links
+
 ### Dependency
 
 * gtk3
