@@ -127,7 +127,9 @@
             "height": 650,
             "resizable": true,
             "fullscreen": false,
-            "decorations": false
+            "decorations": false,
+            "minWidth": 800,
+            "minHeight": 600
         }],
         "security": {
             "csp": null
