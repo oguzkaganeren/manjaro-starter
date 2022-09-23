@@ -24,7 +24,7 @@ const PackagesList: React.FC = () => {
     <Wrap mt={8} justify="center">
       {Array.from(packageSt.values()).map((category:Category) => (
         <Button onClick={() => {
-          const anchor = document.querySelector(`#${category.name.replaceAll(' ', '-')}`);
+          const anchor = document.querySelector(`#${category.name.replaceAll(' ', '-').replaceAll('/', '-')}`);
           anchor?.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }}
         >
@@ -43,7 +43,7 @@ const PackagesList: React.FC = () => {
           lineHeight="8"
           fontWeight="extrabold"
           letterSpacing="tight"
-          id={category.name.replaceAll(' ', '-')}
+          id={category.name.replaceAll(' ', '-').replaceAll('/', '-')}
           color="white.900"
           _dark={{ color: 'white.100' }}
         >
