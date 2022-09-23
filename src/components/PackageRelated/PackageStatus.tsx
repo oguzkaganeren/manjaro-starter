@@ -50,6 +50,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
     const cmd = new Command('pamac', ['install', '--no-confirm', '--no-upgrade', pkgName]);
     const cmdResult = await cmd.execute();
     setIsLoadingPackage(new Map(isLoadingPackage?.set(pkId, false)));
+
     if (cmdResult.stderr) {
       toast({
         title: `${pkgName}`,
@@ -60,7 +61,6 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
         position: 'bottom-right',
       });
     } else {
-      packageInstallStatusControl(catId, pkId);
       const desc = cmdResult.stdout.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item) => (
         <span>
           {item}
@@ -81,6 +81,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
         position: 'bottom-right',
       });
     }
+    packageInstallStatusControl(catId, pkId);
   };
   const {
     isInstalled, catId, pkId, pkgName,
