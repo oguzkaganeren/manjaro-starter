@@ -2,10 +2,10 @@ import {
   Switch, HStack, Spacer,
 } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
-import { forage } from '@tauri-apps/tauri-forage';
 import { useTranslation } from 'react-i18next';
 import { resolveResource, configDir } from '@tauri-apps/api/path';
 import { copyFile, removeFile } from '@tauri-apps/api/fs';
+import store from 'store/storages/localStorage';
 
 const StartLaunch = (): JSX.Element => {
   const { t } = useTranslation();
@@ -15,34 +15,23 @@ const StartLaunch = (): JSX.Element => {
     const configDirPath = await configDir();
     if (event.target.checked) {
       // localdata set
-      forage.setItem({
-        key: 'launchStart',
-        value: 'true',
-      })();
-      // copy desktop file to autostart folder
+      store.write('launchStart', 'true');
       const resourcePath = await resolveResource('resources/manjaro-starter.desktop');
-      await copyFile(resourcePath, `${configDirPath}autostart/manjaro-starter.desktop`);
+      copyFile(resourcePath, `${configDirPath}autostart/manjaro-starter.desktop`);
     } else {
       // localdata set
-      forage.setItem({
-        key: 'launchStart',
-        value: 'false',
-      })();
-      // remove desktop file from autostart folder
-      await removeFile(`${configDirPath}autostart/manjaro-starter.desktop`);
+      store.write('launchStart', 'false');
+      removeFile(`${configDirPath}autostart/manjaro-starter.desktop`);
     }
   };
 
   useEffect(() => {
-    const getLocalData = async () => {
-      const launchStart = await forage.getItem({ key: 'launchStart' })();
-      if (launchStart) {
-        setLaunch(launchStart === 'true');
+    const getLocalData = () => {
+      const val = store.read('launchStart');
+      if (val) {
+        setLaunch(val === 'true');
       } else {
-        forage.setItem({
-          key: 'launchStart',
-          value: 'false',
-        })();
+        store.write('launchStart', 'false');
       }
     };
     getLocalData();
