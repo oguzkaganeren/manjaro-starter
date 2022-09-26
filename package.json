@@ -1,6 +1,6 @@
 {
   "name": "manjaro-starter",
-  "version": "0.0.2",
+  "version": "v0.0.2",
   "private": true,
   "dependencies": {
     "@chakra-ui/icons": "^2.0.8",
