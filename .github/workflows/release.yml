@@ -1,6 +1,6 @@
 name: Publish
 on:
-  push:
+  workflow_dispatch:
     branches:
       - 'master'
 
@@ -19,15 +19,8 @@ jobs:
             github-token: ${{ secrets.GITHUB_TOKEN }}
             output-file: "false" 
       - uses: fregante/setup-git-user@v1
-      - name: Update version of Package.json
+      - name: Build
         run: |    
-          NEW_VERSION=${{ steps.changelog.outputs.tag }}
-          CURRENT_VERSION=$(node -p "require('./package.json').version") 
-          sed -i "s/${CURRENT_VERSION}/${NEW_VERSION}/" package.json
-          git add package.json
-          git commit -m "bump version"
-          git push
-          git pull
           sudo apt update
           sudo apt-get -y install cargo
           sudo apt install libwebkit2gtk-4.0-dev build-essential curl wget libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
