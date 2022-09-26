@@ -12,10 +12,16 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - name: Conventional Changelog Action
+        id: changelog 
+        uses: TriPSs/conventional-changelog-action@v3 
+        with: 
+            github-token: ${{ secrets.GITHUB_TOKEN }}
+            output-file: "false" 
       - uses: fregante/setup-git-user@v1
       - name: Update version of Package.json
         run: |    
-          NEW_VERSION=${{ steps.versioning.outputs.version }}
+          NEW_VERSION=${{ steps.changelog.outputs.tag }}
           CURRENT_VERSION=$(node -p "require('./package.json').version") 
           sed -i "s/${CURRENT_VERSION}/${NEW_VERSION}/" package.json
           git add package.json
@@ -32,12 +38,6 @@ jobs:
           yarn build
           cargo-tauri build
           
-      - name: Conventional Changelog Action
-        id: changelog 
-        uses: TriPSs/conventional-changelog-action@v3 
-        with: 
-            github-token: ${{ secrets.GITHUB_TOKEN }}
-            output-file: "false" 
       - uses: "softprops/action-gh-release@v1"
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
@@ -46,7 +46,6 @@ jobs:
           tag_name: ${{ steps.changelog.outputs.tag }}
           name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
-          automatic_release_tag: ${{ steps.versioning.outputs.version }}
           files: |
             LICENSE.md
             ./src-tauri/target/release/bundle/deb/*.deb
