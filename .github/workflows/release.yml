@@ -33,11 +33,11 @@ jobs:
           cargo-tauri build
           
       - name: Conventional Changelog Action
-          id: changelog 
-          uses: TriPSs/conventional-changelog-action@v3 
-          with: 
-              github-token: ${{ secrets.github_token } 
-              output-file: "false" 
+        id: changelog 
+        uses: TriPSs/conventional-changelog-action@v3 
+        with: 
+            github-token: ${{ secrets.github_token } 
+            output-file: "false" 
       - uses: "softprops/action-gh-release@v1"
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
