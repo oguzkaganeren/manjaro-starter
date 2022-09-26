@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import {
   Container,
   Heading,
@@ -44,6 +44,9 @@ const Feature = ({ title, text, icon }: FeatureProps) => (
 
 const HomeContent: React.FC = () => {
   const { t } = useTranslation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Flex p={4} marginTop={90} marginBottom={50}>
 

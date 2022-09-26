@@ -66,7 +66,7 @@ const NavbarComponent: React.FC = () => (
     w="full"
     boxShadow="sm"
     justify="flex-end"
-    zIndex={999}
+    zIndex={998}
     css={{
       backdropFilter: 'saturate(180%) blur(5px)',
       backgroundColor: useColorModeValue(

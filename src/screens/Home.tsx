@@ -60,7 +60,7 @@ const App: React.FC = () => {
               position="fixed"
               padding={5}
               boxShadow="sm"
-              zIndex={999}
+              zIndex={998}
               css={{
                 backdropFilter: 'saturate(180%) blur(5px)',
                 backgroundColor: useColorModeValue(
