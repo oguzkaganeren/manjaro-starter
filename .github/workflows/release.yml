@@ -13,21 +13,6 @@ jobs:
         with:
           fetch-depth: 0
       - uses: fregante/setup-git-user@v1
-      - uses: paulhatch/semantic-version@v4.0.2
-        id: versioning
-        with:
-          # The prefix to use to identify tags
-          tag_prefix: "v"
-          # A string which, if present in a git commit, indicates that a change represents a
-          # major (breaking) change, supports regular expressions wrapped with '/'
-          major_pattern: "(MAJOR)"
-          # Same as above except indicating a minor change, supports regular expressions wrapped with '/'
-          minor_pattern: "(MINOR)"
-          format: "${major}.${minor}.${patch}-${increment}"
-          # Named version, will be used as suffix for name version tag
-          namespace: ""
-          # If this is set to true, *every* commit will be treated as a new version.
-          bump_each_commit: false
       - name: Update version of Package.json
         run: |    
           NEW_VERSION=${{ steps.versioning.outputs.version }}
@@ -46,13 +31,22 @@ jobs:
           yarn install
           yarn build
           cargo-tauri build
-
-      - uses: "marvinpinto/action-automatic-releases@latest"
+          
+      - name: Conventional Changelog Action
+          id: changelog 
+          uses: TriPSs/conventional-changelog-action@v3 
+          with: 
+              github-token: ${{ secrets.github_token } 
+              output-file: "false" 
+      - uses: "softprops/action-gh-release@v1"
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
+          draft: false
+          tag_name: ${{ steps.changelog.outputs.tag }}
+          name: ${{ steps.changelog.outputs.tag }}
+          body: ${{ steps.changelog.outputs.clean_changelog }}
           automatic_release_tag: ${{ steps.versioning.outputs.version }}
-          title: ${{ steps.versioning.outputs.version }}
           files: |
             LICENSE.md
             ./src-tauri/target/release/bundle/deb/*.deb
