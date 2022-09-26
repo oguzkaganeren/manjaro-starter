@@ -7,7 +7,7 @@ import {
   chakra,
   Wrap,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useTranslation } from 'react-i18next';
 import {
@@ -20,6 +20,9 @@ import PackageDetail from './PackageDetail';
 const PackagesList: React.FC = () => {
   const packageSt = useRecoilValue(packageState);
   const { t } = useTranslation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const Categories = (
     <Wrap mt={8} justify="center">
       {Array.from(packageSt.values()).map((category:Category) => (

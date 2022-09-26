@@ -23,6 +23,9 @@ const SystemConfig: React.FC<SystemConfigProps> = (props) => {
   const [isVisibleMSM, setIsVisibleMSM] = useState(false);
   const { t } = useTranslation();
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
     const resultOfGnome = new Command('version-control', ['-Q', 'gnome-layout-switcher']).execute();
     resultOfGnome.then((response) => {
       if (response.stdout) {
