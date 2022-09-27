@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { StepsStyleConfig as Steps } from 'chakra-ui-steps';
 import { RecoilRoot } from 'recoil';
+import { TourProvider } from '@reactour/tour';
+import { t } from 'i18next';
 import App from './screens/Home';
 import reportWebVitals from './reportWebVitals';
 
@@ -16,11 +18,33 @@ const theme = extendTheme({
     Steps,
   },
 });
+const steps = [
+  {
+    selector: '.first-step',
+    content: t('tourStepOne'),
+  },
+];
 root.render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
       <RecoilRoot>
-        <App />
+        <TourProvider
+          showBadge={false}
+          showDots={false}
+          showNavigation={false}
+          showPrevNextButtons={false}
+          position="top"
+          styles={{
+            popover: (base) => ({
+              ...base,
+              borderRadius: 5,
+              padding: 30,
+            }),
+          }}
+          steps={steps}
+        >
+          <App />
+        </TourProvider>
       </RecoilRoot>
     </ChakraProvider>
   </React.StrictMode>,
