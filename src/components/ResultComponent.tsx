@@ -4,7 +4,7 @@ import {
 import React, { useEffect } from 'react';
 import { CheckCircleIcon } from '@chakra-ui/icons';
 import {
-  SiDiscourse, SiWikipedia, SiGit, SiTelegram, SiReddit,
+  SiDiscourse, SiWikipedia, SiGit, SiTelegram, SiReddit, SiBlogger,
 } from 'react-icons/si';
 import {
   FiPackage, FiMail, FiFacebook, FiTwitter,
@@ -38,7 +38,7 @@ const ResultComponent: React.FC<ResultProps> = (props) => {
           <Text>{t('postForum')}</Text>
         </Center>
       </Button>
-      <Button mt={5} mr={5} colorScheme="yellow" onClick={async () => { await open(SocialLinks.urls.software); }} leftIcon={<FiPackage />}>
+      <Button mt={5} mr={5} colorScheme="blue" onClick={async () => { await open(SocialLinks.urls.software); }} leftIcon={<FiPackage />}>
         <Center>
           <Text>{t('discoverSoftware')}</Text>
         </Center>
@@ -73,7 +73,12 @@ const ResultComponent: React.FC<ResultProps> = (props) => {
           <Text>{t('reddit')}</Text>
         </Center>
       </Button>
-      <Button mt={5} mr={5} colorScheme="cyan" onClick={async () => { await open(SocialLinks.urls.mailing); }} leftIcon={<FiMail />}>
+      <Button mt={5} mr={5} colorScheme="purple" onClick={async () => { await open(SocialLinks.urls.blog); }} leftIcon={<SiBlogger />}>
+        <Center>
+          <Text>{t('blog')}</Text>
+        </Center>
+      </Button>
+      <Button mt={5} mr={5} colorScheme="pink" onClick={async () => { await open(SocialLinks.urls.mailing); }} leftIcon={<FiMail />}>
         <Center>
           <Text>{t('joinMail')}</Text>
         </Center>
