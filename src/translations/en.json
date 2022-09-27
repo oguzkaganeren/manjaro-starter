@@ -65,6 +65,7 @@
         "installPackagesText": "Install packages to set up your environment.",
         "discoverMore": "Discover More",
         "start": "Let's Begin",
-        "tourStepOne": "You can continue here to discover Manjaro Starter."
+        "tourStepOne": "You can continue here to discover Manjaro Starter.",
+        "blog": "Our Blog"
     }
 }
