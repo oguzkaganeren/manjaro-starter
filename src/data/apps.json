@@ -292,7 +292,7 @@
     {
         "name": "PDF",
         "icon": "pdfeditor",
-        "description": "PDF applications applications",
+        "description": "PDF applications",
         "apps": [{
                 "name": "Evince",
                 "icon": "evince",

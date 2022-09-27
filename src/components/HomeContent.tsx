@@ -10,7 +10,7 @@ import {
   Divider,
 } from '@chakra-ui/react';
 import {
-  FcElectronics, FcInfo, FcGlobe, FcCollaboration, FcFeedback, FcInvite,
+  FcElectronics, FcInfo, FcGlobe, FcCollaboration, FcFeedback,
 } from 'react-icons/fc';
 import { useTranslation } from 'react-i18next';
 import ReleaseNotes from './ReleaseNotes';
@@ -80,11 +80,6 @@ const HomeContent: React.FC = () => {
             icon={<Icon as={FcCollaboration} w={10} h={10} />}
             title={t('lookForum')}
             text={t('homeText5')}
-          />
-          <Feature
-            icon={<Icon as={FcInvite} w={10} h={10} />}
-            title={t('mailList')}
-            text={t('homeText6')}
           />
           <Feature
             icon={<Icon as={FcFeedback} w={10} h={10} />}
