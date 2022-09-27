@@ -1,7 +1,7 @@
 import {
   Container, Heading, Text, Button, Center,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CheckCircleIcon } from '@chakra-ui/icons';
 import {
   SiDiscourse, SiWikipedia, SiGit, SiTelegram, SiReddit,
@@ -21,6 +21,9 @@ interface ResultProps {
 const ResultComponent: React.FC<ResultProps> = (props) => {
   const { t } = useTranslation();
   const { onReset } = props;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Container textAlign="center">
       <CheckCircleIcon boxSize="50px" color="green.500" marginTop={100} />
