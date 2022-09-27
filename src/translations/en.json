@@ -63,6 +63,7 @@
         "about": "About",
         "packages": "Packages",
         "installPackagesText": "Install packages to set up your environment.",
-        "discoverMore": "Discover More"
+        "discoverMore": "Discover More",
+        "start": "Let's Begin"
     }
 }
