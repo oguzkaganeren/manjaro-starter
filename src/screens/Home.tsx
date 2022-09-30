@@ -8,7 +8,6 @@ import { Step, Steps, useSteps } from 'chakra-ui-steps';
 import { FiPackage, FiHome } from 'react-icons/fi';
 import { GiSettingsKnobs } from 'react-icons/gi';
 import { useTranslation } from 'react-i18next';
-
 import StepButtons from '../components/StepButtons';
 import HomeContent from '../components/HomeContent';
 import PackagesList from '../components/PackageRelated/Packages';

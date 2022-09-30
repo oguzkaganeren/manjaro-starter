@@ -8,6 +8,7 @@ import {
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
+import { info, error } from 'tauri-plugin-log-api';
 
 const SystemUpdate: React.FC = (props) => {
   const { t } = useTranslation();
@@ -15,6 +16,7 @@ const SystemUpdate: React.FC = (props) => {
   const checkUpdates = async () => {
     const cmd = new Command('pamac', ['checkupdates']);
     const cmdResult = await cmd.execute();
+
     if (cmdResult.stdout) {
       const updateSp = cmdResult.stdout.split(':');
       const updateCount = updateSp[0];
@@ -23,7 +25,9 @@ const SystemUpdate: React.FC = (props) => {
   };
   const updateSystem = async () => {
     const cmd = new Command('pamac-manager', ['--updates']);
-    cmd.execute();
+    const cmdResult = await cmd.execute();
+    error(cmdResult.stderr);
+    info(cmdResult.stdout);
   };
   useEffect(() => {
     checkUpdates();

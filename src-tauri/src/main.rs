@@ -5,7 +5,9 @@
 use sysinfo::{CpuRefreshKind, CpuExt, RefreshKind, System, SystemExt};
 use std::process::Command;
 use serde_json::json;
-use tauri_plugin_log::{LogTarget, LoggerBuilder};
+use tauri_plugin_log::{LogTarget, LoggerBuilder,RotationStrategy};
+use log::LevelFilter;
+
 #[tauri::command]
 fn run_shell_command(command: String) -> String {
   let output= Command::new("sh")
@@ -47,7 +49,9 @@ fn get_sys_info() -> String {
   return sys_info.to_string();
 }
 fn main() {
-  tauri::Builder::default().plugin(LoggerBuilder::default().targets([
+  tauri::Builder::default().plugin(LoggerBuilder::default().rotation_strategy(RotationStrategy::KeepAll)
+  .max_file_size(1000)
+  .level(LevelFilter::Debug).targets([
     LogTarget::LogDir,
     LogTarget::Stdout,
     LogTarget::Webview,

@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import { RiInstallLine, RiCheckLine } from 'react-icons/ri';
 import { Command } from '@tauri-apps/api/shell';
 import { useRecoilState } from 'recoil';
+import { info, error } from 'tauri-plugin-log-api';
 import {
   packageState,
 } from '../../stores/PackageStore';
@@ -50,6 +51,8 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
     const cmd = new Command('pamac', ['install', '--no-confirm', '--no-upgrade', pkgName]);
     const cmdResult = await cmd.execute();
     setIsLoadingPackage(new Map(isLoadingPackage?.set(pkId, false)));
+    info(cmdResult.stdout);
+    error(cmdResult.stderr);
 
     if (cmdResult.stderr) {
       toast({
@@ -68,7 +71,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
         </span>
       ));
       const colDesc = (
-        <Text noOfLines={[1, 2, 3]}>
+        <Text>
           {desc}
         </Text>
       );

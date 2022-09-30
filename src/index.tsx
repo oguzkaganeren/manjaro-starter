@@ -5,6 +5,7 @@ import { StepsStyleConfig as Steps } from 'chakra-ui-steps';
 import { RecoilRoot } from 'recoil';
 import { TourProvider } from '@reactour/tour';
 import { t } from 'i18next';
+
 import App from './screens/Home';
 import reportWebVitals from './reportWebVitals';
 
