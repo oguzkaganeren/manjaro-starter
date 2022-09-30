@@ -16,6 +16,7 @@ import { MdOutlineDownloadDone } from 'react-icons/md';
 import _ from 'lodash';
 import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
+import { info, error } from 'tauri-plugin-log-api';
 
 interface Kernel {
   id: string;
@@ -55,6 +56,8 @@ const KernelComponent: React.FC = () => {
     const cmd = new Command('pamac', ['install', '--no-confirm', kernelName]);
     const cmdResult = await cmd.execute();
     setIsLoadingKernel(new Map(isLoadingKernel?.set(kernelName, false)));
+    info(cmdResult.stdout);
+    error(cmdResult.stderr);
     if (cmdResult.stdout) {
       const desc = cmdResult.stdout.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item) => (
         <span>

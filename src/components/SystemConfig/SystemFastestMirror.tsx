@@ -8,6 +8,7 @@ import {
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
+import { info, error } from 'tauri-plugin-log-api';
 
 const SystemFastestMirror: React.FC = (props) => {
   const { t } = useTranslation();
@@ -18,7 +19,8 @@ const SystemFastestMirror: React.FC = (props) => {
     const cmd = new Command('sudo', ['pacman-mirrors', '--fasttrack', '5']);
     cmd.execute().then((response) => {
       setIsProcessing(false);
-      console.log(response.stdout);
+      error(response.stderr);
+      info(response.stdout);
       if (response.stdout) {
         toast({
           title: '',
