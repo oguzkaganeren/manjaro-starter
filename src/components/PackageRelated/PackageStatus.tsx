@@ -2,12 +2,14 @@ import {
   IconButton,
   useToast,
   Text,
+  Tooltip,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { RiInstallLine, RiCheckLine } from 'react-icons/ri';
 import { Command } from '@tauri-apps/api/shell';
 import { useRecoilState } from 'recoil';
 import { info, error } from 'tauri-plugin-log-api';
+
 import {
   packageState,
 } from '../../stores/PackageStore';
@@ -94,7 +96,9 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
       {isInstalled ? (
         <IconButton aria-label="installed" disabled icon={<RiCheckLine />} colorScheme="gray" variant="solid" />
       ) : (
-        <IconButton aria-label="install" icon={<RiInstallLine />} isLoading={isLoadingPackage?.get(pkId) || false} onClick={() => installPackageWithName(catId, pkId, pkgName)} colorScheme="green" variant="solid" />
+        <Tooltip label="Install package">
+          <IconButton aria-label="install" icon={<RiInstallLine />} isLoading={isLoadingPackage?.get(pkId) || false} onClick={() => installPackageWithName(catId, pkId, pkgName)} colorScheme="green" variant="solid" />
+        </Tooltip>
       )}
 
     </div>

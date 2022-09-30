@@ -8,6 +8,7 @@ import {
   Tag,
   IconButton,
   useToast,
+  Tooltip,
 } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import { FaLinux } from 'react-icons/fa';
@@ -125,7 +126,11 @@ const KernelComponent: React.FC = () => {
           <Tag size="md" mr={5} mt={5} key={kernel.id} colorScheme={kernel.isInstalled ? 'whatsapp' : 'gray'}>
             <TagLeftIcon boxSize="12px" as={FaLinux} />
             <TagLabel>{kernel.name}</TagLabel>
-            {!kernel.isInstalled ? <IconButton ml={5} mr={-2} aria-label="Install Kernel" onClick={() => installKernel(kernel.name)} isLoading={isLoadingKernel?.get(kernel.name) || false} icon={<RiAddLine />} /> : <IconButton ml={5} mr={-2} disabled aria-label="" icon={<MdOutlineDownloadDone />} />}
+            {!kernel.isInstalled ? (
+              <Tooltip label="Install Kernel">
+                <IconButton ml={5} mr={-2} aria-label="Install Kernel" onClick={() => installKernel(kernel.name)} isLoading={isLoadingKernel?.get(kernel.name) || false} icon={<RiAddLine />} />
+              </Tooltip>
+            ) : <IconButton ml={5} mr={-2} disabled aria-label="" icon={<MdOutlineDownloadDone />} />}
           </Tag>
         ))}
       </Skeleton>
