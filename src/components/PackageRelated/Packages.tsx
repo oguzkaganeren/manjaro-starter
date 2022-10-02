@@ -134,7 +134,6 @@ const PackagesList: React.FC = () => {
           </Button>
         </a>
       </Center>
-
     </Box>
   );
 };

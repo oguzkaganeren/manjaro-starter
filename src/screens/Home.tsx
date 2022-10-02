@@ -15,6 +15,7 @@ import ResultComponent from '../components/ResultComponent';
 import SystemConfig from '../components/SystemConfig/SystemConfig';
 import packageJson from '../../package.json';
 import Nav from '../components/NavbarComponent';
+import ScrollToTop from '../components/common/ScrollToTop';
 
 const Home = (
   <Flex py={4}>
@@ -110,7 +111,7 @@ const App: React.FC = () => {
 
           </Flex>
         )}
-
+        <ScrollToTop />
       </VStack>
     </>
 
