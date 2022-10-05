@@ -56,10 +56,15 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
     info(cmdResult.stdout);
     error(cmdResult.stderr);
 
-    if (cmdResult.stderr) {
+    if (cmdResult.stderr || cmdResult.stdout.toUpperCase().indexOf('ERROR') > 0) {
+      const colDesc = (
+        <Text maxH={200} overflow="scroll">
+          {cmdResult.stderr ? cmdResult.stderr : cmdResult.stdout}
+        </Text>
+      );
       toast({
         title: `${pkgName}`,
-        description: cmdResult.stderr,
+        description: colDesc,
         status: 'error',
         duration: 9000,
         isClosable: true,
@@ -73,7 +78,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
         </span>
       ));
       const colDesc = (
-        <Text>
+        <Text maxH={200} overflow="scroll">
           {desc}
         </Text>
       );
