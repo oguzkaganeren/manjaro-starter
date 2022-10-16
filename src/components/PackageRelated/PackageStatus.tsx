@@ -4,7 +4,7 @@ import {
   Text,
   Tooltip,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { RiInstallLine, RiCheckLine } from 'react-icons/ri';
 import { Command } from '@tauri-apps/api/shell';
 import { useRecoilState } from 'recoil';
@@ -55,21 +55,24 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
     setIsLoadingPackage(new Map(isLoadingPackage?.set(pkId, false)));
     info(cmdResult.stdout);
     error(cmdResult.stderr);
-
-    if (cmdResult.stderr || cmdResult.stdout.toUpperCase().indexOf('ERROR') > 0) {
-      const colDesc = (
-        <Text maxH={200} overflow="scroll">
-          {cmdResult.stderr ? cmdResult.stderr : cmdResult.stdout}
-        </Text>
-      );
+    function showMsg(msg:string | ReactNode, pkName:string, isError:boolean) {
       toast({
-        title: `${pkgName}`,
-        description: colDesc,
-        status: 'error',
+        title: `${pkName}`,
+        description: msg,
+        status: isError ? 'error' : 'success',
         duration: 9000,
         isClosable: true,
         position: 'bottom-right',
       });
+    }
+    if (cmdResult.stderr || cmdResult.stdout.toUpperCase().indexOf('ERROR') > 0) {
+      const msg = cmdResult.stderr ? cmdResult.stderr : cmdResult.stdout;
+      const desc = (
+        <Text maxH={200} overflow="scroll">
+          {msg}
+        </Text>
+      );
+      showMsg(desc, pkgName, cmdResult.stdout.toUpperCase().indexOf('ERROR') > 0);
     } else {
       const desc = cmdResult.stdout.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item) => (
         <span>
@@ -82,14 +85,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
           {desc}
         </Text>
       );
-      toast({
-        title: `${pkgName}`,
-        description: colDesc,
-        status: 'success',
-        duration: 9000,
-        isClosable: true,
-        position: 'bottom-right',
-      });
+      showMsg(colDesc, pkgName, true);
     }
     packageInstallStatusControl(catId, pkId);
   };
