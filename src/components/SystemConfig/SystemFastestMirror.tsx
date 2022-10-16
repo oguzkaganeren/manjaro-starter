@@ -4,6 +4,7 @@ import {
   useColorModeValue,
   chakra,
   useToast,
+  Text,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -14,6 +15,21 @@ const SystemFastestMirror: React.FC = (props) => {
   const { t } = useTranslation();
   const toast = useToast();
   const [isProcessing, setIsProcessing] = useState(false);
+  function showMsg(msg:string, isError:boolean) {
+    const desc = (
+      <Text maxH={200} overflow="scroll">
+        {msg.replace(/\u001b\[.*?m/g, '').replaceAll('::', '')}
+      </Text>
+    );
+    toast({
+      title: '',
+      description: desc,
+      status: isError ? 'error' : 'success',
+      duration: 9000,
+      isClosable: true,
+      position: 'bottom-right',
+    });
+  }
   const setFastestMirror = async () => {
     setIsProcessing(true);
     const cmd = new Command('sudo', ['pacman-mirrors', '--fasttrack', '5']);
@@ -22,23 +38,9 @@ const SystemFastestMirror: React.FC = (props) => {
       error(response.stderr);
       info(response.stdout);
       if (response.stdout) {
-        toast({
-          title: '',
-          description: response.stdout.replace(/\u001b\[.*?m/g, '').replaceAll('::', ''),
-          status: 'success',
-          duration: 9000,
-          isClosable: true,
-          position: 'bottom-right',
-        });
+        showMsg(response.stdout, false);
       } else {
-        toast({
-          title: '',
-          description: response.stderr.replace(/\u001b\[.*?m/g, ''),
-          status: 'error',
-          duration: 9000,
-          isClosable: true,
-          position: 'bottom-right',
-        });
+        showMsg(response.stderr, true);
       }
     });
   };

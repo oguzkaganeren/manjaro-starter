@@ -9,6 +9,7 @@ import {
   IconButton,
   useToast,
   Tooltip,
+  Text,
 } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import { FaLinux } from 'react-icons/fa';
@@ -52,6 +53,26 @@ const KernelComponent: React.FC = () => {
     const kernelList:Kernel[] = await getKernelList();
     setKernelSt(kernelList);
   };
+  function showMsg(msg:string, kernelName:string, isError:boolean) {
+    const desc = (
+      <Text maxH={200} overflow="scroll">
+        {msg.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item) => (
+          <span>
+            {item}
+            <br />
+          </span>
+        ))}
+      </Text>
+    );
+    toast({
+      title: `${t('installing')} ${kernelName}`,
+      description: desc,
+      status: isError ? 'error' : 'success',
+      duration: 9000,
+      isClosable: true,
+      position: 'bottom-right',
+    });
+  }
   const installKernel = async (kernelName:string) => {
     setIsLoadingKernel(new Map(isLoadingKernel?.set(kernelName, true)));
     const cmd = new Command('pamac', ['install', '--no-confirm', kernelName]);
@@ -60,35 +81,9 @@ const KernelComponent: React.FC = () => {
     info(cmdResult.stdout);
     error(cmdResult.stderr);
     if (cmdResult.stdout) {
-      const desc = cmdResult.stdout.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item) => (
-        <span>
-          {item}
-          <br />
-        </span>
-      ));
-      toast({
-        title: `${t('installing')} ${kernelName}`,
-        description: desc,
-        status: 'success',
-        duration: 9000,
-        isClosable: true,
-        position: 'bottom-right',
-      });
+      showMsg(cmdResult.stdout, kernelName, false);
     } else {
-      const desc = cmdResult.stderr.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item) => (
-        <span>
-          {item}
-          <br />
-        </span>
-      ));
-      toast({
-        title: kernelName,
-        description: desc,
-        status: 'error',
-        duration: 9000,
-        isClosable: true,
-        position: 'bottom-right',
-      });
+      showMsg(cmdResult.stdout, kernelName, true);
     }
     setKernelList();
     return cmdResult;
