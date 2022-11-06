@@ -5,7 +5,7 @@
         "finish": "Finish",
         "manjaroStarter": "Manjaro Starter",
         "projectGithubPage": "Project Github Page",
-        "gnu": "GNU General Public License",
+        "gnu": "License",
         "welcomeManjaro": "Welcome to Manjaro!",
         "homeText1": "We, the Manjaro Developers, hope that you will enjoy using Manjaro as much as we enjoy building it. Manjaro Starter will help you to get started with your new operating system. So enjoy the experience, and don't hesitate to send us your feedback.",
         "handleHardware": "Handling hardware",
@@ -66,6 +66,8 @@
         "discoverMore": "Discover More",
         "start": "Let's Begin",
         "tourStepOne": "You can continue here to discover Manjaro Starter.",
-        "blog": "Our Blog"
+        "blog": "Our Blog",
+        "appSettings": "Settings",
+        "appLogInfo": "Application log files can be found at ~/.config/com.manjaro.starter/logs/"
     }
 }

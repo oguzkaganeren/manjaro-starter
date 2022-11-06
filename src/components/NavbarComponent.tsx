@@ -1,63 +1,19 @@
 import {
   Flex,
   useColorModeValue,
-  useColorMode,
   Stack,
   IconButton,
   ButtonGroup,
   Spacer,
-  Menu,
-  MenuList,
-  MenuItem,
-  MenuButton,
-  Portal,
-  HStack,
 } from '@chakra-ui/react';
 import React from 'react';
-import { CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { CloseIcon } from '@chakra-ui/icons';
 import { appWindow } from '@tauri-apps/api/window';
 import { BiWindow } from 'react-icons/bi';
-import { GiHamburgerMenu } from 'react-icons/gi';
 import { MdOutlineMinimize } from 'react-icons/md';
-import { useTranslation } from 'react-i18next';
-import LanguageComponent from './LanguageComponent';
-import StartLaunch from './StartLaunch';
-import AboutComponent from './AboutComponent';
+import AppSettings from './AppSettings';
+import ThemeComponent from './ThemeComponent';
 
-const AppMenu = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
-  const { t } = useTranslation();
-  return (
-    <Menu closeOnSelect={false}>
-      <MenuButton
-        as={IconButton}
-        size="sm"
-        aria-label="Options"
-        icon={<GiHamburgerMenu />}
-      />
-      <Portal>
-        <MenuList zIndex="popover">
-          <MenuItem>
-            <LanguageComponent />
-          </MenuItem>
-          <MenuItem>
-            <StartLaunch />
-          </MenuItem>
-          <MenuItem onClick={toggleColorMode}>
-            <HStack>
-              <span>{t('colorMode')}</span>
-              <Spacer />
-              {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-            </HStack>
-
-          </MenuItem>
-          <AboutComponent />
-        </MenuList>
-      </Portal>
-
-    </Menu>
-  );
-};
 const NavbarComponent: React.FC = () => (
   <Flex
     as="header"
@@ -79,8 +35,9 @@ const NavbarComponent: React.FC = () => (
 
     <Spacer />
     <Flex h={16} mr={5} alignItems="center" justifyContent="space-between">
-      <Stack direction="row" spacing={7}>
-        <AppMenu />
+      <Stack direction="row" spacing={2}>
+        <ThemeComponent />
+        <AppSettings />
         <ButtonGroup>
 
           <IconButton aria-label="Minimize" onClick={() => { appWindow.minimize(); }} size="sm" icon={<MdOutlineMinimize />} />
