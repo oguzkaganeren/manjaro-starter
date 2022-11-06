@@ -7,6 +7,7 @@ const ThemeComponent: FC = () => {
   const text = useColorModeValue('dark', 'light');
   return (
     <IconButton
+      size="sm"
       aria-label={`Switch to ${text} mode`}
       onClick={toggleColorMode}
       icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
