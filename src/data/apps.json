@@ -386,6 +386,13 @@
                 "description": "Drawing program for children",
                 "pkg": "tuxpaint",
                 "extra": []
+            },
+            {
+                "name": "Flameshot",
+                "icon": "flameshot",
+                "description": "Powerful and simple to use screenshot software with built-in editor with advanced features.",
+                "pkg": "flameshot",
+                "extra": []
             }
         ]
     },
@@ -632,6 +639,20 @@
                 "icon": "pidgin",
                 "description": "Instant messaging Client",
                 "pkg": "pidgin",
+                "extra": []
+            },
+            {
+                "name": "Signal",
+                "icon": "signal-desktop",
+                "description": "Signal Private Messenger for Linux",
+                "pkg": "signal-desktop",
+                "extra": []
+            },
+            {
+                "name": "Element",
+                "icon": "element-desktop",
+                "description": "Glossy Matrix collaboration client — desktop version.",
+                "pkg": "element-desktop",
                 "extra": []
             }
         ]
