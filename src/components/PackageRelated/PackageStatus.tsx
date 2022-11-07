@@ -50,7 +50,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
     pkgName:string,
   ) => {
     setIsLoadingPackage(new Map(isLoadingPackage?.set(pkId, true)));
-    const cmd = new Command('sudo', ['pamac', 'install', '--no-confirm', '--no-upgrade', pkgName]);
+    const cmd = new Command('pamac', ['install', '--no-confirm', '--no-upgrade', pkgName]);
     const cmdResult = await cmd.execute();
     setIsLoadingPackage(new Map(isLoadingPackage?.set(pkId, false)));
     info(cmdResult.stdout);
