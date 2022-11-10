@@ -1,6 +1,7 @@
 import {
   Modal, useDisclosure, ModalBody, ModalCloseButton,
-  ModalContent, ModalHeader, ModalOverlay, Button, useColorModeValue, ModalFooter, Image, SimpleGrid,
+  ModalContent, ModalHeader, ModalOverlay,
+  Button, useColorModeValue, ModalFooter, Image, SimpleGrid, Heading, VStack,
 } from '@chakra-ui/react';
 import { useRef, FC } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -57,7 +58,11 @@ const GnomeLayoutManager: FC = () => {
                     new Command('gnome-layout-switcher', [`apply-${layout}`]).execute();
                   }}
                 >
-                  <Image src={`${process.env.PUBLIC_URL}/GnomeLayouts/${layout}preview.svg`} alt="Gnome" />
+                  <VStack>
+                    <Heading as="h5" size="sm" style={{ textTransform: 'capitalize' }}>{layout}</Heading>
+                    <Image src={`${process.env.PUBLIC_URL}/GnomeLayouts/${layout}preview.svg`} alt="Gnome" />
+                  </VStack>
+
                 </Button>
               ))}
             </SimpleGrid>
