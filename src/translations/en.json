@@ -68,6 +68,7 @@
         "tourStepOne": "You can continue here to discover Manjaro Starter.",
         "blog": "Our Blog",
         "appSettings": "Settings",
-        "appLogInfo": "Application log files can be found at ~/.config/com.manjaro.starter/logs/"
+        "appLogInfo": "Application log files can be found at ~/.config/com.manjaro.starter/logs/",
+        "advanced": "Advanced"
     }
 }

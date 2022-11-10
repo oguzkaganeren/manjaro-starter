@@ -14,6 +14,7 @@ import SystemInfoComponent from './SystemInfo';
 import SystemUpdate from './SystemUpdate';
 import SystemFastestMirror from './SystemFastestMirror';
 import ManjaroSettingsModule from './ManjaroSettingsModule';
+import GnomeLayoutManager from './GnomeLayoutMaganer';
 
 interface SystemConfigProps {
 }
@@ -64,7 +65,6 @@ const SystemConfig: React.FC<SystemConfigProps> = (props) => {
             borderColor="green.500"
             onClick={async () => {
               const result = new Command('manjaro-settings-manager').execute();
-              console.log(result);
             }}
             leftIcon={<GiProtectionGlasses />}
           >
@@ -72,18 +72,7 @@ const SystemConfig: React.FC<SystemConfigProps> = (props) => {
           </Button>
           )}
           {isVisibleGnomeLayout && (
-          <Button
-            mt={10}
-            size="md"
-            height="48px"
-            border="2px"
-            onClick={async () => {
-              const result = new Command('gnome-layout-switcher').execute();
-              console.log(result);
-            }}
-          >
-            {t('gnomeLayoutSwitcher')}
-          </Button>
+          <GnomeLayoutManager />
           )}
         </ButtonGroup>
 

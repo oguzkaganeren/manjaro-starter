@@ -56,7 +56,8 @@
                 "open": true,
                 "scope": [{
                     "name": "gnome-layout-switcher",
-                    "cmd": "gnome-layout-switcher"
+                    "cmd": "gnome-layout-switcher",
+                    "args": true
                 }, {
                     "name": "manjaro-settings-manager",
                     "cmd": "manjaro-settings-manager",
