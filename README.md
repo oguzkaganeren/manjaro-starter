@@ -161,6 +161,7 @@ Project Link: [https://github.com/oguzkaganeren/manjaro-starter](https://github.
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 * [yochananmarqos](https://github.com/yochananmarqos)
+* [dai5m5iq](https://github.com/dai5m5iq)
 
 
 
