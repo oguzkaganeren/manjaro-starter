@@ -58,13 +58,16 @@
 ### Dependency
 
 * gtk3
-* manjaro-settings-manager
 * pamac-cli
 * webkit2gtk
 * mhwd
 * pacman
 * pamac-manager
 * pkexec
+
+### Dependency(Optional)
+* manjaro-settings-manager
+* mcp-qt
 
 ### Used
 
