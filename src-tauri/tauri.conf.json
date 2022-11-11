@@ -63,6 +63,10 @@
                     "cmd": "manjaro-settings-manager",
                     "args": true
                 }, {
+                    "name": "mcp",
+                    "cmd": "mcp-qt",
+                    "args": true
+                }, {
                     "name": "version-control",
                     "cmd": "pacman",
                     "args": ["-Q", {
