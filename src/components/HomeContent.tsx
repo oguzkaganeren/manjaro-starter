@@ -8,6 +8,7 @@ import {
   Stack,
   Flex,
   Divider,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import {
   FcElectronics, FcInfo, FcGlobe, FcCollaboration, FcFeedback,
@@ -39,7 +40,7 @@ const Feature = ({ title, text, icon }: FeatureProps) => (
       <Text fontWeight={600}>{title}</Text>
     </Stack>
 
-    <Text color="gray.600" align="left">{text}</Text>
+    <Text color={useColorModeValue('gray.800', 'gray.300')} align="left">{text}</Text>
   </Stack>
 );
 
@@ -70,7 +71,7 @@ const HomeContent: React.FC = () => {
         <Heading fontSize="3xl">
           {t('welcomeManjaro')}
         </Heading>
-        <Text color="gray.600" fontSize="xl">
+        <Text color={useColorModeValue('gray.800', 'gray.300')} fontSize="xl">
           {t('homeText1')}
         </Text>
 
