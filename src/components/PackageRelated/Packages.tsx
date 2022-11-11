@@ -10,6 +10,8 @@ import {
 import React, { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useTranslation } from 'react-i18next';
+import 'keen-slider/keen-slider.min.css';
+import { useKeenSlider } from 'keen-slider/react';
 import {
   packageState,
   Category,
@@ -20,6 +22,44 @@ import PackageDetail from './PackageDetail';
 const PackagesList: React.FC = () => {
   const packageSt = useRecoilValue(packageState);
   const { t } = useTranslation();
+  const [sliderRef, instanceRef] = useKeenSlider({
+    mode: 'free-snap',
+    loop: true,
+    slides: {
+      origin: 'center',
+      perView: 3,
+      spacing: 15,
+    },
+  }, [
+    (slider) => {
+      let timeout: ReturnType<typeof setTimeout>;
+      let mouseOver = false;
+      function clearNextTimeout() {
+        clearTimeout(timeout);
+      }
+      function nextTimeout() {
+        clearTimeout(timeout);
+        if (mouseOver) return;
+        timeout = setTimeout(() => {
+          slider.next();
+        }, 2000);
+      }
+      slider.on('created', () => {
+        slider.container.addEventListener('mouseover', () => {
+          mouseOver = true;
+          clearNextTimeout();
+        });
+        slider.container.addEventListener('mouseout', () => {
+          mouseOver = false;
+          nextTimeout();
+        });
+        nextTimeout();
+      });
+      slider.on('dragStarted', clearNextTimeout);
+      slider.on('animationEnded', nextTimeout);
+      slider.on('updated', nextTimeout);
+    },
+  ]);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -62,27 +102,29 @@ const PackagesList: React.FC = () => {
           {category.description}
         </chakra.p>
         <SimpleGrid
-          columns={{
-            base: 1, sm: 2, md: 3, lg: 4,
-          }}
           spacingX={{ base: 16, lg: 24 }}
           spacingY={10}
           mt={6}
         >
-          {Array.from(category.packages.values()).map((app:Package) => (
-            <PackageDetail
-              title={app.name}
-              pkg={app.pkg}
-              key={app.id}
-              uniqueId={app.id}
-              isInstalled={app.isInstalled}
-              catId={category.id}
-              installedVersion={app.installedVersion}
-              icon={app.icon}
-            >
-              {app.description}
-            </PackageDetail>
-          ))}
+          <div ref={sliderRef} className="keen-slider">
+            {Array.from(category.packages.values()).map((app:Package) => (
+              <div className="keen-slider__slide">
+                <PackageDetail
+                  title={app.name}
+                  pkg={app.pkg}
+                  key={app.id}
+                  uniqueId={app.id}
+                  isInstalled={app.isInstalled}
+                  catId={category.id}
+                  installedVersion={app.installedVersion}
+                  icon={app.icon}
+                >
+                  {app.description}
+                </PackageDetail>
+              </div>
+            ))}
+          </div>
+
         </SimpleGrid>
       </Box>
 
