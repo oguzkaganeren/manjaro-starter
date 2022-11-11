@@ -22,6 +22,7 @@ interface SystemConfigProps {
 const SystemConfig: React.FC<SystemConfigProps> = (props) => {
   const [isVisibleGnomeLayout, setIsVisibleGnomeLayout] = useState(false);
   const [isVisibleMSM, setIsVisibleMSM] = useState(false);
+  const [isVisibleMCP, setIsVisibleMCP] = useState(false);
   const { t } = useTranslation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,6 +32,12 @@ const SystemConfig: React.FC<SystemConfigProps> = (props) => {
     resultOfGnome.then((response) => {
       if (response.stdout) {
         setIsVisibleGnomeLayout(true);
+      }
+    });
+    const resultOfMCP = new Command('version-control', ['-Q', 'mcp-qt']).execute();
+    resultOfMCP.then((response) => {
+      if (response.stdout) {
+        setIsVisibleMCP(true);
       }
     });
     const resultOfMSM = new Command('version-control', ['-Q', 'manjaro-settings-manager']).execute();
@@ -51,11 +58,26 @@ const SystemConfig: React.FC<SystemConfigProps> = (props) => {
       <SystemInfoComponent />
       <SystemFastestMirror />
       <SystemUpdate />
-      <ManjaroSettingsModule />
+      {isVisibleMSM && (<ManjaroSettingsModule />)}
       <KernelComponent />
 
       <Center>
         <ButtonGroup>
+          {isVisibleMCP && (
+          <Button
+            mt={10}
+            size="md"
+            height="48px"
+            border="2px"
+            borderColor="green.500"
+            onClick={async () => {
+              new Command('mcp').execute();
+            }}
+            leftIcon={<GiProtectionGlasses />}
+          >
+            {t('moreSettings')}
+          </Button>
+          )}
           {isVisibleMSM && (
           <Button
             mt={10}
@@ -64,7 +86,7 @@ const SystemConfig: React.FC<SystemConfigProps> = (props) => {
             border="2px"
             borderColor="green.500"
             onClick={async () => {
-              const result = new Command('manjaro-settings-manager').execute();
+              new Command('manjaro-settings-manager').execute();
             }}
             leftIcon={<GiProtectionGlasses />}
           >
