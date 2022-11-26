@@ -134,7 +134,14 @@
             "fullscreen": false,
             "decorations": false,
             "minWidth": 800,
-            "minHeight": 600
+            "minHeight": 600,
+            "visible": false
+        }, {
+            "width": 400,
+            "height": 200,
+            "decorations": false,
+            "url": "/splash/splash.html",
+            "label": "splashscreen"
         }],
         "security": {
             "csp": null

@@ -7,6 +7,7 @@ use std::process::Command;
 use serde_json::json;
 use tauri_plugin_log::{LogTarget, LoggerBuilder,RotationStrategy};
 use log::LevelFilter;
+use tauri::Manager;
 
 #[tauri::command]
 fn run_shell_command(command: String) -> String {
@@ -49,7 +50,21 @@ fn get_sys_info() -> String {
   return sys_info.to_string();
 }
 fn main() {
-  tauri::Builder::default().plugin(LoggerBuilder::default().rotation_strategy(RotationStrategy::KeepAll)
+  tauri::Builder::default()
+  .setup(|app| {
+    let splashscreen_window = app.get_window("splashscreen").unwrap();
+    let main_window = app.get_window("main").unwrap();
+    // we perform the initialization code on a new task so the app doesn't freeze
+    tauri::async_runtime::spawn(async move {
+      std::thread::sleep(std::time::Duration::from_secs(1));
+
+      // After it's done, close the splashscreen and display the main window
+      splashscreen_window.close().unwrap();
+      main_window.show().unwrap();
+    });
+    Ok(())
+  })
+  .plugin(LoggerBuilder::default().rotation_strategy(RotationStrategy::KeepAll)
   .max_file_size(1000)
   .level(LevelFilter::Debug).targets([
     LogTarget::LogDir,
