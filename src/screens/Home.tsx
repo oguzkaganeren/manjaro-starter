@@ -5,7 +5,7 @@ import {
 
 } from '@chakra-ui/react';
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
-import { FiPackage, FiHome } from 'react-icons/fi';
+import { FiPackage, FiHome, FiCheckCircle } from 'react-icons/fi';
 import { GiSettingsKnobs } from 'react-icons/gi';
 import { useTranslation } from 'react-i18next';
 import StepButtons from '../components/StepButtons';
@@ -38,13 +38,27 @@ const App: React.FC = () => {
   const STEPCOUNT = 3;
 
   const steps = [
-    { label: t('welcome'), icon: FiHome, content: Home },
-    { label: t('configurations'), icon: GiSettingsKnobs, content: Config },
-    { label: t('explorer'), icon: FiPackage, content: Package },
+    {
+      label: t('welcome'),
+      icon: FiHome,
+      content: Home,
+    },
+    {
+      label: t('configurations'),
+      description: t('confDescription'),
+      icon: GiSettingsKnobs,
+      content: Config,
+    },
+    {
+      label: t('explorer'),
+      description: t('explorerDescription'),
+      icon: FiPackage,
+      content: Package,
+    },
   ];
   const bg = useColorModeValue('white', 'gray.800');
   const {
-    nextStep, prevStep, reset, activeStep,
+    nextStep, prevStep, reset, activeStep, setStep,
   } = useSteps({
     initialStep: 0,
   });
@@ -56,9 +70,11 @@ const App: React.FC = () => {
           <VStack width="100%">
 
             <Steps
+              checkIcon={FiCheckCircle}
               bg={bg}
               position="fixed"
               padding={5}
+              onClickStep={(step) => setStep(step)}
               boxShadow="sm"
               zIndex={998}
               css={{
@@ -71,8 +87,10 @@ const App: React.FC = () => {
               activeStep={activeStep}
             >
 
-              {steps.map(({ label, content, icon }) => (
-                <Step label={label} key={label} icon={icon}>
+              {steps.map(({
+                label, content, icon, description,
+              }) => (
+                <Step label={label} key={label} description={description} icon={icon}>
                   {content}
                 </Step>
               ))}
