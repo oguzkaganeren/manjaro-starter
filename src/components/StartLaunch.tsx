@@ -4,7 +4,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { resolveResource, configDir } from '@tauri-apps/api/path';
-import { copyFile, removeFile } from '@tauri-apps/api/fs';
+import { copyFile, removeFile, exists } from '@tauri-apps/api/fs';
 import store from 'store/storages/localStorage';
 import { info } from 'tauri-plugin-log-api';
 
@@ -29,10 +29,10 @@ const StartLaunch = (): JSX.Element => {
   };
 
   useEffect(() => {
-    const getLocalData = () => {
-      const val = store.read('launchStart');
-      if (val) {
-        setLaunch(val === 'true');
+    const getLocalData = async () => {
+      const configDirPath = await configDir();
+      if (await exists(`${configDirPath}autostart/manjaro-starter.desktop`) as unknown as boolean) {
+        setLaunch(true);
       } else {
         store.write('launchStart', 'false');
       }
