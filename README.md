@@ -160,7 +160,9 @@ Project Link: [https://github.com/oguzkaganeren/manjaro-starter](https://github.
 <!-- ACKNOWLEDGEMENTS -->
 ## Contributors
 
-[![](https://opencollective.com/manjaro-starter/contributors.svg?width=890&button=false)](https://github.com/oguzkaganeren/manjaro-starter/graphs/contributors)
+<a href="https://github.com/oguzkaganeren/manjaro-starter/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=oguzkaganeren/manjaro-starter" />
+</a>
 
 
 
