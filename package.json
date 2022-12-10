@@ -20,7 +20,7 @@
     "@types/store": "^2.0.2",
     "chakra-ui-steps": "^1.8.0",
     "framer-motion": "^7.6.4",
-    "i18next": "^22.0.4",
+    "i18next": "^22.2.0",
     "i18next-browser-languagedetector": "^7.0.1",
     "i18next-http-backend": "^2.0.1",
     "keen-slider": "^6.8.3",
