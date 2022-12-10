@@ -16,7 +16,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/api/shell';
 // eslint-disable-next-line import/no-named-default
-import { default as SocialLinks } from '../assets/SocialUrls.json';
+import { default as SocialLinks } from '../../assets/SocialUrls.json';
 
 const ReleaseNotesContent = () => (
   <Flex

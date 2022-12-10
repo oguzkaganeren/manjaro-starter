@@ -1,4 +1,3 @@
-import './home.css';
 import React, { Suspense } from 'react';
 import {
   Text, Flex, VStack, CircularProgress, useColorModeValue,
@@ -9,7 +8,7 @@ import { FiPackage, FiHome, FiCheckCircle } from 'react-icons/fi';
 import { GiSettingsKnobs } from 'react-icons/gi';
 import { useTranslation } from 'react-i18next';
 import StepButtons from '../components/StepButtons';
-import HomeContent from '../components/HomeContent';
+import HomeContent from '../components/Home/HomeContent';
 import PackagesList from '../components/PackageRelated/Packages';
 import ResultComponent from '../components/ResultComponent';
 import SystemConfig from '../components/SystemConfig/SystemConfig';
