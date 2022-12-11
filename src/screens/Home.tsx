@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import {
-  Text, Flex, VStack, CircularProgress, useColorModeValue,
+  Text, Flex, VStack, useColorModeValue, CircularProgress,
 
 } from '@chakra-ui/react';
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
@@ -23,7 +23,10 @@ const Home = (
 );
 const Package = (
   <Flex py={4}>
-    <PackagesList />
+    <Suspense fallback={<CircularProgress mt={20} isIndeterminate color="green.300" />}>
+      <PackagesList />
+    </Suspense>
+
   </Flex>
 );
 const Config = (
@@ -65,38 +68,36 @@ const App: React.FC = () => {
     <>
       <Nav />
       <VStack mt={63}>
-        <Suspense fallback={<CircularProgress mt={20} isIndeterminate color="green.300" />}>
-          <VStack width="100%">
+        <VStack width="100%">
 
-            <Steps
-              checkIcon={FiCheckCircle}
-              bg={bg}
-              position="fixed"
-              padding={5}
-              onClickStep={(step) => setStep(step)}
-              boxShadow="sm"
-              zIndex={998}
-              css={{
-                backdropFilter: 'saturate(180%) blur(5px)',
-                backgroundColor: useColorModeValue(
-                  'rgba(255, 255, 255, 0.8)',
-                  'rgba(26, 32, 44, 0.8)',
-                ),
-              }}
-              activeStep={activeStep}
-            >
+          <Steps
+            checkIcon={FiCheckCircle}
+            bg={bg}
+            position="fixed"
+            padding={5}
+            onClickStep={(step) => setStep(step)}
+            boxShadow="sm"
+            zIndex={998}
+            css={{
+              backdropFilter: 'saturate(180%) blur(5px)',
+              backgroundColor: useColorModeValue(
+                'rgba(255, 255, 255, 0.8)',
+                'rgba(26, 32, 44, 0.8)',
+              ),
+            }}
+            activeStep={activeStep}
+          >
 
-              {steps.map(({
-                label, content, icon, description,
-              }) => (
-                <Step label={label} key={label} description={description} icon={icon}>
-                  {content}
-                </Step>
-              ))}
-            </Steps>
+            {steps.map(({
+              label, content, icon, description,
+            }) => (
+              <Step label={label} key={label} description={description} icon={icon}>
+                {content}
+              </Step>
+            ))}
+          </Steps>
 
-          </VStack>
-        </Suspense>
+        </VStack>
         {activeStep === STEPCOUNT ? (
           <ResultComponent onReset={reset} />
         ) : (
