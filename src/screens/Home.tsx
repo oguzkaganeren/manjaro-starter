@@ -72,7 +72,7 @@ const App: React.FC = () => {
 
           <Steps
             checkIcon={FiCheckCircle}
-            bg={bg}
+            bgColor={bg}
             position="fixed"
             padding={5}
             onClickStep={(step) => setStep(step)}

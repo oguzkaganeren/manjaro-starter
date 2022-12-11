@@ -77,7 +77,6 @@ const SystemFastestMirror: React.FC = (props) => {
         borderColor="green.500"
         onClick={setFastestMirror}
         isLoading={isProcessing}
-        loadingText={t('processing')}
       >
         {t('setFastestMirrors')}
       </Button>
