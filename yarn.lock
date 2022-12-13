@@ -2501,37 +2501,6 @@
   resolved "https://registry.yarnpkg.com/@react-icons/all-files/-/all-files-4.1.0.tgz#477284873a0821928224b6fc84c62d2534d6650b"
   integrity sha512-hxBI2UOuVaI3O/BhQfhtb4kcGn9ft12RWAFVMUeNjqqhLsHvFtzIkFaptBJpFDANTKoDfdVoHTKZDlwKCACbMQ==
 
-"@reactour/mask@*":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@reactour/mask/-/mask-1.0.4.tgz#d5415a76e0f5a8436be964de82fa0579887c7dd5"
-  integrity sha512-znMRiDB5GjXlAUFOcmtFlmwy3w2w4xb10pSZofYdvNSl9VHinuAXqJURDIBfpKTB72vx1Tv6FiX5TPN9Wtedzw==
-  dependencies:
-    "@reactour/utils" "*"
-
-"@reactour/popover@*":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@reactour/popover/-/popover-1.0.5.tgz#a79091988f95e4434e9d2790f7c830b57cb7935b"
-  integrity sha512-d6BMcyXGj3RdSc2huiU6v/wG2XG1ad+lAFmjyFerlZNS1ccp/49HvLUnqxE0Td+86e7RPrdEzpZb5PKtBybPrA==
-  dependencies:
-    "@reactour/utils" "*"
-
-"@reactour/tour@^3.1.6":
-  version "3.1.6"
-  resolved "https://registry.yarnpkg.com/@reactour/tour/-/tour-3.1.6.tgz#6ab2faff3cbfb61a5ca274468a3bcdfd599db3e1"
-  integrity sha512-TqKDax1pEqKfzlFyQjRAO8iwzPTK8G6UQtB5MrT0uxJeKNduBcZshcT8lA5GYYJqemCL1gRuhrbjJQZdHft5qg==
-  dependencies:
-    "@reactour/mask" "*"
-    "@reactour/popover" "*"
-    "@reactour/utils" "*"
-
-"@reactour/utils@*":
-  version "0.4.7"
-  resolved "https://registry.yarnpkg.com/@reactour/utils/-/utils-0.4.7.tgz#569a43fa4e25f50ceb52272bff7696c14837945a"
-  integrity sha512-d+/Xhi2nKCc6OrDEFGg15iN8ZyWDTdOrwIKkndJXrnWiN6b+nqoS2Tb7hZvt79rqCyUsQxekUndPFPQyIW81EA==
-  dependencies:
-    "@rooks/use-mutation-observer" "^4.11.2"
-    resize-observer-polyfill "^1.5.1"
-
 "@remix-run/router@1.0.5":
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.0.5.tgz#d5c65626add4c3c185a89aa5bd38b1e42daec075"
@@ -2573,11 +2542,6 @@
     "@types/estree" "0.0.39"
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
-
-"@rooks/use-mutation-observer@^4.11.2":
-  version "4.11.2"
-  resolved "https://registry.yarnpkg.com/@rooks/use-mutation-observer/-/use-mutation-observer-4.11.2.tgz#a0466c4338e0a4487ea19253c86bcd427c29f4af"
-  integrity sha512-vpsdrZdr6TkB1zZJcHx+fR1YC/pHs2BaqcuYiEGjBVbwY5xcC49+h0hAUtQKHth3oJqXfIX/Ng8S7s5HFHdM/A==
 
 "@rushstack/eslint-patch@^1.1.0":
   version "1.1.4"
@@ -8992,11 +8956,6 @@ requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==
-
-resize-observer-polyfill@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
-  integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
 
 resolve-cwd@^3.0.0:
   version "3.0.0"
