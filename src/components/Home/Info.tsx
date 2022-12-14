@@ -48,7 +48,7 @@ const Info: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Button onClick={onOpen}>More</Button>
+      <Button onClick={onOpen}>{t('more')}</Button>
 
       <Modal isOpen={isOpen} onClose={onClose} size="xl" motionPreset="slideInBottom">
         <ModalOverlay

@@ -74,7 +74,6 @@ const App: React.FC = () => {
             position="fixed"
             padding={5}
             onClickStep={(step) => setStep(step)}
-            boxShadow="sm"
             zIndex={998}
             css={{
               backdropFilter: 'saturate(180%) blur(5px)',
