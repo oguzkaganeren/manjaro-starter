@@ -58,7 +58,6 @@ const App: React.FC = () => {
       content: Package,
     },
   ];
-  const bg = useColorModeValue('white', 'gray.800');
   const {
     nextStep, prevStep, reset, activeStep, setStep,
   } = useSteps({
@@ -72,11 +71,9 @@ const App: React.FC = () => {
 
           <Steps
             checkIcon={FiCheckCircle}
-            bgColor={bg}
             position="fixed"
             padding={5}
             onClickStep={(step) => setStep(step)}
-            boxShadow="sm"
             zIndex={998}
             css={{
               backdropFilter: 'saturate(180%) blur(5px)',
@@ -104,7 +101,6 @@ const App: React.FC = () => {
           <Flex
             position="fixed"
             padding={5}
-            bg={bg}
             bottom={0}
             w="100%"
             css={{
