@@ -1,80 +1,80 @@
 {
-    "name": "manjaro-starter",
-    "version": "0.8.2",
-    "private": true,
-    "dependencies": {
-        "@chakra-ui/icons": "^2.0.13",
-        "@chakra-ui/react": "^2.4.3",
-        "@emotion/react": "^11.10.5",
-        "@emotion/styled": "^11.10.5",
-        "@react-icons/all-files": "^4.1.0",
-        "@tauri-apps/api": "^1.2.0",
-        "@testing-library/jest-dom": "^5.11.4",
-        "@testing-library/react": "^13.4.0",
-        "@testing-library/user-event": "^14.4.3",
-        "@types/jest": "^29.2.4",
-        "@types/node": "^18.11.15",
-        "@types/react": "^18.0.26",
-        "@types/react-dom": "^18.0.9",
-        "@types/store": "^2.0.2",
-        "chakra-ui-steps": "^1.8.0",
-        "framer-motion": "^7.8.0",
-        "i18next": "^22.4.5",
-        "i18next-browser-languagedetector": "^7.0.1",
-        "i18next-http-backend": "^2.1.0",
-        "keen-slider": "^6.8.5",
-        "lodash": "^4.17.21",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "react-i18next": "^12.1.1",
-        "react-icons": "^4.7.1",
-        "react-router-dom": "^6.4.5",
-        "react-scripts": "5.0.1",
-        "recoil": "^0.7.6",
-        "store": "^2.0.12",
-        "tauri-plugin-log-api": "github:oguzkaganeren/tauri-plugin-log#dev",
-        "typescript": "^4.9.4",
-        "web-vitals": "^3.1.0"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "CI=false && react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
-        "tauri": "tauri",
-        "bundle": "tauri build"
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ]
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "devDependencies": {
-        "@tauri-apps/cli": "^1.2.2",
-        "@types/react-router-dom": "^5.3.0",
-        "@typescript-eslint/eslint-plugin": "^5.46.1",
-        "@typescript-eslint/parser": "^5.46.1",
-        "eslint": "^8.29.0",
-        "eslint-config-airbnb": "^19.0.4",
-        "eslint-import-resolver-typescript": "^3.5.2",
-        "eslint-plugin-import": "^2.26.0",
-        "eslint-plugin-jsx-a11y": "^6.6.1",
-        "eslint-plugin-only-warn": "^1.1.0",
-        "eslint-plugin-react": "^7.31.11",
-        "eslint-plugin-react-hooks": "^4.6.0",
-        "eslint-plugin-unused-imports": "^2.0.0"
-    }
+  "name": "manjaro-starter",
+  "version": "0.8.3",
+  "private": true,
+  "dependencies": {
+    "@chakra-ui/icons": "^2.0.13",
+    "@chakra-ui/react": "^2.4.3",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@react-icons/all-files": "^4.1.0",
+    "@tauri-apps/api": "^1.2.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/jest": "^29.2.4",
+    "@types/node": "^18.11.15",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "@types/store": "^2.0.2",
+    "chakra-ui-steps": "^1.8.0",
+    "framer-motion": "^7.8.0",
+    "i18next": "^22.4.5",
+    "i18next-browser-languagedetector": "^7.0.1",
+    "i18next-http-backend": "^2.1.0",
+    "keen-slider": "^6.8.5",
+    "lodash": "^4.17.21",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^12.1.1",
+    "react-icons": "^4.7.1",
+    "react-router-dom": "^6.4.5",
+    "react-scripts": "5.0.1",
+    "recoil": "^0.7.6",
+    "store": "^2.0.12",
+    "tauri-plugin-log-api": "github:oguzkaganeren/tauri-plugin-log#dev",
+    "typescript": "^4.9.4",
+    "web-vitals": "^3.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "CI=false && react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "tauri": "tauri",
+    "bundle": "tauri build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.2.2",
+    "@types/react-router-dom": "^5.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1",
+    "eslint": "^8.29.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-only-warn": "^1.1.0",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-unused-imports": "^2.0.0"
+  }
 }
