@@ -168,7 +168,6 @@ const PackagesList: React.FC = () => {
             mt={10}
             size="md"
             height="48px"
-            width="200px"
             border="2px"
             borderColor="green.500"
           >

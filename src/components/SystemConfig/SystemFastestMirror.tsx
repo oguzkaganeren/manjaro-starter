@@ -71,7 +71,6 @@ const SystemFastestMirror: React.FC = (props) => {
       <Button
         size="md"
         height="48px"
-        width="200px"
         border="2px"
         mt={5}
         borderColor="green.500"
