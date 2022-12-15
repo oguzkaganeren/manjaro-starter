@@ -9,7 +9,7 @@ const LanguageComponent: React.FC = () => {
     <HStack>
       <span>{t('language')}</span>
       <Spacer />
-      <Select id="lan" variant="filled" defaultValue={i18n.language ? i18n.language : 'English'} onChange={(e) => i18n.changeLanguage(e.target.value)}>
+      <Select id="lan" variant="filled" defaultValue={i18n.language !== 'en-US' ? i18n.language : 'English'} onChange={(e) => i18n.changeLanguage(e.target.value)}>
         {availableLanguages.map((language) => (
           <option key={language}>{language}</option>
         ))}
