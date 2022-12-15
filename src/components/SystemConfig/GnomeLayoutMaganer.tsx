@@ -48,7 +48,6 @@ const GnomeLayoutManager: FC = () => {
                   py="5"
                   px={{ base: 2, md: 4 }}
                   height="200px"
-                  width="200px"
                   shadow="xl"
                   variant="outline"
                   border="1px solid"
