@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
-import { StepsStyleConfig as Steps } from 'chakra-ui-steps';
+import { ChakraProvider, extendTheme, useColorModeValue } from '@chakra-ui/react';
+import { StepsStyleConfig } from 'chakra-ui-steps';
 import { RecoilRoot } from 'recoil';
 
 import App from './screens/Home';
@@ -9,13 +9,26 @@ import reportWebVitals from './reportWebVitals';
 
 const container = document.getElementById('root');
 const root = createRoot(container!);
+
+const CustomSteps = {
+  ...StepsStyleConfig,
+  baseStyle: (props:any) => ({
+    ...StepsStyleConfig.baseStyle(props),
+    stepIconContainer: {
+      ...StepsStyleConfig.baseStyle(props).stepIconContainer,
+      _activeStep: {
+        bg: useColorModeValue('white.800', 'white.500'),
+      },
+    },
+  }),
+};
 const theme = extendTheme({
   config: {
     initialColorMode: 'system',
     useSystemColorMode: false,
   },
   components: {
-    Steps,
+    Steps: CustomSteps,
   },
 });
 root.render(
