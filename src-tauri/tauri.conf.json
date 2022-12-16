@@ -59,8 +59,8 @@
                     "cmd": "gnome-layout-switcher",
                     "args": true
                 }, {
-                    "name": "calamares",
-                    "cmd": "calamares"
+                    "name": "calamares_polkit",
+                    "cmd": "calamares_polkit"
                 }, {
                     "name": "manjaro-settings-manager",
                     "cmd": "manjaro-settings-manager",

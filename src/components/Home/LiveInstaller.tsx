@@ -31,7 +31,7 @@ const LiveInstaller = () => {
         variant="outline"
         colorScheme="whatsapp"
         onClick={async () => {
-          new Command('calamares').execute();
+          new Command('calamares_polkit').execute();
         }}
       >
         {t('installManjaroLinux')}
