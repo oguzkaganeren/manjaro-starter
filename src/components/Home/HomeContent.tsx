@@ -11,6 +11,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import ReleaseNotes from './ReleaseNotes';
 import Info from './Info';
+import LiveInstaller from './LiveInstaller';
 
 const HomeContent: React.FC = () => {
   const { t } = useTranslation();
@@ -27,8 +28,8 @@ const HomeContent: React.FC = () => {
         </Text>
         <Info />
         <Divider orientation="horizontal" />
-
         <ReleaseNotes />
+        <LiveInstaller />
 
       </Stack>
 

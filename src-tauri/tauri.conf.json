@@ -59,6 +59,9 @@
                     "cmd": "gnome-layout-switcher",
                     "args": true
                 }, {
+                    "name": "calamares",
+                    "cmd": "calamares"
+                }, {
                     "name": "manjaro-settings-manager",
                     "cmd": "manjaro-settings-manager",
                     "args": true
