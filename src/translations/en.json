@@ -72,6 +72,7 @@
         "advanced": "Advanced",
         "confDescription": "System Configurations and more.",
         "explorerDescription": "Discover and Install packages.",
-        "more": "More"
+        "more": "More",
+        "installManjaroLinux": "Install Manjaro Linux"
     }
 }
