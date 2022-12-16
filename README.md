@@ -87,6 +87,8 @@ To get a local copy up and running follow these steps.
 ### Prerequisites
 
 * yarn
+* https://tauri.app/v1/guides/getting-started/prerequisites#setting-up-linux
+* cargo
 
 ### Installation
 
