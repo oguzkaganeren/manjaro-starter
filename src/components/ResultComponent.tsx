@@ -1,5 +1,5 @@
 import {
-  Container, Heading, Text, Button, Center,
+  Container, Heading, Text, Button, Center, Tooltip, IconButton,
 } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { CheckCircleIcon } from '@chakra-ui/icons';
@@ -9,6 +9,7 @@ import {
 import {
   FiPackage, FiMail, FiFacebook, FiTwitter,
 } from 'react-icons/fi';
+import { GiReturnArrow } from 'react-icons/gi';
 import { open } from '@tauri-apps/api/shell';
 import { BiDonateHeart } from 'react-icons/bi';
 import { useTranslation } from 'react-i18next';
@@ -88,10 +89,19 @@ const ResultComponent: React.FC<ResultProps> = (props) => {
           <Text>{t('donate')}</Text>
         </Center>
       </Button>
+      <Tooltip label={t('returnFirstStep')}>
 
-      <Button mt={5} mr={5} onClick={() => onReset()}>
-        {t('returnFirstStep')}
-      </Button>
+        <IconButton
+          boxSize="50px"
+          color="green.500"
+          position="fixed"
+          bottom={5}
+          aria-label={t('returnFirstStep')}
+          left={5}
+          onClick={() => onReset()}
+          icon={<GiReturnArrow />}
+        />
+      </Tooltip>
 
     </Container>
   );
