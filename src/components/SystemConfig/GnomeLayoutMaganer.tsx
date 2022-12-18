@@ -1,7 +1,7 @@
 import {
   Modal, useDisclosure, ModalBody, ModalCloseButton,
   ModalContent, ModalHeader, ModalOverlay,
-  Button, useColorModeValue, ModalFooter, Image, SimpleGrid, Heading, VStack,
+  Button, useColorModeValue, ModalFooter, Image, SimpleGrid, Heading, VStack, IconButton, Tooltip,
 } from '@chakra-ui/react';
 import { configDir } from '@tauri-apps/api/path';
 import { exists, readTextFile } from '@tauri-apps/api/fs';
@@ -10,6 +10,7 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
+import { SettingsIcon } from '@chakra-ui/icons';
 
 const GnomeLayoutManager: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -57,10 +58,20 @@ const GnomeLayoutManager: FC = () => {
         <ModalContent>
           <ModalHeader>
             {t('gnomeLayoutSwitcher')}
-
+            <Tooltip label={t('advanced')}>
+              <IconButton
+                size="md"
+                ml={25}
+                aria-label={t('advanced')}
+                icon={<SettingsIcon />}
+                onClick={async () => {
+                  new Command('gnome-layout-switcher').execute();
+                }}
+              />
+            </Tooltip>
           </ModalHeader>
           <ModalCloseButton />
-          <ModalBody pb={6}>
+          <ModalBody>
             <SimpleGrid columns={2} spacing={10}>
               {LAYOUTS.map((layout, index) => (
                 <Button
@@ -88,16 +99,8 @@ const GnomeLayoutManager: FC = () => {
             </SimpleGrid>
 
           </ModalBody>
-          <ModalFooter>
-            <Button
-              size="sm"
-              onClick={async () => {
-                new Command('gnome-layout-switcher').execute();
-              }}
-            >
-              {t('advanced')}
-            </Button>
-          </ModalFooter>
+          <ModalFooter />
+
         </ModalContent>
       </Modal>
     </>
