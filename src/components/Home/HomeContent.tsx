@@ -23,6 +23,7 @@ const HomeContent: React.FC = () => {
         <Heading fontSize="3xl">
           {t('welcomeManjaro')}
         </Heading>
+
         <Text color={useColorModeValue('gray.800', 'gray.300')} fontSize="xl">
           {t('homeText1')}
         </Text>

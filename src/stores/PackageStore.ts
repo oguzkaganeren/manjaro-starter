@@ -3,7 +3,7 @@ import {
 } from 'recoil';
 import _ from 'lodash';
 import { Command } from '@tauri-apps/api/shell';
-import apps from '../data/apps.json';
+import apps from '../assets/data/apps.json';
 
 export interface Package {
   id: string,
