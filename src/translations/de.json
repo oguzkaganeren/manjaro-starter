@@ -15,7 +15,7 @@
         "searchWeb": "Websuche",
         "homeText4": "Der wohl beste Weg um generische Hilfe zu Linux zu bekommen ist eine Websuche mit der Suchmaschine deiner Wahl. Mit den Keywords 'Linux', 'Manjaro' oder 'Arch' findest du schnell was du suchst. Da Manjaro auf Arch Linux basiert, sind normalerweise Tipps und Anleitungen zu Arch Linux auch auf Manjaro anwendbar.",
         "lookForum": "Besuche unser Forum",
-        "homeText5": "Für spezifische Hilfe zu deinem Manjaro Linux System bieten wir unser Manjaro Linux User Forum wo du verschiedenste Themen suchen und dazu Hilfe finden kannst. Unser Forum ist wohl der beste Weg sich mit anderen Manjaro Linux Benutzern auszutauschen, zu diskutieren, anderen Benutzern zu helfen, bzw. Verbesserungsvorschläge zu machen. Das Manjaro Forum bietet Unterforen je nach Thema und Benutzerumgebung, damit die gezielte Suche nach Hilfe einfach ist. Werde Teil unsere Community und melde dich im Forum an!",
+        "homeText5": "Für spezifische Hilfe zu deinem Manjaro Linux System bieten wir unser Manjaro Linux User Forum wo du verschiedenste Themen suchen und dazu Hilfe finden kannst. Unser Forum ist wohl der beste Weg sich mit anderen Manjaro Linux Benutzern auszutauschen, zu diskutieren, anderen Benutzern zu helfen, bzw. Verbesserungsvorschläge zu machen. Das Manjaro Forum bietet Unterforen je nach Thema und Benutzerumgebung, damit die gezielte Suche nach Hilfe einfach ist. Werde Teil unserer Community und melde dich im Forum an!",
         "suggestions": "Verbesserungsvorschläge",
         "homeText7": "Du hast Verbesserungsvorschläge wie wir Manjaro Linux besser machen können oder du willst zur Weiterentwicklung des Systems einen Beitrag leisten? Poste deine Anregungen am Besten in unserem Benutzerforum und tausche dich mit anderen Manjaro Linux Benutzern aus. Vielen Dank!",
         "installing": "Installiere",
@@ -29,7 +29,7 @@
         "facebook": "Facebook",
         "twitter": "Twitter",
         "reddit": "Reddit",
-        "joinMail": "Mailing Liste eintragen",
+        "joinMail": "Mailingliste eintragen",
         "donate": "Spenden",
         "returnFirstStep": "Zurück zum Ersten Schritt",
         "systemDetails": "Systemspezifikation",
@@ -56,10 +56,10 @@
         "fastestMirror": "Schnellster Mirror",
         "setFastestMirrors": "Schnellsten Mirror einrichten",
         "processing": "Verarbeitung",
-        "installDrivers": "Treiber installieren",
-        "setDateTime": "Datum und Uhrzeit einstellen",
-        "installLanguage": "Sprache(n) installieren",
-        "languagePackages": "Sprachpakete",
+        "installDrivers": "Hardwaretreiber",
+        "setDateTime": "Datum und Uhrzeit",
+        "installLanguage": "Sprache(n)",
+        "languagePackages": "Sprachpakete installieren",
         "about": "Info",
         "packages": "Pakete",
         "installPackagesText": "Softwarepakete für dein System installieren.",
@@ -71,6 +71,8 @@
         "appLogInfo": "Logdatei zu finden unter ~/.config/com.manjaro.starter/logs/",
         "advanced": "Erweitert",
         "confDescription": "Systemkonfiguration und mehr.",
-        "explorerDescription": "Entdecke und installiere Softwarepakete."
+        "explorerDescription": "Entdecke und installiere Softwarepakete.",
+        "more": "Mehr",
+        "installManjaroLinux": "Manjaro Linux installieren"
     }
 }
