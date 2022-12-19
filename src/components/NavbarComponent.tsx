@@ -33,7 +33,6 @@ const NavbarComponent: React.FC = () => (
   >
     <div data-tauri-drag-region className="titlebar" />
     <Flex h={16} alignItems="center" justifyContent="space-between" />
-
     <Spacer />
     <Flex h={16} mr={5} alignItems="center" justifyContent="space-between">
       <Stack direction="row" spacing={2}>

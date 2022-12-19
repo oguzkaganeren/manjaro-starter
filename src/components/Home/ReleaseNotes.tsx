@@ -25,7 +25,9 @@ const ReleaseNotes = () => {
   }, []);
   return (
     <Box>
-      <Button onClick={onOpen}>{t('releaseNotes')}</Button>
+      <Button onClick={onOpen}>
+        {t('releaseNotes')}
+      </Button>
 
       <Modal isOpen={isOpen} onClose={onClose} size="2xl" motionPreset="slideInBottom">
         <ModalOverlay
