@@ -79,7 +79,7 @@ const SystemConfig: React.FC<SystemConfigProps> = (props) => {
         <Tab>Kernels</Tab>
         <Tab>More</Tab>
       </TabList>
-      <TabPanels>
+      <TabPanels minW="730px" maxW="3xl">
         <TabPanel>
           <SystemInfoComponent />
         </TabPanel>
@@ -97,7 +97,7 @@ const SystemConfig: React.FC<SystemConfigProps> = (props) => {
           <KernelComponent />
         </TabPanel>
         <TabPanel>
-          <Center minW="730px">
+          <Center>
             <ButtonGroup>
               {isVisibleMCP && (
                 <Button
@@ -108,21 +108,6 @@ const SystemConfig: React.FC<SystemConfigProps> = (props) => {
                   borderColor="green.500"
                   onClick={async () => {
                     new Command('mcp').execute();
-                  }}
-                  leftIcon={<GiProtectionGlasses />}
-                >
-                  {t('moreSettings')}
-                </Button>
-              )}
-              {isVisibleMSM && (
-                <Button
-                  mt={10}
-                  size="md"
-                  height="48px"
-                  border="2px"
-                  borderColor="green.500"
-                  onClick={async () => {
-                    new Command('manjaro-settings-manager').execute();
                   }}
                   leftIcon={<GiProtectionGlasses />}
                 >

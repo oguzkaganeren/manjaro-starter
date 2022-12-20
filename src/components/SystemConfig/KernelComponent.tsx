@@ -2,7 +2,6 @@ import {
   Box,
   Skeleton,
   TagLabel,
-  useColorModeValue,
   chakra,
   TagLeftIcon,
   Tag,
@@ -96,25 +95,8 @@ const KernelComponent: React.FC = () => {
 
   return (
     <Box mt={5} textAlign={{ lg: 'left' }}>
-
-      <chakra.p
-        mt={2}
-        fontSize={{ base: '3xl', sm: '3xl' }}
-        lineHeight="8"
-        fontWeight="extrabold"
-        letterSpacing="tight"
-        color={useColorModeValue('white.900', 'white.100')}
-      >
-        {t('kernels')}
-      </chakra.p>
-
-      <chakra.p
-        mt={4}
-        maxW="2xl"
-        fontSize="xl"
-        color={useColorModeValue('gray.500', 'gray.400')}
-      >
-        {t('installKernel')}
+      <chakra.p>
+        {t('kernelDesc')}
       </chakra.p>
       <Skeleton isLoaded={kernelSt !== null}>
         {kernelSt && kernelSt.map((kernel) => (

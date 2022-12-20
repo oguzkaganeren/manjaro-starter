@@ -1,8 +1,6 @@
 import {
   Box,
   Button,
-  useColorModeValue,
-  chakra,
   SimpleGrid,
 } from '@chakra-ui/react';
 import React from 'react';
@@ -32,17 +30,6 @@ const ManjaroSettingsModule: React.FC = (props) => {
     >
       <Box mt={5} textAlign={{ lg: 'left' }}>
 
-        <chakra.p
-          mt={2}
-          fontSize={{ base: '3xl', sm: '3xl' }}
-          lineHeight="8"
-          fontWeight="extrabold"
-          letterSpacing="tight"
-          color={useColorModeValue('white.900', 'white.100')}
-        >
-          {t('installDrivers')}
-        </chakra.p>
-
         <Button
           size="md"
           height="48px"
@@ -55,16 +42,6 @@ const ManjaroSettingsModule: React.FC = (props) => {
         </Button>
       </Box>
       <Box mt={5} textAlign={{ lg: 'left' }}>
-        <chakra.p
-          mt={2}
-          fontSize={{ base: '3xl', sm: '3xl' }}
-          lineHeight="8"
-          fontWeight="extrabold"
-          letterSpacing="tight"
-          color={useColorModeValue('white.900', 'white.100')}
-        >
-          {t('setDateTime')}
-        </chakra.p>
 
         <Button
           size="md"
@@ -78,16 +55,6 @@ const ManjaroSettingsModule: React.FC = (props) => {
         </Button>
       </Box>
       <Box mt={5} textAlign={{ lg: 'left' }}>
-        <chakra.p
-          mt={2}
-          fontSize={{ base: '3xl', sm: '3xl' }}
-          lineHeight="8"
-          fontWeight="extrabold"
-          letterSpacing="tight"
-          color={useColorModeValue('white.900', 'white.100')}
-        >
-          {t('installLanguage')}
-        </chakra.p>
 
         <Button
           size="md"
@@ -98,6 +65,18 @@ const ManjaroSettingsModule: React.FC = (props) => {
           onClick={() => { openManjaroSettingsManager('language_packages'); }}
         >
           {t('languagePackages')}
+        </Button>
+        <Button
+          mt={10}
+          size="md"
+          height="48px"
+          border="2px"
+          borderColor="green.500"
+          onClick={async () => {
+            new Command('manjaro-settings-manager').execute();
+          }}
+        >
+          {t('moreSettings')}
         </Button>
       </Box>
     </SimpleGrid>

@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  useColorModeValue,
   chakra,
   useToast,
   Text,
@@ -46,21 +45,15 @@ const SystemFastestMirror: React.FC = (props) => {
   };
 
   return (
-    <Box minW="730px" mb={5} textAlign={{ lg: 'left' }}>
+    <Box mb={5} textAlign={{ lg: 'left' }}>
       <chakra.p>
         {t('mirrorDesc')}
       </chakra.p>
       <chakra.p mt={2}>
         {t('pacmanMirrors')}
       </chakra.p>
-      <chakra.p
-        mt={4}
-        maxW="2xl"
-        fontSize="xl"
-        color={useColorModeValue('gray.500', 'gray.400')}
-      >
-        {t('setFastestMirrors')}
-
+      <chakra.p mt={2}>
+        {t('fastestMirrorWords')}
       </chakra.p>
       <Button
         size="md"

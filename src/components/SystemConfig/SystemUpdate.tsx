@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  useColorModeValue,
   chakra,
   Badge,
 } from '@chakra-ui/react';
@@ -34,18 +33,12 @@ const SystemUpdate: React.FC = (props) => {
   });
 
   return (
-    <Box minW="730px" mt={5} textAlign={{ lg: 'left' }}>
-
+    <Box textAlign={{ lg: 'left' }}>
       <chakra.p
-        mt={4}
-        maxW="2xl"
-        fontSize="xl"
-        color={useColorModeValue('gray.500', 'gray.400')}
+        mt={2}
       >
-        {t('updateYourSystem')}
-        <Badge ml={5}>
-          {checkUpdate}
-        </Badge>
+        {t('updateDesc')}
+
       </chakra.p>
       <Button
         size="md"
@@ -56,6 +49,9 @@ const SystemUpdate: React.FC = (props) => {
         onClick={updateSystem}
       >
         {t('update')}
+        <Badge ml={5}>
+          {checkUpdate}
+        </Badge>
       </Button>
     </Box>
   );

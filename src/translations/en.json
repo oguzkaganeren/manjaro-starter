@@ -75,6 +75,10 @@
         "more": "More",
         "installManjaroLinux": "Install Manjaro Linux",
         "mirrorDesc": "In the GNU/Linux distro world (& other systems too) a mirror is a server that hosts an up to date copy of a distro's software packages, stored in repositories (repos). There exist repos that are maintained by the distro administration - official - & other's.",
-        "pacmanMirrors": "Pacman-mirrors is a Manjaro specific utility for generating and maintaining the system mirrorlist. This article covers current version 4.x. Pacman-mirrors uses the information available on the repo.manjaro.org."
+        "pacmanMirrors": "Manjaro uses pamac for system maintenance, updates and new installs. For pamac to function, a list of servers, or more commonly known as mirrors, with Manjaro software packages is required. As Manjaro has many mirrors all over the world it is feasible to use the mirrors closest to your location and preferably also up-to-date. ",
+        "fastestMirrorWords": "Also, you can update your mirror list using below button.",
+        "updateDesc": "As time passes, the Manjaro team continues to polish and improve the distribution, your applications get new features or fixes. We suggest you update your system because of some security fixes, stability improvements, driver updates, and new kernel functionality.",
+        "kernelDesc": "As the name would imply, as with the kernel of a seed, the Linux kernel is the core of a Linux operating system. Every other element of a Linux-based operating system is built around the kernel, which acts as an interface between your computer's hardware and the applications that run on it. Manjaro Settings Manager offers an easy way to add and remove kernels (including the necessary kernel modules). Also, you can install kernels using the below buttons."
+
     }
 }
