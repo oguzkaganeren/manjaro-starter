@@ -2,7 +2,6 @@ import {
   Box,
   Flex,
   useColorModeValue,
-  chakra,
   SimpleGrid,
   Stat,
   StatLabel,
@@ -30,16 +29,17 @@ const StatsCard = (props: StatsCardProps) => {
       px={{ base: 2, md: 4 }}
       py="5"
       shadow="xl"
+      size="sm"
       border="1px solid"
       borderColor={useColorModeValue('gray.800', 'gray.500')}
       rounded="lg"
     >
       <Flex justifyContent="space-between">
         <Box pl={{ base: 2, md: 4 }}>
-          <StatLabel fontWeight="medium">
+          <StatLabel fontWeight="bold">
             {title}
           </StatLabel>
-          <StatNumber fontSize="2xl" fontWeight="medium">
+          <StatNumber fontSize="1xl" fontWeight="small">
             {stat}
           </StatNumber>
         </Box>
@@ -79,18 +79,7 @@ const SystemInfoComponent: React.FC = () => {
     });
   }, []);
   return (
-    <Box mt={5} mb={5} textAlign={{ lg: 'left' }}>
-      <chakra.p
-        mt={2}
-        mb={4}
-        fontSize={{ base: '3xl', sm: '4xl' }}
-        lineHeight="8"
-        fontWeight="extrabold"
-        letterSpacing="tight"
-        color={useColorModeValue('white.900', 'white.100')}
-      >
-        {t('systemDetails')}
-      </chakra.p>
+    <Box mb={5} textAlign={{ lg: 'left' }}>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 5, lg: 8 }}>
         <StatsCard
           title={t('system')}

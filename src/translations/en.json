@@ -73,6 +73,8 @@
         "confDescription": "System Configurations and more.",
         "explorerDescription": "Discover and Install packages.",
         "more": "More",
-        "installManjaroLinux": "Install Manjaro Linux"
+        "installManjaroLinux": "Install Manjaro Linux",
+        "mirrorDesc": "In the GNU/Linux distro world (& other systems too) a mirror is a server that hosts an up to date copy of a distro's software packages, stored in repositories (repos). There exist repos that are maintained by the distro administration - official - & other's.",
+        "pacmanMirrors": "Pacman-mirrors is a Manjaro specific utility for generating and maintaining the system mirrorlist. This article covers current version 4.x. Pacman-mirrors uses the information available on the repo.manjaro.org."
     }
 }

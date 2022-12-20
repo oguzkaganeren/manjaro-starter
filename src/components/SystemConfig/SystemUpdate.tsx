@@ -34,18 +34,7 @@ const SystemUpdate: React.FC = (props) => {
   });
 
   return (
-    <Box mt={5} textAlign={{ lg: 'left' }}>
-
-      <chakra.p
-        mt={2}
-        fontSize={{ base: '3xl', sm: '3xl' }}
-        lineHeight="8"
-        fontWeight="extrabold"
-        letterSpacing="tight"
-        color={useColorModeValue('white.900', 'white.100')}
-      >
-        {t('updates')}
-      </chakra.p>
+    <Box minW="730px" mt={5} textAlign={{ lg: 'left' }}>
 
       <chakra.p
         mt={4}

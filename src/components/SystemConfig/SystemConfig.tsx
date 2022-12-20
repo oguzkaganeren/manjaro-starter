@@ -1,9 +1,13 @@
 import {
-  Box,
   Center,
   Button,
-  useColorModeValue,
   ButtonGroup,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import { GiProtectionGlasses } from 'react-icons/gi';
@@ -23,6 +27,13 @@ const SystemConfig: React.FC<SystemConfigProps> = (props) => {
   const [isVisibleGnomeLayout, setIsVisibleGnomeLayout] = useState(false);
   const [isVisibleMSM, setIsVisibleMSM] = useState(false);
   const [isVisibleMCP, setIsVisibleMCP] = useState(false);
+
+  const colors = useColorModeValue(
+    ['red.50', 'teal.50', 'blue.50'],
+    ['red.900', 'teal.900', 'blue.900'],
+  );
+  const [tabIndex, setTabIndex] = useState(0);
+  const bg = colors[tabIndex];
   const { t } = useTranslation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -48,58 +59,85 @@ const SystemConfig: React.FC<SystemConfigProps> = (props) => {
     });
   });
   return (
-    <Box
+
+    <Tabs
       px={8}
       py={20}
-      mx="auto"
-      bg={useColorModeValue('white', 'gray.800')}
-      shadow="xl"
+      orientation="vertical"
+      variant="solid-rounded"
+      colorScheme="whatsapp"
+     // onChange={(index) => setTabIndex(index)}
+      // bg={bg}
     >
-      <SystemInfoComponent />
-      <SystemFastestMirror />
-      <SystemUpdate />
-      {isVisibleMSM && (<ManjaroSettingsModule />)}
-      <KernelComponent />
+      <TabList>
+        <Tab>
+          {t('systemDetails')}
+        </Tab>
+        <Tab>Mirrors</Tab>
+        <Tab>{t('updates')}</Tab>
+        <Tab>Settings</Tab>
+        <Tab>Kernels</Tab>
+        <Tab>More</Tab>
+      </TabList>
+      <TabPanels>
+        <TabPanel>
+          <SystemInfoComponent />
+        </TabPanel>
+        <TabPanel>
+          <SystemFastestMirror />
 
-      <Center>
-        <ButtonGroup>
-          {isVisibleMCP && (
-          <Button
-            mt={10}
-            size="md"
-            height="48px"
-            border="2px"
-            borderColor="green.500"
-            onClick={async () => {
-              new Command('mcp').execute();
-            }}
-            leftIcon={<GiProtectionGlasses />}
-          >
-            {t('moreSettings')}
-          </Button>
-          )}
-          {isVisibleMSM && (
-          <Button
-            mt={10}
-            size="md"
-            height="48px"
-            border="2px"
-            borderColor="green.500"
-            onClick={async () => {
-              new Command('manjaro-settings-manager').execute();
-            }}
-            leftIcon={<GiProtectionGlasses />}
-          >
-            {t('moreSettings')}
-          </Button>
-          )}
-          {isVisibleGnomeLayout && (
-          <GnomeLayoutManager />
-          )}
-        </ButtonGroup>
+        </TabPanel>
+        <TabPanel>
+          <SystemUpdate />
+        </TabPanel>
+        <TabPanel>
+          {isVisibleMSM && (<ManjaroSettingsModule />)}
+        </TabPanel>
+        <TabPanel>
+          <KernelComponent />
+        </TabPanel>
+        <TabPanel>
+          <Center minW="730px">
+            <ButtonGroup>
+              {isVisibleMCP && (
+                <Button
+                  mt={10}
+                  size="md"
+                  height="48px"
+                  border="2px"
+                  borderColor="green.500"
+                  onClick={async () => {
+                    new Command('mcp').execute();
+                  }}
+                  leftIcon={<GiProtectionGlasses />}
+                >
+                  {t('moreSettings')}
+                </Button>
+              )}
+              {isVisibleMSM && (
+                <Button
+                  mt={10}
+                  size="md"
+                  height="48px"
+                  border="2px"
+                  borderColor="green.500"
+                  onClick={async () => {
+                    new Command('manjaro-settings-manager').execute();
+                  }}
+                  leftIcon={<GiProtectionGlasses />}
+                >
+                  {t('moreSettings')}
+                </Button>
+              )}
+              {isVisibleGnomeLayout && (
+                <GnomeLayoutManager />
+              )}
+            </ButtonGroup>
 
-      </Center>
-    </Box>
+          </Center>
+        </TabPanel>
+      </TabPanels>
+    </Tabs>
   );
 };
 export default SystemConfig;
