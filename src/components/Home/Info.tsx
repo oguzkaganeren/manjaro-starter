@@ -52,8 +52,6 @@ const Info: React.FC = () => {
 
       <Modal isOpen={isOpen} onClose={onClose} size="xl" motionPreset="slideInBottom">
         <ModalOverlay
-          bg="none"
-          backdropFilter="auto"
           backdropInvert="80%"
           backdropBlur="2px"
         />
