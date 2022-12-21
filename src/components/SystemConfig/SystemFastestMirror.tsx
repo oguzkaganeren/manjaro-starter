@@ -9,6 +9,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
 import { info, error } from 'tauri-plugin-log-api';
+import MirrorList from './MirrorList';
 
 const SystemFastestMirror: React.FC = (props) => {
   const { t } = useTranslation();
@@ -52,14 +53,13 @@ const SystemFastestMirror: React.FC = (props) => {
       <chakra.p mt={2}>
         {t('pacmanMirrors')}
       </chakra.p>
+      <MirrorList />
       <chakra.p mt={2}>
         {t('fastestMirrorWords')}
       </chakra.p>
       <Button
-        size="md"
-        height="48px"
         border="2px"
-        mt={5}
+        m={5}
         borderColor="green.500"
         onClick={setFastestMirror}
         isLoading={isProcessing}
