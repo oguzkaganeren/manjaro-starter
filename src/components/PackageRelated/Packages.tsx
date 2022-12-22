@@ -23,43 +23,14 @@ const PackagesList: React.FC = () => {
   const packageSt = useRecoilValue(packageState);
   const { t } = useTranslation();
   const [sliderRef, instanceRef] = useKeenSlider({
-    mode: 'free-snap',
-    loop: true,
+    mode: 'free',
+    loop: false,
     slides: {
-      origin: 'center',
+      origin: 'auto',
       perView: 3,
-      spacing: 15,
+      spacing: 5,
     },
-  }, [
-    (slider) => {
-      let timeout: ReturnType<typeof setTimeout>;
-      let mouseOver = false;
-      function clearNextTimeout() {
-        clearTimeout(timeout);
-      }
-      function nextTimeout() {
-        clearTimeout(timeout);
-        if (mouseOver) return;
-        timeout = setTimeout(() => {
-          slider.next();
-        }, 2000);
-      }
-      slider.on('created', () => {
-        slider.container.addEventListener('mouseover', () => {
-          mouseOver = true;
-          clearNextTimeout();
-        });
-        slider.container.addEventListener('mouseout', () => {
-          mouseOver = false;
-          nextTimeout();
-        });
-        nextTimeout();
-      });
-      slider.on('dragStarted', clearNextTimeout);
-      slider.on('animationEnded', nextTimeout);
-      slider.on('updated', nextTimeout);
-    },
-  ]);
+  });
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

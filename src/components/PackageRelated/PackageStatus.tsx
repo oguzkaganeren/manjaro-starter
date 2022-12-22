@@ -1,15 +1,12 @@
 import {
-  IconButton,
-  useToast,
-  Text,
-  Tooltip,
+  useToast, Text, Tooltip, Button,
 } from '@chakra-ui/react';
 import React, { ReactNode, useState } from 'react';
 import { RiInstallLine, RiCheckLine } from 'react-icons/ri';
 import { Command } from '@tauri-apps/api/shell';
 import { useRecoilState } from 'recoil';
 import { info, error } from 'tauri-plugin-log-api';
-
+import { useTranslation } from 'react-i18next';
 import {
   packageState,
 } from '../../stores/PackageStore';
@@ -22,6 +19,7 @@ interface PackageStatusProps {
   }
 const PackageStatus: React.FC<PackageStatusProps> = (props) => {
   const toast = useToast();
+  const { t } = useTranslation();
   const [packageSt, setPackageSt] = useRecoilState(packageState);
   const [isLoadingPackage, setIsLoadingPackage] = useState<Map<string, boolean>>(new Map());
 
@@ -95,13 +93,31 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
   return (
     <div>
       {isInstalled ? (
-        <IconButton aria-label="installed" disabled icon={<RiCheckLine />} colorScheme="gray" variant="solid" />
+        <Button
+          flex="1"
+          variant="ghost"
+          aria-label="installed"
+          disabled
+          leftIcon={<RiCheckLine />}
+          colorScheme="gray"
+        >
+          {t('installed')}
+        </Button>
       ) : (
         <Tooltip label="Install package">
-          <IconButton aria-label="install" icon={<RiInstallLine />} isLoading={isLoadingPackage?.get(pkId) || false} onClick={() => installPackageWithName(catId, pkId, pkgName)} colorScheme="green" variant="solid" />
+          <Button
+            aria-label="install"
+            flex="1"
+            variant="ghost"
+            leftIcon={<RiInstallLine />}
+            isLoading={isLoadingPackage?.get(pkId) || false}
+            onClick={() => installPackageWithName(catId, pkId, pkgName)}
+            colorScheme="green"
+          >
+            {t('install')}
+          </Button>
         </Tooltip>
       )}
-
     </div>
   );
 };
