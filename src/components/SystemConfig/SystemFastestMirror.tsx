@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  useColorModeValue,
   chakra,
   useToast,
   Text,
@@ -10,6 +9,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
 import { info, error } from 'tauri-plugin-log-api';
+import MirrorList from './MirrorList';
 
 const SystemFastestMirror: React.FC = (props) => {
   const { t } = useTranslation();
@@ -46,33 +46,20 @@ const SystemFastestMirror: React.FC = (props) => {
   };
 
   return (
-    <Box mt={5} textAlign={{ lg: 'left' }}>
-
-      <chakra.p
-        mt={2}
-        fontSize={{ base: '3xl', sm: '3xl' }}
-        lineHeight="8"
-        fontWeight="extrabold"
-        letterSpacing="tight"
-        color={useColorModeValue('white.900', 'white.100')}
-      >
-        {t('fastestMirror')}
+    <Box mb={5} textAlign={{ lg: 'left' }}>
+      <chakra.p>
+        {t('mirrorDesc')}
       </chakra.p>
-
-      <chakra.p
-        mt={4}
-        maxW="2xl"
-        fontSize="xl"
-        color={useColorModeValue('gray.500', 'gray.400')}
-      >
-        {t('setFastestMirrors')}
-
+      <chakra.p mt={2}>
+        {t('pacmanMirrors')}
+      </chakra.p>
+      <MirrorList />
+      <chakra.p mt={2}>
+        {t('fastestMirrorWords')}
       </chakra.p>
       <Button
-        size="md"
-        height="48px"
         border="2px"
-        mt={5}
+        m={5}
         borderColor="green.500"
         onClick={setFastestMirror}
         isLoading={isProcessing}

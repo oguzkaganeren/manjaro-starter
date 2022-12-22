@@ -1,12 +1,13 @@
 import {
-  Box,
-  Center,
   Button,
-  useColorModeValue,
-  ButtonGroup,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+  Box,
 } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
-import { GiProtectionGlasses } from 'react-icons/gi';
 import { Command } from '@tauri-apps/api/shell';
 import { useTranslation } from 'react-i18next';
 import KernelComponent from './KernelComponent';
@@ -23,6 +24,7 @@ const SystemConfig: React.FC<SystemConfigProps> = (props) => {
   const [isVisibleGnomeLayout, setIsVisibleGnomeLayout] = useState(false);
   const [isVisibleMSM, setIsVisibleMSM] = useState(false);
   const [isVisibleMCP, setIsVisibleMCP] = useState(false);
+  const [tabIndex, setTabIndex] = useState(0);
   const { t } = useTranslation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -48,58 +50,54 @@ const SystemConfig: React.FC<SystemConfigProps> = (props) => {
     });
   });
   return (
-    <Box
-      px={8}
-      py={20}
-      mx="auto"
-      bg={useColorModeValue('white', 'gray.800')}
-      shadow="xl"
+    <Tabs
+      my={20}
+      orientation="vertical"
+      variant="solid-rounded"
+      colorScheme="whatsapp"
+      onChange={(index) => setTabIndex(index)}
     >
-      <SystemInfoComponent />
-      <SystemFastestMirror />
-      <SystemUpdate />
-      {isVisibleMSM && (<ManjaroSettingsModule />)}
-      <KernelComponent />
-
-      <Center>
-        <ButtonGroup>
-          {isVisibleMCP && (
-          <Button
-            mt={10}
-            size="md"
-            height="48px"
-            border="2px"
-            borderColor="green.500"
-            onClick={async () => {
-              new Command('mcp').execute();
-            }}
-            leftIcon={<GiProtectionGlasses />}
-          >
-            {t('moreSettings')}
-          </Button>
-          )}
-          {isVisibleMSM && (
-          <Button
-            mt={10}
-            size="md"
-            height="48px"
-            border="2px"
-            borderColor="green.500"
-            onClick={async () => {
-              new Command('manjaro-settings-manager').execute();
-            }}
-            leftIcon={<GiProtectionGlasses />}
-          >
-            {t('moreSettings')}
-          </Button>
-          )}
-          {isVisibleGnomeLayout && (
-          <GnomeLayoutManager />
-          )}
-        </ButtonGroup>
-
-      </Center>
-    </Box>
+      <TabList>
+        <Tab>{t('systemDetails')}</Tab>
+        <Tab>{t('mirrors')}</Tab>
+        <Tab>{t('updates')}</Tab>
+        <Tab>{t('kernels')}</Tab>
+        <Tab>{t('settings')}</Tab>
+      </TabList>
+      <TabPanels minW="730px" maxW="2xl">
+        <TabPanel>
+          <SystemInfoComponent />
+        </TabPanel>
+        <TabPanel>
+          <SystemFastestMirror />
+        </TabPanel>
+        <TabPanel>
+          <SystemUpdate />
+        </TabPanel>
+        <TabPanel>
+          <KernelComponent />
+        </TabPanel>
+        <TabPanel>
+          <Box mt={5} textAlign={{ lg: 'left' }}>
+            {isVisibleMSM && <ManjaroSettingsModule />}
+            {isVisibleMCP && (
+              <Button
+                mt={5}
+                height="48px"
+                border="2px"
+                borderColor="green.500"
+                onClick={async () => {
+                  new Command('mcp').execute();
+                }}
+              >
+                {t('moreSettings')}
+              </Button>
+            )}
+            {isVisibleGnomeLayout && <GnomeLayoutManager />}
+          </Box>
+        </TabPanel>
+      </TabPanels>
+    </Tabs>
   );
 };
 export default SystemConfig;
