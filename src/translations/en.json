@@ -82,7 +82,9 @@
         "showsMirrorList": "Shows Mirror List",
         "fileCanBeFound": "File can be found:",
         "mirrors": "Mirrors",
-        "settings": "Settings"
+        "settings": "Settings",
+        "install": "Install",
+        "installed": "Installed"
 
     }
 }
