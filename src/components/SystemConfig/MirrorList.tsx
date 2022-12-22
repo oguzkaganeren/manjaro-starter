@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { invoke } from '@tauri-apps/api/tauri';
 import {
   Button,
@@ -18,39 +18,40 @@ const MirrorList = () => {
   const { t } = useTranslation();
   const [mirrorList, setMirrorList] = useState<JSX.Element[] | null>(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  useEffect(() => {
-    invoke('run_shell_command_with_result', { command: 'cat /etc/pacman.d/mirrorlist' }).then((response) => {
+  const modalOpen = () => {
+    invoke('run_shell_command_with_result', {
+      command: 'cat /etc/pacman.d/mirrorlist',
+    }).then((response) => {
       if (response) {
-        const responseParse = (response as string).replaceAll('"', '').split('\\n').map((item) => (
-          <span>
-            {item}
-            <br />
-          </span>
-        ));
+        const responseParse = (response as string)
+          .replaceAll('"', '')
+          .split('\\n')
+          .map((item) => (
+            <span>
+              {item}
+              <br />
+            </span>
+          ));
         setMirrorList(responseParse);
+        onOpen();
       }
     });
-  }, []);
+  };
   return (
     <Box>
-      <Button
-        border="2px"
-        m={5}
-        borderColor="green.500"
-        onClick={onOpen}
-      >
+      <Button border="2px" m={5} borderColor="green.500" onClick={modalOpen}>
         {t('showsMirrorList')}
       </Button>
 
-      <Modal isOpen={isOpen} onClose={onClose} size="2xl" motionPreset="slideInBottom">
-        <ModalOverlay
-          backdropBlur="2px"
-        />
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        size="2xl"
+        motionPreset="slideInBottom"
+      >
+        <ModalOverlay backdropBlur="2px" />
         <ModalContent>
-          <ModalBody p={4}>
-            {mirrorList}
-
-          </ModalBody>
+          <ModalBody p={4}>{mirrorList}</ModalBody>
           <ModalFooter>
             <Text color={useColorModeValue('gray.800', 'gray.500')} as="sup">
               {t('fileCanBeFound')}
@@ -59,10 +60,8 @@ const MirrorList = () => {
             </Text>
           </ModalFooter>
         </ModalContent>
-
       </Modal>
     </Box>
-
   );
 };
 export default MirrorList;
