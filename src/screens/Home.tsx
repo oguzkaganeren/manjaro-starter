@@ -26,7 +26,6 @@ const Package = (
     <Suspense fallback={<CircularProgress mt={20} isIndeterminate color="green.300" />}>
       <PackagesList />
     </Suspense>
-
   </Flex>
 );
 const Config = (
