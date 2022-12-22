@@ -27,7 +27,7 @@ const PackagesList: React.FC = () => {
     loop: false,
     slides: {
       origin: 'auto',
-      perView: 3,
+      perView: 2.2,
       spacing: 5,
     },
   });
