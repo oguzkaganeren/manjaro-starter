@@ -34,24 +34,17 @@ const SystemUpdate: React.FC = (props) => {
 
   return (
     <Box textAlign={{ lg: 'left' }}>
-      <chakra.p
-        mt={2}
-      >
-        {t('updateDesc')}
-
-      </chakra.p>
+      <chakra.p mt={2}>{t('updateDesc')}</chakra.p>
       <Button
         size="md"
         height="48px"
         border="2px"
-        mt={5}
+        m={5}
         borderColor="green.500"
         onClick={updateSystem}
       >
         {t('update')}
-        <Badge ml={5}>
-          {checkUpdate}
-        </Badge>
+        <Badge ml={5}>{checkUpdate}</Badge>
       </Button>
     </Box>
   );

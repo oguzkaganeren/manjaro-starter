@@ -80,7 +80,9 @@
         "updateDesc": "As time passes, the Manjaro team continues to polish and improve the distribution, your applications get new features or fixes. We suggest you update your system because of some security fixes, stability improvements, driver updates, and new kernel functionality.",
         "kernelDesc": "As the name would imply, as with the kernel of a seed, the Linux kernel is the core of a Linux operating system. Every other element of a Linux-based operating system is built around the kernel, which acts as an interface between your computer's hardware and the applications that run on it. Manjaro Settings Manager offers an easy way to add and remove kernels (including the necessary kernel modules). Also, you can install kernels using the below buttons.",
         "showsMirrorList": "Shows Mirror List",
-        "fileCanBeFound": "File can be found:"
+        "fileCanBeFound": "File can be found:",
+        "mirrors": "Mirrors",
+        "settings": "Settings"
 
     }
 }
