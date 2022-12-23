@@ -17,18 +17,11 @@ import SystemFastestMirror from './SystemFastestMirror';
 import ManjaroSettingsModule from './ManjaroSettingsModule';
 import GnomeLayoutManager from './GnomeLayoutMaganer';
 
-interface SystemConfigProps {
-}
-
-const SystemConfig: React.FC<SystemConfigProps> = (props) => {
+const SystemConfig: React.FC = () => {
   const [isVisibleGnomeLayout, setIsVisibleGnomeLayout] = useState(false);
   const [isVisibleMSM, setIsVisibleMSM] = useState(false);
   const [isVisibleMCP, setIsVisibleMCP] = useState(false);
-  const [tabIndex, setTabIndex] = useState(0);
   const { t } = useTranslation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   useEffect(() => {
     const resultOfGnome = new Command('version-control', ['-Q', 'gnome-layout-switcher']).execute();
     resultOfGnome.then((response) => {
@@ -51,14 +44,14 @@ const SystemConfig: React.FC<SystemConfigProps> = (props) => {
   });
   return (
     <Tabs
+      isLazy
       my={20}
       orientation="vertical"
       variant="solid-rounded"
       colorScheme="whatsapp"
-      onChange={(index) => setTabIndex(index)}
     >
       <TabList>
-        <Tab>{t('systemDetails')}</Tab>
+        <Tab>{t('system')}</Tab>
         <Tab>{t('mirrors')}</Tab>
         <Tab>{t('updates')}</Tab>
         <Tab>{t('kernels')}</Tab>

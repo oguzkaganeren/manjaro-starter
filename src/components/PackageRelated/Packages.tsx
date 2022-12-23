@@ -9,11 +9,12 @@ import {
   TabPanels,
   Tabs,
 } from '@chakra-ui/react';
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useTranslation } from 'react-i18next';
 import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
+import './styles.css';
 import {
   packageState,
   Category,
@@ -21,21 +22,52 @@ import {
 } from '../../stores/PackageStore';
 import PackageDetail from './PackageDetail';
 
+const Arrow = (props: {
+  disabled: boolean;
+  left?: boolean;
+  onClick: (e: any) => void;
+}) => {
+  const disabeld = props.disabled ? ' arrow--disabled' : '';
+  return (
+    <svg
+      onClick={props.onClick}
+      className={`arrow ${
+        props.left ? 'arrow--left' : 'arrow--right'
+      } ${disabeld}`}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+    >
+      {props.left && (
+        <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
+      )}
+      {!props.left && (
+        <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
+      )}
+    </svg>
+  );
+};
 const PackagesList: React.FC = () => {
   const packageSt = useRecoilValue(packageState);
   const { t } = useTranslation();
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+  const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider({
     mode: 'free',
     loop: false,
+    rubberband: false,
     slides: {
       origin: 'auto',
       perView: 2.2,
       spacing: 5,
     },
+    created() {
+      setLoaded(true);
+    },
+    slideChanged(s) {
+      setCurrentSlide(s.track.details.rel);
+    },
   });
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+
   const Categories = (
     <TabList maxH={{ lg: '4xl', sm: 'sm' }} overflow="scroll">
       {Array.from(packageSt.values()).map((category: Category) => (
@@ -45,15 +77,15 @@ const PackagesList: React.FC = () => {
   );
   const Apps = Array.from(packageSt.values()).map((category: Category) => (
     <TabPanel key={category.id}>
-      <Box textAlign={{ lg: 'left' }}>
+      <Box textAlign={{ lg: "left" }}>
         <chakra.p
-          fontSize={{ base: '3xl', sm: '4xl' }}
+          fontSize={{ base: "3xl", sm: "4xl" }}
           lineHeight="8"
           fontWeight="extrabold"
           letterSpacing="tight"
-          id={category.name.replaceAll(' ', '-').replaceAll('/', '-')}
+          id={category.name.replaceAll(" ", "-").replaceAll("/", "-")}
           color="white.900"
-          _dark={{ color: 'white.100' }}
+          _dark={{ color: "white.100" }}
         >
           {category.name}
         </chakra.p>
@@ -62,28 +94,51 @@ const PackagesList: React.FC = () => {
           maxW="2xl"
           fontSize="xl"
           color="gray.500"
-          _dark={{ color: 'gray.400' }}
+          _dark={{ color: "gray.400" }}
         >
           {category.description}
         </chakra.p>
         <SimpleGrid spacingX={{ base: 16, lg: 24 }} spacingY={10} mt={6}>
-          <div ref={sliderRef} className="keen-slider">
-            {Array.from(category.packages.values()).map((app: Package) => (
-              <div className="keen-slider__slide">
-                <PackageDetail
-                  title={app.name}
-                  pkg={app.pkg}
-                  key={app.id}
-                  uniqueId={app.id}
-                  isInstalled={app.isInstalled}
-                  catId={category.id}
-                  installedVersion={app.installedVersion}
-                  icon={app.icon}
-                >
-                  {app.description}
-                </PackageDetail>
-              </div>
-            ))}
+          <div className="navigation-wrapper">
+            <div ref={sliderRef} className="keen-slider">
+              {Array.from(category.packages.values()).map((app: Package) => (
+                <div className="keen-slider__slide">
+                  <PackageDetail
+                    title={app.name}
+                    pkg={app.pkg}
+                    key={app.id}
+                    uniqueId={app.id}
+                    isInstalled={app.isInstalled}
+                    catId={category.id}
+                    installedVersion={app.installedVersion}
+                    icon={app.icon}
+                  >
+                    {app.description}
+                  </PackageDetail>
+                </div>
+              ))}
+            </div>
+            {loaded && instanceRef.current && (
+              <>
+                <Arrow
+                  left
+                  onClick={(e: any) =>
+                    e.stopPropagation() || instanceRef.current?.prev()
+                  }
+                  disabled={currentSlide === 0}
+                />
+
+                <Arrow
+                  onClick={(e: any) =>
+                    e.stopPropagation() || instanceRef.current?.next()
+                  }
+                  disabled={
+                    currentSlide ===
+                    instanceRef.current.track.details.slides.length - 1
+                  }
+                />
+              </>
+            )}
           </div>
         </SimpleGrid>
       </Box>
