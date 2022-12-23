@@ -57,7 +57,22 @@ const SystemConfig: React.FC = () => {
         <Tab>{t('kernels')}</Tab>
         <Tab>{t('settings')}</Tab>
       </TabList>
-      <TabPanels minW="730px" maxW="2xl">
+      <TabPanels
+        minW={{
+          sm: '25em',
+          md: '43em',
+          lg: '50em',
+          xl: '60em',
+          '2xl': '80em',
+        }}
+        maxW={{
+          sm: '25em',
+          md: '43em',
+          lg: '50em',
+          xl: '60em',
+          '2xl': '80em',
+        }}
+      >
         <TabPanel>
           <SystemInfoComponent />
         </TabPanel>
