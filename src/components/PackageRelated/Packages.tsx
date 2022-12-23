@@ -1,7 +1,5 @@
 import {
   Box,
-  SimpleGrid,
-  useColorModeValue,
   chakra,
   Tab,
   TabList,
@@ -69,7 +67,12 @@ const PackagesList: React.FC = () => {
   });
 
   const Categories = (
-    <TabList maxH={{ lg: '4xl', sm: 'sm' }} overflow="scroll">
+    <TabList
+      maxH={{
+        sm: '10em', md: '24em', lg: '24em', xl: '20em', '2xl': '80em',
+      }}
+      overflow="scroll"
+    >
       {Array.from(packageSt.values()).map((category: Category) => (
         <Tab>{category.name}</Tab>
       ))}
@@ -77,15 +80,32 @@ const PackagesList: React.FC = () => {
   );
   const Apps = Array.from(packageSt.values()).map((category: Category) => (
     <TabPanel key={category.id}>
-      <Box textAlign={{ lg: "left" }}>
+      <Box
+        textAlign={{ lg: 'left' }}
+        width="full"
+        minW={{
+          sm: '25em',
+          md: '37em',
+          lg: '50em',
+          xl: '60em',
+          '2xl': '80em',
+        }}
+        maxW={{
+          sm: '25em',
+          md: '37em',
+          lg: '50em',
+          xl: '60em',
+          '2xl': '80em',
+        }}
+      >
         <chakra.p
-          fontSize={{ base: "3xl", sm: "4xl" }}
+          fontSize={{ base: '3xl', sm: '4xl' }}
           lineHeight="8"
           fontWeight="extrabold"
           letterSpacing="tight"
-          id={category.name.replaceAll(" ", "-").replaceAll("/", "-")}
+          id={category.name.replaceAll(' ', '-').replaceAll('/', '-')}
           color="white.900"
-          _dark={{ color: "white.100" }}
+          _dark={{ color: 'white.100' }}
         >
           {category.name}
         </chakra.p>
@@ -94,71 +114,63 @@ const PackagesList: React.FC = () => {
           maxW="2xl"
           fontSize="xl"
           color="gray.500"
-          _dark={{ color: "gray.400" }}
+          _dark={{ color: 'gray.400' }}
         >
           {category.description}
         </chakra.p>
-        <SimpleGrid spacingX={{ base: 16, lg: 24 }} spacingY={10} mt={6}>
-          <div className="navigation-wrapper">
-            <div ref={sliderRef} className="keen-slider">
-              {Array.from(category.packages.values()).map((app: Package) => (
-                <div className="keen-slider__slide">
-                  <PackageDetail
-                    title={app.name}
-                    pkg={app.pkg}
-                    key={app.id}
-                    uniqueId={app.id}
-                    isInstalled={app.isInstalled}
-                    catId={category.id}
-                    installedVersion={app.installedVersion}
-                    icon={app.icon}
-                  >
-                    {app.description}
-                  </PackageDetail>
-                </div>
-              ))}
-            </div>
-            {loaded && instanceRef.current && (
-              <>
-                <Arrow
-                  left
-                  onClick={(e: any) =>
-                    e.stopPropagation() || instanceRef.current?.prev()
-                  }
-                  disabled={currentSlide === 0}
-                />
-
-                <Arrow
-                  onClick={(e: any) =>
-                    e.stopPropagation() || instanceRef.current?.next()
-                  }
-                  disabled={
-                    currentSlide ===
-                    instanceRef.current.track.details.slides.length - 1
-                  }
-                />
-              </>
-            )}
+        <div className="navigation-wrapper">
+          <div ref={sliderRef} className="keen-slider">
+            {Array.from(category.packages.values()).map((app: Package) => (
+              <div className="keen-slider__slide">
+                <PackageDetail
+                  title={app.name}
+                  pkg={app.pkg}
+                  key={app.id}
+                  uniqueId={app.id}
+                  isInstalled={app.isInstalled}
+                  catId={category.id}
+                  installedVersion={app.installedVersion}
+                  icon={app.icon}
+                >
+                  {app.description}
+                </PackageDetail>
+              </div>
+            ))}
           </div>
-        </SimpleGrid>
+          {loaded && instanceRef.current && (
+            <>
+              <Arrow
+                left
+                onClick={(e: any) => e.stopPropagation() || instanceRef.current?.prev()}
+                disabled={currentSlide === 0}
+              />
+
+              <Arrow
+                onClick={(e: any) => e.stopPropagation() || instanceRef.current?.next()}
+                disabled={
+                  currentSlide
+                  === instanceRef.current.track.details.slides.length - 1
+                }
+              />
+            </>
+          )}
+        </div>
       </Box>
     </TabPanel>
   ));
   return (
-    <Box px={8} py={71} mx="auto" bg={useColorModeValue('white', 'gray.800')}>
+    <Box>
       <Tabs
         orientation="vertical"
         variant="solid-rounded"
         colorScheme="whatsapp"
         isLazy
+        px={8}
+        py={71}
+        mx="auto"
       >
         {Categories}
-        <TabPanels
-          minW={{ lg: '8xl', sm: '720px' }}
-          maxW={{ lg: '8xl', sm: '2xl' }}
-        >
-          {Apps}
-        </TabPanels>
+        <TabPanels>{Apps}</TabPanels>
       </Tabs>
     </Box>
   );

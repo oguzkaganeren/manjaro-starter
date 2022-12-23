@@ -30,7 +30,7 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
     icon, title, catId, uniqueId, pkg, isInstalled, installedVersion, children,
   } = props;
   return (
-    <Card minH="270" variant="filled">
+    <Card minH="2xs" variant="filled">
       <CardHeader>
         <Flex>
           <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
