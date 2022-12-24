@@ -13,6 +13,7 @@ import {
 import { Command } from '@tauri-apps/api/shell';
 import { invoke } from '@tauri-apps/api/tauri';
 import DOMPurify from 'dompurify';
+import { AtSignIcon } from '@chakra-ui/icons';
 import PackageStatus from './PackageStatus';
 
   interface PackageDetailProps {
@@ -45,14 +46,16 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
       <CardHeader>
         <Flex>
           <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-            {avatarSrc && (
-              <div
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{
-                  __html: DOMPurify.sanitize(avatarSrc),
-                }}
-              />
-            )}
+            {avatarSrc
+              && avatarSrc
+                !== 'Unable to read file' ? (
+                  <div
+                    // eslint-disable-next-line react/no-danger
+                    dangerouslySetInnerHTML={{
+                      __html: DOMPurify.sanitize(avatarSrc),
+                    }}
+                  />
+              ) : <AtSignIcon />}
 
             <Box>
               <Heading size="sm">

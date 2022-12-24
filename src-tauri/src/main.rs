@@ -9,6 +9,7 @@ use tauri_plugin_log::{LogTarget, LoggerBuilder,RotationStrategy};
 use log::LevelFilter;
 use tauri::Manager;
 use std::fs;
+use std::path::Path;
 
 #[tauri::command]
 fn run_shell_command(command: String) -> String {
@@ -30,8 +31,11 @@ fn run_shell_command_with_result(command: String) -> String {
 }
 #[tauri::command]
 fn get_svg_icon(svgpath: String) -> String {
-  let svg_str = fs::read_to_string(svgpath).expect("Unable to read file");
-  return svg_str;
+  if Path::new(&svgpath).exists(){
+    let svg_str = fs::read_to_string(svgpath).expect("Unable to read file");
+    return svg_str;
+  }
+  return "Unable to read file".to_string();
 }
 #[tauri::command]
 fn get_sys_info() -> String {
