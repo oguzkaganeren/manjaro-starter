@@ -44,7 +44,14 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
                 <Button
                   variant="link"
                   whiteSpace="initial"
-                  size="xs"
+                  size="sm"
+                  maxW={{
+                    sm: '10em',
+                    md: '10em',
+                    lg: '24em',
+                    xl: '20em',
+                    '2xl': '80em',
+                  }}
                   onClick={() => {
                     const cmd = new Command('pamac-manager', [
                       `--details=${pkg}`,
@@ -61,7 +68,7 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
         </Flex>
       </CardHeader>
       <CardBody>
-        <Text>{children}</Text>
+        <Text fontSize="sm">{children}</Text>
       </CardBody>
 
       <CardFooter

@@ -69,7 +69,11 @@ const PackagesList: React.FC = () => {
   const Categories = (
     <TabList
       maxH={{
-        sm: '10em', md: '24em', lg: '24em', xl: '20em', '2xl': '80em',
+        sm: '10em',
+        md: '24em',
+        lg: '24em',
+        xl: '20em',
+        '2xl': '80em',
       }}
       overflow="scroll"
     >
@@ -121,7 +125,7 @@ const PackagesList: React.FC = () => {
         <div className="navigation-wrapper">
           <div ref={sliderRef} className="keen-slider">
             {Array.from(category.packages.values()).map((app: Package) => (
-              <div className="keen-slider__slide">
+              <div className={`keen-slider__slide ${category.name}`}>
                 <PackageDetail
                   title={app.name}
                   pkg={app.pkg}
@@ -137,7 +141,7 @@ const PackagesList: React.FC = () => {
               </div>
             ))}
           </div>
-          {loaded && instanceRef.current && (
+          {loaded && instanceRef.current && category.packages.size > 2 && (
             <>
               <Arrow
                 left
