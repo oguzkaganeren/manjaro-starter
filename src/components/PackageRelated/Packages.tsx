@@ -78,7 +78,7 @@ const PackagesList: React.FC = () => {
       overflow="scroll"
     >
       {Array.from(packageSt.values()).map((category: Category) => (
-        <Tab>{category.name}</Tab>
+        <Tab>{t(category.icon)}</Tab>
       ))}
     </TabList>
   );
@@ -111,7 +111,7 @@ const PackagesList: React.FC = () => {
           color="white.900"
           _dark={{ color: 'white.100' }}
         >
-          {category.name}
+          {t(category.icon)}
         </chakra.p>
         <chakra.p
           mt={4}
@@ -120,7 +120,7 @@ const PackagesList: React.FC = () => {
           color="gray.500"
           _dark={{ color: 'gray.400' }}
         >
-          {category.description}
+          {t(`${category.icon}Desc`)}
         </chakra.p>
         <div className="navigation-wrapper">
           <div ref={sliderRef} className="keen-slider">
