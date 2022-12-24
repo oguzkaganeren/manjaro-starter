@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Box,
-  Image,
   Button,
   Card,
   CardHeader,
@@ -12,6 +11,8 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { Command } from '@tauri-apps/api/shell';
+import { invoke } from '@tauri-apps/api/tauri';
+import DOMPurify from 'dompurify';
 import PackageStatus from './PackageStatus';
 
   interface PackageDetailProps {
@@ -29,15 +30,29 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
   const {
     icon, title, catId, uniqueId, pkg, isInstalled, installedVersion, children,
   } = props;
+  const [avatarSrc, setAvatarSrc] = React.useState('');
+  useEffect(() => {
+    invoke('get_svg_icon', {
+      svgpath: `/usr/share/icons/Papirus/32x32/apps/${icon}.svg`,
+    }).then((response) => {
+      if (response) {
+        setAvatarSrc(response as string);
+      }
+    });
+  }, []);
   return (
     <Card minH="2xs" variant="filled">
       <CardHeader>
         <Flex>
           <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-            <Image
-              boxSize="30px"
-              src={`${process.env.PUBLIC_URL}/AppIcons/${icon}.svg`}
-            />
+            {avatarSrc && (
+              <div
+                // eslint-disable-next-line react/no-danger
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(avatarSrc),
+                }}
+              />
+            )}
 
             <Box>
               <Heading size="sm">

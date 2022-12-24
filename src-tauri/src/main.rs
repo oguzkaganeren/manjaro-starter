@@ -8,6 +8,7 @@ use serde_json::json;
 use tauri_plugin_log::{LogTarget, LoggerBuilder,RotationStrategy};
 use log::LevelFilter;
 use tauri::Manager;
+use std::fs;
 
 #[tauri::command]
 fn run_shell_command(command: String) -> String {
@@ -26,6 +27,11 @@ fn run_shell_command_with_result(command: String) -> String {
             .output()
             .unwrap();
   return format!("{:?}",String::from_utf8_lossy(&output.stdout));
+}
+#[tauri::command]
+fn get_svg_icon(svgpath: String) -> String {
+  let svg_str = fs::read_to_string(svgpath).expect("Unable to read file");
+  return svg_str;
 }
 #[tauri::command]
 fn get_sys_info() -> String {
@@ -72,7 +78,7 @@ fn main() {
     LogTarget::Webview,
   ]).build())
   // This is where you pass in your commands
-  .invoke_handler(tauri::generate_handler![run_shell_command,run_shell_command_with_result,get_sys_info])
+  .invoke_handler(tauri::generate_handler![run_shell_command,run_shell_command_with_result,get_sys_info,get_svg_icon])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
