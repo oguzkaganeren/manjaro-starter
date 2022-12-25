@@ -41,18 +41,20 @@
 ## Features
 
 * Steps mechanism
-* Release Notes (redirect to Manjaro Blog)
+* Release Notes
 * Showing System Details (System name-version, kernel info, host info, CPU, memory, swap)
-* Set fastest mirrors (`pacman-mirrors --fasttrack 5`)
-* Check system updates and update system (Open Pamac updates page)
+* Showing Mirrors
+* Set fastest mirrors
+* System updates status and update system
 * Install Drivers (Open MSM drivers page)
 * Set date time (Open MSM date-time page)
 * Install Language Packages (Open MSM Language Packages page)
-* List Kernels and Install (Used MHWD cli)
+* Manjaro control panel support [MCP](https://gitlab.com/LordTermor/msm-ng)
+* Easy kernel installations
 * Most used package list and install them easily
-* Translation Support
-* Launch at start
-* Dark and White color mode
+* Translation Support(Thanks to many contributor supports)
+* Launch at system start
+* Dark and Light themes
 
 ### Dependency
 
@@ -62,7 +64,7 @@
 * mhwd
 * pacman
 * pamac-manager
-* pkexec
+* Papirus
 
 ### Dependency(Optional)
 * manjaro-settings-manager
