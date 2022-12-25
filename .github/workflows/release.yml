@@ -17,7 +17,6 @@ jobs:
         uses: TriPSs/conventional-changelog-action@v3 
         with: 
             github-token: ${{ secrets.GITHUB_TOKEN }}
-            output-file: "false" 
       - uses: fregante/setup-git-user@v1
       - name: Build
         run: |    
