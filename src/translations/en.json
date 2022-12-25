@@ -122,6 +122,7 @@
         "disk-utility": "System Tools",
         "disk-utilityDesc": "System utilities",
         "virt-manager": "Virtual Computing",
-        "virt-managerDesc": "Virtual Machine applications"
+        "virt-managerDesc": "Virtual Machine applications",
+        "appChangelog": "App Changelog"
     }
 }
