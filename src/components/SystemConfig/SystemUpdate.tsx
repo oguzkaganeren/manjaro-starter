@@ -1,8 +1,13 @@
 import {
-  Box,
   Button,
   chakra,
   Badge,
+  Card,
+  CardBody,
+  CardFooter,
+  Divider,
+  ButtonGroup,
+  Spinner,
 } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -33,20 +38,35 @@ const SystemUpdate: React.FC = (props) => {
   });
 
   return (
-    <Box textAlign={{ lg: 'left' }}>
-      <chakra.p mt={2}>{t('updateDesc')}</chakra.p>
-      <Button
-        size="md"
-        height="48px"
-        border="2px"
-        m={5}
-        borderColor="green.500"
-        onClick={updateSystem}
+    <Card minH="2xs" variant="filled">
+      <CardBody>
+        <chakra.p mt={2}>{t('updateDesc')}</chakra.p>
+      </CardBody>
+      <Divider />
+      <CardFooter
+        justify="space-between"
+        flexWrap="wrap"
+        sx={{
+          '& > button': {
+            minW: '136px',
+          },
+        }}
       >
-        {t('update')}
-        <Badge ml={5}>{checkUpdate}</Badge>
-      </Button>
-    </Box>
+        <ButtonGroup spacing="2">
+          <Button onClick={updateSystem}>
+            {t('update')}
+            {' '}
+            {checkUpdate === '' ? (
+              <Spinner ml="1" size="xs" />
+            ) : (
+              <Badge ml="1" colorScheme="orange">
+                {checkUpdate}
+              </Badge>
+            )}
+          </Button>
+        </ButtonGroup>
+      </CardFooter>
+    </Card>
   );
 };
 export default SystemUpdate;

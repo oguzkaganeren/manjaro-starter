@@ -1,6 +1,4 @@
 import {
-  Box,
-  Skeleton,
   TagLabel,
   chakra,
   TagLeftIcon,
@@ -9,6 +7,11 @@ import {
   useToast,
   Tooltip,
   Text,
+  Card,
+  Divider,
+  CardBody,
+  CardFooter,
+  Spinner,
 } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import { FaLinux } from 'react-icons/fa';
@@ -94,25 +97,55 @@ const KernelComponent: React.FC = () => {
   }, []);
 
   return (
-    <Box mt={5} textAlign={{ lg: 'left' }}>
-      <chakra.p>
-        {t('kernelDesc')}
-      </chakra.p>
-      <Skeleton isLoaded={kernelSt !== null}>
-        {kernelSt && kernelSt.map((kernel) => (
-          <Tag size="md" mr={5} mt={5} key={kernel.id} colorScheme={kernel.isInstalled ? 'whatsapp' : 'gray'}>
-            <TagLeftIcon boxSize="12px" as={FaLinux} />
-            <TagLabel>{kernel.name}</TagLabel>
-            {!kernel.isInstalled ? (
-              <Tooltip label="Install Kernel">
-                <IconButton ml={5} mr={-2} aria-label="Install Kernel" onClick={() => installKernel(kernel.name)} isLoading={isLoadingKernel?.get(kernel.name) || false} icon={<RiAddLine />} />
-              </Tooltip>
-            ) : <IconButton ml={5} mr={-2} disabled aria-label="" icon={<MdOutlineDownloadDone />} />}
-          </Tag>
-        ))}
-      </Skeleton>
+    <Card minH="2xs" variant="filled">
+      <CardBody>
+        <chakra.p mt={2}>{t('kernelDesc')}</chakra.p>
+      </CardBody>
+      <Divider />
+      <CardFooter
+        justify="space-between"
+        flexWrap="wrap"
+        sx={{
+          '& > button': {
+            minW: '136px',
+          },
+        }}
+      >
+        {kernelSt === undefined ? <Spinner />
+          : kernelSt.map((kernel) => (
+            <Tag
+              mr={2}
+              mt={2}
+              key={kernel.id}
+              colorScheme={kernel.isInstalled ? 'whatsapp' : 'gray'}
+            >
+              <TagLeftIcon boxSize="12px" as={FaLinux} />
+              <TagLabel>{kernel.name}</TagLabel>
+              {!kernel.isInstalled ? (
+                <Tooltip label="Install Kernel">
+                  <IconButton
+                    ml={5}
+                    mr={-2}
+                    aria-label="Install Kernel"
+                    onClick={() => installKernel(kernel.name)}
+                    isLoading={isLoadingKernel?.get(kernel.name) || false}
+                    icon={<RiAddLine />}
+                  />
+                </Tooltip>
+              ) : (
+                <IconButton
+                  ml={5}
+                  mr={-2}
+                  disabled
+                  aria-label=""
+                  icon={<MdOutlineDownloadDone />}
+                />
+              )}
+            </Tag>
+          ))}
 
-    </Box>
+      </CardFooter>
+    </Card>
   );
 };
 export default KernelComponent;
