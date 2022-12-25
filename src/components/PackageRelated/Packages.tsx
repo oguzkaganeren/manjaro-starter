@@ -29,7 +29,7 @@ const Arrow = (props: {
 }) => {
   const { disabled, left, onClick } = props;
   const color = useColorModeValue('#181F2E', '#fff');
-  const disColor = '#455A64';
+  const disColor = '#8F9BAC';
   const fillColor = disabled ? disColor : color;
   return (
     <Icon
@@ -162,7 +162,7 @@ const PackagesList: React.FC = () => {
                 onClick={(e: any) => e.stopPropagation() || instanceRef.current?.next()}
                 disabled={
                   currentSlide
-                  === instanceRef.current.track.details.slides.length - 1
+                  === instanceRef.current.track.details.slides.length - 2
                 }
               />
             </>
