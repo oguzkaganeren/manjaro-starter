@@ -1,3 +1,12 @@
+## [0.13.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.13.0...v0.13.1) (2022-12-25)
+
+
+### Bug Fixes
+
+* 🐛 changelog feature date text size problem ([95aba1d](https://github.com/oguzkaganeren/manjaro-starter/commit/95aba1de43ca77380be986274a80b4d98e94b3fb))
+
+
+
 # [0.13.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.12.5...v0.13.0) (2022-12-25)
 
 
@@ -33,16 +42,6 @@
 ### Bug Fixes
 
 * 🐛 hot fixes for not exists icon ([6dd2d61](https://github.com/oguzkaganeren/manjaro-starter/commit/6dd2d61cb36c7bfcd5120306344052cd33b13ab9)), closes [#142](https://github.com/oguzkaganeren/manjaro-starter/issues/142)
-
-
-
-## [0.12.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.12.1...v0.12.2) (2022-12-24)
-
-
-### Bug Fixes
-
-* 🐛 added some tranlations for packages categories ([85e7efc](https://github.com/oguzkaganeren/manjaro-starter/commit/85e7efc1b9e1758eff04a65f5b0b5b03a292b25c)), closes [#164](https://github.com/oguzkaganeren/manjaro-starter/issues/164)
-* 🐛 removed static icons inside of app ([203600f](https://github.com/oguzkaganeren/manjaro-starter/commit/203600f37386439f02e0d00ac7bcbf7be9831472)), closes [#142](https://github.com/oguzkaganeren/manjaro-starter/issues/142)
 
 
 
