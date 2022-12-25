@@ -39,7 +39,7 @@ const MirrorList = () => {
   };
   return (
     <Box>
-      <Button border="2px" m={5} borderColor="green.500" onClick={modalOpen}>
+      <Button onClick={modalOpen}>
         {t('showsMirrorList')}
       </Button>
 

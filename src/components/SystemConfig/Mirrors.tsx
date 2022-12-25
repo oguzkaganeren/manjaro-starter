@@ -1,9 +1,13 @@
 import {
-  Box,
   Button,
   chakra,
   useToast,
   Text,
+  Card,
+  CardBody,
+  CardFooter,
+  Divider,
+  ButtonGroup,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -11,7 +15,7 @@ import { Command } from '@tauri-apps/api/shell';
 import { info, error } from 'tauri-plugin-log-api';
 import MirrorList from './MirrorList';
 
-const SystemFastestMirror: React.FC = (props) => {
+const Mirrors: React.FC = (props) => {
   const { t } = useTranslation();
   const toast = useToast();
   const [isProcessing, setIsProcessing] = useState(false);
@@ -46,27 +50,34 @@ const SystemFastestMirror: React.FC = (props) => {
   };
 
   return (
-    <Box mb={5} textAlign={{ lg: 'left' }}>
-      <chakra.p>
-        {t('mirrorDesc')}
-      </chakra.p>
-      <chakra.p mt={2}>
-        {t('pacmanMirrors')}
-      </chakra.p>
-      <MirrorList />
-      <chakra.p mt={2}>
-        {t('fastestMirrorWords')}
-      </chakra.p>
-      <Button
-        border="2px"
-        m={5}
-        borderColor="green.500"
-        onClick={setFastestMirror}
-        isLoading={isProcessing}
+    <Card minH="2xs" variant="filled">
+      <CardBody>
+        <chakra.p fontSize="sm">{t('mirrorDesc')}</chakra.p>
+        <chakra.p fontSize="sm" mt={2}>
+          {t('pacmanMirrors')}
+        </chakra.p>
+        <chakra.p fontSize="sm" mt={2}>
+          {t('fastestMirrorWords')}
+        </chakra.p>
+      </CardBody>
+      <Divider />
+      <CardFooter
+        justify="space-between"
+        flexWrap="wrap"
+        sx={{
+          '& > button': {
+            minW: '136px',
+          },
+        }}
       >
-        {t('setFastestMirrors')}
-      </Button>
-    </Box>
+        <ButtonGroup spacing="2">
+          <MirrorList />
+          <Button onClick={setFastestMirror} isLoading={isProcessing}>
+            {t('setFastestMirrors')}
+          </Button>
+        </ButtonGroup>
+      </CardFooter>
+    </Card>
   );
 };
-export default SystemFastestMirror;
+export default Mirrors;

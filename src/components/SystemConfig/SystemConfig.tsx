@@ -5,7 +5,9 @@ import {
   TabPanels,
   Tab,
   TabPanel,
-  Box,
+  SimpleGrid,
+  Stat,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import { Command } from '@tauri-apps/api/shell';
@@ -13,7 +15,7 @@ import { useTranslation } from 'react-i18next';
 import KernelComponent from './KernelComponent';
 import SystemInfoComponent from './SystemInfo';
 import SystemUpdate from './SystemUpdate';
-import SystemFastestMirror from './SystemFastestMirror';
+import Mirrors from './Mirrors';
 import ManjaroSettingsModule from './ManjaroSettingsModule';
 import GnomeLayoutManager from './GnomeLayoutMaganer';
 
@@ -77,7 +79,7 @@ const SystemConfig: React.FC = () => {
           <SystemInfoComponent />
         </TabPanel>
         <TabPanel>
-          <SystemFastestMirror />
+          <Mirrors />
         </TabPanel>
         <TabPanel>
           <SystemUpdate />
@@ -86,23 +88,30 @@ const SystemConfig: React.FC = () => {
           <KernelComponent />
         </TabPanel>
         <TabPanel>
-          <Box mt={5} textAlign={{ lg: 'left' }}>
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 5, lg: 8 }}>
             {isVisibleMSM && <ManjaroSettingsModule />}
             {isVisibleMCP && (
+            <Stat
+              px={{ base: 2, md: 4 }}
+              py="5"
+              shadow="xl"
+              size="sm"
+              border="1px solid"
+              borderColor={useColorModeValue('gray.800', 'gray.500')}
+              rounded="lg"
+            >
               <Button
-                mt={5}
-                height="48px"
-                border="2px"
-                borderColor="green.500"
+                width="100%"
                 onClick={async () => {
                   new Command('mcp').execute();
                 }}
               >
                 {t('moreSettings')}
               </Button>
+            </Stat>
             )}
             {isVisibleGnomeLayout && <GnomeLayoutManager />}
-          </Box>
+          </SimpleGrid>
         </TabPanel>
       </TabPanels>
     </Tabs>
