@@ -1,6 +1,5 @@
 import {
   Button,
-  useDisclosure,
   Stat,
   Flex,
   Box,
@@ -20,7 +19,6 @@ import logo from '../assets/icon.png';
 import packageJson from '../../package.json';
 
 const AboutComponent = (): JSX.Element => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const { t } = useTranslation();
   return (
     <Stat

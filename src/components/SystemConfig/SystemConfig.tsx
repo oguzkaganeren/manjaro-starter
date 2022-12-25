@@ -24,6 +24,7 @@ const SystemConfig: React.FC = () => {
   const [isVisibleMSM, setIsVisibleMSM] = useState(false);
   const [isVisibleMCP, setIsVisibleMCP] = useState(false);
   const { t } = useTranslation();
+  const borderColor = useColorModeValue('gray.800', 'gray.500');
   useEffect(() => {
     const resultOfGnome = new Command('version-control', ['-Q', 'gnome-layout-switcher']).execute();
     resultOfGnome.then((response) => {
@@ -91,24 +92,24 @@ const SystemConfig: React.FC = () => {
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 5, lg: 8 }}>
             {isVisibleMSM && <ManjaroSettingsModule />}
             {isVisibleMCP && (
-            <Stat
-              px={{ base: 2, md: 4 }}
-              py="5"
-              shadow="xl"
-              size="sm"
-              border="1px solid"
-              borderColor={useColorModeValue('gray.800', 'gray.500')}
-              rounded="lg"
-            >
-              <Button
-                width="100%"
-                onClick={async () => {
-                  new Command('mcp').execute();
-                }}
+              <Stat
+                px={{ base: 2, md: 4 }}
+                py="5"
+                shadow="xl"
+                size="sm"
+                border="1px solid"
+                borderColor={borderColor}
+                rounded="lg"
               >
-                {t('moreSettings')}
-              </Button>
-            </Stat>
+                <Button
+                  width="100%"
+                  onClick={async () => {
+                    new Command('mcp').execute();
+                  }}
+                >
+                  {t('moreSettings')}
+                </Button>
+              </Stat>
             )}
             {isVisibleGnomeLayout && <GnomeLayoutManager />}
           </SimpleGrid>

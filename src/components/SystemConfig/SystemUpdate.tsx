@@ -14,7 +14,7 @@ import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
 import { info, error } from 'tauri-plugin-log-api';
 
-const SystemUpdate: React.FC = (props) => {
+const SystemUpdate: React.FC = () => {
   const { t } = useTranslation();
   const [checkUpdate, setCheckUpdate] = useState('');
   const checkUpdates = async () => {
