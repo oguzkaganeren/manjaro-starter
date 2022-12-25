@@ -50,6 +50,14 @@ const newTheme = {
       </Heading>
     );
   },
+  h1: (props: any) => {
+    const { children } = props;
+    return (
+      <Heading as="h4" size="xs">
+        {children}
+      </Heading>
+    );
+  },
 };
 const Changelog = (): JSX.Element => {
   const toast = useToast();
