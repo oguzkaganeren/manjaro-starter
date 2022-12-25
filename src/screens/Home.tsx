@@ -14,6 +14,7 @@ import ResultComponent from '../components/ResultComponent';
 import SystemConfig from '../components/SystemConfig/SystemConfig';
 import packageJson from '../../package.json';
 import Nav from '../components/NavbarComponent';
+import Changelog from '../components/common/Changelog';
 
 const Home = (
   <Flex py={4}>
@@ -123,6 +124,7 @@ const App: React.FC = () => {
 
           </Flex>
         )}
+        <Changelog />
       </VStack>
     </>
 
