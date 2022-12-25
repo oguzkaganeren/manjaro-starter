@@ -1,3 +1,12 @@
+# [0.13.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.12.5...v0.13.0) (2022-12-25)
+
+
+### Features
+
+* 🎸 added changelog popup to show each version release ([7186487](https://github.com/oguzkaganeren/manjaro-starter/commit/7186487c2954a1ae58c710a1ed2d74da683406bb)), closes [#70](https://github.com/oguzkaganeren/manjaro-starter/issues/70)
+
+
+
 ## [0.12.5](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.12.4...v0.12.5) (2022-12-25)
 
 
@@ -34,16 +43,6 @@
 
 * 🐛 added some tranlations for packages categories ([85e7efc](https://github.com/oguzkaganeren/manjaro-starter/commit/85e7efc1b9e1758eff04a65f5b0b5b03a292b25c)), closes [#164](https://github.com/oguzkaganeren/manjaro-starter/issues/164)
 * 🐛 removed static icons inside of app ([203600f](https://github.com/oguzkaganeren/manjaro-starter/commit/203600f37386439f02e0d00ac7bcbf7be9831472)), closes [#142](https://github.com/oguzkaganeren/manjaro-starter/issues/142)
-
-
-
-## [0.12.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.12.0...v0.12.1) (2022-12-24)
-
-
-### Bug Fixes
-
-* 🐛 responsive problem for package page ([69af3bc](https://github.com/oguzkaganeren/manjaro-starter/commit/69af3bcceef7b7833197eb0207a8c2a3f31fb7e7))
-* 🐛 responsive problems ([6c14db7](https://github.com/oguzkaganeren/manjaro-starter/commit/6c14db75509a65590bdc76a589da52f84cc5f8cc))
 
 
 
