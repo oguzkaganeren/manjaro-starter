@@ -88,9 +88,11 @@ const SystemConfig: React.FC = () => {
         <TabPanel>
           <SystemUpdate />
         </TabPanel>
+        {!isLive && (
         <TabPanel>
-          {!isLive && <KernelComponent />}
+          <KernelComponent />
         </TabPanel>
+        )}
         <TabPanel>
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 5, lg: 8 }}>
             {isVisibleMSM && <ManjaroSettingsModule />}
