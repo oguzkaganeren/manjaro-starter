@@ -12,7 +12,7 @@ export const isLive = selector({
     const calamaresCont = new Command('version-control', ['-Q', 'calamares']);
     const cmdVersionResult = await calamaresCont.execute();
     if (cmdVersionResult.stdout) {
-      invoke('run_shell_command_with_result', { command: '[ -d \\"/run/miso/bootmnt/manjaro\\" ] && echo \\"true\\"' }).then((response) => {
+      invoke('run_shell_command_with_result', { command: '[ -d "/run/miso/bootmnt/manjaro" ] && echo "true"' }).then((response) => {
         if (response) {
           return true;
         } return false;
