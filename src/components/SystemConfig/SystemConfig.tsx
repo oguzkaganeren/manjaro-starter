@@ -12,17 +12,20 @@ import {
 import React, { useState, useEffect } from 'react';
 import { Command } from '@tauri-apps/api/shell';
 import { useTranslation } from 'react-i18next';
+import { useRecoilValue } from 'recoil';
 import KernelComponent from './KernelComponent';
 import SystemInfoComponent from './SystemInfo';
 import SystemUpdate from './SystemUpdate';
 import Mirrors from './Mirrors';
 import ManjaroSettingsModule from './ManjaroSettingsModule';
 import GnomeLayoutManager from './GnomeLayoutMaganer';
+import { liveState } from '../../stores/LiveStore';
 
 const SystemConfig: React.FC = () => {
   const [isVisibleGnomeLayout, setIsVisibleGnomeLayout] = useState(false);
   const [isVisibleMSM, setIsVisibleMSM] = useState(false);
   const [isVisibleMCP, setIsVisibleMCP] = useState(false);
+  const isLive = useRecoilValue(liveState);
   const { t } = useTranslation();
   const borderColor = useColorModeValue('gray.800', 'gray.500');
   useEffect(() => {
@@ -57,7 +60,7 @@ const SystemConfig: React.FC = () => {
         <Tab>{t('system')}</Tab>
         <Tab>{t('mirrors')}</Tab>
         <Tab>{t('updates')}</Tab>
-        <Tab>{t('kernels')}</Tab>
+        {!isLive && <Tab>{t('kernels')}</Tab>}
         <Tab>{t('settings')}</Tab>
       </TabList>
       <TabPanels
@@ -86,7 +89,7 @@ const SystemConfig: React.FC = () => {
           <SystemUpdate />
         </TabPanel>
         <TabPanel>
-          <KernelComponent />
+          {!isLive && <KernelComponent />}
         </TabPanel>
         <TabPanel>
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 5, lg: 8 }}>
