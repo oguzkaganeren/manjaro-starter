@@ -122,6 +122,7 @@
         "disk-utility": "System-Tools",
         "disk-utilityDesc": "System Dienstprogramme",
         "virt-manager": "Virtualisierung",
-        "virt-managerDesc": "Virtualisierungssoftware"
+        "virt-managerDesc": "Virtualisierungssoftware",
+        "appChangelog": "Änderungsprotokoll"
     }
 }
