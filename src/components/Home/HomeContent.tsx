@@ -7,6 +7,8 @@ import {
   Flex,
   Divider,
   useColorModeValue,
+  Badge,
+  Tooltip,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import ReleaseNotes from './ReleaseNotes';
@@ -19,9 +21,7 @@ const HomeContent: React.FC = () => {
 
   return (
     <Flex p={4} marginTop={90} marginBottom={50}>
-
       <Stack spacing={4} as={Container} maxW="3xl" textAlign="center">
-
         <Heading fontSize="3xl">
           {t('welcomeManjaro')}
           <ManjaroVersion />
@@ -34,9 +34,7 @@ const HomeContent: React.FC = () => {
         <Divider orientation="horizontal" />
         <ReleaseNotes />
         <LiveInstaller />
-
       </Stack>
-
     </Flex>
   );
 };

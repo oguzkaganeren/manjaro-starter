@@ -1,12 +1,18 @@
 import React, { Suspense } from 'react';
 import {
-  Text, Flex, VStack, useColorModeValue, CircularProgress,
-
+  Text,
+  Flex,
+  VStack,
+  useColorModeValue,
+  CircularProgress,
+  Tooltip,
+  Badge,
 } from '@chakra-ui/react';
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
 import { FiPackage, FiHome, FiCheckCircle } from 'react-icons/fi';
 import { GiSettingsKnobs } from 'react-icons/gi';
 import { useTranslation } from 'react-i18next';
+import { useRecoilValue } from 'recoil';
 import StepButtons from '../components/StepButtons';
 import HomeContent from '../components/Home/HomeContent';
 import PackagesList from '../components/PackageRelated/Packages';
@@ -15,6 +21,7 @@ import SystemConfig from '../components/SystemConfig/SystemConfig';
 import packageJson from '../../package.json';
 import Nav from '../components/NavbarComponent';
 import Changelog from '../components/common/Changelog';
+import { liveState } from '../stores/LiveStore';
 
 const Home = (
   <Flex py={4}>
@@ -37,7 +44,7 @@ const Config = (
 const App: React.FC = () => {
   const { t } = useTranslation();
   const STEPCOUNT = 3;
-
+  const isLive = useRecoilValue(liveState);
   const steps = [
     {
       label: t('welcome'),
@@ -67,7 +74,6 @@ const App: React.FC = () => {
       <Nav />
       <VStack mt={63}>
         <VStack width="100%">
-
           <Steps
             checkIcon={FiCheckCircle}
             position="fixed"
@@ -83,16 +89,19 @@ const App: React.FC = () => {
             }}
             activeStep={activeStep}
           >
-
             {steps.map(({
               label, content, icon, description,
             }) => (
-              <Step label={label} key={label} description={description} icon={icon}>
+              <Step
+                label={label}
+                key={label}
+                description={description}
+                icon={icon}
+              >
                 {content}
               </Step>
             ))}
           </Steps>
-
         </VStack>
         {activeStep === STEPCOUNT ? (
           <ResultComponent onReset={reset} />
@@ -111,23 +120,43 @@ const App: React.FC = () => {
               ),
             }}
           >
-
             <StepButtons
               {...{ nextStep, prevStep }}
               prevDisabled={activeStep === 0}
               isLast={activeStep === STEPCOUNT - 1}
               nextDisabled={false}
             />
-            <Text position="absolute" ml={3} fontSize="xs" mt={2} color="gray.500">
-              {packageJson.version}
-            </Text>
-
+            {isLive ? (
+              <Text
+                position="absolute"
+                ml={3}
+                fontSize="xs"
+                mt={2}
+                color="gray.500"
+              >
+                {packageJson.version}
+                <Tooltip label={t('liveTooltip')}>
+                  <Badge ml="1" size="sm" colorScheme="purple">
+                    {t('live')}
+                  </Badge>
+                </Tooltip>
+              </Text>
+            ) : (
+              <Text
+                position="absolute"
+                ml={3}
+                fontSize="xs"
+                mt={2}
+                color="gray.500"
+              >
+                {packageJson.version}
+              </Text>
+            )}
           </Flex>
         )}
         <Changelog />
       </VStack>
     </>
-
   );
 };
 

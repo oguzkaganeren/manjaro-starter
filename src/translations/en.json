@@ -123,6 +123,8 @@
         "disk-utilityDesc": "System utilities",
         "virt-manager": "Virtual Computing",
         "virt-managerDesc": "Virtual Machine applications",
-        "appChangelog": "App Changelog"
+        "appChangelog": "App Changelog",
+        "live": "Live",
+        "liveTooltip": "You are using Manjaro Live version. Therefore, some configurations can not be worked on Manjaro Starter."
     }
 }
