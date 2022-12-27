@@ -1,3 +1,12 @@
+# [0.15.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.14.0...v0.15.0) (2022-12-27)
+
+
+### Features
+
+* 🎸 offline mode added ([87f52b6](https://github.com/oguzkaganeren/manjaro-starter/commit/87f52b63646a7d01b4a21722953b81f082f7f4af)), closes [#34](https://github.com/oguzkaganeren/manjaro-starter/issues/34)
+
+
+
 # [0.14.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.13.1...v0.14.0) (2022-12-26)
 
 
@@ -36,17 +45,6 @@
 ### Bug Fixes
 
 * 🐛 small code changes ([a04e545](https://github.com/oguzkaganeren/manjaro-starter/commit/a04e545655f6830978aaa299b281979e2df0701e))
-
-
-
-## [0.12.4](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.12.3...v0.12.4) (2022-12-25)
-
-
-### Bug Fixes
-
-* 🐛 conf style fixes ([dc0d378](https://github.com/oguzkaganeren/manjaro-starter/commit/dc0d3783012a612c20851f467afd1d3b783d79c4)), closes [#174](https://github.com/oguzkaganeren/manjaro-starter/issues/174)
-* 🐛 fixed disable problem for right icon ([6224139](https://github.com/oguzkaganeren/manjaro-starter/commit/6224139e22c7712e7c2134645da70be053a9f2e0)), closes [#173](https://github.com/oguzkaganeren/manjaro-starter/issues/173)
-* 🐛 updated arrow colors for package slider ([ffbef22](https://github.com/oguzkaganeren/manjaro-starter/commit/ffbef2216bd7464af650c66425435de8935fd186)), closes [#173](https://github.com/oguzkaganeren/manjaro-starter/issues/173)
 
 
 
