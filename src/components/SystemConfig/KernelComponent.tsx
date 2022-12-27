@@ -21,6 +21,8 @@ import _ from 'lodash';
 import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
 import { info, error } from 'tauri-plugin-log-api';
+import { useRecoilValue } from 'recoil';
+import { connectionState } from '../../stores/ConnectionStore';
 
 interface Kernel {
   id: string;
@@ -30,6 +32,7 @@ interface Kernel {
 
 const KernelComponent: React.FC = () => {
   const [kernelSt, setKernelSt] = useState<Kernel[]>();
+  const isOnline = useRecoilValue(connectionState);
   const [isLoadingKernel, setIsLoadingKernel] = useState<Map<string, boolean>>(new Map());
   const toast = useToast();
   const { t } = useTranslation();
@@ -126,6 +129,7 @@ const KernelComponent: React.FC = () => {
                   <IconButton
                     ml={5}
                     mr={-2}
+                    disabled={!isOnline}
                     aria-label="Install Kernel"
                     onClick={() => installKernel(kernel.name)}
                     isLoading={isLoadingKernel?.get(kernel.name) || false}

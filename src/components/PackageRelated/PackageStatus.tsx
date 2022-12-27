@@ -4,12 +4,13 @@ import {
 import React, { ReactNode, useState } from 'react';
 import { RiInstallLine, RiCheckLine } from 'react-icons/ri';
 import { Command } from '@tauri-apps/api/shell';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { info, error } from 'tauri-plugin-log-api';
 import { useTranslation } from 'react-i18next';
 import {
   packageState,
 } from '../../stores/PackageStore';
+import { connectionState } from '../../stores/ConnectionStore';
 
 interface PackageStatusProps {
     isInstalled:boolean,
@@ -20,6 +21,7 @@ interface PackageStatusProps {
 const PackageStatus: React.FC<PackageStatusProps> = (props) => {
   const toast = useToast();
   const { t } = useTranslation();
+  const isOnline = useRecoilValue(connectionState);
   const [packageSt, setPackageSt] = useRecoilState(packageState);
   const [isLoadingPackage, setIsLoadingPackage] = useState<Map<string, boolean>>(new Map());
 
@@ -108,6 +110,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
           <Button
             aria-label="install"
             flex="1"
+            disabled={!isOnline}
             variant="ghost"
             leftIcon={<RiInstallLine />}
             isLoading={isLoadingPackage?.get(pkId) || false}
