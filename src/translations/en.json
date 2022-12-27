@@ -128,6 +128,10 @@
         "liveTooltip": "You are using Manjaro Live version. Therefore, some configurations can not be worked on Manjaro Starter.",
         "offline": "Offline",
         "offlineTooltip": "Please check your internet connection. Some functions can not be used when you are offline.",
-        "changelog": "Changelog"
+        "changelog": "Changelog",
+        "updateWithGui": "Update with Pamac Gui",
+        "updateWithCli": "Update directly",
+        "openPamacTooltip": "It opens pamac update page.",
+        "updateTooltip": "It runs pamac update command."
     }
 }
