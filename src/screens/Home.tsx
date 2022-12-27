@@ -20,7 +20,7 @@ import ResultComponent from '../components/ResultComponent';
 import SystemConfig from '../components/SystemConfig/SystemConfig';
 import packageJson from '../../package.json';
 import Nav from '../components/NavbarComponent';
-import Changelog from '../components/common/Changelog';
+import Changelog from '../components/common/ChangelogToast';
 import { liveState } from '../stores/LiveStore';
 import { connectionState } from '../stores/ConnectionStore';
 

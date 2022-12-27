@@ -59,7 +59,7 @@ const newTheme = {
     );
   },
 };
-const Changelog = (): JSX.Element => {
+const ChangelogToast = (): JSX.Element => {
   const toast = useToast();
   const { t } = useTranslation();
 
@@ -93,4 +93,4 @@ const Changelog = (): JSX.Element => {
   return (<Box />);
 };
 
-export default Changelog;
+export default ChangelogToast;
