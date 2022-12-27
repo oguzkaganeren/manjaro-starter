@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import {
   Text,
   Flex,
@@ -12,7 +12,7 @@ import { Step, Steps, useSteps } from 'chakra-ui-steps';
 import { FiPackage, FiHome, FiCheckCircle } from 'react-icons/fi';
 import { GiSettingsKnobs } from 'react-icons/gi';
 import { useTranslation } from 'react-i18next';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import StepButtons from '../components/StepButtons';
 import HomeContent from '../components/Home/HomeContent';
 import PackagesList from '../components/PackageRelated/Packages';
@@ -22,6 +22,7 @@ import packageJson from '../../package.json';
 import Nav from '../components/NavbarComponent';
 import Changelog from '../components/common/Changelog';
 import { liveState } from '../stores/LiveStore';
+import { connectionState } from '../stores/ConnectionStore';
 
 const Home = (
   <Flex py={4}>
@@ -45,6 +46,26 @@ const App: React.FC = () => {
   const { t } = useTranslation();
   const STEPCOUNT = 3;
   const isLive = useRecoilValue(liveState);
+  const [isOnline, setIsOnline] = useRecoilState(connectionState);
+
+  useEffect(() => {
+  // Update network status
+    const handleStatusChange = () => {
+      setIsOnline(navigator.onLine);
+    };
+
+    // Listen to the online status
+    window.addEventListener('online', handleStatusChange);
+
+    // Listen to the offline status
+    window.addEventListener('offline', handleStatusChange);
+
+    // Specify how to clean up after this effect for performance improvment
+    return () => {
+      window.removeEventListener('online', handleStatusChange);
+      window.removeEventListener('offline', handleStatusChange);
+    };
+  }, [isOnline]);
   const steps = [
     {
       label: t('welcome'),
@@ -126,32 +147,29 @@ const App: React.FC = () => {
               isLast={activeStep === STEPCOUNT - 1}
               nextDisabled={false}
             />
-            {isLive ? (
-              <Text
-                position="absolute"
-                ml={3}
-                fontSize="xs"
-                mt={2}
-                color="gray.500"
-              >
-                {packageJson.version}
+            <Text
+              position="absolute"
+              ml={3}
+              fontSize="xs"
+              mt={2}
+              color="gray.500"
+            >
+              {packageJson.version}
+              {isLive && (
                 <Tooltip label={t('liveTooltip')}>
                   <Badge ml="1" size="sm" colorScheme="purple">
                     {t('live')}
                   </Badge>
                 </Tooltip>
-              </Text>
-            ) : (
-              <Text
-                position="absolute"
-                ml={3}
-                fontSize="xs"
-                mt={2}
-                color="gray.500"
-              >
-                {packageJson.version}
-              </Text>
-            )}
+              )}
+              {!isOnline && (
+                <Tooltip label={t('offlineTooltip')}>
+                  <Badge ml="1" size="sm" colorScheme="red">
+                    {t('offline')}
+                  </Badge>
+                </Tooltip>
+              )}
+            </Text>
           </Flex>
         )}
         <Changelog />

@@ -125,6 +125,8 @@
         "virt-managerDesc": "Virtual Machine applications",
         "appChangelog": "App Changelog",
         "live": "Live",
-        "liveTooltip": "You are using Manjaro Live version. Therefore, some configurations can not be worked on Manjaro Starter."
+        "liveTooltip": "You are using Manjaro Live version. Therefore, some configurations can not be worked on Manjaro Starter.",
+        "offline": "Offline",
+        "offlineTooltip": "Please check your internet connection. Some functions can not be used when you are offline."
     }
 }

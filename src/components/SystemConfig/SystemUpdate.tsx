@@ -13,10 +13,13 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
 import { info, error } from 'tauri-plugin-log-api';
+import { useRecoilValue } from 'recoil';
+import { connectionState } from '../../stores/ConnectionStore';
 
 const SystemUpdate: React.FC = () => {
   const { t } = useTranslation();
   const [checkUpdate, setCheckUpdate] = useState('');
+  const isOnline = useRecoilValue(connectionState);
   const checkUpdates = async () => {
     const cmd = new Command('pamac', ['checkupdates']);
     const cmdResult = await cmd.execute();
@@ -53,7 +56,7 @@ const SystemUpdate: React.FC = () => {
         }}
       >
         <ButtonGroup spacing="2">
-          <Button onClick={updateSystem}>
+          <Button disabled={!isOnline} onClick={updateSystem}>
             {t('update')}
             {' '}
             {checkUpdate === '' ? (

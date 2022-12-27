@@ -13,11 +13,14 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
 import { info, error } from 'tauri-plugin-log-api';
+import { useRecoilValue } from 'recoil';
 import MirrorList from './MirrorList';
+import { connectionState } from '../../stores/ConnectionStore';
 
 const Mirrors: React.FC = (props) => {
   const { t } = useTranslation();
   const toast = useToast();
+  const isOnline = useRecoilValue(connectionState);
   const [isProcessing, setIsProcessing] = useState(false);
   function showMsg(msg:string, isError:boolean) {
     const desc = (
@@ -72,7 +75,7 @@ const Mirrors: React.FC = (props) => {
       >
         <ButtonGroup spacing="2">
           <MirrorList />
-          <Button onClick={setFastestMirror} isLoading={isProcessing}>
+          <Button isDisabled={!isOnline} onClick={setFastestMirror} isLoading={isProcessing}>
             {t('setFastestMirrors')}
           </Button>
         </ButtonGroup>
