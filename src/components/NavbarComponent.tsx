@@ -11,7 +11,7 @@ import { CloseIcon } from '@chakra-ui/icons';
 import { appWindow } from '@tauri-apps/api/window';
 import { BiWindow } from 'react-icons/bi';
 import { MdOutlineMinimize } from 'react-icons/md';
-import AppSettings from './AppSettings';
+import AppSettings from './AppSetting/AppSettings';
 import ThemeComponent from './ThemeComponent';
 
 const NavbarComponent: React.FC = () => (

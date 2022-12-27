@@ -127,6 +127,7 @@
         "live": "Live",
         "liveTooltip": "You are using Manjaro Live version. Therefore, some configurations can not be worked on Manjaro Starter.",
         "offline": "Offline",
-        "offlineTooltip": "Please check your internet connection. Some functions can not be used when you are offline."
+        "offlineTooltip": "Please check your internet connection. Some functions can not be used when you are offline.",
+        "changelog": "Changelog"
     }
 }
