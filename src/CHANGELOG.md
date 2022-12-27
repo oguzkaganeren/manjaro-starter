@@ -1,3 +1,13 @@
+# [0.16.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.15.0...v0.16.0) (2022-12-27)
+
+
+### Features
+
+* 🎸 added changelog to about page ([7a1761b](https://github.com/oguzkaganeren/manjaro-starter/commit/7a1761b3fbca46e9bef4ed3d24db77b00d3a9bc2)), closes [#180](https://github.com/oguzkaganeren/manjaro-starter/issues/180)
+* 🎸 Directly update support ([0d5a5b5](https://github.com/oguzkaganeren/manjaro-starter/commit/0d5a5b559e0596e875d9644646cecd689eda2b86)), closes [#179](https://github.com/oguzkaganeren/manjaro-starter/issues/179)
+
+
+
 # [0.15.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.14.0...v0.15.0) (2022-12-27)
 
 
@@ -36,15 +46,6 @@
 ### Features
 
 * 🎸 added changelog popup to show each version release ([7186487](https://github.com/oguzkaganeren/manjaro-starter/commit/7186487c2954a1ae58c710a1ed2d74da683406bb)), closes [#70](https://github.com/oguzkaganeren/manjaro-starter/issues/70)
-
-
-
-## [0.12.5](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.12.4...v0.12.5) (2022-12-25)
-
-
-### Bug Fixes
-
-* 🐛 small code changes ([a04e545](https://github.com/oguzkaganeren/manjaro-starter/commit/a04e545655f6830978aaa299b281979e2df0701e))
 
 
 
