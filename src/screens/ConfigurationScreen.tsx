@@ -13,15 +13,15 @@ import React, { useState, useEffect } from 'react';
 import { Command } from '@tauri-apps/api/shell';
 import { useTranslation } from 'react-i18next';
 import { useRecoilValue } from 'recoil';
-import KernelComponent from './KernelComponent';
-import SystemInfoComponent from './SystemInfo';
-import SystemUpdate from './SystemUpdate';
-import Mirrors from './Mirrors';
-import ManjaroSettingsModule from './ManjaroSettingsModule';
-import GnomeLayoutManager from './GnomeLayoutMaganer';
-import { liveState } from '../../stores/LiveStore';
+import KernelComponent from '../components/SystemConfig/KernelComponent';
+import SystemInfoComponent from '../components/SystemConfig/SystemInfo';
+import SystemUpdate from '../components/SystemConfig/SystemUpdate';
+import Mirrors from '../components/SystemConfig/Mirrors';
+import ManjaroSettingsModule from '../components/SystemConfig/ManjaroSettingsModule';
+import GnomeLayoutManager from '../components/SystemConfig/GnomeLayoutMaganer';
+import { liveState } from '../stores/LiveStore';
 
-const SystemConfig: React.FC = () => {
+const ConfigurationScreen: React.FC = () => {
   const [isVisibleGnomeLayout, setIsVisibleGnomeLayout] = useState(false);
   const [isVisibleMSM, setIsVisibleMSM] = useState(false);
   const [isVisibleMCP, setIsVisibleMCP] = useState(false);
@@ -29,19 +29,28 @@ const SystemConfig: React.FC = () => {
   const { t } = useTranslation();
   const borderColor = useColorModeValue('gray.800', 'gray.500');
   useEffect(() => {
-    const resultOfGnome = new Command('version-control', ['-Q', 'gnome-layout-switcher']).execute();
+    const resultOfGnome = new Command('version-control', [
+      '-Q',
+      'gnome-layout-switcher',
+    ]).execute();
     resultOfGnome.then((response) => {
       if (response.stdout) {
         setIsVisibleGnomeLayout(true);
       }
     });
-    const resultOfMCP = new Command('version-control', ['-Q', 'mcp-qt']).execute();
+    const resultOfMCP = new Command('version-control', [
+      '-Q',
+      'mcp-qt',
+    ]).execute();
     resultOfMCP.then((response) => {
       if (response.stdout) {
         setIsVisibleMCP(true);
       }
     });
-    const resultOfMSM = new Command('version-control', ['-Q', 'manjaro-settings-manager']).execute();
+    const resultOfMSM = new Command('version-control', [
+      '-Q',
+      'manjaro-settings-manager',
+    ]).execute();
     resultOfMSM.then((response) => {
       if (response.stdout) {
         setIsVisibleMSM(true);
@@ -89,9 +98,9 @@ const SystemConfig: React.FC = () => {
           <SystemUpdate />
         </TabPanel>
         {!isLive && (
-        <TabPanel>
-          <KernelComponent />
-        </TabPanel>
+          <TabPanel>
+            <KernelComponent />
+          </TabPanel>
         )}
         <TabPanel>
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 5, lg: 8 }}>
@@ -123,4 +132,4 @@ const SystemConfig: React.FC = () => {
     </Tabs>
   );
 };
-export default SystemConfig;
+export default ConfigurationScreen;

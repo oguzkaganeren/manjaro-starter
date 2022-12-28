@@ -7,16 +7,14 @@ import {
   Flex,
   Divider,
   useColorModeValue,
-  Badge,
-  Tooltip,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import ReleaseNotes from './ReleaseNotes';
-import Info from './Info';
-import LiveInstaller from './LiveInstaller';
-import ManjaroVersion from './ManjaroVersion';
+import ReleaseNotes from '../components/Home/ReleaseNotes';
+import Info from '../components/Home/Info';
+import LiveInstaller from '../components/Home/LiveInstaller';
+import ManjaroVersion from '../components/Home/ManjaroVersion';
 
-const HomeContent: React.FC = () => {
+const HomeScreen: React.FC = () => {
   const { t } = useTranslation();
 
   return (
@@ -38,4 +36,4 @@ const HomeContent: React.FC = () => {
     </Flex>
   );
 };
-export default HomeContent;
+export default HomeScreen;

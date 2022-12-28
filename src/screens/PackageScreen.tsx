@@ -6,54 +6,17 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
-  useColorModeValue,
-  Icon,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useTranslation } from 'react-i18next';
 import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
-import './styles.css';
-import {
-  packageState,
-  Category,
-  Package,
-} from '../../stores/PackageStore';
-import PackageDetail from './PackageDetail';
+import { packageState, Category, Package } from '../stores/PackageStore';
+import PackageDetail from '../components/PackageRelated/PackageDetail';
+import ArrowComponent from '../components/PackageRelated/ArrowComponent';
 
-const Arrow = (props: {
-  disabled: boolean;
-  left?: boolean;
-  onClick: (e: any) => void;
-}) => {
-  const { disabled, left, onClick } = props;
-  const color = useColorModeValue('#181F2E', '#fff');
-  const disColor = '#8F9BAC';
-  const fillColor = disabled ? disColor : color;
-  return (
-    <Icon
-      onClick={onClick}
-      className={`arrow ${left ? 'arrow--left' : 'arrow--right'}`}
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-    >
-      {left && (
-        <path
-          fill={fillColor}
-          d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"
-        />
-      )}
-      {!left && (
-        <path
-          fill={fillColor}
-          d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"
-        />
-      )}
-    </Icon>
-  );
-};
-const PackagesList: React.FC = () => {
+const PackageScreen: React.FC = () => {
   const packageSt = useRecoilValue(packageState);
   const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = React.useState(0);
@@ -131,7 +94,7 @@ const PackagesList: React.FC = () => {
         >
           {t(`${category.icon}Desc`)}
         </chakra.p>
-        <div className="navigation-wrapper">
+        <Box position="relative">
           <div ref={sliderRef} className="keen-slider">
             {Array.from(category.packages.values()).map((app: Package) => (
               <div className={`keen-slider__slide ${category.name}`}>
@@ -152,13 +115,13 @@ const PackagesList: React.FC = () => {
           </div>
           {loaded && instanceRef.current && category.packages.size > 2 && (
             <>
-              <Arrow
+              <ArrowComponent
                 left
                 onClick={(e: any) => e.stopPropagation() || instanceRef.current?.prev()}
                 disabled={currentSlide === 0}
               />
 
-              <Arrow
+              <ArrowComponent
                 onClick={(e: any) => e.stopPropagation() || instanceRef.current?.next()}
                 disabled={
                   currentSlide
@@ -167,7 +130,7 @@ const PackagesList: React.FC = () => {
               />
             </>
           )}
-        </div>
+        </Box>
       </Box>
     </TabPanel>
   ));
@@ -188,4 +151,4 @@ const PackagesList: React.FC = () => {
     </Box>
   );
 };
-export default PackagesList;
+export default PackageScreen;
