@@ -14,13 +14,9 @@ import { useRecoilValue } from 'recoil';
 import { useTranslation } from 'react-i18next';
 import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
-import './styles.css';
-import {
-  packageState,
-  Category,
-  Package,
-} from '../../stores/PackageStore';
-import PackageDetail from './PackageDetail';
+import '../components/PackageRelated/styles.css';// remove it
+import { packageState, Category, Package } from '../stores/PackageStore';
+import PackageDetail from '../components/PackageRelated/PackageDetail';
 
 const Arrow = (props: {
   disabled: boolean;
@@ -53,7 +49,7 @@ const Arrow = (props: {
     </Icon>
   );
 };
-const PackagesList: React.FC = () => {
+const PackageScreen: React.FC = () => {
   const packageSt = useRecoilValue(packageState);
   const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = React.useState(0);
@@ -188,4 +184,4 @@ const PackagesList: React.FC = () => {
     </Box>
   );
 };
-export default PackagesList;
+export default PackageScreen;

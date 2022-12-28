@@ -14,33 +14,23 @@ import { GiSettingsKnobs } from 'react-icons/gi';
 import { useTranslation } from 'react-i18next';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import StepButtons from '../components/StepButtons';
-import HomeContent from '../components/Home/HomeContent';
-import PackagesList from '../components/PackageRelated/Packages';
+import HomeScreen from './HomeScreen';
+import PackageScreen from './PackageScreen';
 import ResultComponent from '../components/ResultComponent';
-import SystemConfig from '../components/SystemConfig/SystemConfig';
+import ConfigurationScreen from './ConfigurationScreen';
 import packageJson from '../../package.json';
 import Nav from '../components/NavbarComponent';
 import Changelog from '../components/common/ChangelogToast';
 import { liveState } from '../stores/LiveStore';
 import { connectionState } from '../stores/ConnectionStore';
 
-const Home = (
-  <Flex py={4}>
-    <HomeContent />
-  </Flex>
-);
+const Home = <HomeScreen />;
 const Package = (
-  <Flex py={4}>
-    <Suspense fallback={<CircularProgress mt={20} isIndeterminate color="green.300" />}>
-      <PackagesList />
-    </Suspense>
-  </Flex>
+  <Suspense fallback={<CircularProgress mt={20} isIndeterminate color="green.300" />}>
+    <PackageScreen />
+  </Suspense>
 );
-const Config = (
-  <Flex py={4}>
-    <SystemConfig />
-  </Flex>
-);
+const Config = <ConfigurationScreen />;
 
 const App: React.FC = () => {
   const { t } = useTranslation();
@@ -119,7 +109,7 @@ const App: React.FC = () => {
                 description={description}
                 icon={icon}
               >
-                {content}
+                <Flex py={4}>{content}</Flex>
               </Step>
             ))}
           </Steps>

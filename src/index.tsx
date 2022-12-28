@@ -4,7 +4,7 @@ import { ChakraProvider, extendTheme, useColorModeValue } from '@chakra-ui/react
 import { StepsStyleConfig } from 'chakra-ui-steps';
 import { RecoilRoot } from 'recoil';
 
-import App from './screens/Home';
+import App from './screens/App';
 import reportWebVitals from './reportWebVitals';
 
 const container = document.getElementById('root');
