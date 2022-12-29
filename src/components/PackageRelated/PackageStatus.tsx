@@ -1,16 +1,17 @@
 import {
-  useToast, Text, Tooltip, Button,
+  useToast, Tooltip, Button,
 } from '@chakra-ui/react';
-import React, { ReactNode, useState } from 'react';
+import React, { useState, ReactNode } from 'react';
 import { RiInstallLine, RiCheckLine } from 'react-icons/ri';
 import { Command } from '@tauri-apps/api/shell';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { info, error } from 'tauri-plugin-log-api';
 import { useTranslation } from 'react-i18next';
+import { info, error } from 'tauri-plugin-log-api';
 import {
   packageState,
 } from '../../stores/PackageStore';
 import { connectionState } from '../../stores/ConnectionStore';
+import { commandState } from '../../stores/CommandStore';
 
 interface PackageStatusProps {
     isInstalled:boolean,
@@ -22,6 +23,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
   const toast = useToast();
   const { t } = useTranslation();
   const isOnline = useRecoilValue(connectionState);
+  const [commandHistory, setCommandHistory] = useRecoilState(commandState);
   const [packageSt, setPackageSt] = useRecoilState(packageState);
   const [isLoadingPackage, setIsLoadingPackage] = useState<Map<string, boolean>>(new Map());
 
@@ -43,51 +45,50 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
       }
     }
   };
-
+  function showMsg(msg: string | ReactNode, pkName: string, isError: boolean) {
+    toast({
+      title: `${pkName}`,
+      description: msg,
+      status: isError ? 'error' : 'success',
+      duration: 9000,
+      isClosable: true,
+      position: 'bottom-right',
+    });
+  }
   const installPackageWithName = async (
     catId:string,
     pkId:string,
     pkgName:string,
   ) => {
     setIsLoadingPackage(new Map(isLoadingPackage?.set(pkId, true)));
-    const cmd = new Command('pamac', ['install', '--no-confirm', '--no-upgrade', pkgName]);
-    const cmdResult = await cmd.execute();
-    setIsLoadingPackage(new Map(isLoadingPackage?.set(pkId, false)));
-    info(cmdResult.stdout);
-    error(cmdResult.stderr);
-    function showMsg(msg:string | ReactNode, pkName:string, isError:boolean) {
-      toast({
-        title: `${pkName}`,
-        description: msg,
-        status: isError ? 'error' : 'success',
-        duration: 9000,
-        isClosable: true,
-        position: 'bottom-right',
-      });
-    }
-    if (cmdResult.stderr || cmdResult.stdout.toUpperCase().indexOf('ERROR') > 0) {
-      const msg = cmdResult.stderr ? cmdResult.stderr : cmdResult.stdout;
-      const desc = (
-        <Text maxH={200} overflow="scroll">
-          {msg}
-        </Text>
-      );
-      showMsg(desc, pkgName, cmdResult.stdout.toUpperCase().indexOf('ERROR') > 0);
-    } else {
-      const desc = cmdResult.stdout.replaceAll('"', '').replaceAll('\\u{a0}', ' ').split('\\n').map((item) => (
-        <span>
-          {item}
-          <br />
-        </span>
-      ));
-      const colDesc = (
-        <Text maxH={200} overflow="scroll">
-          {desc}
-        </Text>
-      );
-      showMsg(colDesc, pkgName, true);
-    }
-    packageInstallStatusControl(catId, pkId);
+    const cmd = new Command('pamac', [
+      'install',
+      '--no-confirm',
+      '--no-upgrade',
+      pkgName,
+    ]);
+    cmd.on('close', (data) => {
+      info(`command finished with code ${data.code} and signal ${data.signal}`);
+      setIsLoadingPackage(new Map(isLoadingPackage?.set(pkId, false)));
+      packageInstallStatusControl(catId, pkId);
+      const isThereError = data.code === 1;
+      showMsg(isThereError ? t('installError') : t('installSuccess'), pkgName, isThereError);
+    });
+    cmd.on('error', (error) => {
+      error(error);
+      setCommandHistory((prevCommand) => `${prevCommand}\n${error}`);
+    });
+    cmd.stdout.on('data', (line) => {
+      info(`command stdout: "${line}"`);
+      setCommandHistory((prevCommand) => `${prevCommand}\n${line}`);
+    });
+    cmd.stderr.on('data', (line) => {
+      error(`command stderr: "${line}"`);
+      setCommandHistory((prevCommand) => `${prevCommand}\n${line}`);
+    });
+    const child = await cmd.spawn();
+
+    info(`pid:${child.pid}`);
   };
   const {
     isInstalled, catId, pkId, pkgName,
@@ -106,11 +107,11 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
           {t('installed')}
         </Button>
       ) : (
-        <Tooltip label="Install package">
+        <Tooltip label={t('install')}>
           <Button
             aria-label="install"
             flex="1"
-            disabled={!isOnline}
+            disabled={!isOnline || isLoadingPackage?.get(pkId)}
             variant="ghost"
             leftIcon={<RiInstallLine />}
             isLoading={isLoadingPackage?.get(pkId) || false}

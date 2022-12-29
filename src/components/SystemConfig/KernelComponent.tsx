@@ -21,8 +21,9 @@ import _ from 'lodash';
 import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
 import { info, error } from 'tauri-plugin-log-api';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useRecoilState } from 'recoil';
 import { connectionState } from '../../stores/ConnectionStore';
+import { commandState } from '../../stores/CommandStore';
 
 interface Kernel {
   id: string;
@@ -36,6 +37,7 @@ const KernelComponent: React.FC = () => {
   const [isLoadingKernel, setIsLoadingKernel] = useState<Map<string, boolean>>(new Map());
   const toast = useToast();
   const { t } = useTranslation();
+  const [commandHistory, setCommandHistory] = useRecoilState(commandState);
   const getKernelList = async () => {
     const cmd = new Command('mhwd-kernel', ['-l']);
     const kernelList = await cmd.execute();
@@ -54,7 +56,7 @@ const KernelComponent: React.FC = () => {
     }));
     return kernels;
   };
-  const setKernelList = async () => {
+  const updateKernelState = async () => {
     const kernelList:Kernel[] = await getKernelList();
     setKernelSt(kernelList);
   };
@@ -81,21 +83,38 @@ const KernelComponent: React.FC = () => {
   const installKernel = async (kernelName:string) => {
     setIsLoadingKernel(new Map(isLoadingKernel?.set(kernelName, true)));
     const cmd = new Command('pamac', ['install', '--no-confirm', kernelName]);
-    const cmdResult = await cmd.execute();
-    setIsLoadingKernel(new Map(isLoadingKernel?.set(kernelName, false)));
-    info(cmdResult.stdout);
-    error(cmdResult.stderr);
-    if (cmdResult.stdout) {
-      showMsg(cmdResult.stdout, kernelName, false);
-    } else {
-      showMsg(cmdResult.stdout, kernelName, true);
-    }
-    setKernelList();
-    return cmdResult;
+    cmd.on('close', (data) => {
+      info(
+        `command finished with code ${data.code} and signal ${data.signal}`,
+      );
+      setIsLoadingKernel(new Map(isLoadingKernel?.set(kernelName, false)));
+      const isThereError = data.code === 1;
+      showMsg(
+        isThereError ? t('installError') : t('installSuccess'),
+        kernelName,
+        isThereError,
+      );
+      updateKernelState();
+    });
+    cmd.on('error', (error) => {
+      error(error);
+      setCommandHistory((prevCommand) => `${prevCommand}\n${error}`);
+    });
+    cmd.stdout.on('data', (line) => {
+      info(`command stdout: "${line}"`);
+      setCommandHistory((prevCommand) => `${prevCommand}\n${line}`);
+    });
+    cmd.stderr.on('data', (line) => {
+      error(`command stderr: "${line}"`);
+      setCommandHistory((prevCommand) => `${prevCommand}\n${line}`);
+    });
+    const child = await cmd.spawn();
+
+    info(`pid:${child.pid}`);
   };
 
   useEffect(() => {
-    setKernelList();
+    updateKernelState();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -114,8 +133,10 @@ const KernelComponent: React.FC = () => {
           },
         }}
       >
-        {kernelSt === undefined ? <Spinner />
-          : kernelSt.map((kernel) => (
+        {kernelSt === undefined ? (
+          <Spinner />
+        ) : (
+          kernelSt.map((kernel) => (
             <Tag
               mr={2}
               mt={2}
@@ -129,7 +150,7 @@ const KernelComponent: React.FC = () => {
                   <IconButton
                     ml={5}
                     mr={-2}
-                    disabled={!isOnline}
+                    disabled={!isOnline || isLoadingKernel?.get(kernel.name)}
                     aria-label="Install Kernel"
                     onClick={() => installKernel(kernel.name)}
                     isLoading={isLoadingKernel?.get(kernel.name) || false}
@@ -146,8 +167,8 @@ const KernelComponent: React.FC = () => {
                 />
               )}
             </Tag>
-          ))}
-
+          ))
+        )}
       </CardFooter>
     </Card>
   );

@@ -13,6 +13,7 @@ import { BiWindow } from 'react-icons/bi';
 import { MdOutlineMinimize } from 'react-icons/md';
 import AppSettings from './AppSetting/AppSettings';
 import ThemeComponent from './ThemeComponent';
+import CommandHistory from './common/CommandHistory';
 
 const NavbarComponent: React.FC = () => (
   <Flex
@@ -36,13 +37,34 @@ const NavbarComponent: React.FC = () => (
     <Spacer />
     <Flex h={16} mr={5} alignItems="center" justifyContent="space-between">
       <Stack direction="row" spacing={2}>
+        <CommandHistory />
         <ThemeComponent />
         <AppSettings />
         <ButtonGroup>
-
-          <IconButton aria-label="Minimize" onClick={() => { appWindow.minimize(); }} size="sm" icon={<MdOutlineMinimize />} />
-          <IconButton aria-label="Window" onClick={() => { appWindow.toggleMaximize(); }} size="sm" icon={<BiWindow />} />
-          <IconButton aria-label="Close" onClick={() => { appWindow.close(); }} size="sm" icon={<CloseIcon />} />
+          <IconButton
+            aria-label="Minimize"
+            onClick={() => {
+              appWindow.minimize();
+            }}
+            size="sm"
+            icon={<MdOutlineMinimize />}
+          />
+          <IconButton
+            aria-label="Window"
+            onClick={() => {
+              appWindow.toggleMaximize();
+            }}
+            size="sm"
+            icon={<BiWindow />}
+          />
+          <IconButton
+            aria-label="Close"
+            onClick={() => {
+              appWindow.close();
+            }}
+            size="sm"
+            icon={<CloseIcon />}
+          />
         </ButtonGroup>
       </Stack>
     </Flex>
