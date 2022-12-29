@@ -20,7 +20,6 @@ import ResultComponent from '../components/ResultComponent';
 import ConfigurationScreen from './ConfigurationScreen';
 import packageJson from '../../package.json';
 import Nav from '../components/NavbarComponent';
-import Changelog from '../components/common/ChangelogToast';
 import { liveState } from '../stores/LiveStore';
 import { connectionState } from '../stores/ConnectionStore';
 
@@ -162,7 +161,6 @@ const App: React.FC = () => {
             </Text>
           </Flex>
         )}
-        <Changelog />
       </VStack>
     </>
   );
