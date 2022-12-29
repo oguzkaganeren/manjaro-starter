@@ -10403,9 +10403,9 @@ tapable@^2.0.0, tapable@^2.1.1, tapable@^2.2.0:
   resolved "https://registry.npmjs.org/tapable/-/tapable-2.2.1.tgz"
   integrity sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==
 
-"tauri-plugin-log-api@github:oguzkaganeren/tauri-plugin-log#dev":
+"tauri-plugin-log-api@github:tauri-apps/tauri-plugin-log#dev":
   version "0.1.0"
-  resolved "git+ssh://git@github.com/oguzkaganeren/tauri-plugin-log.git#f8b04c23c197a27b5a1890b04b2f81a92db83e73"
+  resolved "https://codeload.github.com/tauri-apps/tauri-plugin-log/tar.gz/b58475bbc410fa78eb69276c62d0b64c91c07914"
   dependencies:
     "@tauri-apps/api" "^1.0.0"
     tslib "^2.3.1"

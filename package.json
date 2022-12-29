@@ -35,7 +35,7 @@
         "recoil": "^0.7.6",
         "remark-gfm": "^3.0.1",
         "store": "^2.0.12",
-        "tauri-plugin-log-api": "github:oguzkaganeren/tauri-plugin-log#dev",
+        "tauri-plugin-log-api": "github:tauri-apps/tauri-plugin-log#dev",
         "typescript": "^4.9.4",
         "web-vitals": "^3.1.0"
     },
@@ -72,7 +72,6 @@
         "@typescript-eslint/eslint-plugin": "^5.47.1",
         "@typescript-eslint/parser": "^5.47.1",
         "eslint": "^8.30.0",
-        "react-scripts": "5.0.1",
         "eslint-config-airbnb": "^19.0.4",
         "eslint-import-resolver-typescript": "^3.5.2",
         "eslint-plugin-import": "^2.26.0",
@@ -80,6 +79,7 @@
         "eslint-plugin-only-warn": "^1.1.0",
         "eslint-plugin-react": "^7.31.11",
         "eslint-plugin-react-hooks": "^4.6.0",
-        "eslint-plugin-unused-imports": "^2.0.0"
+        "eslint-plugin-unused-imports": "^2.0.0",
+        "react-scripts": "5.0.1"
     }
 }
