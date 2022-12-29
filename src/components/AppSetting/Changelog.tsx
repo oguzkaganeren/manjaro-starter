@@ -8,7 +8,6 @@ import {
   ModalContent,
   Text,
   Heading,
-  useColorModeValue,
 } from '@chakra-ui/react';
 import ReactMarkdown from 'react-markdown';
 import { useTranslation } from 'react-i18next';
@@ -26,7 +25,6 @@ const newTheme = {
         variant="link"
         whiteSpace="initial"
         size="sm"
-        color={useColorModeValue('#fff', '#181F2E')}
         onClick={async () => {
           await open(href);
         }}
@@ -75,7 +73,9 @@ const Changelog = () => {
   }, []);
   return (
     <Box>
-      <Button size="xs" onClick={onOpen}>{t('changelog')}</Button>
+      <Button size="xs" onClick={onOpen}>
+        {t('appChangelog')}
+      </Button>
 
       <Modal
         isOpen={isOpen}
@@ -84,7 +84,7 @@ const Changelog = () => {
         motionPreset="slideInBottom"
       >
         <ModalOverlay backdropBlur="2px" />
-        <ModalContent bgColor="telegram.300" p={4}>
+        <ModalContent p={4}>
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={ChakraUIRenderer(newTheme)}
