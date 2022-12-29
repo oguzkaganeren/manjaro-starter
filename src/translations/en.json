@@ -134,6 +134,8 @@
         "updateTooltip": "It runs pamac update command.",
         "commandHistory": "Command History",
         "installSuccess": "Installed successfully.",
-        "installError": "Failed installed."
+        "installError": "Failed installed.",
+        "failed": "Failed",
+        "success": "Success"
     }
 }

@@ -2,7 +2,6 @@ import {
   Button,
   chakra,
   useToast,
-  Text,
   Card,
   CardBody,
   CardFooter,
@@ -13,24 +12,21 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
 import { info, error } from 'tauri-plugin-log-api';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useRecoilState } from 'recoil';
 import MirrorList from './MirrorList';
 import { connectionState } from '../../stores/ConnectionStore';
+import { commandState } from '../../stores/CommandStore';
 
 const Mirrors: React.FC = (props) => {
   const { t } = useTranslation();
   const toast = useToast();
   const isOnline = useRecoilValue(connectionState);
+  const [commandHistory, setCommandHistory] = useRecoilState(commandState);
   const [isProcessing, setIsProcessing] = useState(false);
   function showMsg(msg:string, isError:boolean) {
-    const desc = (
-      <Text maxH={200} overflow="scroll">
-        {msg.replace(/\u001b\[.*?m/g, '').replaceAll('::', '')}
-      </Text>
-    );
     toast({
       title: '',
-      description: desc,
+      description: msg,
       status: isError ? 'error' : 'success',
       duration: 9000,
       isClosable: true,
@@ -40,16 +36,42 @@ const Mirrors: React.FC = (props) => {
   const setFastestMirror = async () => {
     setIsProcessing(true);
     const cmd = new Command('sudo', ['pacman-mirrors', '--fasttrack', '5']);
-    cmd.execute().then((response) => {
+    cmd.on('close', (data) => {
+      info(
+        `command finished with code ${data.code} and signal ${data.signal}`,
+      );
       setIsProcessing(false);
-      error(response.stderr);
-      info(response.stdout);
-      if (response.stdout) {
-        showMsg(response.stdout, false);
-      } else {
-        showMsg(response.stderr, true);
-      }
+      const isThereError = data.code !== 0;
+      showMsg(
+        isThereError ? t('failed') : t('success'),
+        isThereError,
+      );
     });
+    cmd.on('error', (error) => {
+      error(error);
+      setCommandHistory(
+        (prevCommand) => `${prevCommand}\n${error}`,
+      );
+    });
+    cmd.stdout.on('data', (line) => {
+      info(`command stdout: "${line}"`);
+      setCommandHistory(
+        (prevCommand) => `${prevCommand}\n${line
+          .replace(/\u001b\[.*?m/g, '')
+          .replaceAll('::', '')}`,
+      );
+    });
+    cmd.stderr.on('data', (line) => {
+      error(`command stderr: "${line}"`);
+      setCommandHistory(
+        (prevCommand) => `${prevCommand}\n${line
+          .replace(/\u001b\[.*?m/g, '')
+          .replaceAll('::', '')}`,
+      );
+    });
+    const child = await cmd.spawn();
+
+    info(`pid:${child.pid}`);
   };
 
   return (
@@ -75,7 +97,11 @@ const Mirrors: React.FC = (props) => {
       >
         <ButtonGroup spacing="2">
           <MirrorList />
-          <Button isDisabled={!isOnline} onClick={setFastestMirror} isLoading={isProcessing}>
+          <Button
+            isDisabled={!isOnline || isProcessing}
+            onClick={setFastestMirror}
+            isLoading={isProcessing}
+          >
             {t('setFastestMirrors')}
           </Button>
         </ButtonGroup>

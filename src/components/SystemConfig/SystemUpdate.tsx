@@ -9,7 +9,6 @@ import {
   ButtonGroup,
   Spinner,
   Tooltip,
-  Text,
   useToast,
   CardHeader,
 } from '@chakra-ui/react';
@@ -17,14 +16,16 @@ import React, { useState, ReactNode, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
 import { info, error } from 'tauri-plugin-log-api';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { connectionState } from '../../stores/ConnectionStore';
+import { commandState } from '../../stores/CommandStore';
 
 const SystemUpdate: React.FC = () => {
   const { t } = useTranslation();
   const [checkUpdate, setCheckUpdate] = useState('');
   const isOnline = useRecoilValue(connectionState);
   const toast = useToast();
+  const [commandHistory, setCommandHistory] = useRecoilState(commandState);
   const [isUpdating, setIsUpdating] = useState(false);
   const checkUpdates = async () => {
     const cmd = new Command('pamac', ['checkupdates']);
@@ -36,9 +37,9 @@ const SystemUpdate: React.FC = () => {
       setCheckUpdate(updateCount);
     }
   };
-  function showMsg(msg: string | ReactNode, pkName: string, isError: boolean) {
+  function showMsg(msg: string | ReactNode, isError: boolean) {
     toast({
-      title: `${pkName}`,
+      title: '',
       description: msg,
       status: isError ? 'error' : 'success',
       duration: 9000,
@@ -54,42 +55,31 @@ const SystemUpdate: React.FC = () => {
       '--no-confirm',
       '--force-refresh',
     ]);
-    const cmdResult = await cmd.execute();
-    setIsUpdating(false);
-    info(cmdResult.stdout);
-    error(cmdResult.stderr);
-    if (
-      cmdResult.stderr
-    ) {
-      const msg = cmdResult.stderr ? cmdResult.stderr : cmdResult.stdout;
-      const desc = (
-        <Text maxH={200} overflow="scroll">
-          {msg}
-        </Text>
+    cmd.on('close', (data) => {
+      info(`command finished with code ${data.code} and signal ${data.signal}`);
+      setIsUpdating(false);
+      const isThereError = data.code !== 0;
+      showMsg(isThereError ? t('failed') : t('success'), isThereError);
+    });
+    cmd.on('error', (error) => {
+      error(error);
+      setCommandHistory((prevCommand) => `${prevCommand}\n${error}`);
+    });
+    cmd.stdout.on('data', (line) => {
+      info(`command stdout: "${line}"`);
+      setCommandHistory(
+        (prevCommand) => `${prevCommand}\n${line}`,
       );
-      showMsg(
-        desc,
-        t('update'),
-        true,
+    });
+    cmd.stderr.on('data', (line) => {
+      error(`command stderr: "${line}"`);
+      setCommandHistory(
+        (prevCommand) => `${prevCommand}\n${line}`,
       );
-    } else {
-      const desc = cmdResult.stdout
-        .replaceAll('"', '')
-        .replaceAll('\\u{a0}', ' ')
-        .split('\\n')
-        .map((item) => (
-          <span>
-            {item}
-            <br />
-          </span>
-        ));
-      const colDesc = (
-        <Text maxH={200} overflow="scroll">
-          {desc}
-        </Text>
-      );
-      showMsg(colDesc, t('update'), false);
-    }
+    });
+    const child = await cmd.spawn();
+
+    info(`pid:${child.pid}`);
   };
 
   const openPamacUpdateGui = async () => {
