@@ -1,3 +1,12 @@
+## [0.17.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.17.0...v0.17.1) (2022-12-29)
+
+
+### Bug Fixes
+
+* 🐛 github action problem fixes ([ba2638b](https://github.com/oguzkaganeren/manjaro-starter/commit/ba2638b3607e59fa80730480849d70ccff291bf3))
+
+
+
 # [0.17.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.16.0...v0.17.0) (2022-12-29)
 
 
@@ -45,15 +54,6 @@
 ### Features
 
 * 🎸 added live mode ([69f15ba](https://github.com/oguzkaganeren/manjaro-starter/commit/69f15bae72070645f8f2afd80747e77bd4f6246f)), closes [#124](https://github.com/oguzkaganeren/manjaro-starter/issues/124)
-
-
-
-## [0.13.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.13.0...v0.13.1) (2022-12-25)
-
-
-### Bug Fixes
-
-* 🐛 changelog feature date text size problem ([95aba1d](https://github.com/oguzkaganeren/manjaro-starter/commit/95aba1de43ca77380be986274a80b4d98e94b3fb))
 
 
 
