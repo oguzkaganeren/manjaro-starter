@@ -131,6 +131,9 @@
         "updateWithGui": "Update with Pamac Gui",
         "updateWithCli": "Update directly",
         "openPamacTooltip": "It opens pamac update page.",
-        "updateTooltip": "It runs pamac update command."
+        "updateTooltip": "It runs pamac update command.",
+        "commandHistory": "Command History",
+        "installSuccess": "Installed successfully.",
+        "installError": "Failed installed."
     }
 }
