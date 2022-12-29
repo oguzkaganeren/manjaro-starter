@@ -1,3 +1,20 @@
+# [0.17.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.16.0...v0.17.0) (2022-12-29)
+
+
+### Bug Fixes
+
+* 🐛 log text position changed ([a634797](https://github.com/oguzkaganeren/manjaro-starter/commit/a634797678e80fc788633fadcd2d79c6d0072908))
+* 🐛 removed initial changelog and fixes some bugs ([7f96851](https://github.com/oguzkaganeren/manjaro-starter/commit/7f968510ff48912509047d3507692ffb29170361)), closes [#189](https://github.com/oguzkaganeren/manjaro-starter/issues/189)
+
+
+### Features
+
+* 🎸 added command history ([f5fbde8](https://github.com/oguzkaganeren/manjaro-starter/commit/f5fbde8e46bb5b6764be329ea9d81e89c8c98313)), closes [#196](https://github.com/oguzkaganeren/manjaro-starter/issues/196)
+* 🎸 added command history for kernels ([ae6cb33](https://github.com/oguzkaganeren/manjaro-starter/commit/ae6cb33d95a034c56489a01569e607d72836f674)), closes [#196](https://github.com/oguzkaganeren/manjaro-starter/issues/196)
+* 🎸 command history for others ([b90320b](https://github.com/oguzkaganeren/manjaro-starter/commit/b90320b7c320ea415a04b68d200fe6de955d9e17)), closes [#196](https://github.com/oguzkaganeren/manjaro-starter/issues/196)
+
+
+
 # [0.16.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.15.0...v0.16.0) (2022-12-27)
 
 
@@ -37,15 +54,6 @@
 ### Bug Fixes
 
 * 🐛 changelog feature date text size problem ([95aba1d](https://github.com/oguzkaganeren/manjaro-starter/commit/95aba1de43ca77380be986274a80b4d98e94b3fb))
-
-
-
-# [0.13.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.12.5...v0.13.0) (2022-12-25)
-
-
-### Features
-
-* 🎸 added changelog popup to show each version release ([7186487](https://github.com/oguzkaganeren/manjaro-starter/commit/7186487c2954a1ae58c710a1ed2d74da683406bb)), closes [#70](https://github.com/oguzkaganeren/manjaro-starter/issues/70)
 
 
 
