@@ -1,7 +1,7 @@
 import {
   FormControl,
   Modal, useDisclosure, ModalBody, ModalCloseButton,
-  ModalContent, ModalHeader, ModalOverlay, IconButton, useColorModeValue, ModalFooter, Text,
+  ModalContent, ModalHeader, ModalOverlay, IconButton, useColorModeValue,
 } from '@chakra-ui/react';
 import { useRef, FC } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
@@ -58,9 +58,6 @@ const AppSettings: FC = () => {
             </FormControl>
             <AboutComponent />
           </ModalBody>
-          <ModalFooter>
-            <Text color={useColorModeValue('gray.800', 'gray.500')} as="sup">{t('appLogInfo')}</Text>
-          </ModalFooter>
         </ModalContent>
       </Modal>
     </>
