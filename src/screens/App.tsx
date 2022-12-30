@@ -22,7 +22,6 @@ import packageJson from '../../package.json';
 import Nav from '../components/NavbarComponent';
 import { liveState } from '../stores/LiveStore';
 import { connectionState } from '../stores/ConnectionStore';
-import CommandHistory from '../components/common/CommandHistory';
 
 const Home = <HomeScreen />;
 const Package = (
