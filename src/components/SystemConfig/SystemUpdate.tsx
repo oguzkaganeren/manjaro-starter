@@ -122,7 +122,7 @@ const SystemUpdate: React.FC = () => {
               {t('updateWithGui')}
             </Button>
           </Tooltip>
-          <Tooltip label={t('updateTooltip')}>
+          {/* <Tooltip label={t('updateTooltip')}>
             <Button
               isLoading={isUpdating}
               disabled={!isOnline || isUpdating}
@@ -130,7 +130,7 @@ const SystemUpdate: React.FC = () => {
             >
               {t('updateWithCli')}
             </Button>
-          </Tooltip>
+      </Tooltip> */}
         </ButtonGroup>
       </CardFooter>
     </Card>
