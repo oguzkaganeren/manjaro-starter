@@ -10,6 +10,16 @@ import reportWebVitals from './reportWebVitals';
 const container = document.getElementById('root');
 const root = createRoot(container!);
 
+function disableContextMenuOnRelease() {
+  if (window.location.hostname !== 'localhost') {
+    return;
+  }
+
+  document.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    return false;
+  }, { capture: true });
+}
 const CustomSteps = {
   ...StepsStyleConfig,
   baseStyle: (props:any) => ({
@@ -40,7 +50,7 @@ root.render(
     </ChakraProvider>
   </React.StrictMode>,
 );
-
+disableContextMenuOnRelease();
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
