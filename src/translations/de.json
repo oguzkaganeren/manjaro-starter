@@ -123,6 +123,19 @@
         "disk-utilityDesc": "System Dienstprogramme",
         "virt-manager": "Virtualisierung",
         "virt-managerDesc": "Virtualisierungssoftware",
-        "appChangelog": "Änderungsprotokoll"
+        "appChangelog": "Änderungsprotokoll",
+        "live": "Live",
+        "liveTooltip": "Du benutzt die Manjaro Live Version. Einige Einstellungen können in der Live Version nicht mit Manjaro-Starter konfiguriert werden.",
+        "offline": "Offline",
+        "offlineTooltip": "Bitte überprüfe deine Internetverbindung. Einige Funktionen können ohne Internetverbindung nicht verwendet werden.",
+        "updateWithGui": "Mit Pamac GUI aktualisieren",
+        "updateWithCli": "Direkt hier aktualisieren",
+        "openPamacTooltip": "Öffnet die Pamac Aktualisierungseite.",
+        "updateTooltip": "Startet den Pamac Update Befehl.",
+        "commandHistory": "Befehlszeilenhistorie",
+        "installSuccess": "Installation erfolgreich.",
+        "installError": "Installation fehlgeschlagen.",
+        "failed": "Fehlgeschlagen",
+        "success": "Erfolgreich"
     }
 }
