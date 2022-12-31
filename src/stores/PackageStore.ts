@@ -2,7 +2,7 @@ import {
   atom, selector,
 } from 'recoil';
 import _ from 'lodash';
-import { Command } from '@tauri-apps/api/shell';
+import { Child, Command } from '@tauri-apps/api/shell';
 import apps from '../assets/data/apps.json';
 
 export interface Package {
@@ -13,7 +13,8 @@ export interface Package {
   pkg: string,
   extra: Array<string>,
   isInstalled: boolean,
-  installedVersion:string
+  installedVersion:string,
+  process?:Child
 }
 
 export interface Category {
