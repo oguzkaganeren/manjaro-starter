@@ -1,3 +1,18 @@
+# [0.18.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.17.2...v0.18.0) (2022-12-31)
+
+
+### Bug Fixes
+
+* 🐛 default language fixes ([e667dec](https://github.com/oguzkaganeren/manjaro-starter/commit/e667decdd8127dc653688c1084b3229fc5a442b8)), closes [#103](https://github.com/oguzkaganeren/manjaro-starter/issues/103)
+* 🐛 removed right click context menu ([67fc95c](https://github.com/oguzkaganeren/manjaro-starter/commit/67fc95cf74604225132e318fdaa22f368283d8a2)), closes [#40](https://github.com/oguzkaganeren/manjaro-starter/issues/40)
+
+
+### Features
+
+* 🎸 added cancel button for package installation ([a2e4307](https://github.com/oguzkaganeren/manjaro-starter/commit/a2e4307f1fba9c39774f356cc0e07ecefe556b6f))
+
+
+
 ## [0.17.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.17.1...v0.17.2) (2022-12-30)
 
 
@@ -40,15 +55,6 @@
 
 * 🎸 added changelog to about page ([7a1761b](https://github.com/oguzkaganeren/manjaro-starter/commit/7a1761b3fbca46e9bef4ed3d24db77b00d3a9bc2)), closes [#180](https://github.com/oguzkaganeren/manjaro-starter/issues/180)
 * 🎸 Directly update support ([0d5a5b5](https://github.com/oguzkaganeren/manjaro-starter/commit/0d5a5b559e0596e875d9644646cecd689eda2b86)), closes [#179](https://github.com/oguzkaganeren/manjaro-starter/issues/179)
-
-
-
-# [0.15.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.14.0...v0.15.0) (2022-12-27)
-
-
-### Features
-
-* 🎸 offline mode added ([87f52b6](https://github.com/oguzkaganeren/manjaro-starter/commit/87f52b63646a7d01b4a21722953b81f082f7f4af)), closes [#34](https://github.com/oguzkaganeren/manjaro-starter/issues/34)
 
 
 
