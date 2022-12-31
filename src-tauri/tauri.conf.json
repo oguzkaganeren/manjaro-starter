@@ -110,7 +110,7 @@
                 "renameFile": true,
                 "scope": [
                     "$CACHE",
-                    "$CONFIG/*",
+                    "$CONFIG/*/**",
                     "$DATA",
                     "$LOCALDATA",
                     "$EXE",
@@ -127,6 +127,7 @@
             },
             "path": {
                 "all": true
+
             }
         },
         "windows": [{
