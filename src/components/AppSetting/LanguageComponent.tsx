@@ -1,7 +1,6 @@
 import { Select, HStack, Spacer } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import locale from 'locale-codes';
 import { availableLanguages } from '../../i18n';
 
 const LanguageComponent: React.FC = () => {
@@ -13,7 +12,7 @@ const LanguageComponent: React.FC = () => {
       <Select
         id="lan"
         variant="filled"
-        defaultValue={locale.getByTag(i18n.language).name}
+        defaultValue={i18n.resolvedLanguage}
         onChange={(e) => i18n.changeLanguage(e.target.value)}
       >
         {availableLanguages.map((language) => (
