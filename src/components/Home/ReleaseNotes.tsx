@@ -4,7 +4,6 @@ import {
   Modal,
   ModalOverlay,
   useDisclosure,
-  Box,
   ModalContent,
 } from '@chakra-ui/react';
 import ReactMarkdown from 'react-markdown';
@@ -24,27 +23,28 @@ const ReleaseNotes = () => {
     });
   }, []);
   return (
-    <Box>
-      <Button onClick={onOpen}>
+    <>
+      <Button variant="link" colorScheme="blue" size="sm" onClick={onOpen}>
         {t('releaseNotes')}
       </Button>
 
-      <Modal isOpen={isOpen} onClose={onClose} size="2xl" motionPreset="slideInBottom">
-        <ModalOverlay
-          backdropBlur="2px"
-        />
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        size="2xl"
+        motionPreset="slideInBottom"
+      >
+        <ModalOverlay backdropBlur="2px" />
         <ModalContent p={4}>
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={ChakraUIRenderer()}
           >
             {mdContent}
-
           </ReactMarkdown>
         </ModalContent>
       </Modal>
-    </Box>
-
+    </>
   );
 };
 

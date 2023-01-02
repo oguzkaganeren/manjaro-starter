@@ -48,13 +48,17 @@ const Info: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Button onClick={onOpen}>{t('more')}</Button>
+      <Button variant="link" colorScheme="blue" size="sm" onClick={onOpen}>
+        {t('learnMore')}
+      </Button>
 
-      <Modal isOpen={isOpen} onClose={onClose} size="xl" motionPreset="slideInBottom">
-        <ModalOverlay
-          backdropInvert="80%"
-          backdropBlur="2px"
-        />
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        size="xl"
+        motionPreset="slideInBottom"
+      >
+        <ModalOverlay backdropInvert="80%" backdropBlur="2px" />
         <ModalContent p={4}>
           <SimpleGrid columns={{ base: 1, md: 1 }} spacing={10}>
             <Feature

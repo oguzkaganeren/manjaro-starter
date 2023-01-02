@@ -38,7 +38,7 @@ const StepButtons = ({
         {t('prev')}
       </Button>
 
-      <Button className="first-step" isDisabled={nextDisabled} colorScheme={prevDisabled ? 'green' : 'gray'} size="sm" onClick={nextStep}>
+      <Button isDisabled={nextDisabled} colorScheme={prevDisabled ? 'green' : 'gray'} size="sm" onClick={nextStep}>
         { nextButtonText()}
       </Button>
     </Flex>
