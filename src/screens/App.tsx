@@ -23,7 +23,6 @@ import Nav from '../components/NavbarComponent';
 import { liveState } from '../stores/LiveStore';
 import { connectionState } from '../stores/ConnectionStore';
 
-const Home = <HomeScreen />;
 const Package = (
   <Suspense fallback={<CircularProgress mt={20} isIndeterminate color="green.300" />}>
     <PackageScreen />
@@ -55,11 +54,17 @@ const App: React.FC = () => {
       window.removeEventListener('offline', handleStatusChange);
     };
   }, [isOnline]);
+
+  const {
+    nextStep, prevStep, reset, activeStep, setStep,
+  } = useSteps({
+    initialStep: 0,
+  });
   const steps = [
     {
       label: t('welcome'),
       icon: FiHome,
-      content: Home,
+      content: <HomeScreen nextStep={nextStep} />,
     },
     {
       label: t('configurations'),
@@ -74,11 +79,14 @@ const App: React.FC = () => {
       content: Package,
     },
   ];
-  const {
-    nextStep, prevStep, reset, activeStep, setStep,
-  } = useSteps({
-    initialStep: 0,
-  });
+  if (activeStep === 0) {
+    return (
+      <>
+        <Nav />
+        <HomeScreen nextStep={nextStep} />
+      </>
+    );
+  }
   return (
     <>
       <Nav />

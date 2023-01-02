@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { invoke } from '@tauri-apps/api/tauri';
-import { Badge } from '@chakra-ui/react';
+import { Text } from '@chakra-ui/react';
 
 const ManjaroVersion = () => {
   const [version, setVersion] = useState('');
@@ -17,11 +17,11 @@ const ManjaroVersion = () => {
     });
   }, []);
   return (
-    <Badge ml="1" style={{ textTransform: 'capitalize' }} colorScheme="green" p={1} mb={10}>
+    <Text as="span" style={{ textTransform: 'capitalize' }} color="green.400">
       {version}
       {' '}
       {codeName}
-    </Badge>
+    </Text>
 
   );
 };

@@ -15,8 +15,6 @@ const LiveInstaller = () => {
     <Box>
       {isLive && (
         <Button
-          px={3}
-          py={1}
           fontWeight="700"
           rounded="md"
           variant="outline"
