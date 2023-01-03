@@ -140,6 +140,7 @@ const KernelComponent: React.FC = () => {
             <Tag
               mr={2}
               mt={2}
+              shadow="base"
               key={kernel.id}
               colorScheme={kernel.isInstalled ? 'whatsapp' : 'gray'}
             >

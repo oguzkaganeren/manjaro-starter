@@ -98,6 +98,7 @@ const Mirrors: React.FC = (props) => {
         <ButtonGroup spacing="2">
           <MirrorList />
           <Button
+            shadow="base"
             isDisabled={!isOnline || isProcessing}
             onClick={setFastestMirror}
             isLoading={isProcessing}

@@ -136,6 +136,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
             <Button
               aria-label="install"
               flex="1"
+              shadow="base"
               disabled={!isOnline || isLoadingPackage?.get(pkId)}
               variant="ghost"
               leftIcon={<RiInstallLine />}
@@ -147,11 +148,11 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
             </Button>
           </Tooltip>
           {isLoadingPackage?.get(pkId) && (
-          <IconButton
-            aria-label="Cancel"
-            icon={<CloseIcon />}
-            onClick={() => cancelInstall(catId, pkId)}
-          />
+            <IconButton
+              aria-label="Cancel"
+              icon={<CloseIcon />}
+              onClick={() => cancelInstall(catId, pkId)}
+            />
           )}
         </ButtonGroup>
       )}

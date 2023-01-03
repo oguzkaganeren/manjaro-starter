@@ -118,7 +118,11 @@ const SystemUpdate: React.FC = () => {
       >
         <ButtonGroup spacing="2">
           <Tooltip label={t('openPamacTooltip')}>
-            <Button disabled={!isOnline} onClick={openPamacUpdateGui}>
+            <Button
+              shadow="base"
+              disabled={!isOnline}
+              onClick={openPamacUpdateGui}
+            >
               {t('updateWithGui')}
             </Button>
           </Tooltip>

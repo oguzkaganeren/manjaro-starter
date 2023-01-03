@@ -39,7 +39,10 @@ const MirrorList = () => {
   };
   return (
     <Box>
-      <Button onClick={modalOpen}>
+      <Button
+        shadow="base"
+        onClick={modalOpen}
+      >
         {t('showsMirrorList')}
       </Button>
 
