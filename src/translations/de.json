@@ -19,11 +19,11 @@
         "suggestions": "Verbesserungsvorschläge",
         "homeText7": "Du hast Verbesserungsvorschläge wie wir Manjaro Linux besser machen können oder du willst zur Weiterentwicklung des Systems einen Beitrag leisten? Poste deine Anregungen am Besten in unserem Benutzerforum und tausche dich mit anderen Manjaro Linux Benutzern aus. Vielen Dank!",
         "installing": "Installiere",
-        "readyText": "Das System ist bereit. Viel Spaß mit deinem neuen Manjaro Linux System.",
+        "readyText": "Das System ist bereit. Viel Spaß mit deinem Manjaro Linux System.",
         "congratulations": "Gratuliere!",
         "postForum": "Poste im Forum",
-        "discoverSoftware": "Entdecke Software",
-        "readWiki": "Lese Wiki",
+        "discoverSoftware": "Software entdecken",
+        "readWiki": "Wiki lesen",
         "contribute": "Mitwirken",
         "telegram": "Telegram",
         "facebook": "Facebook",
@@ -65,7 +65,7 @@
         "installPackagesText": "Softwarepakete für dein System installieren.",
         "discoverMore": "Entdecke Mehr",
         "start": "Los geht's",
-        "tourStepOne": "Entdecke hier mehr mit Manjaro Starter.",
+        "tourStepOne": "Entdecke Manjaro Starter",
         "blog": "Unser Blog",
         "appSettings": "Einstellungen",
         "appLogInfo": "Logdatei zu finden unter ~/.config/com.manjaro.starter/logs/",
@@ -85,7 +85,7 @@
         "settings": "Einstellungen",
         "install": "Installieren",
         "installed": "Installiert",
-         "browser": "Browser",
+        "browser": "Browser",
         "browserDesc": "Webbrowsing und Kommunikation",
         "mail-client": "E-Mail",
         "mail-clientDesc": "E-Mail, Kalender, Aufgaben",
@@ -136,6 +136,7 @@
         "installSuccess": "Installation erfolgreich.",
         "installError": "Installation fehlgeschlagen.",
         "failed": "Fehlgeschlagen",
-        "success": "Erfolgreich"
+        "success": "Erfolgreich",
+        "learnMore": "Erfahre Mehr"
     }
 }
