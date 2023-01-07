@@ -1,3 +1,17 @@
+# [0.19.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.18.2...v0.19.0) (2023-01-07)
+
+
+### Bug Fixes
+
+* 🐛 removed blur for nav and footer ([77fc870](https://github.com/oguzkaganeren/manjaro-starter/commit/77fc87032a04f491c087fd33badde892278c929c))
+
+
+### Features
+
+* 🎸 added gpu info ([6f222a2](https://github.com/oguzkaganeren/manjaro-starter/commit/6f222a2e8b62edc4e43ec4869dd715b3d405b3a9)), closes [#226](https://github.com/oguzkaganeren/manjaro-starter/issues/226)
+
+
+
 ## [0.18.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.18.1...v0.18.2) (2023-01-03)
 
 
@@ -37,15 +51,6 @@
 ### Bug Fixes
 
 * 🐛 hide cli update for temp ([037ceda](https://github.com/oguzkaganeren/manjaro-starter/commit/037cedac5f1217c2578be67631a12bd3fb8fa68a))
-
-
-
-## [0.17.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.17.0...v0.17.1) (2022-12-29)
-
-
-### Bug Fixes
-
-* 🐛 github action problem fixes ([ba2638b](https://github.com/oguzkaganeren/manjaro-starter/commit/ba2638b3607e59fa80730480849d70ccff291bf3))
 
 
 
