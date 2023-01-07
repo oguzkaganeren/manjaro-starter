@@ -3,7 +3,6 @@ import {
   Text,
   Flex,
   VStack,
-  useColorModeValue,
   CircularProgress,
   Tooltip,
   Badge,
@@ -98,13 +97,6 @@ const App: React.FC = () => {
             padding={5}
             onClickStep={(step) => setStep(step)}
             zIndex={998}
-            css={{
-              backdropFilter: 'saturate(180%) blur(5px)',
-              backgroundColor: useColorModeValue(
-                'rgba(255, 255, 255, 0.8)',
-                'rgba(26, 32, 44, 0.8)',
-              ),
-            }}
             activeStep={activeStep}
           >
             {steps.map(({
@@ -129,14 +121,6 @@ const App: React.FC = () => {
             padding={5}
             bottom={0}
             w="100%"
-            css={{
-              backdropFilter: 'saturate(180%) blur(5px)',
-              // eslint-disable-next-line react-hooks/rules-of-hooks
-              backgroundColor: useColorModeValue(
-                'rgba(255, 255, 255, 0.8)',
-                'rgba(26, 32, 44, 0.8)',
-              ),
-            }}
           >
             <StepButtons
               {...{ nextStep, prevStep }}

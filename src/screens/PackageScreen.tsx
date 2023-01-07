@@ -75,18 +75,7 @@ const PackageScreen: React.FC = () => {
         }}
       >
         <chakra.p
-          fontSize={{ base: '3xl', sm: '4xl' }}
-          lineHeight="8"
-          fontWeight="extrabold"
-          letterSpacing="tight"
-          id={category.name.replaceAll(' ', '-').replaceAll('/', '-')}
-          color="white.900"
-          _dark={{ color: 'white.100' }}
-        >
-          {t(category.icon)}
-        </chakra.p>
-        <chakra.p
-          mt={4}
+          mb={4}
           maxW="2xl"
           fontSize="xl"
           color="gray.500"
@@ -115,19 +104,19 @@ const PackageScreen: React.FC = () => {
           </div>
           {loaded && instanceRef.current && category.packages.size > 2 && (
             <>
+              {currentSlide !== 0 && (
               <ArrowComponent
                 left
                 onClick={(e: any) => e.stopPropagation() || instanceRef.current?.prev()}
-                disabled={currentSlide === 0}
               />
+              )}
 
-              <ArrowComponent
-                onClick={(e: any) => e.stopPropagation() || instanceRef.current?.next()}
-                disabled={
-                  currentSlide
-                  === instanceRef.current.track.details.slides.length - 2
-                }
-              />
+              {currentSlide
+                  !== instanceRef.current.track.details.slides.length - 2 && (
+                  <ArrowComponent
+                    onClick={(e: any) => e.stopPropagation() || instanceRef.current?.next()}
+                  />
+              )}
             </>
           )}
         </Box>
@@ -143,6 +132,8 @@ const PackageScreen: React.FC = () => {
         isLazy
         px={8}
         py={71}
+        display="grid"
+        gridTemplateColumns="auto 1fr"
         mx="auto"
       >
         {Categories}
