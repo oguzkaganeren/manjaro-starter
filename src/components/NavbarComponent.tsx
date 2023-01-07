@@ -24,13 +24,6 @@ const NavbarComponent: React.FC = () => (
     boxShadow="sm"
     justify="flex-end"
     zIndex={998}
-    css={{
-      backdropFilter: 'saturate(180%) blur(5px)',
-      backgroundColor: useColorModeValue(
-        'rgba(255, 255, 255, 0.8)',
-        'rgba(26, 32, 44, 0.8)',
-      ),
-    }}
   >
     <div data-tauri-drag-region className="titlebar" />
     <Flex h={16} alignItems="center" justifyContent="space-between" />
