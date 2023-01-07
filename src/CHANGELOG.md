@@ -1,3 +1,12 @@
+## [0.19.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.19.0...v0.19.1) (2023-01-07)
+
+
+### Bug Fixes
+
+* 🐛 updated manjaro logo, fixed desktop file ([b1aecb5](https://github.com/oguzkaganeren/manjaro-starter/commit/b1aecb5f9931aa199a739a71cf5daf80c0cb0b8c))
+
+
+
 # [0.19.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.18.2...v0.19.0) (2023-01-07)
 
 
@@ -42,15 +51,6 @@
 ### Features
 
 * 🎸 added cancel button for package installation ([a2e4307](https://github.com/oguzkaganeren/manjaro-starter/commit/a2e4307f1fba9c39774f356cc0e07ecefe556b6f))
-
-
-
-## [0.17.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.17.1...v0.17.2) (2022-12-30)
-
-
-### Bug Fixes
-
-* 🐛 hide cli update for temp ([037ceda](https://github.com/oguzkaganeren/manjaro-starter/commit/037cedac5f1217c2578be67631a12bd3fb8fa68a))
 
 
 
