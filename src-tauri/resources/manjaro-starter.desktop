@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Icon=manjaro
+Icon=manjaro-starter
 Name=Manjaro Starter
 Exec=manjaro-starter
 Terminal=false
