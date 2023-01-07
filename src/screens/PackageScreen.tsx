@@ -27,7 +27,7 @@ const PackageScreen: React.FC = () => {
     rubberband: false,
     slides: {
       origin: 'auto',
-      perView: 2.2,
+      perView: 2.5,
       spacing: 5,
     },
     created() {

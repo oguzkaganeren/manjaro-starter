@@ -3,9 +3,11 @@ import {
   Text,
   Flex,
   VStack,
-  CircularProgress,
+  Spinner,
   Tooltip,
   Badge,
+  Box,
+  Center,
 } from '@chakra-ui/react';
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
 import { FiPackage, FiHome, FiCheckCircle } from 'react-icons/fi';
@@ -23,7 +25,15 @@ import { liveState } from '../stores/LiveStore';
 import { connectionState } from '../stores/ConnectionStore';
 
 const Package = (
-  <Suspense fallback={<CircularProgress mt={20} isIndeterminate color="green.300" />}>
+  <Suspense
+    fallback={(
+      <Box w="100%">
+        <Center>
+          <Spinner mt={20} color="green.300" />
+        </Center>
+      </Box>
+    )}
+  >
     <PackageScreen />
   </Suspense>
 );
@@ -108,7 +118,9 @@ const App: React.FC = () => {
                 description={description}
                 icon={icon}
               >
-                <Flex py={4}>{content}</Flex>
+                <Flex w="100%" py={4}>
+                  {content}
+                </Flex>
               </Step>
             ))}
           </Steps>
@@ -116,12 +128,7 @@ const App: React.FC = () => {
         {activeStep === STEPCOUNT ? (
           <ResultComponent onReset={reset} />
         ) : (
-          <Flex
-            position="fixed"
-            padding={5}
-            bottom={0}
-            w="100%"
-          >
+          <Flex position="fixed" padding={5} bottom={0} w="100%">
             <StepButtons
               {...{ nextStep, prevStep }}
               prevDisabled={activeStep === 0}
