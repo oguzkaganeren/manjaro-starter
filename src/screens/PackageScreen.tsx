@@ -132,6 +132,8 @@ const PackageScreen: React.FC = () => {
         isLazy
         px={8}
         py={71}
+        display="grid"
+        gridTemplateColumns="auto 1fr"
         mx="auto"
       >
         {Categories}

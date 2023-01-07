@@ -80,7 +80,7 @@ const SystemInfoComponent: React.FC = () => {
   }, []);
   return (
     <Box mb={5} textAlign={{ lg: 'left' }}>
-      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 5, lg: 8 }}>
+      <SimpleGrid columns={2} spacing={5}>
         <StatsCard
           title={t('system')}
           stat={`${systemInfo.sysName} ${systemInfo.sysOsVersion}`}
@@ -104,16 +104,19 @@ const SystemInfoComponent: React.FC = () => {
         />
         <StatsCard
           title={t('memory')}
-          stat={`${formatBytes(systemInfo.usedMemory * 1024)} / ${formatBytes(systemInfo.totalMemory * 1024)}`}
+          stat={`${formatBytes(systemInfo.usedMemory * 1024)} / ${formatBytes(
+            systemInfo.totalMemory * 1024,
+          )}`}
           icon={<FaMemory size="3em" />}
         />
         <StatsCard
           title={t('swap')}
-          stat={`${formatBytes(systemInfo.usedSwap * 1024)} / ${formatBytes(systemInfo.totalSwap * 1024)}`}
+          stat={`${formatBytes(systemInfo.usedSwap * 1024)} / ${formatBytes(
+            systemInfo.totalSwap * 1024,
+          )}`}
           icon={<FiDatabase size="3em" />}
         />
       </SimpleGrid>
-
     </Box>
   );
 };

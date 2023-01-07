@@ -61,6 +61,9 @@ const ConfigurationScreen: React.FC = () => {
     <Tabs
       isLazy
       my={20}
+      px={5}
+      display="grid"
+      gridTemplateColumns="auto 1fr"
       orientation="vertical"
       variant="solid-rounded"
       colorScheme="whatsapp"
@@ -72,22 +75,7 @@ const ConfigurationScreen: React.FC = () => {
         {!isLive && <Tab>{t('kernels')}</Tab>}
         <Tab>{t('settings')}</Tab>
       </TabList>
-      <TabPanels
-        minW={{
-          sm: '25em',
-          md: '43em',
-          lg: '50em',
-          xl: '60em',
-          '2xl': '80em',
-        }}
-        maxW={{
-          sm: '25em',
-          md: '43em',
-          lg: '50em',
-          xl: '60em',
-          '2xl': '80em',
-        }}
-      >
+      <TabPanels>
         <TabPanel>
           <SystemInfoComponent />
         </TabPanel>
