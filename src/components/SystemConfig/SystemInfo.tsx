@@ -16,6 +16,7 @@ import { HiOutlineDesktopComputer, HiOutlineUser } from 'react-icons/hi';
 import { AiFillCode } from 'react-icons/ai';
 import { invoke } from '@tauri-apps/api/tauri';
 import { useTranslation } from 'react-i18next';
+import GpuInfoComponent from './GpuInfoComponent';
 
 interface StatsCardProps {
   title: string;
@@ -27,7 +28,7 @@ const StatsCard = (props: StatsCardProps) => {
   return (
     <Stat
       px={{ base: 2, md: 4 }}
-      py="5"
+      py="3"
       shadow="xl"
       size="sm"
       border="1px solid"
@@ -39,7 +40,7 @@ const StatsCard = (props: StatsCardProps) => {
           <StatLabel fontWeight="bold">
             {title}
           </StatLabel>
-          <StatNumber fontSize="1xl" fontWeight="small">
+          <StatNumber fontSize="sm" fontWeight="small">
             {stat}
           </StatNumber>
         </Box>
@@ -79,45 +80,46 @@ const SystemInfoComponent: React.FC = () => {
     });
   }, []);
   return (
-    <Box mb={5} textAlign={{ lg: 'left' }}>
+    <>
       <SimpleGrid columns={2} spacing={5}>
         <StatsCard
           title={t('system')}
           stat={`${systemInfo.sysName} ${systemInfo.sysOsVersion}`}
-          icon={<HiOutlineDesktopComputer size="3em" />}
+          icon={<HiOutlineDesktopComputer size="2em" />}
         />
         <StatsCard
           title={t('kernel')}
           stat={systemInfo.sysKernelVersion}
-          icon={<AiFillCode size="3em" />}
+          icon={<AiFillCode size="2em" />}
         />
         <StatsCard
           title={t('host')}
           stat={systemInfo.sysHostName}
-          icon={<HiOutlineUser size="3em" />}
+          icon={<HiOutlineUser size="2em" />}
         />
         <StatsCard
           title={t('cpu')}
           stat={`${systemInfo.nameOfCpu} 
           ${systemInfo.numberOfCpu} Core`}
-          icon={<FiCpu size="3em" />}
+          icon={<FiCpu size="2em" />}
         />
         <StatsCard
           title={t('memory')}
           stat={`${formatBytes(systemInfo.usedMemory * 1024)} / ${formatBytes(
             systemInfo.totalMemory * 1024,
           )}`}
-          icon={<FaMemory size="3em" />}
+          icon={<FaMemory size="2em" />}
         />
         <StatsCard
           title={t('swap')}
           stat={`${formatBytes(systemInfo.usedSwap * 1024)} / ${formatBytes(
             systemInfo.totalSwap * 1024,
           )}`}
-          icon={<FiDatabase size="3em" />}
+          icon={<FiDatabase size="2em" />}
         />
       </SimpleGrid>
-    </Box>
+      <GpuInfoComponent />
+    </>
   );
 };
 export default SystemInfoComponent;

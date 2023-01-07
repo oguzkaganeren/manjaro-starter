@@ -137,6 +137,7 @@
         "installError": "Failed installed.",
         "failed": "Failed",
         "success": "Success",
-        "learnMore": "Learn More"
+        "learnMore": "Learn More",
+        "gpu": "GPU"
     }
 }
