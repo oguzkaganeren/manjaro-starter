@@ -90,8 +90,12 @@
                     "cmd": "pamac-manager",
                     "args": true
                 }, {
-                    "name": "sudo",
+                    "name": "pkexec",
                     "cmd": "pkexec",
+                    "args": true
+                }, {
+                    "name": "lspci",
+                    "cmd": "lspci",
                     "args": true
                 }]
             },

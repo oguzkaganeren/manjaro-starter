@@ -67,6 +67,7 @@ const ConfigurationScreen: React.FC = () => {
       orientation="vertical"
       variant="solid-rounded"
       colorScheme="whatsapp"
+      w="100%"
     >
       <TabList>
         <Tab>{t('system')}</Tab>

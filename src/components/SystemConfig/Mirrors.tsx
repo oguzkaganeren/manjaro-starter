@@ -35,7 +35,7 @@ const Mirrors: React.FC = (props) => {
   }
   const setFastestMirror = async () => {
     setIsProcessing(true);
-    const cmd = new Command('sudo', ['pacman-mirrors', '--fasttrack', '5']);
+    const cmd = new Command('pkexec', ['pacman-mirrors', '--fasttrack', '5']);
     cmd.on('close', (data) => {
       info(
         `command finished with code ${data.code} and signal ${data.signal}`,

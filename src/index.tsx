@@ -42,13 +42,11 @@ const theme = extendTheme({
   },
 });
 root.render(
-  <React.StrictMode>
-    <ChakraProvider theme={theme}>
-      <RecoilRoot>
-        <App />
-      </RecoilRoot>
-    </ChakraProvider>
-  </React.StrictMode>,
+  <ChakraProvider theme={theme}>
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
+  </ChakraProvider>,
 );
 disableContextMenuOnRelease();
 // If you want to start measuring performance in your app, pass a function
