@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useRecoilValue } from 'recoil';
 import {
   DrawerOverlay,
@@ -53,4 +53,4 @@ const CommandHistory = () => {
     </>
   );
 };
-export default CommandHistory;
+export default memo(CommandHistory);
