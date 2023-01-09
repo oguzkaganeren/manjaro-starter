@@ -11,6 +11,8 @@ import {
   Tooltip,
   useToast,
   CardHeader,
+  Text,
+  HStack,
 } from '@chakra-ui/react';
 import React, { useState, ReactNode, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -22,7 +24,7 @@ import { commandState } from '../../stores/CommandStore';
 
 const SystemUpdate: React.FC = () => {
   const { t } = useTranslation();
-  const [checkUpdate, setCheckUpdate] = useState('');
+  const [checkUpdateText, setCheckUpdateText] = useState('');
   const isOnline = useRecoilValue(connectionState);
   const toast = useToast();
   const [commandHistory, setCommandHistory] = useRecoilState(commandState);
@@ -34,7 +36,7 @@ const SystemUpdate: React.FC = () => {
     if (cmdResult.stdout) {
       const updateSp = cmdResult.stdout.split(':');
       const updateCount = updateSp[0];
-      setCheckUpdate(updateCount);
+      setCheckUpdateText(updateCount);
     }
   };
   function showMsg(msg: string | ReactNode, isError: boolean) {
@@ -95,11 +97,23 @@ const SystemUpdate: React.FC = () => {
   return (
     <Card minH="2xs" variant="filled">
       <CardHeader>
-        {checkUpdate === '' ? (
-          <Spinner ml="1" size="xs" />
+        {checkUpdateText === '' ? (
+          <Badge size="xs" p="1" ml="1" colorScheme="yellow">
+            <HStack>
+              <Spinner ml="1" size="xs" />
+              <Text>{t('checkingForUpdates')}</Text>
+            </HStack>
+          </Badge>
         ) : (
-          <Badge size="xs" p="1" ml="1" colorScheme="orange">
-            {checkUpdate}
+          <Badge
+            size="xs"
+            p="1"
+            ml="1"
+            colorScheme={
+              checkUpdateText.indexOf('up to date') > 0 ? 'green' : 'orange'
+            }
+          >
+            {checkUpdateText}
           </Badge>
         )}
       </CardHeader>

@@ -138,6 +138,7 @@
         "failed": "Failed",
         "success": "Success",
         "learnMore": "Learn More",
-        "gpu": "GPU"
+        "gpu": "GPU",
+        "checkingForUpdates": "Checking for updates"
     }
 }
