@@ -1,3 +1,17 @@
+## [0.19.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.19.1...v0.19.2) (2023-01-09)
+
+
+### Bug Fixes
+
+* 🐛 updated update status badge colors ([3b5d7e3](https://github.com/oguzkaganeren/manjaro-starter/commit/3b5d7e303926b5846c39127d46473bfdcf10c640)), closes [#231](https://github.com/oguzkaganeren/manjaro-starter/issues/231)
+
+
+### Performance Improvements
+
+* ⚡️ added memo for history command ([68ad761](https://github.com/oguzkaganeren/manjaro-starter/commit/68ad761db06633ca84249016683ecb7d1a3e9a37))
+
+
+
 ## [0.19.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.19.0...v0.19.1) (2023-01-07)
 
 
@@ -36,21 +50,6 @@
 ### Bug Fixes
 
 * 🐛 homescreen changes ([2bafb67](https://github.com/oguzkaganeren/manjaro-starter/commit/2bafb6705ef74fa969cb094537b6451baccc565f))
-
-
-
-# [0.18.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.17.2...v0.18.0) (2022-12-31)
-
-
-### Bug Fixes
-
-* 🐛 default language fixes ([e667dec](https://github.com/oguzkaganeren/manjaro-starter/commit/e667decdd8127dc653688c1084b3229fc5a442b8)), closes [#103](https://github.com/oguzkaganeren/manjaro-starter/issues/103)
-* 🐛 removed right click context menu ([67fc95c](https://github.com/oguzkaganeren/manjaro-starter/commit/67fc95cf74604225132e318fdaa22f368283d8a2)), closes [#40](https://github.com/oguzkaganeren/manjaro-starter/issues/40)
-
-
-### Features
-
-* 🎸 added cancel button for package installation ([a2e4307](https://github.com/oguzkaganeren/manjaro-starter/commit/a2e4307f1fba9c39774f356cc0e07ecefe556b6f))
 
 
 
