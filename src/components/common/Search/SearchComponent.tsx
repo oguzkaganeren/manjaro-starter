@@ -1,5 +1,5 @@
 import React from 'react';
-import type { FlexProps, UseDisclosureReturn } from '@chakra-ui/react';
+import type { UseDisclosureReturn } from '@chakra-ui/react';
 import {
   Flex,
   HStack,
@@ -11,12 +11,16 @@ import {
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import { useTranslation } from 'react-i18next';
-import SearchPackageModelComponent from './SearchPackageModelComponent';
+import SearchModelComponent from './SearchModelComponent';
 
 const ACTION_KEY_DEFAULT = ['Ctrl', 'Control'];
 const ACTION_KEY_APPLE = ['⌘', 'Command'];
 
-const SearchPackageComponent = (props: FlexProps) => {
+interface SearchProps {
+  isForPackage: boolean;
+}
+const SearchComponent = (props: SearchProps) => {
+  const { isForPackage } = props;
   const searchModal = React.useRef<UseDisclosureReturn | null>(null);
   const [actionKey, setActionKey] = React.useState(ACTION_KEY_APPLE);
   const { t } = useTranslation();
@@ -41,7 +45,7 @@ const SearchPackageComponent = (props: FlexProps) => {
 
   return (
     <Flex>
-      <SearchPackageModelComponent ref={searchModal} />
+      <SearchModelComponent id={isForPackage ? 'package' : 'anything'} ref={searchModal} />
       <chakra.button
         flex="1"
         type="button"
@@ -66,7 +70,9 @@ const SearchPackageComponent = (props: FlexProps) => {
         <SearchIcon />
         <HStack w="full" ml="3" spacing="4px">
           <Text textAlign="left" flex="1">
-            {t('searchPackagePlaceHolder')}
+            {isForPackage
+              ? t('searchPackagePlaceHolder')
+              : t('searchInfoPlaceHolder')}
           </Text>
           <HStack spacing="4px" display={{ base: 'none', md: 'flex' }}>
             <VisuallyHidden>Press </VisuallyHidden>
@@ -90,4 +96,4 @@ const SearchPackageComponent = (props: FlexProps) => {
     </Flex>
   );
 };
-export default SearchPackageComponent;
+export default SearchComponent;

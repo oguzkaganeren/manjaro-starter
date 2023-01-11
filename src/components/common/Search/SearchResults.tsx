@@ -47,22 +47,23 @@ const Res = (props: SearchResult) => {
 };
 interface SearchResProps {
   searchText: string;
+  isForPackage:boolean;
 }
 const SearchResults = (props: SearchResProps) => {
-  const { searchText } = props;
+  const { searchText, isForPackage } = props;
   const [isLoading, setIsLoading] = React.useState(false);
   const [apiResponse, setApiResponse] = React.useState({} as SearchManjaro);
   React.useEffect(() => {
     const setSearch = async () => {
       setIsLoading(true);
-      const res = await handleSearch(searchText);
+      const res = await handleSearch(searchText, isForPackage);
       setApiResponse(res);
       setIsLoading(false);
     };
     if (searchText) {
       setSearch();
     }
-  }, [searchText]);
+  }, [searchText, isForPackage]);
   return (
     <StickyViewport as={Stack} mt={7} dir="row" maxH="md" overflowY="auto">
       {isLoading ? (<Spinner />) : apiResponse['search-results']?.map((res, cid) => (

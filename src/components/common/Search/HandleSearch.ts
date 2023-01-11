@@ -1,17 +1,20 @@
 import { getClient, ResponseType } from '@tauri-apps/api/http';
 import { SearchManjaro } from './SearchManjaro';
 
-const handleSearch = async (keyword: string) => {
+const handleSearch = async (keyword: string, isForPackage:boolean) => {
   const client = await getClient();
   const url = new URL('https://manjaro.org/search/');
   url.searchParams.set('query', keyword);
   url.searchParams.set('format', 'json');
-  url.searchParams.set('type', 'package');
-  const response = await client.get(url.toString(), {
+  url.searchParams.set('type', isForPackage ? 'package' : 'wiki forum page');
+
+  // remove replaceAll after api changes
+  const response = await client.get(url.toString().replaceAll('+', '%20'), {
     timeout: 30,
     // the expected response type
     responseType: ResponseType.JSON,
   });
+
   return response.data as SearchManjaro;
 };
 
