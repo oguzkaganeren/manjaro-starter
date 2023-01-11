@@ -5,7 +5,7 @@
   "dependencies": {
     "@anubra266/stickyreact": "^1.0.1",
     "@chakra-ui/icons": "^2.0.15",
-    "@chakra-ui/react": "^2.4.6",
+    "@chakra-ui/react": "^2.4.7",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@fontsource/caveat": "^4.5.9",
