@@ -3,7 +3,11 @@ import { SearchManjaro } from './SearchManjaro';
 
 const handleSearch = async (keyword: any) => {
   const client = await getClient();
-  const response = await client.get(`https://manjaro.org/search/?query=${keyword}&format=json&type=package`, {
+  const url = new URL('https://manjaro.org/search/');
+  url.searchParams.set('query', keyword);
+  url.searchParams.set('format', 'json');
+  url.searchParams.set('type', 'package');
+  const response = await client.get(url.toString(), {
     timeout: 30,
     // the expected response type
     responseType: ResponseType.JSON,
