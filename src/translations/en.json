@@ -139,6 +139,7 @@
         "success": "Success",
         "learnMore": "Learn More",
         "gpu": "GPU",
-        "checkingForUpdates": "Checking for updates"
+        "checkingForUpdates": "Checking for updates",
+        "searchPackagePlaceHolder": "Search the package..."
     }
 }

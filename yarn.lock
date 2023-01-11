@@ -15,6 +15,11 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
+"@anubra266/stickyreact@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@anubra266/stickyreact/-/stickyreact-1.0.1.tgz#56118e2cc7c3ab73c07dd312f7bbc7ca220d5a2d"
+  integrity sha512-U6XAdYjuP+3uIRCHU2rJsD1vFTV42X88hGlWQOByjbrrx69H0J5FG0eGD0CClrGpr8jpjYVes7l/MlkAJNlvAA==
+
 "@apideck/better-ajv-errors@^0.3.1":
   version "0.3.6"
   resolved "https://registry.npmjs.org/@apideck/better-ajv-errors/-/better-ajv-errors-0.3.6.tgz"
@@ -10849,6 +10854,11 @@ use-callback-ref@^1.3.0:
   integrity sha512-3FT9PRuRdbB9HfXhEq35u4oZkvpJ5kuYbpqhCfmiZyReuRgpnhDlbr2ZEnnuS0RrJAPn6l23xjFg9kpDM+Ms7w==
   dependencies:
     tslib "^2.0.0"
+
+use-debounce@^9.0.2:
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/use-debounce/-/use-debounce-9.0.2.tgz#2883982ec1eb79affec46f14047244057b78161c"
+  integrity sha512-QLyB0sxt9F5AisGDrUybCRJSLE60bTQR0yXc+IebNGUu1GCXwii1zsZl82mPGdWqDVQy7+1FKMLHQUixxf5Nbw==
 
 use-sidecar@^1.1.2:
   version "1.1.2"

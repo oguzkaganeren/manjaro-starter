@@ -1,6 +1,7 @@
 import {
   Box,
   chakra,
+  HStack,
   Tab,
   TabList,
   TabPanel,
@@ -15,6 +16,7 @@ import { useKeenSlider } from 'keen-slider/react';
 import { packageState, Category, Package } from '../stores/PackageStore';
 import PackageDetail from '../components/PackageRelated/PackageDetail';
 import ArrowComponent from '../components/PackageRelated/ArrowComponent';
+import SearchPackageComponent from '../components/PackageRelated/Search/SearchPackageComponent';
 
 const PackageScreen: React.FC = () => {
   const packageSt = useRecoilValue(packageState);
@@ -74,15 +76,18 @@ const PackageScreen: React.FC = () => {
           '2xl': '80em',
         }}
       >
-        <chakra.p
-          mb={4}
-          maxW="2xl"
-          fontSize="xl"
-          color="gray.500"
-          _dark={{ color: 'gray.400' }}
-        >
-          {t(`${category.icon}Desc`)}
-        </chakra.p>
+        <HStack>
+          <chakra.p
+            mb={4}
+            maxW="2xl"
+            fontSize="xl"
+            color="gray.500"
+            _dark={{ color: 'gray.400' }}
+          >
+            {t(`${category.icon}Desc`)}
+          </chakra.p>
+        </HStack>
+
         <Box position="relative">
           <div ref={sliderRef} className="keen-slider">
             {Array.from(category.packages.values()).map((app: Package) => (
@@ -105,17 +110,17 @@ const PackageScreen: React.FC = () => {
           {loaded && instanceRef.current && category.packages.size > 2 && (
             <>
               {currentSlide !== 0 && (
-              <ArrowComponent
-                left
-                onClick={(e: any) => e.stopPropagation() || instanceRef.current?.prev()}
-              />
+                <ArrowComponent
+                  left
+                  onClick={(e: any) => e.stopPropagation() || instanceRef.current?.prev()}
+                />
               )}
 
               {currentSlide
-                  !== instanceRef.current.track.details.slides.length - 2 && (
-                  <ArrowComponent
-                    onClick={(e: any) => e.stopPropagation() || instanceRef.current?.next()}
-                  />
+                !== instanceRef.current.track.details.slides.length - 2 && (
+                <ArrowComponent
+                  onClick={(e: any) => e.stopPropagation() || instanceRef.current?.next()}
+                />
               )}
             </>
           )}
@@ -124,14 +129,14 @@ const PackageScreen: React.FC = () => {
     </TabPanel>
   ));
   return (
-    <Box>
+    <Box px={8} py={50}>
+      <SearchPackageComponent />
       <Tabs
         orientation="vertical"
         variant="solid-rounded"
         colorScheme="whatsapp"
         isLazy
-        px={8}
-        py={71}
+        py={5}
         display="grid"
         gridTemplateColumns="auto 1fr"
         mx="auto"

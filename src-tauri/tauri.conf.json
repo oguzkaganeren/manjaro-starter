@@ -49,6 +49,9 @@
         },
         "allowlist": {
             "all": true,
+            "http": {
+                "scope": ["https://manjaro.org/search/*"]
+            },
             "shell": {
                 "all": true,
                 "execute": true,
