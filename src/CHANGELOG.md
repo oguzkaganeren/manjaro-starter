@@ -1,3 +1,12 @@
+# [0.20.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.19.2...v0.20.0) (2023-01-11)
+
+
+### Features
+
+* 🎸 added search box for explorer page ([c4f8a91](https://github.com/oguzkaganeren/manjaro-starter/commit/c4f8a9172f102356027862d1d27cb42fa0fc36ad))
+
+
+
 ## [0.19.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.19.1...v0.19.2) (2023-01-09)
 
 
@@ -41,15 +50,6 @@
 ### Bug Fixes
 
 * 🐛 white theme button problem fixes ([e41d5bf](https://github.com/oguzkaganeren/manjaro-starter/commit/e41d5bf8fd48a1011762d84e3a314a619d67c265)), closes [#213](https://github.com/oguzkaganeren/manjaro-starter/issues/213)
-
-
-
-## [0.18.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.18.0...v0.18.1) (2023-01-02)
-
-
-### Bug Fixes
-
-* 🐛 homescreen changes ([2bafb67](https://github.com/oguzkaganeren/manjaro-starter/commit/2bafb6705ef74fa969cb094537b6451baccc565f))
 
 
 
