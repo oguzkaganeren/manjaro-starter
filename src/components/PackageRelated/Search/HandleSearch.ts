@@ -1,7 +1,7 @@
 import { getClient, ResponseType } from '@tauri-apps/api/http';
 import { SearchManjaro } from './SearchManjaro';
 
-const handleSearch = async (keyword: any) => {
+const handleSearch = async (keyword: string) => {
   const client = await getClient();
   const url = new URL('https://manjaro.org/search/');
   url.searchParams.set('query', keyword);
