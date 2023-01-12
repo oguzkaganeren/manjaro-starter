@@ -1,3 +1,12 @@
+## [0.21.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.21.0...v0.21.1) (2023-01-12)
+
+
+### Bug Fixes
+
+* 🐛 searchBox hidden when offline ([ae2ebe9](https://github.com/oguzkaganeren/manjaro-starter/commit/ae2ebe905cd861a99a5887fa8381cefe1ad92cb3))
+
+
+
 # [0.21.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.20.0...v0.21.0) (2023-01-12)
 
 
@@ -41,20 +50,6 @@
 ### Bug Fixes
 
 * 🐛 updated manjaro logo, fixed desktop file ([b1aecb5](https://github.com/oguzkaganeren/manjaro-starter/commit/b1aecb5f9931aa199a739a71cf5daf80c0cb0b8c))
-
-
-
-# [0.19.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.18.2...v0.19.0) (2023-01-07)
-
-
-### Bug Fixes
-
-* 🐛 removed blur for nav and footer ([77fc870](https://github.com/oguzkaganeren/manjaro-starter/commit/77fc87032a04f491c087fd33badde892278c929c))
-
-
-### Features
-
-* 🎸 added gpu info ([6f222a2](https://github.com/oguzkaganeren/manjaro-starter/commit/6f222a2e8b62edc4e43ec4869dd715b3d405b3a9)), closes [#226](https://github.com/oguzkaganeren/manjaro-starter/issues/226)
 
 
 
