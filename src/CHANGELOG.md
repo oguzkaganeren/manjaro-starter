@@ -1,3 +1,17 @@
+# [0.21.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.20.0...v0.21.0) (2023-01-12)
+
+
+### Bug Fixes
+
+* 🐛 steps style problem fixes ([69b8992](https://github.com/oguzkaganeren/manjaro-starter/commit/69b89922529aae2aab341bfb99055e93244ea745))
+
+
+### Features
+
+* 🎸 added search for final page ([b924ddf](https://github.com/oguzkaganeren/manjaro-starter/commit/b924ddff54aaeed3e3e85d3c6e64495d9f723f9e))
+
+
+
 # [0.20.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.19.2...v0.20.0) (2023-01-11)
 
 
@@ -41,15 +55,6 @@
 ### Features
 
 * 🎸 added gpu info ([6f222a2](https://github.com/oguzkaganeren/manjaro-starter/commit/6f222a2e8b62edc4e43ec4869dd715b3d405b3a9)), closes [#226](https://github.com/oguzkaganeren/manjaro-starter/issues/226)
-
-
-
-## [0.18.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.18.1...v0.18.2) (2023-01-03)
-
-
-### Bug Fixes
-
-* 🐛 white theme button problem fixes ([e41d5bf](https://github.com/oguzkaganeren/manjaro-starter/commit/e41d5bf8fd48a1011762d84e3a314a619d67c265)), closes [#213](https://github.com/oguzkaganeren/manjaro-starter/issues/213)
 
 
 
