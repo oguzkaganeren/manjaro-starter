@@ -11,7 +11,9 @@ import {
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import { useTranslation } from 'react-i18next';
+import { useRecoilValue } from 'recoil';
 import SearchModelComponent from './SearchModelComponent';
+import { connectionState } from '../../../stores/ConnectionStore';
 
 const ACTION_KEY_DEFAULT = ['Ctrl', 'Control'];
 const ACTION_KEY_APPLE = ['⌘', 'Command'];
@@ -21,6 +23,7 @@ interface SearchProps {
 }
 const SearchComponent = (props: SearchProps) => {
   const { isForPackage } = props;
+  const isOnline = useRecoilValue(connectionState);
   const searchModal = React.useRef<UseDisclosureReturn | null>(null);
   const [actionKey, setActionKey] = React.useState(ACTION_KEY_APPLE);
   const { t } = useTranslation();
@@ -44,8 +47,11 @@ const SearchComponent = (props: SearchProps) => {
   });
 
   return (
-    <Flex>
-      <SearchModelComponent id={isForPackage ? 'package' : 'anything'} ref={searchModal} />
+    <Flex hidden={!isOnline}>
+      <SearchModelComponent
+        id={isForPackage ? 'package' : 'anything'}
+        ref={searchModal}
+      />
       <chakra.button
         flex="1"
         type="button"
