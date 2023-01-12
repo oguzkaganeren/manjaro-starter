@@ -8,8 +8,7 @@ const handleSearch = async (keyword: string, isForPackage:boolean) => {
   url.searchParams.set('format', 'json');
   url.searchParams.set('type', isForPackage ? 'package' : 'wiki forum page');
 
-  // remove replaceAll after api changes
-  const response = await client.get(url.toString().replaceAll('+', '%20'), {
+  const response = await client.get(url.toString(), {
     timeout: 30,
     // the expected response type
     responseType: ResponseType.JSON,

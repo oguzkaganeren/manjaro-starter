@@ -29,7 +29,7 @@ export default forwardRef<
   const idParam = _.id;
   const plcText = idParam === 'package'
     ? t('searchPackagePlaceHolder')
-    : t('searchInfoPlaceHolder');
+    : t('searchPlaceHolder');
   useImperativeHandle(ref, () => ({
     isOpen,
     onOpen,

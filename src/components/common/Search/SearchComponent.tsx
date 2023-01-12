@@ -72,7 +72,7 @@ const SearchComponent = (props: SearchProps) => {
           <Text textAlign="left" flex="1">
             {isForPackage
               ? t('searchPackagePlaceHolder')
-              : t('searchInfoPlaceHolder')}
+              : t('searchPlaceHolder')}
           </Text>
           <HStack spacing="4px" display={{ base: 'none', md: 'flex' }}>
             <VisuallyHidden>Press </VisuallyHidden>

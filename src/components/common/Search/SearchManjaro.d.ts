@@ -1,6 +1,6 @@
 export interface SearchResult {
     description?: string;
-    isDoc?: boolean;
+    'is_doc'?: boolean;
     package?: string;
     title?: string;
     type?: string;

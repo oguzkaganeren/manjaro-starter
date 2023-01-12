@@ -140,6 +140,7 @@
         "learnMore": "Learn More",
         "gpu": "GPU",
         "checkingForUpdates": "Checking for updates",
-        "searchPackagePlaceHolder": "Search the package..."
+        "searchPackagePlaceHolder": "Search the package...",
+        "searchPlaceHolder": "Search..."
     }
 }

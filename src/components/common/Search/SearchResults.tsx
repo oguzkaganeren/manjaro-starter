@@ -4,20 +4,42 @@ import {
 } from '@chakra-ui/react';
 import { StickyBoundary, StickyViewport } from '@anubra266/stickyreact';
 import { FiPackage } from 'react-icons/fi';
-import { Command } from '@tauri-apps/api/shell';
+import { Command, open } from '@tauri-apps/api/shell';
+import { FaDiscourse, FaWikipediaW } from 'react-icons/fa';
+import { SiPagekit } from 'react-icons/si';
+import { FcDocument } from 'react-icons/fc';
 import { SearchManjaro, SearchResult } from './SearchManjaro';
 import handleSearch from './HandleSearch';
 
 const Res = (props: SearchResult) => {
   const {
-    description, isDoc, title, type, url,
+    description, is_doc, title, type, url,
   } = props;
+  const getIcon = () => {
+    switch (type) {
+      case 'package':
+        return <FiPackage size="lg" />;
+      case 'forum':
+        return <FaDiscourse size="lg" />;
+      case 'wiki':
+        return <FaWikipediaW size="lg" />;
+      case 'page':
+        return <SiPagekit size="lg" />;
+
+      default:
+        return null;
+    }
+  };
   return (
     <Stack spacing={3} mt={3}>
       <Link
-        onClick={() => {
-          const cmd = new Command('pamac-manager', [`--details=${props.package}`]);
-          cmd.execute();
+        onClick={async () => {
+          if (type === 'package') {
+            const cmd = new Command('pamac-manager', [`--details=${props.package}`]);
+            cmd.execute();
+          } else if (url) {
+            await open(url);
+          }
         }}
       >
         <Flex
@@ -31,7 +53,7 @@ const Res = (props: SearchResult) => {
           transition="all 0.3s ease-in-out"
         >
           <Icon boxSize={8} my="auto">
-            <FiPackage size="lg" />
+            {getIcon()}
           </Icon>
           <Stack dir="row" spacing={0} ml={5}>
             <Box fontWeight="bold" textTransform="capitalize" fontSize="sm">
@@ -40,6 +62,11 @@ const Res = (props: SearchResult) => {
             <Box textTransform="capitalize">{description}</Box>
           </Stack>
           <Spacer />
+          {is_doc && (
+            <Icon boxSize={5} my="auto">
+              <FcDocument size="xs" />
+            </Icon>
+          )}
         </Flex>
       </Link>
     </Stack>
@@ -70,7 +97,7 @@ const SearchResults = (props: SearchResProps) => {
         <StickyBoundary as={Stack} key={`api-result-${cid}`}>
           <Res
             description={res.description}
-            isDoc={res.isDoc}
+            is_doc={res.is_doc}
             package={res.package}
             title={res.title}
             type={res.type}
