@@ -1,5 +1,5 @@
 import {
-  Container, Heading, Text, Button, Center, Tooltip, IconButton,
+  Container, Heading, Text, Button, Center, Tooltip, IconButton, Spacer,
 } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { CheckCircleIcon } from '@chakra-ui/icons';
@@ -15,82 +15,123 @@ import { BiDonateHeart } from 'react-icons/bi';
 import { useTranslation } from 'react-i18next';
 // eslint-disable-next-line import/no-named-default
 import { default as SocialLinks } from '../assets/SocialUrls.json';
+import SearchComponent from './common/Search/SearchComponent';
 
 interface ResultProps {
     onReset: () => void;
 }
+interface socialProps {
+  url: string;
+  icon: any;
+  text:string;
+  color:string;
+}
+const SocialIcon = (props: socialProps) => {
+  const {
+    url, icon, text, color,
+  } = props;
+  const { t } = useTranslation();
+  return (
+    <Button
+      mt={2}
+      mr={2}
+      size="xs"
+      colorScheme={color}
+      onClick={async () => {
+        await open(url);
+      }}
+      leftIcon={icon}
+    >
+      <Center>
+        <Text>{t(text)}</Text>
+      </Center>
+    </Button>
+  );
+};
 const ResultComponent: React.FC<ResultProps> = (props) => {
   const { t } = useTranslation();
   const { onReset } = props;
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <Container textAlign="center">
       <CheckCircleIcon boxSize="50px" color="green.500" marginTop={100} />
       <Heading as="h2" size="xl" mt={6} mb={2}>
         {t('congratulations')}
       </Heading>
-      <Text color="gray.500">
-        {t('readyText')}
-      </Text>
-      <Button mt={5} mr={5} colorScheme="whatsapp" onClick={async () => { await open(SocialLinks.urls.forum); }} leftIcon={<SiDiscourse />}>
-        <Center>
-          <Text>{t('postForum')}</Text>
-        </Center>
-      </Button>
-      <Button mt={5} mr={5} colorScheme="blue" onClick={async () => { await open(SocialLinks.urls.software); }} leftIcon={<FiPackage />}>
-        <Center>
-          <Text>{t('discoverSoftware')}</Text>
-        </Center>
-      </Button>
-      <Button mt={5} mr={5} colorScheme="orange" onClick={async () => { await open(SocialLinks.urls.wiki); }} leftIcon={<SiWikipedia />}>
-        <Center>
-          <Text>{t('readWiki')}</Text>
-        </Center>
-      </Button>
-      <Button mt={5} mr={5} colorScheme="teal" onClick={async () => { await open(SocialLinks.urls.development); }} leftIcon={<SiGit />}>
-        <Center>
-          <Text>{t('contribute')}</Text>
-        </Center>
-      </Button>
-      <Button mt={5} mr={5} colorScheme="telegram" onClick={async () => { await open(SocialLinks.urls.telegram); }} leftIcon={<SiTelegram />}>
-        <Center>
-          <Text>{t('telegram')}</Text>
-        </Center>
-      </Button>
-      <Button mt={5} mr={5} colorScheme="facebook" onClick={async () => { await open(SocialLinks.urls.facebook); }} leftIcon={<FiFacebook />}>
-        <Center>
-          <Text>{t('facebook')}</Text>
-        </Center>
-      </Button>
-      <Button mt={5} mr={5} colorScheme="twitter" onClick={async () => { await open(SocialLinks.urls.twitter); }} leftIcon={<FiTwitter />}>
-        <Center>
-          <Text>{t('twitter')}</Text>
-        </Center>
-      </Button>
-      <Button mt={5} mr={5} colorScheme="red" onClick={async () => { await open(SocialLinks.urls.reddit); }} leftIcon={<SiReddit />}>
-        <Center>
-          <Text>{t('reddit')}</Text>
-        </Center>
-      </Button>
-      <Button mt={5} mr={5} colorScheme="purple" onClick={async () => { await open(SocialLinks.urls.blog); }} leftIcon={<SiBlogger />}>
-        <Center>
-          <Text>{t('blog')}</Text>
-        </Center>
-      </Button>
-      <Button mt={5} mr={5} colorScheme="pink" onClick={async () => { await open(SocialLinks.urls.mailing); }} leftIcon={<FiMail />}>
-        <Center>
-          <Text>{t('joinMail')}</Text>
-        </Center>
-      </Button>
-      <Button mt={5} mr={5} colorScheme="green" onClick={async () => { await open(SocialLinks.urls.donate); }} leftIcon={<BiDonateHeart />}>
-        <Center>
-          <Text>{t('donate')}</Text>
-        </Center>
-      </Button>
-      <Tooltip label={t('returnFirstStep')}>
+      <Text color="gray.500">{t('readyText')}</Text>
+      <Spacer mt={5} />
+      <SearchComponent isForPackage={false} />
+      <SocialIcon
+        url={SocialLinks.urls.forum}
+        icon={<SiDiscourse />}
+        text="postForum"
+        color="whatsapp"
+      />
+      <SocialIcon
+        url={SocialLinks.urls.software}
+        icon={<FiPackage />}
+        text="discoverSoftware"
+        color="blue"
+      />
+      <SocialIcon
+        url={SocialLinks.urls.wiki}
+        icon={<SiWikipedia />}
+        text="readWiki"
+        color="orange"
+      />
+      <SocialIcon
+        url={SocialLinks.urls.development}
+        icon={<SiGit />}
+        text="contribute"
+        color="teal"
+      />
+      <SocialIcon
+        url={SocialLinks.urls.telegram}
+        icon={<SiTelegram />}
+        text="telegram"
+        color="telegram"
+      />
+      <SocialIcon
+        url={SocialLinks.urls.facebook}
+        icon={<FiFacebook />}
+        text="facebook"
+        color="facebook"
+      />
+      <SocialIcon
+        url={SocialLinks.urls.twitter}
+        icon={<FiTwitter />}
+        text="twitter"
+        color="twitter"
+      />
+      <SocialIcon
+        url={SocialLinks.urls.reddit}
+        icon={<SiReddit />}
+        text="reddit"
+        color="red"
+      />
+      <SocialIcon
+        url={SocialLinks.urls.blog}
+        icon={<SiBlogger />}
+        text="blog"
+        color="purple"
+      />
+      <SocialIcon
+        url={SocialLinks.urls.mailing}
+        icon={<FiMail />}
+        text="joinMail"
+        color="pink"
+      />
+      <SocialIcon
+        url={SocialLinks.urls.donate}
+        icon={<BiDonateHeart />}
+        text="donate"
+        color="green"
+      />
 
+      <Tooltip label={t('returnFirstStep')}>
         <IconButton
           boxSize="50px"
           color="green.500"
@@ -102,7 +143,6 @@ const ResultComponent: React.FC<ResultProps> = (props) => {
           icon={<GiReturnArrow />}
         />
       </Tooltip>
-
     </Container>
   );
 };

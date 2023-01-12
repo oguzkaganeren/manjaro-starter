@@ -26,7 +26,10 @@ export default forwardRef<
 >((_, ref) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { t } = useTranslation();
-  const plcText = t('searchPackagePlaceHolder');
+  const idParam = _.id;
+  const plcText = idParam === 'package'
+    ? t('searchPackagePlaceHolder')
+    : t('searchPlaceHolder');
   useImperativeHandle(ref, () => ({
     isOpen,
     onOpen,
@@ -77,7 +80,12 @@ export default forwardRef<
               </Kbd>
             </InputRightElement>
           </InputGroup>
-          {value.length > 0 && <SearchResults searchText={value} />}
+          {value.length > 0 && (
+            <SearchResults
+              isForPackage={idParam === 'package'}
+              searchText={value}
+            />
+          )}
         </ModalBody>
       </ModalContent>
     </Modal>

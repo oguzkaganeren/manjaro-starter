@@ -16,7 +16,7 @@ import { useKeenSlider } from 'keen-slider/react';
 import { packageState, Category, Package } from '../stores/PackageStore';
 import PackageDetail from '../components/PackageRelated/PackageDetail';
 import ArrowComponent from '../components/PackageRelated/ArrowComponent';
-import SearchPackageComponent from '../components/PackageRelated/Search/SearchPackageComponent';
+import SearchComponent from '../components/common/Search/SearchComponent';
 
 const PackageScreen: React.FC = () => {
   const packageSt = useRecoilValue(packageState);
@@ -130,7 +130,7 @@ const PackageScreen: React.FC = () => {
   ));
   return (
     <Box px={8} py={50}>
-      <SearchPackageComponent />
+      <SearchComponent isForPackage />
       <Tabs
         orientation="vertical"
         variant="solid-rounded"

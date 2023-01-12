@@ -1,10 +1,9 @@
-export type Type = 'package';
 export interface SearchResult {
     description?: string;
-    isDoc?: boolean;
+    'is_doc'?: boolean;
     package?: string;
     title?: string;
-    type?: Type;
+    type?: string;
     url?: string;
 }
 export interface SearchManjaro {
