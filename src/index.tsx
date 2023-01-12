@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { ChakraProvider, extendTheme, useColorModeValue } from '@chakra-ui/react';
-import { StepsStyleConfig } from 'chakra-ui-steps';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { StepsTheme } from 'chakra-ui-steps';
 import { RecoilRoot } from 'recoil';
 
 import App from './screens/App';
@@ -20,25 +20,14 @@ function disableContextMenuOnRelease() {
     return false;
   }, { capture: true });
 }
-const CustomSteps = {
-  ...StepsStyleConfig,
-  baseStyle: (props:any) => ({
-    ...StepsStyleConfig.baseStyle(props),
-    stepIconContainer: {
-      ...StepsStyleConfig.baseStyle(props).stepIconContainer,
-      _activeStep: {
-        bg: useColorModeValue('white.800', 'white.500'),
-      },
-    },
-  }),
-};
+
 const theme = extendTheme({
   config: {
     initialColorMode: 'system',
     useSystemColorMode: false,
   },
   components: {
-    Steps: CustomSteps,
+    Steps: StepsTheme,
   },
 });
 root.render(
