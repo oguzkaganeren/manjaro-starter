@@ -12,6 +12,9 @@ const handleSearch = async (keyword: string, isForPackage:boolean) => {
     timeout: 30,
     // the expected response type
     responseType: ResponseType.JSON,
+    headers: {
+      'User-Agent': 'Manjaro-Starter-Desktop 1.0 (+https://manjaro.org)',
+    },
   });
 
   return response.data as SearchManjaro;
