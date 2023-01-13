@@ -1,3 +1,12 @@
+## [0.21.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.21.1...v0.21.2) (2023-01-13)
+
+
+### Bug Fixes
+
+* 🐛 updated learn info model design ([3a5fcce](https://github.com/oguzkaganeren/manjaro-starter/commit/3a5fccef8529266feb6b1b0cb4bea37cfe69aab8))
+
+
+
 ## [0.21.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.21.0...v0.21.1) (2023-01-12)
 
 
@@ -41,15 +50,6 @@
 ### Performance Improvements
 
 * ⚡️ added memo for history command ([68ad761](https://github.com/oguzkaganeren/manjaro-starter/commit/68ad761db06633ca84249016683ecb7d1a3e9a37))
-
-
-
-## [0.19.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.19.0...v0.19.1) (2023-01-07)
-
-
-### Bug Fixes
-
-* 🐛 updated manjaro logo, fixed desktop file ([b1aecb5](https://github.com/oguzkaganeren/manjaro-starter/commit/b1aecb5f9931aa199a739a71cf5daf80c0cb0b8c))
 
 
 
