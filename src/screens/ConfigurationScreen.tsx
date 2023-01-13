@@ -13,12 +13,12 @@ import React, { useState, useEffect } from 'react';
 import { Command } from '@tauri-apps/api/shell';
 import { useTranslation } from 'react-i18next';
 import { useRecoilValue } from 'recoil';
-import KernelComponent from '../components/SystemConfig/KernelComponent';
-import SystemInfoComponent from '../components/SystemConfig/SystemInfo';
-import SystemUpdate from '../components/SystemConfig/SystemUpdate';
-import Mirrors from '../components/SystemConfig/Mirrors';
-import ManjaroSettingsModule from '../components/SystemConfig/ManjaroSettingsModule';
-import GnomeLayoutManager from '../components/SystemConfig/GnomeLayoutMaganer';
+import KernelComponent from '../components/systemconfig/KernelComponent';
+import SystemInfoComponent from '../components/systemconfig/SystemInfo';
+import SystemUpdate from '../components/systemconfig/SystemUpdate';
+import Mirrors from '../components/systemconfig/Mirrors';
+import ManjaroSettingsModule from '../components/systemconfig/ManjaroSettingsModule';
+import GnomeLayoutManager from '../components/systemconfig/GnomeLayoutMaganer';
 import { liveState } from '../stores/LiveStore';
 
 const ConfigurationScreen: React.FC = () => {

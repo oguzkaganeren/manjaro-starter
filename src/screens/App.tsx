@@ -17,7 +17,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import StepButtons from '../components/StepButtons';
 import HomeScreen from './HomeScreen';
 import PackageScreen from './PackageScreen';
-import ResultComponent from '../components/ResultComponent';
+import FinalScreen from './FinalScreen';
 import ConfigurationScreen from './ConfigurationScreen';
 import packageJson from '../../package.json';
 import Nav from '../components/NavbarComponent';
@@ -126,7 +126,7 @@ const App: React.FC = () => {
           </Steps>
         </VStack>
         {activeStep === STEPCOUNT ? (
-          <ResultComponent onReset={reset} />
+          <FinalScreen onReset={reset} />
         ) : (
           <Flex position="fixed" padding={5} bottom={0} w="100%">
             <StepButtons

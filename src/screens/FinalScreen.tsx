@@ -15,9 +15,9 @@ import { BiDonateHeart } from 'react-icons/bi';
 import { useTranslation } from 'react-i18next';
 // eslint-disable-next-line import/no-named-default
 import { default as SocialLinks } from '../assets/SocialUrls.json';
-import SearchComponent from './common/Search/SearchComponent';
+import SearchComponent from '../components/common/search/SearchComponent';
 
-interface ResultProps {
+interface FinalProps {
     onReset: () => void;
 }
 interface socialProps {
@@ -48,7 +48,7 @@ const SocialIcon = (props: socialProps) => {
     </Button>
   );
 };
-const ResultComponent: React.FC<ResultProps> = (props) => {
+const FinalScreen: React.FC<FinalProps> = (props) => {
   const { t } = useTranslation();
   const { onReset } = props;
   useEffect(() => {
@@ -146,4 +146,4 @@ const ResultComponent: React.FC<ResultProps> = (props) => {
     </Container>
   );
 };
-export default ResultComponent;
+export default FinalScreen;

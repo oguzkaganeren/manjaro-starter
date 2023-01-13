@@ -14,10 +14,10 @@ import {
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import '@fontsource/caveat';
-import ManjaroVersion from '../components/Home/ManjaroVersion';
-import Info from '../components/Home/Info';
-import ReleaseNotes from '../components/Home/ReleaseNotes';
-import LiveInstaller from '../components/Home/LiveInstaller';
+import ManjaroVersion from '../components/home/ManjaroVersion';
+import Info from '../components/home/Info';
+import ReleaseNotes from '../components/home/ReleaseNotes';
+import LiveInstaller from '../components/home/LiveInstaller';
 
 const HomeScreen: React.FC<{ nextStep: () => void }> = ({ nextStep }) => {
   const { t } = useTranslation();

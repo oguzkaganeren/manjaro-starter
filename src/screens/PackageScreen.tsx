@@ -14,9 +14,9 @@ import { useTranslation } from 'react-i18next';
 import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
 import { packageState, Category, Package } from '../stores/PackageStore';
-import PackageDetail from '../components/PackageRelated/PackageDetail';
-import ArrowComponent from '../components/PackageRelated/ArrowComponent';
-import SearchComponent from '../components/common/Search/SearchComponent';
+import PackageDetail from '../components/packagerelated/PackageDetail';
+import ArrowComponent from '../components/packagerelated/ArrowComponent';
+import SearchComponent from '../components/common/search/SearchComponent';
 
 const PackageScreen: React.FC = () => {
   const packageSt = useRecoilValue(packageState);
