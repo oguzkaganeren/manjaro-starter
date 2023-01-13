@@ -2,15 +2,14 @@ import React, { ReactElement } from 'react';
 import {
   SimpleGrid,
   Icon,
-  Text,
-  Stack,
+  Box,
   Flex,
-  useColorModeValue,
   Button,
   Modal,
   ModalOverlay,
   ModalContent,
   useDisclosure,
+  chakra,
 } from '@chakra-ui/react';
 import {
   FcElectronics, FcInfo, FcGlobe, FcCollaboration, FcFeedback,
@@ -23,25 +22,57 @@ interface FeatureProps {
     icon: ReactElement;
   }
 const Feature = ({ title, text, icon }: FeatureProps) => (
-  <Stack>
-    <Stack direction="row" align="center">
-      <Flex
-        w={16}
-        h={16}
-        align="center"
-        justify="center"
-        color="white"
-        rounded="full"
-        bg="gray.100"
-        mb={1}
-      >
-        {icon}
-      </Flex>
-      <Text fontWeight={600}>{title}</Text>
-    </Stack>
+  <Box
+    w="md"
+    mx="auto"
+    py={4}
+    px={8}
+    bg="white"
+    _dark={{
+      bg: 'gray.800',
+    }}
+    shadow="lg"
+    rounded="lg"
+  >
+    <Flex
+      justifyContent={{
+        base: 'center',
+        md: 'end',
+      }}
+      mt={-8}
+    >
+      {icon}
+    </Flex>
 
-    <Text color={useColorModeValue('gray.800', 'gray.300')} align="left">{text}</Text>
-  </Stack>
+    <chakra.h2
+      color="gray.800"
+      _dark={{
+        color: 'white',
+      }}
+      fontSize={{
+        base: '2xl',
+        md: '3xl',
+      }}
+      mt={{
+        base: 2,
+        md: 0,
+      }}
+      fontWeight="bold"
+    >
+      {title}
+    </chakra.h2>
+
+    <chakra.p
+      mt={2}
+      color="gray.600"
+      _dark={{
+        color: 'gray.200',
+      }}
+    >
+      {text}
+    </chakra.p>
+
+  </Box>
 );
 const Info: React.FC = () => {
   const { t } = useTranslation();
@@ -59,7 +90,7 @@ const Info: React.FC = () => {
         motionPreset="slideInBottom"
       >
         <ModalOverlay backdropInvert="80%" backdropBlur="2px" />
-        <ModalContent p={4}>
+        <ModalContent bg="#edf3f8" _dark={{ bg: '#2D3748' }} p={9}>
           <SimpleGrid columns={{ base: 1, md: 1 }} spacing={10}>
             <Feature
               icon={<Icon as={FcElectronics} w={10} h={10} />}
