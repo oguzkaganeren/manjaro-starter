@@ -1,0 +1,26 @@
+{
+	"recommendations": [
+		"aaron-bond.better-comments",
+        "abusaidm.html-snippets",
+        "christian-kohler.path-intellisense",
+        "dbaeumer.vscode-eslint",
+        "dsznajder.es7-react-js-snippets",
+        "ecmel.vscode-html-css",
+        "esbenp.prettier-vscode",
+        "formulahendry.auto-close-tag",
+        "formulahendry.code-runner",
+        "kamikillerto.vscode-colorize",
+        "lonefy.vscode-JS-CSS-HTML-formatter",
+        "mikestead.dotenv",
+        "ms-vscode.atom-keybindings",
+        "msjsdiag.debugger-for-chrome",
+        "Orta.vscode-jest",
+        "pflannery.vscode-versionlens",
+        "PKief.material-icon-theme",
+        "streetsidesoftware.code-spell-checker",
+        "Tomi.xasnippets",
+        "vadimcn.vscode-lldb",
+        "waderyan.gitblame",
+        "wayou.vscode-todo-highlight"
+	]
+}

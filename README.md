@@ -102,10 +102,14 @@ git clone https://github.com/oguzkaganeren/manjaro-starter.git
 ```sh
 yarn install
 ```
-3. Run with
+3. Run debug mode
 ```sh
 yarn tauri dev
 ```
+
+#### Vscode
+1. Install suggested vscode extensions(`.vscode/extensions.json`)
+2. Press F5 or Run -> Start Debugging
 
 
 
