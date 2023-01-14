@@ -39,10 +39,7 @@ fn get_svg_icon(svgpath: String) -> String {
 }
 #[tauri::command]
 fn get_sys_info() -> String {
-  let mut sys = System::new_with_specifics(
-    RefreshKind::new().with_cpu(CpuRefreshKind::everything()),
-);
-
+  let mut sys = System::new_with_specifics(RefreshKind::new().with_cpu(CpuRefreshKind::everything()),);
   // First we update all information of our `System` struct.
   sys.refresh_all();
   let sys_info = json!( {
@@ -59,6 +56,17 @@ fn get_sys_info() -> String {
   });
   return sys_info.to_string();
 }
+
+#[tauri::command]
+fn is_service_active(service: String) -> bool {
+  if let Ok(true) = systemctl::exists(&service) {
+    let is_active = systemctl::is_active(&service)
+        .unwrap();
+    return is_active;
+  }
+  return false;
+}
+
 fn main() {
   tauri::Builder::default()
   .setup(|app| {
@@ -82,7 +90,7 @@ fn main() {
     LogTarget::Webview,
   ]).build())
   // This is where you pass in your commands
-  .invoke_handler(tauri::generate_handler![run_shell_command,run_shell_command_with_result,get_sys_info,get_svg_icon])
+  .invoke_handler(tauri::generate_handler![run_shell_command,run_shell_command_with_result,get_sys_info,get_svg_icon,is_service_active])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
