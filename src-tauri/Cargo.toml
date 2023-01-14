@@ -21,12 +21,13 @@ tauri = { version = "1.2.3", features = ["api-all"] }
 tauri-utils = "1.2.1"
 log = "0.4.14"
 sysinfo = "0.24.6"
+systemctl = "0.1.9"
 [dependencies.tauri-plugin-log]
 git = "https://github.com/tauri-apps/tauri-plugin-log"
 branch = "dev"
 [features]
-default = [ "custom-protocol" ]
-custom-protocol = [ "tauri/custom-protocol" ]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
 
 [profile.release]
 panic = "abort" # Strip expensive panic clean-up logic
