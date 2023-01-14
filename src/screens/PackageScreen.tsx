@@ -22,6 +22,7 @@ const PackageScreen: React.FC = () => {
   const packageSt = useRecoilValue(packageState);
   const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = React.useState(0);
+  const [tabIndex, setTabIndex] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider({
     mode: 'free',
@@ -29,7 +30,7 @@ const PackageScreen: React.FC = () => {
     rubberband: false,
     slides: {
       origin: 'auto',
-      perView: 2.5,
+      perView: 2.2,
       spacing: 5,
     },
     created() {
@@ -116,8 +117,7 @@ const PackageScreen: React.FC = () => {
                 />
               )}
 
-              {currentSlide
-                !== instanceRef.current.track.details.slides.length - 2 && (
+              {currentSlide !== category.packages.size - 2 && (
                 <ArrowComponent
                   onClick={(e: any) => e.stopPropagation() || instanceRef.current?.next()}
                 />
@@ -139,7 +139,10 @@ const PackageScreen: React.FC = () => {
         py={5}
         display="grid"
         gridTemplateColumns="auto 1fr"
-        mx="auto"
+        onChange={(index) => {
+          setCurrentSlide(0);
+          setTabIndex(index);
+        }}
       >
         {Categories}
         <TabPanels>{Apps}</TabPanels>
