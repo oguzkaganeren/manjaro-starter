@@ -1,3 +1,12 @@
+# [0.22.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.21.3...v0.22.0) (2023-01-14)
+
+
+### Features
+
+* 🎸 added fstrim configuration ([db13abb](https://github.com/oguzkaganeren/manjaro-starter/commit/db13abbcb1770332a1f76579bbe15f397c0abe84)), closes [#91](https://github.com/oguzkaganeren/manjaro-starter/issues/91)
+
+
+
 ## [0.21.3](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.21.2...v0.21.3) (2023-01-14)
 
 
@@ -36,15 +45,6 @@
 ### Features
 
 * 🎸 added search for final page ([b924ddf](https://github.com/oguzkaganeren/manjaro-starter/commit/b924ddff54aaeed3e3e85d3c6e64495d9f723f9e))
-
-
-
-# [0.20.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.19.2...v0.20.0) (2023-01-11)
-
-
-### Features
-
-* 🎸 added search box for explorer page ([c4f8a91](https://github.com/oguzkaganeren/manjaro-starter/commit/c4f8a9172f102356027862d1d27cb42fa0fc36ad))
 
 
 
