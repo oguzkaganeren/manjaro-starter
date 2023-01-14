@@ -1,3 +1,12 @@
+## [0.21.3](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.21.2...v0.21.3) (2023-01-14)
+
+
+### Bug Fixes
+
+* 🐛 package arrow problem fixed ([b108aeb](https://github.com/oguzkaganeren/manjaro-starter/commit/b108aebff5e8d665e530e91348b5d4e1a7e690e4)), closes [#259](https://github.com/oguzkaganeren/manjaro-starter/issues/259)
+
+
+
 ## [0.21.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.21.1...v0.21.2) (2023-01-13)
 
 
@@ -36,20 +45,6 @@
 ### Features
 
 * 🎸 added search box for explorer page ([c4f8a91](https://github.com/oguzkaganeren/manjaro-starter/commit/c4f8a9172f102356027862d1d27cb42fa0fc36ad))
-
-
-
-## [0.19.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.19.1...v0.19.2) (2023-01-09)
-
-
-### Bug Fixes
-
-* 🐛 updated update status badge colors ([3b5d7e3](https://github.com/oguzkaganeren/manjaro-starter/commit/3b5d7e303926b5846c39127d46473bfdcf10c640)), closes [#231](https://github.com/oguzkaganeren/manjaro-starter/issues/231)
-
-
-### Performance Improvements
-
-* ⚡️ added memo for history command ([68ad761](https://github.com/oguzkaganeren/manjaro-starter/commit/68ad761db06633ca84249016683ecb7d1a3e9a37))
 
 
 
