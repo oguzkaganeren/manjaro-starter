@@ -137,6 +137,14 @@
         "installError": "Installation fehlgeschlagen.",
         "failed": "Fehlgeschlagen",
         "success": "Erfolgreich",
-        "learnMore": "Erfahre Mehr"
+        "learnMore": "Erfahre Mehr",
+        "gpu": "GPU",
+        "checkingForUpdates": "Auf Aktualisierungen prüfen",
+        "searchPackagePlaceHolder": "Suche Softwarepaket...",
+        "searchPlaceHolder": "Suche...",
+        "fstrimDesc": "Falls du eine SSD Festplatte (solid-state disk) vewendest ist der Fstrim Dienst zu empfehlen. Fstrim verwirft (trim) ungenutzte Blöcke in einem eingehängten Dateisystem. Nachfolgend kannst du den Fstrim Timer Dienst aktivieren und starten (zweifache Passwortabfrage folgt).",
+        "fstrimTimerEnableStart": "Aktiviere und starte den Fstrim Timer Dienst",
+        "fstrimTimerService": "Fstrim Timer Dienst",
+        "storage": "Speicher"
     }
 }
