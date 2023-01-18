@@ -118,6 +118,7 @@
                 "scope": [
                     "$CACHE",
                     "$CONFIG/*/**",
+                    "$CONFIG/*",
                     "$DATA",
                     "$LOCALDATA",
                     "$EXE",
