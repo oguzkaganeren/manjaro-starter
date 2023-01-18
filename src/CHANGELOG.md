@@ -1,3 +1,12 @@
+## [0.22.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.22.0...v0.22.1) (2023-01-18)
+
+
+### Bug Fixes
+
+* 🐛 scope problem fixed ([26a1f96](https://github.com/oguzkaganeren/manjaro-starter/commit/26a1f968c708a6186187876a8bdbed1e2b9b118c)), closes [#262](https://github.com/oguzkaganeren/manjaro-starter/issues/262)
+
+
+
 # [0.22.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.21.3...v0.22.0) (2023-01-14)
 
 
@@ -31,20 +40,6 @@
 ### Bug Fixes
 
 * 🐛 searchBox hidden when offline ([ae2ebe9](https://github.com/oguzkaganeren/manjaro-starter/commit/ae2ebe905cd861a99a5887fa8381cefe1ad92cb3))
-
-
-
-# [0.21.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.20.0...v0.21.0) (2023-01-12)
-
-
-### Bug Fixes
-
-* 🐛 steps style problem fixes ([69b8992](https://github.com/oguzkaganeren/manjaro-starter/commit/69b89922529aae2aab341bfb99055e93244ea745))
-
-
-### Features
-
-* 🎸 added search for final page ([b924ddf](https://github.com/oguzkaganeren/manjaro-starter/commit/b924ddff54aaeed3e3e85d3c6e64495d9f723f9e))
 
 
 
