@@ -32,7 +32,7 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^12.1.4",
     "react-icons": "^4.7.1",
-    "react-markdown": "^8.0.4",
+    "react-markdown": "^8.0.5",
     "react-router-dom": "^6.6.2",
     "recoil": "^0.7.6",
     "remark-gfm": "^3.0.1",
