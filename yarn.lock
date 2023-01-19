@@ -4206,10 +4206,10 @@ chakra-ui-markdown-renderer@^4.1.0:
   dependencies:
     deepmerge "^4.2.2"
 
-chakra-ui-steps@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/chakra-ui-steps/-/chakra-ui-steps-2.0.1.tgz#b743463cb20171884272b30c62d79a65ea327251"
-  integrity sha512-7txEzqmviPRq8TSA1Pyd8nNr2mnjZNG8XzdZaz91+F+KfOmKDSH+SemXv7sqsq3uHM7TKdTsKzWQIuZtWZaKVA==
+chakra-ui-steps@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/chakra-ui-steps/-/chakra-ui-steps-3.0.1.tgz#6a4f4e1d1087ede12b93f8fbe109b412eeb5baf1"
+  integrity sha512-Rm1YfEZ+VvI1Vo09J7qOMaKbmWybv5ZKg1VyFBQ9KaPMObOxlahG9TaZjPiypPE2rRkxMO4WdvSZePkYMCxGww==
 
 chalk@^2.0.0, chalk@^2.4.1:
   version "2.4.2"
