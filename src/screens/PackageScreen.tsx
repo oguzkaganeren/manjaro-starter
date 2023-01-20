@@ -9,7 +9,7 @@ import {
   Tabs,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { useTranslation } from 'react-i18next';
 import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
@@ -17,12 +17,13 @@ import { packageState, Category, Package } from '../stores/PackageStore';
 import PackageDetail from '../components/packagerelated/PackageDetail';
 import ArrowComponent from '../components/packagerelated/ArrowComponent';
 import SearchComponent from '../components/common/search/SearchComponent';
+import { explorerTabState } from '../stores/ExplorerTabStore';
 
 const PackageScreen: React.FC = () => {
   const packageSt = useRecoilValue(packageState);
   const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = React.useState(0);
-  const [tabIndex, setTabIndex] = useState(0);
+  const [tabIndex, setTabIndex] = useRecoilState(explorerTabState);
   const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider({
     mode: 'free',
@@ -138,6 +139,7 @@ const PackageScreen: React.FC = () => {
         isLazy
         py={5}
         display="grid"
+        index={tabIndex}
         gridTemplateColumns="auto 1fr"
         onChange={(index) => {
           setCurrentSlide(0);
