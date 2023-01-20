@@ -12,7 +12,7 @@ import {
 import React, { useState, useEffect } from 'react';
 import { Command } from '@tauri-apps/api/shell';
 import { useTranslation } from 'react-i18next';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import KernelComponent from '../components/systemconfig/KernelComponent';
 import SystemInfoComponent from '../components/systemconfig/SystemInfo';
 import SystemUpdate from '../components/systemconfig/SystemUpdate';
@@ -21,9 +21,11 @@ import ManjaroSettingsModule from '../components/systemconfig/ManjaroSettingsMod
 import GnomeLayoutManager from '../components/systemconfig/GnomeLayoutMaganer';
 import { liveState } from '../stores/LiveStore';
 import FsTrimServiceComponent from '../components/systemconfig/FsTrimServiceComponent';
+import { confTabState } from '../stores/ConfTabStore';
 
 const ConfigurationScreen: React.FC = () => {
   const [isVisibleGnomeLayout, setIsVisibleGnomeLayout] = useState(false);
+  const [confTabIndex, setConfTabIndex] = useRecoilState(confTabState);
   const [isVisibleMSM, setIsVisibleMSM] = useState(false);
   const [isVisibleMCP, setIsVisibleMCP] = useState(false);
   const isLive = useRecoilValue(liveState);
@@ -69,6 +71,8 @@ const ConfigurationScreen: React.FC = () => {
       variant="solid-rounded"
       colorScheme="whatsapp"
       w="100%"
+      index={confTabIndex}
+      onChange={(index) => setConfTabIndex(index)}
     >
       <TabList>
         <Tab>{t('system')}</Tab>
