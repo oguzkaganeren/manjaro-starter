@@ -1,3 +1,13 @@
+## [0.22.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.22.1...v0.22.2) (2023-01-20)
+
+
+### Bug Fixes
+
+* 🐛 fixed tab index problem when language changed ([4038b8c](https://github.com/oguzkaganeren/manjaro-starter/commit/4038b8c1b922a9178f8b9755d8c46d3ee2fc385b)), closes [#157](https://github.com/oguzkaganeren/manjaro-starter/issues/157)
+* 🐛 removed hdd controller ([a484dcc](https://github.com/oguzkaganeren/manjaro-starter/commit/a484dcc17d7e26869dcd29152334f001d6ac2543)), closes [#286](https://github.com/oguzkaganeren/manjaro-starter/issues/286)
+
+
+
 ## [0.22.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.22.0...v0.22.1) (2023-01-18)
 
 
@@ -31,15 +41,6 @@
 ### Bug Fixes
 
 * 🐛 updated learn info model design ([3a5fcce](https://github.com/oguzkaganeren/manjaro-starter/commit/3a5fccef8529266feb6b1b0cb4bea37cfe69aab8))
-
-
-
-## [0.21.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.21.0...v0.21.1) (2023-01-12)
-
-
-### Bug Fixes
-
-* 🐛 searchBox hidden when offline ([ae2ebe9](https://github.com/oguzkaganeren/manjaro-starter/commit/ae2ebe905cd861a99a5887fa8381cefe1ad92cb3))
 
 
 
