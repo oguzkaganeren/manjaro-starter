@@ -85,10 +85,16 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
     ]);
     cmd.on('close', (data) => {
       info(`command finished with code ${data.code} and signal ${data.signal}`);
-      setIsLoadingPackage(new Map(isLoadingPackage?.set(pkId, false)));
+      if (isLoadingPackage.get(pkId)) {
+        const isThereError = data.code === 1;
+        showMsg(
+          isThereError ? t('installError') : t('installSuccess'),
+          pkgName,
+          isThereError,
+        );
+        setIsLoadingPackage(new Map(isLoadingPackage?.set(pkId, false)));
+      }
       packageInstallStatusControl(catId, pkId);
-      const isThereError = data.code === 1;
-      showMsg(isThereError ? t('installError') : t('installSuccess'), pkgName, isThereError);
     });
     cmd.on('error', (error) => {
       error(error);
