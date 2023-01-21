@@ -145,6 +145,7 @@
         "fstrimDesc": "If you use SSD (solid-state drives), fstrim service is useful for you.  fstrim is used on a mounted file system to discard (trim) blocks that are not in use by the file system. To enable and start the fstrim timer service, you can use the below button(Twice password popup can be shown).",
         "fstrimTimerEnableStart": "Enable and Start fstrim Timer Service",
         "fstrimTimerService": "Fstrim Timer Service",
-        "storage": "Storage"
+        "storage": "Storage",
+        "fstrimTimerDisableStop": "Disable and Stop fstrim Timer Service"
     }
 }
