@@ -24,7 +24,7 @@ function disableContextMenuOnRelease() {
 const theme = extendTheme({
   config: {
     initialColorMode: 'system',
-    useSystemColorMode: false,
+    useSystemColorMode: true,
   },
   components: {
     Steps: StepsTheme,
