@@ -1,3 +1,13 @@
+## [0.22.3](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.22.2...v0.22.3) (2023-01-21)
+
+
+### Bug Fixes
+
+* 🐛 added command history to fstrim component ([27049cb](https://github.com/oguzkaganeren/manjaro-starter/commit/27049cb42ee20f19389b5e5f4b648a51f7ad37d0)), closes [#292](https://github.com/oguzkaganeren/manjaro-starter/issues/292)
+* 🐛 service disable enable optimization ([72186fc](https://github.com/oguzkaganeren/manjaro-starter/commit/72186fc82e8a1418cca12529364757fd17f40465)), closes [#290](https://github.com/oguzkaganeren/manjaro-starter/issues/290)
+
+
+
 ## [0.22.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.22.1...v0.22.2) (2023-01-20)
 
 
@@ -32,15 +42,6 @@
 ### Bug Fixes
 
 * 🐛 package arrow problem fixed ([b108aeb](https://github.com/oguzkaganeren/manjaro-starter/commit/b108aebff5e8d665e530e91348b5d4e1a7e690e4)), closes [#259](https://github.com/oguzkaganeren/manjaro-starter/issues/259)
-
-
-
-## [0.21.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.21.1...v0.21.2) (2023-01-13)
-
-
-### Bug Fixes
-
-* 🐛 updated learn info model design ([3a5fcce](https://github.com/oguzkaganeren/manjaro-starter/commit/3a5fccef8529266feb6b1b0cb4bea37cfe69aab8))
 
 
 
