@@ -14,12 +14,11 @@ import {
   CardFooter,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import { FiCheck, FiHardDrive } from 'react-icons/fi';
-import { BsCheckAll } from 'react-icons/bs';
+import { FiHardDrive } from 'react-icons/fi';
+import { BsCheck } from 'react-icons/bs';
+import { AiFillCloseCircle } from 'react-icons/ai';
 
-type Props = {}
-
-const FsTrimServiceComponent = (props: Props) => {
+const FsTrimServiceComponent = () => {
   const [isServiceActive, setIsServiceActive] = useState(false);
   const [processing, setProcessing] = useState(false);
   const { t } = useTranslation();
@@ -27,7 +26,34 @@ const FsTrimServiceComponent = (props: Props) => {
     invoke('is_service_active', {
       service: 'fstrim.timer',
     }).then((response) => {
+      info(`Is Fstrim Service running: ${response}`);
       setIsServiceActive(response as boolean);
+    });
+  }
+  function serviceHandler(isStart:boolean) {
+    invoke('run_shell_command', {
+      command: isStart
+        ? 'systemctl enable fstrim.timer'
+        : 'systemctl disable fstrim.timer',
+    }).then((response) => {
+      info(
+        isStart
+          ? 'systemctl enable fstrim.timer'
+          : 'systemctl disable fstrim.timer',
+      );
+      info(response as string);
+      invoke('run_shell_command', {
+        command: isStart
+          ? 'systemctl start fstrim.timer'
+          : 'systemctl stop fstrim.timer',
+      }).then((responseSt) => {
+        info(isStart
+          ? 'systemctl start fstrim.timer'
+          : 'systemctl stop fstrim.timer');
+        info(responseSt as string);
+        isServiceRunning();
+        setProcessing(false);
+      });
     });
   }
   useEffect(() => {
@@ -35,18 +61,7 @@ const FsTrimServiceComponent = (props: Props) => {
   }, []);
   const setServiceStatus = () => {
     setProcessing(true);
-    invoke('run_shell_command', {
-      command: 'systemctl enable fstrim.timer',
-    }).then((response) => {
-      info(response as string);
-      invoke('run_shell_command', {
-        command: 'systemctl start fstrim.timer',
-      }).then((responseSt) => {
-        info(responseSt as string);
-        isServiceRunning();
-        setProcessing(false);
-      });
-    });
+    serviceHandler(!isServiceActive);
   };
   return (
     <Card minH="2xs" variant="filled">
@@ -63,26 +78,33 @@ const FsTrimServiceComponent = (props: Props) => {
           },
         }}
       >
-        <Tag
-          mr={2}
-          mt={2}
-          shadow="base"
-          colorScheme={isServiceActive ? 'whatsapp' : 'gray'}
+        <Tooltip
+          label={
+            isServiceActive
+              ? t('fstrimTimerDisableStop')
+              : t('fstrimTimerEnableStart')
+          }
         >
-          <TagLeftIcon boxSize="12px" as={FiHardDrive} />
-          <TagLabel>{t('fstrimTimerService')}</TagLabel>
-          <Tooltip label={t('fstrimTimerEnableStart')}>
+          <Tag
+            mr={2}
+            mt={2}
+            shadow="base"
+            colorScheme={isServiceActive ? 'whatsapp' : 'gray'}
+          >
+            <TagLeftIcon boxSize="12px" as={FiHardDrive} />
+
+            <TagLabel>{t('fstrimTimerService')}</TagLabel>
+
             <IconButton
               ml={5}
               mr={-2}
               aria-label={t('fstrimTimerEnableStart')}
               onClick={setServiceStatus}
-              disabled={isServiceActive}
               isLoading={processing}
-              icon={!isServiceActive ? <FiCheck /> : <BsCheckAll />}
+              icon={isServiceActive ? <AiFillCloseCircle /> : <BsCheck />}
             />
-          </Tooltip>
-        </Tag>
+          </Tag>
+        </Tooltip>
       </CardFooter>
     </Card>
   );
