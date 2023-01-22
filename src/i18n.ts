@@ -2,6 +2,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import Danish from './translations/da.json';
+import Français from './translation/fr.json';
 import German from './translations/de.json';
 import English from './translations/en.json';
 import Polish from './translations/pl.json';
@@ -9,6 +10,7 @@ import Turkish from './translations/tr.json';
 
 const resources = {
   Danish,
+  Français
   German,
   English,
   Polish,
