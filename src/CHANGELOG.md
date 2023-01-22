@@ -1,3 +1,13 @@
+## [0.22.4](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.22.3...v0.22.4) (2023-01-22)
+
+
+### Bug Fixes
+
+* 🐛 cancel return message problem ([397bbe4](https://github.com/oguzkaganeren/manjaro-starter/commit/397bbe425ed35956e5b5821ae710570ebc2409f4)), closes [#214](https://github.com/oguzkaganeren/manjaro-starter/issues/214)
+* 🐛 small translation fixes ([7e06e05](https://github.com/oguzkaganeren/manjaro-starter/commit/7e06e05f5283c52b764effa084506d13ac4a4c33))
+
+
+
 ## [0.22.3](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.22.2...v0.22.3) (2023-01-21)
 
 
@@ -33,15 +43,6 @@
 ### Features
 
 * 🎸 added fstrim configuration ([db13abb](https://github.com/oguzkaganeren/manjaro-starter/commit/db13abbcb1770332a1f76579bbe15f397c0abe84)), closes [#91](https://github.com/oguzkaganeren/manjaro-starter/issues/91)
-
-
-
-## [0.21.3](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.21.2...v0.21.3) (2023-01-14)
-
-
-### Bug Fixes
-
-* 🐛 package arrow problem fixed ([b108aeb](https://github.com/oguzkaganeren/manjaro-starter/commit/b108aebff5e8d665e530e91348b5d4e1a7e690e4)), closes [#259](https://github.com/oguzkaganeren/manjaro-starter/issues/259)
 
 
 
