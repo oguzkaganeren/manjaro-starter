@@ -91,7 +91,7 @@
         "mail-clientDesc": "E-Mail, Kalender, Aufgaben",
         "applications-office": "Office Suites",
         "applications-officeDesc": "Office Suites wie MS Office",
-        "gnumeric": "Erweiterte Sprachunterstützung",
+        "gnumeric": "Sprachunterstützung",
         "gnumericDesc": "Manjaro erweiterte Sprachunterstützung",
         "calibre": "E-Books",
         "calibreDesc": "E-Book Bibliothekensoftware",
@@ -109,7 +109,7 @@
         "video-playerDesc": "Videos und Filme organisieren und abspielen",
         "musicbrainz": "Audio",
         "musicbrainzDesc": "Audioplayer",
-        "kdenlive": "Medien aufzeichen/bearbeiten",
+        "kdenlive": "Media",
         "kdenliveDesc": "Audio- und Videobearbeitung",
         "internet-chat": "Kommunikation",
         "internet-chatDesc": "Onlinekommunikation und Chat",
@@ -143,8 +143,9 @@
         "searchPackagePlaceHolder": "Suche Softwarepaket...",
         "searchPlaceHolder": "Suche...",
         "fstrimDesc": "Falls du eine SSD Festplatte (solid-state disk) vewendest ist der Fstrim Dienst zu empfehlen. Fstrim verwirft (trim) ungenutzte Blöcke in einem eingehängten Dateisystem. Nachfolgend kannst du den Fstrim Timer Dienst aktivieren und starten (zweifache Passwortabfrage folgt).",
-        "fstrimTimerEnableStart": "Aktiviere und starte den Fstrim Timer Dienst",
+        "fstrimTimerEnableStart": "Fstrim Timer Dienst aktivieren und starten",
         "fstrimTimerService": "Fstrim Timer Dienst",
-        "storage": "Speicher"
+        "storage": "Speicher",
+        "fstrimTimerDisableStop": "Fstrim Timer Dienst stoppen und deaktivieren"
     }
 }
