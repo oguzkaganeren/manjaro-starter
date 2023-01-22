@@ -6,7 +6,7 @@
         "manjaroStarter": "Manjaro Starter",
         "projectGithubPage": "Page du projet Github",
         "gnu": "Licence",
-        "welcomeManjaro": "Bienvenue dans Manjaro !",
+        "welcomeManjaro": "Bienvenue dans Manjaro!",
         "homeText1": "Nous, les développeurs de Manjaro, espérons que vous prendrez autant de plaisir à utiliser Manjaro que nous en avons à le construire. Manjaro Starter vous aidera à démarrer avec votre nouveau système d'exploitation. Alors profitez de l'expérience et n'hésitez pas pour nous faire part de vos commentaires.",
         "handleHardware": "Matériel",
         "homeText2": "Manjaro prend non seulement en charge l'utilisation de plusieurs noyaux (sélectionnables à partir des options avancées de l'écran de démarrage), mais donne également accès aux tout derniers noyaux à la pointe de la technologie. Cela peut être fait en utilisant le module Noyau dans le gestionnaire de paramètres graphique de Manjaro, ou via la ligne de commande en utilisant la commande MHWD-kernel (Manjaro Hardware Detection).",
