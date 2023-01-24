@@ -68,7 +68,7 @@
         "tourStepOne": "Découvrez Manjaro Starter",
         "blog": "Notre blog",
         "appSettings": "Paramètres",
-        "appLogInfo": "Les fichiers journaux des applications peuvent être trouvés sur ~/.config/com.manjaro.starter/logs/",
+        "appLogInfo": "Les journaux des applications sont présent sur ~/.config/com.manjaro.starter/logs/",
         "advanced": "Avancé",
         "confDescription": "Configurations système et plus.",
         "explorerDescription": "Découvrir et installer des paquets.",
