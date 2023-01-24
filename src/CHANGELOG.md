@@ -1,3 +1,12 @@
+## [0.22.5](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.22.4...v0.22.5) (2023-01-24)
+
+
+### Bug Fixes
+
+* 🐛 version updates and translation fixes ([ffc7bae](https://github.com/oguzkaganeren/manjaro-starter/commit/ffc7bae655ef60472f73c5f2a41e259d8f0519d7))
+
+
+
 ## [0.22.4](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.22.3...v0.22.4) (2023-01-22)
 
 
@@ -34,15 +43,6 @@
 ### Bug Fixes
 
 * 🐛 scope problem fixed ([26a1f96](https://github.com/oguzkaganeren/manjaro-starter/commit/26a1f968c708a6186187876a8bdbed1e2b9b118c)), closes [#262](https://github.com/oguzkaganeren/manjaro-starter/issues/262)
-
-
-
-# [0.22.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.21.3...v0.22.0) (2023-01-14)
-
-
-### Features
-
-* 🎸 added fstrim configuration ([db13abb](https://github.com/oguzkaganeren/manjaro-starter/commit/db13abbcb1770332a1f76579bbe15f397c0abe84)), closes [#91](https://github.com/oguzkaganeren/manjaro-starter/issues/91)
 
 
 
