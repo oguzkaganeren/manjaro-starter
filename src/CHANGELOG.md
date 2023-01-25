@@ -1,3 +1,12 @@
+## [0.22.6](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.22.5...v0.22.6) (2023-01-25)
+
+
+### Bug Fixes
+
+* 🐛 fixed space problem ([773280c](https://github.com/oguzkaganeren/manjaro-starter/commit/773280ca1d41e03709eb254588cfbc7286b3d319)), closes [#304](https://github.com/oguzkaganeren/manjaro-starter/issues/304)
+
+
+
 ## [0.22.5](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.22.4...v0.22.5) (2023-01-24)
 
 
@@ -34,15 +43,6 @@
 
 * 🐛 fixed tab index problem when language changed ([4038b8c](https://github.com/oguzkaganeren/manjaro-starter/commit/4038b8c1b922a9178f8b9755d8c46d3ee2fc385b)), closes [#157](https://github.com/oguzkaganeren/manjaro-starter/issues/157)
 * 🐛 removed hdd controller ([a484dcc](https://github.com/oguzkaganeren/manjaro-starter/commit/a484dcc17d7e26869dcd29152334f001d6ac2543)), closes [#286](https://github.com/oguzkaganeren/manjaro-starter/issues/286)
-
-
-
-## [0.22.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.22.0...v0.22.1) (2023-01-18)
-
-
-### Bug Fixes
-
-* 🐛 scope problem fixed ([26a1f96](https://github.com/oguzkaganeren/manjaro-starter/commit/26a1f968c708a6186187876a8bdbed1e2b9b118c)), closes [#262](https://github.com/oguzkaganeren/manjaro-starter/issues/262)
 
 
 
