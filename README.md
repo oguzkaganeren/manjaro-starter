@@ -40,19 +40,22 @@
 
 ## Features
 
-* Steps mechanism
-* Release Notes
-* Showing System Details (System name-version, kernel info, host info, CPU, memory, swap)
-* Showing Mirrors
+* Showing System Details (System name-version, kernel info, host info, CPU, memory, swap, GPU)
+* Command history
+* Showing Mirror List
 * Set fastest mirrors
 * System updates status and update system
-* Install Drivers (Open MSM drivers page)
-* Set date time (Open MSM date-time page)
-* Install Language Packages (Open MSM Language Packages page)
-* Manjaro control panel support [MCP](https://gitlab.com/LordTermor/msm-ng)
 * Easy kernel installations
+* Fstrim Timer Service Setting
+* Install Drivers (using MSM drivers)
+* Set date time (using MSM date-time)
+* Install Language Packages (using MSM Language Packages)
+* Gnome Layout Switcher
+* Manjaro control panel [MCP](https://gitlab.com/LordTermor/msm-ng)
 * Most used package list and install them easily
-* Translation Support(Thanks to many contributor supports)
+* Easy package searching (Thanks to [the manjaro search engine](https://blog.manjaro.org/new-manjaro-search-engine-is-available/))
+* Searching for help (Thanks to [the manjaro search engine](https://blog.manjaro.org/new-manjaro-search-engine-is-available/))
+* Translation Support (Thanks to many contributor supports)
 * Launch at system start
 * Dark and Light themes
 
