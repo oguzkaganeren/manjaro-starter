@@ -60,24 +60,7 @@ const PackageScreen: React.FC = () => {
   );
   const Apps = Array.from(packageSt.values()).map((category: Category) => (
     <TabPanel key={category.id}>
-      <Box
-        textAlign={{ lg: 'left' }}
-        width="full"
-        minW={{
-          sm: '25em',
-          md: '37em',
-          lg: '50em',
-          xl: '60em',
-          '2xl': '80em',
-        }}
-        maxW={{
-          sm: '25em',
-          md: '37em',
-          lg: '50em',
-          xl: '60em',
-          '2xl': '80em',
-        }}
-      >
+      <Box textAlign={{ lg: 'left' }}>
         <HStack>
           <chakra.p
             mb={4}
@@ -93,7 +76,9 @@ const PackageScreen: React.FC = () => {
         <Box position="relative">
           <div ref={sliderRef} className="keen-slider">
             {Array.from(category.packages.values()).map((app: Package) => (
-              <div className={`keen-slider__slide ${category.name}`}>
+              <div
+                className={`keen-slider__slide ${category.name}`}
+              >
                 <PackageDetail
                   title={app.name}
                   pkg={app.pkg}
@@ -130,7 +115,7 @@ const PackageScreen: React.FC = () => {
     </TabPanel>
   ));
   return (
-    <Box px={8} py={50}>
+    <Box width="full" px={8} py={50}>
       <SearchComponent isForPackage />
       <Tabs
         orientation="vertical"
@@ -147,7 +132,7 @@ const PackageScreen: React.FC = () => {
         }}
       >
         {Categories}
-        <TabPanels>{Apps}</TabPanels>
+        <TabPanels overflow="scroll">{Apps}</TabPanels>
       </Tabs>
     </Box>
   );
