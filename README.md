@@ -59,7 +59,20 @@
 * Launch at system start
 * Dark and Light themes
 
-### Dependency
+<!-- USAGE EXAMPLES -->
+## Installations
+
+```sh
+pamac install manjaro-starter
+```
+or
+```sh
+pacman -Sy manjaro-starter
+```
+
+A PKGBUILD can be found on [Manjaro GitLab](https://gitlab.manjaro.org/packages/extra/manjaro-starter). Also, Binary files can be found to release page for each release.
+
+## Dependencies
 
 * gtk3
 * pamac-cli
@@ -113,13 +126,6 @@ yarn tauri dev
 #### Vscode
 1. Install suggested vscode extensions(`.vscode/extensions.json`)
 2. Press F5 or Run -> Start Debugging
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-A PKGBUILD can be found on [Manjaro GitLab](https://gitlab.manjaro.org/packages/extra/manjaro-starter). Also, Binary files will be uploaded to release page each release.
 
 ## Logs location
 `/home/<host>/.config/com.manjaro.starter`  
