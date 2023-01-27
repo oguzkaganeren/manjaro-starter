@@ -50,7 +50,7 @@ const GpuInfoComponent = () => {
     <Stat
       px={{ base: 2, md: 4 }}
       py="3"
-      mt={5}
+      mt={4}
       shadow="xl"
       size="sm"
       border="1px solid"

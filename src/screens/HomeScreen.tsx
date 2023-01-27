@@ -39,7 +39,7 @@ const HomeScreen: React.FC<{ nextStep: () => void }> = ({ nextStep }) => {
         as={Box}
         textAlign="center"
         spacing={{ base: 8, md: 14 }}
-        py={{ base: 20, md: 120 }}
+        pt={{ base: 20, md: 120 }}
       >
         <Heading
           fontWeight={600}
