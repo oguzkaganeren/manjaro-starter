@@ -67,7 +67,7 @@ pamac install manjaro-starter
 ```
 or
 ```sh
-pacman -Sy manjaro-starter
+sudo pacman -S manjaro-starter
 ```
 
 A PKGBUILD can be found on [Manjaro GitLab](https://gitlab.manjaro.org/packages/extra/manjaro-starter). Also, Binary files can be found to release page for each release.
@@ -75,12 +75,11 @@ A PKGBUILD can be found on [Manjaro GitLab](https://gitlab.manjaro.org/packages/
 ## Dependencies
 
 * gtk3
-* pamac-cli
 * webkit2gtk
 * mhwd
-* pacman
-* pamac-manager
-* Papirus
+* pacman-mirrors
+* pamac-gtk
+* papirus-icon-theme
 
 ### Dependency(Optional)
 * manjaro-settings-manager
