@@ -63,7 +63,7 @@ const ConfigurationScreen: React.FC = () => {
   return (
     <Tabs
       isLazy
-      my={20}
+      mt={16}
       px={5}
       display="grid"
       gridTemplateColumns="auto 1fr"

@@ -140,7 +140,7 @@
         },
         "windows": [{
             "title": "Manjaro Starter",
-            "width": 950,
+            "width": 960,
             "height": 650,
             "resizable": true,
             "fullscreen": false,

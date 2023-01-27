@@ -46,7 +46,7 @@ const PackageScreen: React.FC = () => {
     <TabList
       maxH={{
         sm: '10em',
-        md: '24em',
+        md: '20em',
         lg: '24em',
         xl: '20em',
         '2xl': '80em',
@@ -115,7 +115,7 @@ const PackageScreen: React.FC = () => {
     </TabPanel>
   ));
   return (
-    <Box width="full" px={8} py={50}>
+    <Box width="full" px={8} pt={50}>
       <SearchComponent isForPackage />
       <Tabs
         orientation="vertical"

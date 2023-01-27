@@ -23,6 +23,7 @@ import packageJson from '../../package.json';
 import Nav from '../components/NavbarComponent';
 import { liveState } from '../stores/LiveStore';
 import { connectionState } from '../stores/ConnectionStore';
+import useWindowDimensions from '../hooks/useWindowDimensions';
 
 const Package = (
   <Suspense
@@ -37,10 +38,10 @@ const Package = (
     <PackageScreen />
   </Suspense>
 );
-const Config = <ConfigurationScreen />;
 
 const App: React.FC = () => {
   const { t } = useTranslation();
+  const { height, width } = useWindowDimensions();
   const STEPCOUNT = 3;
   const isLive = useRecoilValue(liveState);
   const [isOnline, setIsOnline] = useRecoilState(connectionState);
@@ -79,7 +80,7 @@ const App: React.FC = () => {
       label: t('configurations'),
       description: t('confDescription'),
       icon: GiSettingsKnobs,
-      content: Config,
+      content: <ConfigurationScreen />,
     },
     {
       label: t('explorer'),
@@ -105,6 +106,7 @@ const App: React.FC = () => {
             checkIcon={FiCheckCircle}
             position="fixed"
             padding={5}
+            size={width > 900 ? 'md' : 'sm'}
             onClickStep={(step) => setStep(step)}
             zIndex={998}
             activeStep={activeStep}

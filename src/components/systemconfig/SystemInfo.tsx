@@ -81,7 +81,7 @@ const SystemInfoComponent: React.FC = () => {
   }, []);
   return (
     <>
-      <SimpleGrid columns={2} spacing={5}>
+      <SimpleGrid columns={2} spacing={4}>
         <StatsCard
           title={t('system')}
           stat={`${systemInfo.sysName} ${systemInfo.sysOsVersion}`}
