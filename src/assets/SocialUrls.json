@@ -1,15 +1,69 @@
 {
-    "urls": {
-        "development": "https://gitlab.manjaro.org",
-        "software": "https://software.manjaro.org/",
-        "donate": "https://manjaro.org/donate",
-        "facebook": "https://www.facebook.com/ManjaroLinux",
-        "forum": "https://forum.manjaro.org",
-        "telegram": "https://t.me/manjaro_official",
-        "mailing": "https://lists.manjaro.org/cgi-bin/mailman/listinfo",
-        "reddit": "https://www.reddit.com/r/ManjaroLinux",
-        "twitter": "https://twitter.com/ManjaroLinux",
-        "wiki": "https://wiki.manjaro.org",
-        "blog": "https://blog.manjaro.org/"
-    }
+    "detail": [{
+            "url": "https://forum.manjaro.org",
+            "icon": "SiDiscourse",
+            "text": "postForum",
+            "color": "whatsapp"
+        },
+        {
+            "url": "https://software.manjaro.org/",
+            "icon": "FiPackage",
+            "text": "discoverSoftware",
+            "color": "blue"
+        },
+        {
+            "url": "https://wiki.manjaro.org",
+            "icon": "SiWikipedia",
+            "text": "readWiki",
+            "color": "orange"
+        },
+        {
+            "url": "https://gitlab.manjaro.org",
+            "icon": "SiGit",
+            "text": "contribute",
+            "color": "teal"
+        },
+        {
+            "url": "https://t.me/manjaro_official",
+            "icon": "SiTelegram",
+            "text": "telegram",
+            "color": "telegram"
+        },
+        {
+            "url": "https://www.facebook.com/ManjaroLinux",
+            "icon": "FiFacebook",
+            "text": "facebook",
+            "color": "facebook"
+        },
+        {
+            "url": "https://twitter.com/ManjaroLinux",
+            "icon": "FiTwitter",
+            "text": "twitter",
+            "color": "twitter"
+        },
+        {
+            "url": "https://www.reddit.com/r/ManjaroLinux",
+            "icon": "SiReddit",
+            "text": "reddit",
+            "color": "red"
+        },
+        {
+            "url": "https://blog.manjaro.org/",
+            "icon": "SiBlogger",
+            "text": "blog",
+            "color": "purple"
+        },
+        {
+            "url": "https://lists.manjaro.org/cgi-bin/mailman/listinfo",
+            "icon": "FiMail",
+            "text": "joinMail",
+            "color": "pink"
+        },
+        {
+            "url": "https://manjaro.org/donate",
+            "icon": "BiDonateHeart",
+            "text": "donate",
+            "color": "green"
+        }
+    ]
 }
