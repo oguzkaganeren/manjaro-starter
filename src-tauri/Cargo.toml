@@ -19,7 +19,7 @@ serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
 tauri = { version = "1.2.3", features = ["api-all"] }
 tauri-utils = "1.2.1"
-log = "0.4.14"
+log = "0.4.17"
 sysinfo = "0.24.6"
 systemctl = "0.1.9"
 [dependencies.tauri-plugin-log]
