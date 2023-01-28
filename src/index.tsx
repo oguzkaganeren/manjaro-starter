@@ -6,6 +6,7 @@ import { RecoilRoot } from 'recoil';
 
 import App from './screens/App';
 import reportWebVitals from './reportWebVitals';
+import RootDetector from './components/common/RootDetector';
 
 const container = document.getElementById('root');
 const root = createRoot(container!);
@@ -32,6 +33,7 @@ const theme = extendTheme({
 });
 root.render(
   <ChakraProvider theme={theme}>
+    <RootDetector />
     <RecoilRoot>
       <App />
     </RecoilRoot>

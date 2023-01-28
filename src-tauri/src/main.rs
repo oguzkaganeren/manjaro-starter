@@ -75,7 +75,6 @@ fn main() {
     // we perform the initialization code on a new task so the app doesn't freeze
     tauri::async_runtime::spawn(async move {
       std::thread::sleep(std::time::Duration::from_secs(1));
-
       // After it's done, close the splashscreen and display the main window
       splashscreen_window.close().unwrap();
       main_window.show().unwrap();
