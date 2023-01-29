@@ -18,7 +18,7 @@ import StepButtons from '../components/StepButtons';
 import HomeScreen from './HomeScreen';
 import PackageScreen from './PackageScreen';
 import FinalScreen from './FinalScreen';
-import ConfigurationScreen from './Configuration/ConfigurationScreen';
+import ConfigurationScreen from './ConfigurationScreen';
 import packageJson from '../../package.json';
 import Nav from '../components/NavbarComponent';
 import { liveState } from '../stores/LiveStore';
