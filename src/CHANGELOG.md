@@ -1,3 +1,20 @@
+# [0.24.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.23.0...v0.24.0) (2023-01-29)
+
+
+### Bug Fixes
+
+* 🐛 system info unit problem fixed ([c02ea8b](https://github.com/oguzkaganeren/manjaro-starter/commit/c02ea8b45be0cf44d12063aae5e4d86e2d2e49ff)), closes [#332](https://github.com/oguzkaganeren/manjaro-starter/issues/332)
+* **deps:** update rust crate log to 0.4.17 ([6fa044a](https://github.com/oguzkaganeren/manjaro-starter/commit/6fa044a0cae7106c320b6f0c8d0d72917feea499))
+* **deps:** update rust crate sysinfo to 0.27.7 ([da17806](https://github.com/oguzkaganeren/manjaro-starter/commit/da17806ab260505791d87ee47c1d793b33b40dcf))
+* **deps:** update rust crate tauri to 1.2.4 ([1d21e04](https://github.com/oguzkaganeren/manjaro-starter/commit/1d21e040c665b804f4982003df577f4cf84bf724))
+
+
+### Features
+
+* 🎸 added bug report button ([a93bc6a](https://github.com/oguzkaganeren/manjaro-starter/commit/a93bc6a0ca33506fbedc74cdce03357fa4b47427)), closes [#316](https://github.com/oguzkaganeren/manjaro-starter/issues/316)
+
+
+
 # [0.23.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.22.6...v0.23.0) (2023-01-28)
 
 
@@ -38,16 +55,6 @@
 
 * 🐛 cancel return message problem ([397bbe4](https://github.com/oguzkaganeren/manjaro-starter/commit/397bbe425ed35956e5b5821ae710570ebc2409f4)), closes [#214](https://github.com/oguzkaganeren/manjaro-starter/issues/214)
 * 🐛 small translation fixes ([7e06e05](https://github.com/oguzkaganeren/manjaro-starter/commit/7e06e05f5283c52b764effa084506d13ac4a4c33))
-
-
-
-## [0.22.3](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.22.2...v0.22.3) (2023-01-21)
-
-
-### Bug Fixes
-
-* 🐛 added command history to fstrim component ([27049cb](https://github.com/oguzkaganeren/manjaro-starter/commit/27049cb42ee20f19389b5e5f4b648a51f7ad37d0)), closes [#292](https://github.com/oguzkaganeren/manjaro-starter/issues/292)
-* 🐛 service disable enable optimization ([72186fc](https://github.com/oguzkaganeren/manjaro-starter/commit/72186fc82e8a1418cca12529364757fd17f40465)), closes [#290](https://github.com/oguzkaganeren/manjaro-starter/issues/290)
 
 
 
