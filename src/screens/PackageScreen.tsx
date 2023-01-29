@@ -14,8 +14,8 @@ import { useTranslation } from 'react-i18next';
 import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
 import { packageState, Category, Package } from '../stores/PackageStore';
-import PackageDetail from '../components/packagerelated/PackageDetail';
-import ArrowComponent from '../components/packagerelated/ArrowComponent';
+import PackageDetail from '../components/packageRelated/PackageDetail';
+import ArrowComponent from '../components/packageRelated/ArrowComponent';
 import SearchComponent from '../components/common/search/SearchComponent';
 import { explorerTabState } from '../stores/ExplorerTabStore';
 

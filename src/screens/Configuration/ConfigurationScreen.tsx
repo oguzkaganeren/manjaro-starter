@@ -9,57 +9,30 @@ import {
   Stat,
   useColorModeValue,
 } from '@chakra-ui/react';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Command } from '@tauri-apps/api/shell';
 import { useTranslation } from 'react-i18next';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import KernelComponent from '../components/systemconfig/KernelComponent';
-import SystemInfoComponent from '../components/systemconfig/SystemInfo';
-import SystemUpdate from '../components/systemconfig/SystemUpdate';
-import Mirrors from '../components/systemconfig/Mirrors';
-import ManjaroSettingsModule from '../components/systemconfig/ManjaroSettingsModule';
-import GnomeLayoutManager from '../components/systemconfig/GnomeLayoutMaganer';
-import { liveState } from '../stores/LiveStore';
-import FsTrimServiceComponent from '../components/systemconfig/FsTrimServiceComponent';
-import { confTabState } from '../stores/ConfTabStore';
+import KernelComponent from '../../components/systemConfig/KernelComponent';
+import SystemInfoComponent from '../../components/systemConfig/SystemInfo';
+import SystemUpdate from '../../components/systemConfig/SystemUpdate';
+import Mirrors from '../../components/systemConfig/Mirrors';
+import ManjaroSettingsModule from '../../components/systemConfig/ManjaroSettingsModule';
+import GnomeLayoutManager from '../../components/systemConfig/GnomeLayoutMaganer';
+import { liveState } from '../../stores/LiveStore';
+import FsTrimServiceComponent from '../../components/systemConfig/FsTrimServiceComponent';
+import { confTabState } from '../../stores/ConfTabStore';
+import usePackageStatus from './usePackageStatus';
 
 const ConfigurationScreen: React.FC = () => {
-  const [isVisibleGnomeLayout, setIsVisibleGnomeLayout] = useState(false);
+  const isVisibleGnomeLayout = usePackageStatus('gnome-layout-switcher');
   const [confTabIndex, setConfTabIndex] = useRecoilState(confTabState);
-  const [isVisibleMSM, setIsVisibleMSM] = useState(false);
-  const [isVisibleMCP, setIsVisibleMCP] = useState(false);
+  const isVisibleMSM = usePackageStatus('manjaro-settings-manager');
+  const isVisibleMCP = usePackageStatus('mcp-qt');
   const isLive = useRecoilValue(liveState);
   const { t } = useTranslation();
   const borderColor = useColorModeValue('gray.800', 'gray.500');
-  useEffect(() => {
-    const resultOfGnome = new Command('version-control', [
-      '-Q',
-      'gnome-layout-switcher',
-    ]).execute();
-    resultOfGnome.then((response) => {
-      if (response.stdout) {
-        setIsVisibleGnomeLayout(true);
-      }
-    });
-    const resultOfMCP = new Command('version-control', [
-      '-Q',
-      'mcp-qt',
-    ]).execute();
-    resultOfMCP.then((response) => {
-      if (response.stdout) {
-        setIsVisibleMCP(true);
-      }
-    });
-    const resultOfMSM = new Command('version-control', [
-      '-Q',
-      'manjaro-settings-manager',
-    ]).execute();
-    resultOfMSM.then((response) => {
-      if (response.stdout) {
-        setIsVisibleMSM(true);
-      }
-    });
-  });
+
   return (
     <Tabs
       isLazy

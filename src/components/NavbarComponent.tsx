@@ -10,7 +10,7 @@ import { CloseIcon } from '@chakra-ui/icons';
 import { appWindow } from '@tauri-apps/api/window';
 import { BiWindow } from 'react-icons/bi';
 import { MdOutlineMinimize } from 'react-icons/md';
-import AppSettings from './appsetting/AppSettings';
+import AppSettings from './appSetting/AppSettings';
 import ThemeComponent from './ThemeComponent';
 import CommandHistory from './common/CommandHistory';
 
