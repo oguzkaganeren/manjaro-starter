@@ -14,6 +14,7 @@ import { useTranslation } from 'react-i18next';
 import remarkGfm from 'remark-gfm';
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer';
 import { open } from '@tauri-apps/api/shell';
+import { HiOutlineDocumentText } from 'react-icons/hi';
 import notes from '../../CHANGELOG.md';
 
 const newTheme = {
@@ -73,7 +74,7 @@ const Changelog = () => {
   }, []);
   return (
     <Box>
-      <Button size="xs" onClick={onOpen}>
+      <Button leftIcon={<HiOutlineDocumentText />} size="xs" onClick={onOpen}>
         {t('appChangelog')}
       </Button>
 

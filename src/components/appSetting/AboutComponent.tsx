@@ -19,6 +19,7 @@ import { useTranslation } from 'react-i18next';
 import logo from '../../assets/icon.png';
 import packageJson from '../../../package.json';
 import Changelog from './Changelog';
+import BugReport from './BugReport';
 
 const AboutComponent = (): JSX.Element => {
   const { t } = useTranslation();
@@ -26,7 +27,7 @@ const AboutComponent = (): JSX.Element => {
     <Stat
       px={{ base: 2, md: 4 }}
       py="5"
-      mt={10}
+      mt={5}
       shadow="xl"
       border="1px solid"
       borderColor={useColorModeValue('gray.800', 'gray.500')}
@@ -40,6 +41,7 @@ const AboutComponent = (): JSX.Element => {
               {packageJson.version}
             </StatNumber>
             <Changelog />
+            <BugReport />
           </HStack>
         </Box>
         <Box
