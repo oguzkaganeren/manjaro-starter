@@ -149,6 +149,7 @@
         "fstrimTimerDisableStop": "Disable and Stop fstrim Timer Service",
         "rootUserDetected": "Root user detected!",
         "rootUserDesc": "Please, use Manjaro Starter without sudo. The application will be closed.",
-        "close": "Close"
+        "close": "Close",
+        "bugReport": "Bug Report"
     }
 }
