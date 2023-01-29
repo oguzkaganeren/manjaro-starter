@@ -9,7 +9,7 @@ import {
   Spinner,
 } from '@chakra-ui/react';
 import { Command } from '@tauri-apps/api/shell';
-import { info, error } from 'tauri-plugin-log-api';
+import { error } from 'tauri-plugin-log-api';
 import { TbHeartRateMonitor } from 'react-icons/tb';
 import { useTranslation } from 'react-i18next';
 
@@ -22,14 +22,12 @@ const GpuInfoComponent = () => {
       setIsProcessing(true);
       const cmd = new Command('lspci');
       cmd.on('close', (data) => {
-        info(`command finished with code ${data.code} and signal ${data.signal}`);
         setIsProcessing(false);
       });
-      cmd.on('error', (error) => {
-        error(error);
+      cmd.on('error', (retError) => {
+        error(retError);
       });
       cmd.stdout.on('data', (line) => {
-        info(`command stdout: "${line}"`);
         if (line.indexOf('VGA') > 0) {
           const dataCut = line.split(':')[2];
           setVgaInfo((prevInfo) => (prevInfo ? `${prevInfo}\n${dataCut}` : dataCut));
@@ -38,9 +36,7 @@ const GpuInfoComponent = () => {
       cmd.stderr.on('data', (line) => {
         error(`command stderr: "${line}"`);
       });
-      const child = await cmd.spawn();
-
-      info(`pid:${child.pid}`);
+      await cmd.spawn();
     };
     getGpuInfo();
   }, []);
