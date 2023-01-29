@@ -3,8 +3,11 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
 
-const ManjaroSettingsModule: React.FC = (props) => {
+const ManjaroSettingsModule: React.FC = () => {
   const { t } = useTranslation();
+  const modules = ['mhwd', 'timedate', 'language_packages'];
+  const borderColor = useColorModeValue('gray.800', 'gray.500');
+  const languageText = ['installDrivers', 'setDateTime', 'languagePackages'];
   const openManjaroSettingsManager = async (moduleName:string) => {
     const cmd = new Command('manjaro-settings-manager', ['-m', `msm_${moduleName}`]);
     cmd.execute();
@@ -12,67 +15,34 @@ const ManjaroSettingsModule: React.FC = (props) => {
 
   return (
     <>
-      <Stat
-        px={{ base: 2, md: 4 }}
-        py="5"
-        shadow="xl"
-        size="sm"
-        border="1px solid"
-        borderColor={useColorModeValue('gray.800', 'gray.500')}
-        rounded="lg"
-      >
-        <Button
-          width="100%"
-          onClick={() => {
-            openManjaroSettingsManager('mhwd');
-          }}
+      {modules.map((module, index) => (
+        <Stat
+          px={{ base: 2, md: 4 }}
+          py="5"
+          shadow="xl"
+          size="sm"
+          border="1px solid"
+          borderColor={borderColor}
+          rounded="lg"
         >
-          {t('installDrivers')}
-        </Button>
-      </Stat>
+          <Button
+            width="100%"
+            onClick={() => {
+              openManjaroSettingsManager(module);
+            }}
+          >
+            {t(languageText[index])}
+          </Button>
+        </Stat>
+      ))}
+
       <Stat
         px={{ base: 2, md: 4 }}
         py="5"
         shadow="xl"
         size="sm"
         border="1px solid"
-        borderColor={useColorModeValue('gray.800', 'gray.500')}
-        rounded="lg"
-      >
-        <Button
-          width="100%"
-          onClick={() => {
-            openManjaroSettingsManager('timedate');
-          }}
-        >
-          {t('setDateTime')}
-        </Button>
-      </Stat>
-      <Stat
-        px={{ base: 2, md: 4 }}
-        py="5"
-        shadow="xl"
-        size="sm"
-        border="1px solid"
-        borderColor={useColorModeValue('gray.800', 'gray.500')}
-        rounded="lg"
-      >
-        <Button
-          width="100%"
-          onClick={() => {
-            openManjaroSettingsManager('language_packages');
-          }}
-        >
-          {t('languagePackages')}
-        </Button>
-      </Stat>
-      <Stat
-        px={{ base: 2, md: 4 }}
-        py="5"
-        shadow="xl"
-        size="sm"
-        border="1px solid"
-        borderColor={useColorModeValue('gray.800', 'gray.500')}
+        borderColor={borderColor}
         rounded="lg"
       >
         <Button
