@@ -8,6 +8,7 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    environment: starter
     steps:
       - uses: shimataro/ssh-key-action@v2
         with:
