@@ -1,3 +1,12 @@
+## [0.24.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.24.1...v0.24.2) (2023-01-30)
+
+
+### Bug Fixes
+
+* 🐛 build problem fixes ([6eb5b9c](https://github.com/oguzkaganeren/manjaro-starter/commit/6eb5b9c57b38ca611894cd9a23c276f7f9b69e17))
+
+
+
 ## [0.24.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.24.0...v0.24.1) (2023-01-30)
 
 
@@ -45,15 +54,6 @@
 ### Bug Fixes
 
 * 🐛 fixed space problem ([773280c](https://github.com/oguzkaganeren/manjaro-starter/commit/773280ca1d41e03709eb254588cfbc7286b3d319)), closes [#304](https://github.com/oguzkaganeren/manjaro-starter/issues/304)
-
-
-
-## [0.22.5](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.22.4...v0.22.5) (2023-01-24)
-
-
-### Bug Fixes
-
-* 🐛 version updates and translation fixes ([ffc7bae](https://github.com/oguzkaganeren/manjaro-starter/commit/ffc7bae655ef60472f73c5f2a41e259d8f0519d7))
 
 
 
