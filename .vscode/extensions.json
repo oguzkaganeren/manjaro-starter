@@ -21,6 +21,7 @@
         "Tomi.xasnippets",
         "vadimcn.vscode-lldb",
         "waderyan.gitblame",
-        "wayou.vscode-todo-highlight"
+        "wayou.vscode-todo-highlight",
+        "eamodio.gitlens"
 	]
 }
