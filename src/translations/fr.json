@@ -146,6 +146,10 @@
         "fstrimTimerEnableStart": "Activer et démarrer le service de minuterie fstrim",
         "fstrimTimerService": "Service de minuterie Fstrim",
         "storage": "Stockage",
-        "fstrimTimerDisableStop": "Désactiver et arrêter le service de minuterie fstrim"
+        "fstrimTimerDisableStop": "Désactiver et arrêter le service de minuterie fstrim",
+        "rootUserDetected": "Utilisateur root détecté !",
+        "rootUserDesc": "Veuillez utiliser Manjaro Starter sans sudo. L'application sera fermée.",
+        "close": "Fermer",
+        "bugReport": "Rapport de bogue"
     }
 }
