@@ -16,7 +16,7 @@ import {
   packageState,
 } from '../../stores/PackageStore';
 import { connectionState } from '../../stores/ConnectionStore';
-import { commandState } from '../../stores/CommandStore';
+import commandState from '../../stores/CommandStore';
 
 interface PackageStatusProps {
     isInstalled:boolean,
@@ -77,6 +77,12 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
     pkgName:string,
   ) => {
     setIsLoadingPackage(new Map(isLoadingPackage?.set(pkId, true)));
+    setCommandHistory(
+      [ // with a new array
+        ...commandHistory, // that contains all the old items
+        `pamac install --no-confirm --no-upgrade ${pkgName}`, // and one new item at the end
+      ],
+    );
     const cmd = new Command('pamac', [
       'install',
       '--no-confirm',
@@ -98,15 +104,12 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
     });
     cmd.on('error', (error) => {
       error(error);
-      setCommandHistory((prevCommand) => `${prevCommand}\n${error}`);
     });
     cmd.stdout.on('data', (line) => {
       info(`command stdout: "${line}"`);
-      setCommandHistory((prevCommand) => `${prevCommand}\n${line}`);
     });
     cmd.stderr.on('data', (line) => {
       error(`command stderr: "${line}"`);
-      setCommandHistory((prevCommand) => `${prevCommand}\n${line}`);
     });
     const child = await cmd.spawn();
     const pack = packageSt.get(catId)?.packages.get(pkId);

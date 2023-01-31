@@ -13,13 +13,20 @@ import {
   DrawerCloseButton,
   DrawerFooter,
   useColorModeValue,
+  Code,
+  VStack,
+  Box,
+  useToast,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { HiOutlineCommandLine } from 'react-icons/hi2';
-import { commandState } from '../../stores/CommandStore';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { CopyIcon } from '@chakra-ui/icons';
+import commandState from '../../stores/CommandStore';
 
 const CommandHistory = () => {
   const commandHistory = useRecoilValue(commandState);
+  const toast = useToast();
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
@@ -41,10 +48,45 @@ const CommandHistory = () => {
             {t('commandHistory')}
           </DrawerHeader>
           <DrawerBody>
-            <Text style={{ whiteSpace: 'pre-line' }}>{commandHistory}</Text>
+            <VStack alignItems="start">
+              {commandHistory.map((cmd) => (
+                <Box>
+                  <CopyToClipboard
+                    text={cmd}
+                    onCopy={() => {
+                      toast({
+                        title: t('copied'),
+                        description: cmd,
+                        status: 'success',
+                        duration: 2000,
+                        isClosable: true,
+                        variant: 'left-accent',
+                        position: 'bottom-left',
+                      });
+                    }}
+                  >
+                    <Tooltip label={t('copyCommand')}>
+                      <IconButton
+                        aria-label="Copy"
+                        size="xs"
+                        icon={<CopyIcon />}
+                        mr={1}
+                      />
+                    </Tooltip>
+                  </CopyToClipboard>
+
+                  <Code colorScheme="green" variant="solid">
+                    {cmd}
+                  </Code>
+                </Box>
+              ))}
+            </VStack>
           </DrawerBody>
           <DrawerFooter>
-            <Text color={useColorModeValue('gray.800', 'gray.500')} as="sup">
+            <Text
+              color={useColorModeValue('gray.800', 'gray.500')}
+              fontSize="xs"
+            >
               {t('appLogInfo')}
             </Text>
           </DrawerFooter>

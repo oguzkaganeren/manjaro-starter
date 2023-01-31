@@ -18,7 +18,7 @@ import { FiHardDrive } from 'react-icons/fi';
 import { BsCheck } from 'react-icons/bs';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { useRecoilState } from 'recoil';
-import { commandState } from '../../stores/CommandStore';
+import commandState from '../../stores/CommandStore';
 
 const FsTrimServiceComponent = () => {
   const [isServiceActive, setIsServiceActive] = useState(false);
@@ -44,13 +44,13 @@ const FsTrimServiceComponent = () => {
           ? 'systemctl enable fstrim.timer'
           : 'systemctl disable fstrim.timer',
       );
-      setCommandHistory(
-        (prevCommand) => `${prevCommand}\n${
-          isStart
-            ? 'systemctl enable fstrim.timer'
-            : 'systemctl disable fstrim.timer'
-        }`,
-      );
+      setCommandHistory([
+        // with a new array
+        ...commandHistory, // that contains all the old items
+        isStart
+          ? 'systemctl enable fstrim.timer'
+          : 'systemctl disable fstrim.timer', // and one new item at the end
+      ]);
       info(response as string);
       invoke('run_shell_command', {
         command: isStart
@@ -60,13 +60,13 @@ const FsTrimServiceComponent = () => {
         info(isStart
           ? 'systemctl start fstrim.timer'
           : 'systemctl stop fstrim.timer');
-        setCommandHistory(
-          (prevCommand) => `${prevCommand}\n${
-            isStart
-              ? 'systemctl start fstrim.timer'
-              : 'systemctl stop fstrim.timer'
-          }`,
-        );
+        setCommandHistory([
+          // with a new array
+          ...commandHistory, // that contains all the old items
+          isStart
+            ? 'systemctl start fstrim.timer'
+            : 'systemctl stop fstrim.timer', // and one new item at the end
+        ]);
         info(responseSt as string);
         isServiceRunning();
         setProcessing(false);

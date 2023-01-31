@@ -20,7 +20,7 @@ import { Command } from '@tauri-apps/api/shell';
 import { info, error } from 'tauri-plugin-log-api';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { connectionState } from '../../stores/ConnectionStore';
-import { commandState } from '../../stores/CommandStore';
+import commandState from '../../stores/CommandStore';
 
 const SystemUpdate: React.FC = () => {
   const { t } = useTranslation();
@@ -52,6 +52,11 @@ const SystemUpdate: React.FC = () => {
 
   const updateSystem = async () => {
     setIsUpdating(true);
+    setCommandHistory([
+      // with a new array
+      ...commandHistory, // that contains all the old items
+      'pamac update --no-confirm --force-refresh', // and one new item at the end
+    ]);
     const cmd = new Command('pamac', [
       'update',
       '--no-confirm',
@@ -65,19 +70,12 @@ const SystemUpdate: React.FC = () => {
     });
     cmd.on('error', (error) => {
       error(error);
-      setCommandHistory((prevCommand) => `${prevCommand}\n${error}`);
     });
     cmd.stdout.on('data', (line) => {
       info(`command stdout: "${line}"`);
-      setCommandHistory(
-        (prevCommand) => `${prevCommand}\n${line}`,
-      );
     });
     cmd.stderr.on('data', (line) => {
       error(`command stderr: "${line}"`);
-      setCommandHistory(
-        (prevCommand) => `${prevCommand}\n${line}`,
-      );
     });
     const child = await cmd.spawn();
 

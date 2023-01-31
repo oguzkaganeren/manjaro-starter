@@ -2,7 +2,8 @@ import {
   atom,
 } from 'recoil';
 
-export const commandState = atom({
+const commandState = atom({
   key: 'commandState',
-  default: '',
+  default: [''],
 });
+export default commandState;
