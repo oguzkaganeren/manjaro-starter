@@ -22,5 +22,6 @@ jobs:
           cargo install tauri-cli
           sudo yarn global add react-scripts
           rm -f package-lock.json
-          yarn install
+          yarn cache clean
+          yarn install --update-checksums
           yarn tauri build
