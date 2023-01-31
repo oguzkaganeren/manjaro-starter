@@ -24,7 +24,7 @@ import { Command } from '@tauri-apps/api/shell';
 import { info, error } from 'tauri-plugin-log-api';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { connectionState } from '../../stores/ConnectionStore';
-import { commandState } from '../../stores/CommandStore';
+import commandState from '../../stores/CommandStore';
 
 interface Kernel {
   id: string;
@@ -83,6 +83,11 @@ const KernelComponent: React.FC = () => {
   }
   const installKernel = async (kernelName:string) => {
     setIsLoadingKernel(new Map(isLoadingKernel?.set(kernelName, true)));
+    setCommandHistory([
+      // with a new array
+      ...commandHistory, // that contains all the old items
+      `pamac install --no-confirm ${kernelName}`, // and one new item at the end
+    ]);
     const cmd = new Command('pamac', ['install', '--no-confirm', kernelName]);
     cmd.on('close', (data) => {
       info(
@@ -99,15 +104,12 @@ const KernelComponent: React.FC = () => {
     });
     cmd.on('error', (error) => {
       error(error);
-      setCommandHistory((prevCommand) => `${prevCommand}\n${error}`);
     });
     cmd.stdout.on('data', (line) => {
       info(`command stdout: "${line}"`);
-      setCommandHistory((prevCommand) => `${prevCommand}\n${line}`);
     });
     cmd.stderr.on('data', (line) => {
       error(`command stderr: "${line}"`);
-      setCommandHistory((prevCommand) => `${prevCommand}\n${line}`);
     });
     const child = await cmd.spawn();
 

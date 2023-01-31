@@ -15,7 +15,7 @@ import { info, error } from 'tauri-plugin-log-api';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import MirrorList from './MirrorList';
 import { connectionState } from '../../stores/ConnectionStore';
-import { commandState } from '../../stores/CommandStore';
+import commandState from '../../stores/CommandStore';
 
 const Mirrors: React.FC = (props) => {
   const { t } = useTranslation();
@@ -35,6 +35,11 @@ const Mirrors: React.FC = (props) => {
   }
   const setFastestMirror = async () => {
     setIsProcessing(true);
+    setCommandHistory([
+      // with a new array
+      ...commandHistory, // that contains all the old items
+      'pacman-mirrors --fasttrack 5', // and one new item at the end
+    ]);
     const cmd = new Command('pkexec', ['pacman-mirrors', '--fasttrack', '5']);
     cmd.on('close', (data) => {
       info(
@@ -49,25 +54,12 @@ const Mirrors: React.FC = (props) => {
     });
     cmd.on('error', (error) => {
       error(error);
-      setCommandHistory(
-        (prevCommand) => `${prevCommand}\n${error}`,
-      );
     });
     cmd.stdout.on('data', (line) => {
       info(`command stdout: "${line}"`);
-      setCommandHistory(
-        (prevCommand) => `${prevCommand}\n${line
-          .replace(/\u001b\[.*?m/g, '')
-          .replaceAll('::', '')}`,
-      );
     });
     cmd.stderr.on('data', (line) => {
       error(`command stderr: "${line}"`);
-      setCommandHistory(
-        (prevCommand) => `${prevCommand}\n${line
-          .replace(/\u001b\[.*?m/g, '')
-          .replaceAll('::', '')}`,
-      );
     });
     const child = await cmd.spawn();
 

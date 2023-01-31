@@ -150,6 +150,8 @@
         "rootUserDetected": "Root user detected!",
         "rootUserDesc": "Please, use Manjaro Starter without sudo. The application will be closed.",
         "close": "Close",
-        "bugReport": "Bug Report"
+        "bugReport": "Bug Report",
+        "copied": "Copied",
+        "copyCommand": "Copy Command"
     }
 }
