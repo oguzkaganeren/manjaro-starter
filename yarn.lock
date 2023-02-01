@@ -10468,6 +10468,7 @@ tapable@^2.0.0, tapable@^2.1.1, tapable@^2.2.0:
 
 "tauri-plugin-log-api@github:oguzkaganeren/tauri-plugin-log#dev":
   version "0.1.0"
+  uid f8b04c23c197a27b5a1890b04b2f81a92db83e73
   resolved "https://codeload.github.com/oguzkaganeren/tauri-plugin-log/tar.gz/f8b04c23c197a27b5a1890b04b2f81a92db83e73"
   dependencies:
     "@tauri-apps/api" "^1.0.0"
