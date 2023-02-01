@@ -2746,7 +2746,7 @@
     "@svgr/plugin-svgo" "^5.5.0"
     loader-utils "^2.0.0"
 
-"@tauri-apps/api@^1.2.0":
+"@tauri-apps/api@^1.0.0", "@tauri-apps/api@^1.2.0":
   version "1.2.0"
   resolved "https://registry.npmjs.org/@tauri-apps/api/-/api-1.2.0.tgz"
   integrity sha512-lsI54KI6HGf7VImuf/T9pnoejfgkNoXveP14pVV7XarrQ46rOejIVJLFqHI9sRReJMGdh2YuCoI3cc/yCWCsrw==
@@ -10466,12 +10466,12 @@ tapable@^2.0.0, tapable@^2.1.1, tapable@^2.2.0:
   resolved "https://registry.npmjs.org/tapable/-/tapable-2.2.1.tgz"
   integrity sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==
 
-"tauri-plugin-log-api@github:tauri-apps/tauri-plugin-log#dev":
-  version "0.0.0"
-  resolved "git+ssh://git@github.com/tauri-apps/tauri-plugin-log.git#9d2a19ad05fafeb80991006e14f0f95fe1109aba"
-  integrity sha512-gNtBYQ1MMPDujj62m8lVG+3/tZVkIWILXdNqGdBqsICt9+xdZWP3YzPPgkwKiUAPkVTjTjQ9Qesj60U8ANJWag==
+"tauri-plugin-log-api@github:oguzkaganeren/tauri-plugin-log#dev":
+  version "0.1.0"
+  resolved "https://codeload.github.com/oguzkaganeren/tauri-plugin-log/tar.gz/f8b04c23c197a27b5a1890b04b2f81a92db83e73"
   dependencies:
-    "@tauri-apps/api" "^1.2.0"
+    "@tauri-apps/api" "^1.0.0"
+    tslib "^2.3.1"
 
 temp-dir@^2.0.0:
   version "2.0.0"
