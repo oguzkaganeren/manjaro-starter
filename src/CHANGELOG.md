@@ -1,3 +1,14 @@
+## [0.24.3](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.24.2...v0.24.3) (2023-02-01)
+
+
+### Bug Fixes
+
+* 🐛 empty command problem ([f533abf](https://github.com/oguzkaganeren/manjaro-starter/commit/f533abf2b3efcd80e1e419aa0182e45ebe68a897))
+* 🐛 removed logs from command history and some changes ([d8532fb](https://github.com/oguzkaganeren/manjaro-starter/commit/d8532fbdb295a68622d766d0fb7024a5b55d8f83)), closes [#324](https://github.com/oguzkaganeren/manjaro-starter/issues/324)
+* **deps:** update dependency framer-motion to v9 ([c7d8156](https://github.com/oguzkaganeren/manjaro-starter/commit/c7d8156e8e6ad151af689bfe346b118c547997af))
+
+
+
 ## [0.24.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.24.1...v0.24.2) (2023-01-30)
 
 
@@ -45,15 +56,6 @@
 ### Features
 
 * 🎸 root detector added ([f3a271d](https://github.com/oguzkaganeren/manjaro-starter/commit/f3a271d50579d566773866be5b4796416bed13f8)), closes [#319](https://github.com/oguzkaganeren/manjaro-starter/issues/319)
-
-
-
-## [0.22.6](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.22.5...v0.22.6) (2023-01-25)
-
-
-### Bug Fixes
-
-* 🐛 fixed space problem ([773280c](https://github.com/oguzkaganeren/manjaro-starter/commit/773280ca1d41e03709eb254588cfbc7286b3d319)), closes [#304](https://github.com/oguzkaganeren/manjaro-starter/issues/304)
 
 
 
