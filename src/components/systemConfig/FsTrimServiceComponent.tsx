@@ -24,6 +24,7 @@ const FsTrimServiceComponent = () => {
   const [isServiceActive, setIsServiceActive] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [commandHistory, setCommandHistory] = useRecoilState(commandState);
+
   const { t } = useTranslation();
   function isServiceRunning() {
     invoke('is_service_active', {
@@ -34,38 +35,27 @@ const FsTrimServiceComponent = () => {
     });
   }
   function serviceHandler(isStart:boolean) {
+    const enableDisableCom = isStart
+      ? 'systemctl enable fstrim.timer'
+      : 'systemctl disable fstrim.timer';
+    const startStopCom = isStart
+      ? 'systemctl start fstrim.timer'
+      : 'systemctl stop fstrim.timer';
+
     invoke('run_shell_command', {
-      command: isStart
-        ? 'systemctl enable fstrim.timer'
-        : 'systemctl disable fstrim.timer',
+      command: enableDisableCom,
     }).then((response) => {
-      info(
-        isStart
-          ? 'systemctl enable fstrim.timer'
-          : 'systemctl disable fstrim.timer',
-      );
-      setCommandHistory([
-        // with a new array
-        ...commandHistory, // that contains all the old items
-        isStart
-          ? 'systemctl enable fstrim.timer'
-          : 'systemctl disable fstrim.timer', // and one new item at the end
-      ]);
+      info(enableDisableCom);
       info(response as string);
       invoke('run_shell_command', {
-        command: isStart
-          ? 'systemctl start fstrim.timer'
-          : 'systemctl stop fstrim.timer',
+        command: startStopCom,
       }).then((responseSt) => {
-        info(isStart
-          ? 'systemctl start fstrim.timer'
-          : 'systemctl stop fstrim.timer');
+        info(startStopCom);
+        const cmds = [enableDisableCom, startStopCom];
         setCommandHistory([
           // with a new array
           ...commandHistory, // that contains all the old items
-          isStart
-            ? 'systemctl start fstrim.timer'
-            : 'systemctl stop fstrim.timer', // and one new item at the end
+          ...cmds, // and one new item at the end
         ]);
         info(responseSt as string);
         isServiceRunning();
