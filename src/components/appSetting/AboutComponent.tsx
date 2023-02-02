@@ -9,7 +9,7 @@ import {
   Text,
   useColorModeValue,
   StatNumber,
-  HStack,
+  Wrap,
 } from '@chakra-ui/react';
 import {
   SiGit, SiMonkeytie,
@@ -36,13 +36,9 @@ const AboutComponent = (): JSX.Element => {
       <Flex justifyContent="space-between">
         <Box pl={{ base: 2, md: 4 }}>
           <StatLabel fontWeight="medium">{t('manjaroStarter')}</StatLabel>
-          <HStack>
-            <StatNumber fontSize="2xl" fontWeight="medium">
-              {packageJson.version}
-            </StatNumber>
-            <Changelog />
-            <BugReport />
-          </HStack>
+          <StatNumber fontSize="2xl" fontWeight="medium">
+            {packageJson.version}
+          </StatNumber>
         </Box>
         <Box
           my="auto"
@@ -52,32 +48,38 @@ const AboutComponent = (): JSX.Element => {
           <Image borderRadius="full" boxSize="45px" src={logo} />
         </Box>
       </Flex>
-      <Button
-        mt={5}
-        mr={5}
-        onClick={async () => {
-          await open('https://github.com/oguzkaganeren/manjaro-starter');
-        }}
-        leftIcon={<SiGit />}
-      >
-        <Center>
-          <Text>{t('projectGithubPage')}</Text>
-        </Center>
-      </Button>
-      <Button
-        mt={5}
-        mr={5}
-        onClick={async () => {
-          await open(
-            'https://github.com/oguzkaganeren/manjaro-starter/blob/master/LICENSE.md',
-          );
-        }}
-        leftIcon={<SiMonkeytie />}
-      >
-        <Center>
-          <Text>{t('gnu')}</Text>
-        </Center>
-      </Button>
+      <Wrap>
+        <Changelog />
+        <BugReport />
+        <Button
+          mt={5}
+          mr={5}
+          size="xs"
+          onClick={async () => {
+            await open('https://github.com/oguzkaganeren/manjaro-starter');
+          }}
+          leftIcon={<SiGit />}
+        >
+          <Center>
+            <Text>{t('projectGithubPage')}</Text>
+          </Center>
+        </Button>
+        <Button
+          mt={5}
+          mr={5}
+          size="xs"
+          onClick={async () => {
+            await open(
+              'https://github.com/oguzkaganeren/manjaro-starter/blob/master/LICENSE.md',
+            );
+          }}
+          leftIcon={<SiMonkeytie />}
+        >
+          <Center>
+            <Text>{t('gnu')}</Text>
+          </Center>
+        </Button>
+      </Wrap>
     </Stat>
   );
 };
