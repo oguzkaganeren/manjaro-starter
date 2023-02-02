@@ -51,31 +51,30 @@ const CommandHistory = () => {
             <VStack alignItems="start">
               {commandHistory.map((cmd) => (
                 <Box>
-                  <CopyToClipboard
-                    text={cmd}
-                    onCopy={() => {
-                      toast({
-                        title: t('copied'),
-                        description: cmd,
-                        status: 'success',
-                        duration: 2000,
-                        isClosable: true,
-                        variant: 'left-accent',
-                        position: 'bottom-left',
-                      });
-                    }}
-                  >
-                    <Tooltip label={t('copyCommand')}>
+                  <Code colorScheme="green" variant="solid">
+                    <CopyToClipboard
+                      text={cmd}
+                      onCopy={() => {
+                        toast({
+                          title: t('copied'),
+                          description: cmd,
+                          status: 'success',
+                          duration: 2000,
+                          isClosable: true,
+                          variant: 'left-accent',
+                          position: 'bottom-left',
+                        });
+                      }}
+                    >
                       <IconButton
-                        aria-label="Copy"
+                        aria-label={t('copyCommand')}
                         size="xs"
                         icon={<CopyIcon />}
                         mr={1}
+                        mt={1}
+                        bg="green.800"
                       />
-                    </Tooltip>
-                  </CopyToClipboard>
-
-                  <Code colorScheme="green" variant="solid">
+                    </CopyToClipboard>
                     {cmd}
                   </Code>
                 </Box>
