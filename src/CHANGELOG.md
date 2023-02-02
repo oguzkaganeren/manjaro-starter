@@ -1,3 +1,13 @@
+## [0.24.4](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.24.3...v0.24.4) (2023-02-02)
+
+
+### Bug Fixes
+
+* 🐛 fixed bug report button problem ([82ea0c2](https://github.com/oguzkaganeren/manjaro-starter/commit/82ea0c2734a7ef585c769f34af84fb4829eb1ae4))
+* 🐛 fixed fstrim problem ([2b14a86](https://github.com/oguzkaganeren/manjaro-starter/commit/2b14a86c74445ac869a63ad823a6335b4627ecec)), closes [#353](https://github.com/oguzkaganeren/manjaro-starter/issues/353)
+
+
+
 ## [0.24.3](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.24.2...v0.24.3) (2023-02-01)
 
 
@@ -41,21 +51,6 @@
 ### Features
 
 * 🎸 added bug report button ([a93bc6a](https://github.com/oguzkaganeren/manjaro-starter/commit/a93bc6a0ca33506fbedc74cdce03357fa4b47427)), closes [#316](https://github.com/oguzkaganeren/manjaro-starter/issues/316)
-
-
-
-# [0.23.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.22.6...v0.23.0) (2023-01-28)
-
-
-### Bug Fixes
-
-* 🐛 some design problems ([701a942](https://github.com/oguzkaganeren/manjaro-starter/commit/701a942f30eef749cd563c5b0ea322868e288bd0)), closes [#308](https://github.com/oguzkaganeren/manjaro-starter/issues/308)
-* 🐛 updated social links structure ([7dd8896](https://github.com/oguzkaganeren/manjaro-starter/commit/7dd8896ac3414e1c0f993828fd5e651732f506c7)), closes [#315](https://github.com/oguzkaganeren/manjaro-starter/issues/315)
-
-
-### Features
-
-* 🎸 root detector added ([f3a271d](https://github.com/oguzkaganeren/manjaro-starter/commit/f3a271d50579d566773866be5b4796416bed13f8)), closes [#319](https://github.com/oguzkaganeren/manjaro-starter/issues/319)
 
 
 
