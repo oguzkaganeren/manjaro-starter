@@ -11,7 +11,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import KernelComponent from '../components/systemConfig/KernelComponent';
 import SystemInfoComponent from '../components/systemConfig/SystemInfo';
 import SystemUpdate from '../components/systemConfig/SystemUpdate';
-import Mirrors from '../components/systemConfig/Mirrors';
+import Mirrors from '../components/systemConfig/mirrors/index';
 import { liveState } from '../stores/LiveStore';
 import FsTrimServiceComponent from '../components/systemConfig/FsTrimServiceComponent';
 import { confTabState } from '../stores/ConfTabStore';

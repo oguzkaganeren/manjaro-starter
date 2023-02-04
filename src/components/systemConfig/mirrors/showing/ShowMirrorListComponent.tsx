@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { invoke } from '@tauri-apps/api/tauri';
 import {
   Button,
   Modal,
@@ -13,28 +12,16 @@ import {
   ModalBody,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
+import { getMirrorList } from '../MirrorHelper';
 
 const MirrorList = () => {
   const { t } = useTranslation();
-  const [mirrorList, setMirrorList] = useState<JSX.Element[] | null>(null);
+  const [mirrorList, setMirrorList] = useState<string | null>();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const modalOpen = () => {
-    invoke('run_shell_command_with_result', {
-      command: 'cat /etc/pacman.d/mirrorlist',
-    }).then((response) => {
-      if (response) {
-        const responseParse = (response as string)
-          .replaceAll('"', '')
-          .split('\\n')
-          .map((item) => (
-            <span>
-              {item}
-              <br />
-            </span>
-          ));
-        setMirrorList(responseParse);
-        onOpen();
-      }
+    getMirrorList().then((data) => {
+      setMirrorList(data);
+      onOpen();
     });
   };
   return (
@@ -54,7 +41,16 @@ const MirrorList = () => {
       >
         <ModalOverlay backdropBlur="2px" />
         <ModalContent>
-          <ModalBody p={4}>{mirrorList}</ModalBody>
+          <ModalBody p={4}>
+            {mirrorList?.split('\\n')
+              .map((item) => (
+                <span>
+                  {item}
+                  <br />
+                </span>
+              ))}
+
+          </ModalBody>
           <ModalFooter>
             <Text color={useColorModeValue('gray.800', 'gray.500')} as="sup">
               {t('fileCanBeFound')}
