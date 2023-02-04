@@ -7,15 +7,21 @@ interface SpawnOptions {
     };
     encoding?: string;
 }
-interface cmd{
+export interface commandType{
     program: string, args?: string | string[], options?: SpawnOptions
 }
 const fastestMirror = {
   program: 'pkexec',
   args: ['pacman-mirrors', '--fasttrack', '5'],
-} as cmd;
+} as commandType;
+
+const getActiveBranch = {
+  program: 'pacman-mirrors',
+  args: ['--get-branch'],
+} as commandType;
 
 const commands = {
   fastestMirror,
+  getActiveBranch,
 };
 export default commands;

@@ -104,6 +104,10 @@
                     "name": "whoami",
                     "cmd": "whoami",
                     "args": false
+                }, {
+                    "name": "pacman-mirrors",
+                    "cmd": "pacman-mirrors",
+                    "args": true
                 }]
             },
             "window": {
