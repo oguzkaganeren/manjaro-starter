@@ -5,9 +5,11 @@ import {
   CardFooter,
   Divider,
   ButtonGroup,
+  Flex,
 } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import ActiveBranchComponent from './activeBranch/ActiveBranchComponent';
 import FastestMirrorComponent from './fastest/FastestMirrorComponent';
 import MirrorList from './showing/ShowMirrorListComponent';
 
@@ -16,6 +18,9 @@ const MirrorMainComponent: React.FC = () => {
   return (
     <Card minH="2xs" variant="filled">
       <CardBody>
+        <Flex mt={-7} mb={5} justifyContent="flex-end">
+          <ActiveBranchComponent />
+        </Flex>
         <chakra.p fontSize="sm">{t('mirrorDesc')}</chakra.p>
         <chakra.p fontSize="sm" mt={2}>
           {t('pacmanMirrors')}
