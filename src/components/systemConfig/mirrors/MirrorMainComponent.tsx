@@ -8,8 +8,8 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import FastestMirrorComponent from './FastestMirrorComponent';
-import MirrorList from './MirrorListComponent';
+import FastestMirrorComponent from './fastest/FastestMirrorComponent';
+import MirrorList from './showing/ShowMirrorListComponent';
 
 const MirrorMainComponent: React.FC = () => {
   const { t } = useTranslation();

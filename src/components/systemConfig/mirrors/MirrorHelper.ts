@@ -1,5 +1,6 @@
 import { info, error } from 'tauri-plugin-log-api';
 import { Command } from '@tauri-apps/api/shell';
+import { invoke } from '@tauri-apps/api/tauri';
 import commands from '../../../assets/Commands';
 
 const fastestMirrorRunner = async () => {
@@ -8,17 +9,13 @@ const fastestMirrorRunner = async () => {
     commands.fastestMirror.args,
     commands.fastestMirror.options,
   );
-  let returnVal = false;
   cmd.on('close', (data) => {
     info(
       `command finished with code ${data.code} and signal ${data.signal}`,
     );
-    const isThereError = data.code !== 0;
-    returnVal = !isThereError;
   });
   cmd.on('error', (errors) => {
     error(errors);
-    returnVal = false;
   });
   cmd.stdout.on('data', (line) => {
     info(`command stdout: "${line}"`);
@@ -26,10 +23,17 @@ const fastestMirrorRunner = async () => {
   cmd.stderr.on('data', (line) => {
     error(`command stderr: "${line}"`);
   });
-  return cmd.spawn().then((child) => {
-    info(`pid:${child.pid}`);
-    return returnVal;
-  });
+  return cmd.execute();
 };
 
+export const getMirrorList = () => invoke('run_shell_command_with_result', {
+  command: 'cat /etc/pacman.d/mirrorlist',
+}).then((response) => {
+  if (response) {
+    const responseRp = (response as string)
+      .replaceAll('"', '');
+
+    return responseRp;
+  }
+});
 export default fastestMirrorRunner;

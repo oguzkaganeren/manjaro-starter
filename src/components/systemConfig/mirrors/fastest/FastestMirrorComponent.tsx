@@ -5,19 +5,19 @@ import {
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { connectionState } from '../../../stores/ConnectionStore';
+import { connectionState } from '../../../../stores/ConnectionStore';
 import useFastestMirrorHook from './useFastestMirrorHook';
-import { mirrorState } from '../../../stores/FastestMirrorStore';
+import { mirrorState } from '../../../../stores/FastestMirrorStore';
 
 const FastestMirrorComponent: React.FC = () => {
   const { t } = useTranslation();
   const toast = useToast();
   const isOnline = useRecoilValue(connectionState);
   const [mirrorConf, setMirrorConf] = useRecoilState(mirrorState);
-  const { callFastestMirrorCommand } = useFastestMirrorHook('');
+  const { callFastestMirrorCommand } = useFastestMirrorHook();
   const handleClick = async () => {
-    callFastestMirrorCommand().then((isSuccess) => {
-      console.log(isSuccess);
+    callFastestMirrorCommand().then((result) => {
+      const isSuccess = result.code === 0;
       toast({
         title: '',
         description: isSuccess ? t('success') : t('failed'),

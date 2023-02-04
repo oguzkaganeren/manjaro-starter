@@ -1,10 +1,10 @@
 import { useRecoilState } from 'recoil';
-import commands from '../../../assets/Commands';
-import commandState from '../../../stores/CommandStore';
-import { mirrorState } from '../../../stores/FastestMirrorStore';
-import fastestMirrorRunner from './MirrorHelper';
+import commands from '../../../../assets/Commands';
+import commandState from '../../../../stores/CommandStore';
+import { mirrorState } from '../../../../stores/FastestMirrorStore';
+import fastestMirrorRunner from '../MirrorHelper';
 
-export default function useFastestMirrorHook(country:string) {
+export default function useFastestMirrorHook() {
   const [mirrorConf, setMirrorConf] = useRecoilState(mirrorState);
   const [commandHistory, setCommandHistory] = useRecoilState(commandState);
   const callFastestMirrorCommand = async () => {
