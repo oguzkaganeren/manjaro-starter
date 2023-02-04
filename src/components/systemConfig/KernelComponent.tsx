@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import { FaLinux } from 'react-icons/fa';
-import { RiAddLine } from 'react-icons/ri';
+import { RiInstallLine } from 'react-icons/ri';
 import { MdOutlineDownloadDone } from 'react-icons/md';
 import _ from 'lodash';
 import { useTranslation } from 'react-i18next';
@@ -25,6 +25,7 @@ import { info, error } from 'tauri-plugin-log-api';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { connectionState } from '../../stores/ConnectionStore';
 import commandState from '../../stores/CommandStore';
+import ConfirmPopComponent from '../common/ConfirmPopComponent';
 
 interface Kernel {
   id: string;
@@ -136,7 +137,7 @@ const KernelComponent: React.FC = () => {
           },
         }}
       >
-        <Wrap>
+        <Wrap pb={4}>
           {kernelSt === undefined ? (
             <Spinner />
           ) : (
@@ -152,21 +153,30 @@ const KernelComponent: React.FC = () => {
                 <TagLabel>{kernel.name}</TagLabel>
                 {!kernel.isInstalled ? (
                   <Tooltip label="Install Kernel">
-                    <IconButton
-                      ml={5}
-                      mr={-2}
-                      disabled={!isOnline || isLoadingKernel?.get(kernel.name)}
-                      aria-label="Install Kernel"
-                      onClick={() => installKernel(kernel.name)}
-                      isLoading={isLoadingKernel?.get(kernel.name) || false}
-                      icon={<RiAddLine />}
-                    />
+                    <ConfirmPopComponent
+                      confirmationDesc="confirmDesc"
+                      handleClick={() => installKernel(kernel.name)}
+                      isButtonDisabled={
+                        isLoadingKernel?.get(kernel.name) || !isOnline
+                      }
+                    >
+                      <IconButton
+                        ml={5}
+                        mr={-2}
+                        isDisabled={
+                          isLoadingKernel?.get(kernel.name) || !isOnline
+                        }
+                        isLoading={isLoadingKernel?.get(kernel.name) || false}
+                        aria-label=""
+                        icon={<RiInstallLine />}
+                      />
+                    </ConfirmPopComponent>
                   </Tooltip>
                 ) : (
                   <IconButton
                     ml={5}
                     mr={-2}
-                    disabled
+                    isDisabled
                     aria-label=""
                     icon={<MdOutlineDownloadDone />}
                   />

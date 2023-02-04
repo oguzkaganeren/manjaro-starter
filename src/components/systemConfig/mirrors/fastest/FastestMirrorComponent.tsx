@@ -1,13 +1,11 @@
-import {
-  Button,
-  useToast,
-} from '@chakra-ui/react';
+import { useToast, Button } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { connectionState } from '../../../../stores/ConnectionStore';
 import useFastestMirrorHook from './useFastestMirrorHook';
 import { mirrorState } from '../../../../stores/FastestMirrorStore';
+import ConfirmPopComponent from '../../../common/ConfirmPopComponent';
 
 const FastestMirrorComponent: React.FC = () => {
   const { t } = useTranslation();
@@ -31,14 +29,19 @@ const FastestMirrorComponent: React.FC = () => {
   };
 
   return (
-    <Button
-      shadow="base"
-      isDisabled={!isOnline || mirrorConf.isProcessing}
-      onClick={handleClick}
-      isLoading={mirrorConf.isProcessing}
+    <ConfirmPopComponent
+      confirmationDesc="confirmDesc"
+      handleClick={handleClick}
+      isButtonDisabled={!isOnline || mirrorConf.isProcessing}
     >
-      {t('setFastestMirrors')}
-    </Button>
+      <Button
+        shadow="base"
+        isDisabled={!isOnline || mirrorConf.isProcessing}
+        isLoading={mirrorConf.isProcessing}
+      >
+        {t('setFastestMirrors')}
+      </Button>
+    </ConfirmPopComponent>
   );
 };
 export default FastestMirrorComponent;
