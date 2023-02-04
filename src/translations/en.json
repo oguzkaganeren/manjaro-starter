@@ -152,6 +152,10 @@
         "close": "Close",
         "bugReport": "Bug Report",
         "copied": "Copied",
-        "copyCommand": "Copy Command"
+        "copyCommand": "Copy Command",
+        "cancel": "Cancel",
+        "apply": "Apply",
+        "confirmDesc": "Are you sure you want to continue with your action?",
+        "confirmation": "Confirmation"
     }
 }

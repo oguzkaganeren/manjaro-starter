@@ -19,6 +19,7 @@ import { BsCheck } from 'react-icons/bs';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { useRecoilState } from 'recoil';
 import commandState from '../../stores/CommandStore';
+import ConfirmPopComponent from '../common/ConfirmPopComponent';
 
 const FsTrimServiceComponent = () => {
   const [isServiceActive, setIsServiceActive] = useState(false);
@@ -101,15 +102,19 @@ const FsTrimServiceComponent = () => {
             <TagLeftIcon boxSize="12px" as={FiHardDrive} />
 
             <TagLabel>{t('fstrimTimerService')}</TagLabel>
-
-            <IconButton
-              ml={5}
-              mr={-2}
-              aria-label={t('fstrimTimerEnableStart')}
-              onClick={setServiceStatus}
-              isLoading={processing}
-              icon={isServiceActive ? <AiFillCloseCircle /> : <BsCheck />}
-            />
+            <ConfirmPopComponent
+              confirmationDesc="confirmDesc"
+              handleClick={setServiceStatus}
+              isButtonDisabled={false}
+            >
+              <IconButton
+                ml={5}
+                mr={-2}
+                aria-label={t('fstrimTimerEnableStart')}
+                isLoading={processing}
+                icon={isServiceActive ? <AiFillCloseCircle /> : <BsCheck />}
+              />
+            </ConfirmPopComponent>
           </Tag>
         </Tooltip>
       </CardFooter>
