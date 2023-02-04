@@ -1,3 +1,12 @@
+## [0.24.5](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.24.4...v0.24.5) (2023-02-04)
+
+
+### Bug Fixes
+
+* 🐛 added confirmation popup ([cbc8e56](https://github.com/oguzkaganeren/manjaro-starter/commit/cbc8e56798abcd4d6aef7b6a6a791c1482008538)), closes [#323](https://github.com/oguzkaganeren/manjaro-starter/issues/323)
+
+
+
 ## [0.24.4](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.24.3...v0.24.4) (2023-02-02)
 
 
@@ -34,23 +43,6 @@
 ### Bug Fixes
 
 * 🐛 release action problem ([af04008](https://github.com/oguzkaganeren/manjaro-starter/commit/af040081f9533e8178dd61742d52fd3b06f7e38e))
-
-
-
-# [0.24.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.23.0...v0.24.0) (2023-01-29)
-
-
-### Bug Fixes
-
-* 🐛 system info unit problem fixed ([c02ea8b](https://github.com/oguzkaganeren/manjaro-starter/commit/c02ea8b45be0cf44d12063aae5e4d86e2d2e49ff)), closes [#332](https://github.com/oguzkaganeren/manjaro-starter/issues/332)
-* **deps:** update rust crate log to 0.4.17 ([6fa044a](https://github.com/oguzkaganeren/manjaro-starter/commit/6fa044a0cae7106c320b6f0c8d0d72917feea499))
-* **deps:** update rust crate sysinfo to 0.27.7 ([da17806](https://github.com/oguzkaganeren/manjaro-starter/commit/da17806ab260505791d87ee47c1d793b33b40dcf))
-* **deps:** update rust crate tauri to 1.2.4 ([1d21e04](https://github.com/oguzkaganeren/manjaro-starter/commit/1d21e040c665b804f4982003df577f4cf84bf724))
-
-
-### Features
-
-* 🎸 added bug report button ([a93bc6a](https://github.com/oguzkaganeren/manjaro-starter/commit/a93bc6a0ca33506fbedc74cdce03357fa4b47427)), closes [#316](https://github.com/oguzkaganeren/manjaro-starter/issues/316)
 
 
 
