@@ -14,8 +14,9 @@ import {
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import '@fontsource/caveat';
+import { open } from '@tauri-apps/api/shell';
 import ManjaroVersion from '../components/home/ManjaroVersion';
-import Info from '../components/home/Info';
+import LearnMoreComponent from '../components/home/LearnMoreComponent';
 import ReleaseNotes from '../components/home/ReleaseNotes';
 import LiveInstaller from '../components/home/LiveInstaller';
 
@@ -52,7 +53,17 @@ const HomeScreen: React.FC<{ nextStep: () => void }> = ({ nextStep }) => {
         </Heading>
         <Text color={useColorModeValue('gray.800', 'gray.300')}>
           {t('homeText1')}
+          {' '}
+          <Button
+            variant="link"
+            onClick={async () => {
+              await open('https://forum.manjaro.org');
+            }}
+          >
+            {t('sendFeedback')}
+          </Button>
         </Text>
+
         <Stack
           direction="column"
           spacing={3}
@@ -74,7 +85,7 @@ const HomeScreen: React.FC<{ nextStep: () => void }> = ({ nextStep }) => {
             {t('start')}
           </Button>
           <HStack>
-            <Info />
+            <LearnMoreComponent />
             <Spacer />
             <ReleaseNotes />
           </HStack>

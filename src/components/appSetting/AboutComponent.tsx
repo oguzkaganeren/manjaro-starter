@@ -20,6 +20,7 @@ import logo from '../../assets/icon.png';
 import packageJson from '../../../package.json';
 import Changelog from './Changelog';
 import BugReport from './BugReport';
+import SendFeedback from './SendFeedback';
 
 const AboutComponent = (): JSX.Element => {
   const { t } = useTranslation();
@@ -51,6 +52,7 @@ const AboutComponent = (): JSX.Element => {
       <Wrap>
         <Changelog />
         <BugReport />
+        <SendFeedback />
         <Button
           mt={5}
           mr={5}

@@ -74,7 +74,7 @@ const Feature = ({ title, text, icon }: FeatureProps) => (
 
   </Box>
 );
-const Info: React.FC = () => {
+const LearnMoreComponent: React.FC = () => {
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
@@ -124,4 +124,4 @@ const Info: React.FC = () => {
   );
 };
 
-export default Info;
+export default LearnMoreComponent;
