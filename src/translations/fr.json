@@ -7,7 +7,7 @@
         "projectGithubPage": "Page du projet Github",
         "gnu": "Licence",
         "welcomeManjaro": "Bienvenue dans Manjaro!",
-        "homeText1": "Nous, les développeurs de Manjaro, espérons que vous prendrez autant de plaisir à utiliser Manjaro que nous en avons à le construire. Manjaro Starter vous aidera à démarrer avec votre nouveau système d'exploitation. Alors profitez de l'expérience et n'hésitez pas pour nous faire part de vos commentaires.",
+        "homeText1": "Nous, les développeurs de Manjaro, espérons que vous prendrez autant de plaisir à utiliser Manjaro que nous en avons à le construire. Manjaro Starter vous aidera à démarrer avec votre nouveau système d'exploitation. Alors profitez de l'expérience, et n'hésitez pas",
         "handleHardware": "Matériel",
         "homeText2": "Manjaro prend non seulement en charge l'utilisation de plusieurs noyaux (sélectionnables à partir des options avancées de l'écran de démarrage), mais donne également accès aux tout derniers noyaux à la pointe de la technologie. Cela peut être fait en utilisant le module Noyau dans le gestionnaire de paramètres graphique de Manjaro, ou via la ligne de commande en utilisant la commande MHWD-kernel (Manjaro Hardware Detection).",
         "gettingHelp": "Obtenir de l'aide",
@@ -157,6 +157,9 @@
         "apply": "Appliquer",
         "confirmDesc": "Êtes-vous sûr de vouloir continuer votre action ?",
         "confirmation": "Confirmation",
-        "activeBranchDesc": "Les paquets Manjaro commencent leur vie dans la branche instable. Une fois qu'ils sont réputés stables, ils sont déplacés vers la branche de test, où d'autres tests seront réalisés pour s'assurer que le paquet est prêt à être soumis à la branche stable."
+        "activeBranchDesc": "Les paquets Manjaro commencent leur vie dans la branche instable. Une fois qu'ils sont réputés stables, ils sont déplacés vers la branche de test, où d'autres tests seront réalisés pour s'assurer que le paquet est prêt à être soumis à la branche stable.",
+        "chooseFeedbackWay": "Choisissez le moyen de nous contacter.",
+        "sendFeedback": "faites-nous part de vos commentaires.",
+        "starterFeedback": "Faites-nous part de vos commentaires"
     }
 }
