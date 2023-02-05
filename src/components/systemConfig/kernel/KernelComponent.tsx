@@ -55,7 +55,11 @@ const KernelComponent: React.FC = () => {
                 colorScheme={kernel.isInstalled ? 'whatsapp' : 'gray'}
               >
                 <TagLeftIcon boxSize="12px" as={FaLinux} />
-                <TagLabel>{kernel.name}</TagLabel>
+                <TagLabel>
+                  Linux
+                  {' '}
+                  {kernel.remoteVersion}
+                </TagLabel>
                 {!kernel.isInstalled ? (
                   <Tooltip label="Install Kernel">
                     <ConfirmPopComponent

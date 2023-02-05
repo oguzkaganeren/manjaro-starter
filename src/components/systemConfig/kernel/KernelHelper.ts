@@ -5,20 +5,24 @@ import commandLogger from '../../common/CommandHelper';
 import { Kernel } from './Kernel';
 
 const getKernelList = async () => {
-  const cmd = new Command(commands.getPacman.program, ['-Ssq', '^linux[0-9][0-9]?([0-9])$|^linux[0-9][0-9]?([0-9])-rt$']);
+  const cmd = new Command(commands.getPacman.program, ['-Ss', '^linux[0-9][0-9]?([0-9])$|^linux[0-9][0-9]?([0-9])-rt$']);
   commandLogger(cmd);
   const kernelList = await cmd.execute();
   const kernels = [] as Kernel[];
-  const splitKernels = kernelList.stdout.split('\n');
-  await Promise.all(splitKernels.map(async (name) => {
-    const installedCmd = new Command(commands.getPacman.program, ['-Qqs', name]);
-    const kernelInstalled = await installedCmd.execute();
-    const isInstalled = !!kernelInstalled.stdout;
+  const splitKernels = kernelList.stdout.split('\n').filter((item) => item.indexOf('linux') > 0);
+  await Promise.all(splitKernels.map(async (kernelInfo) => {
+    const spKernelInfo = kernelInfo.split(' ');
+    const name = spKernelInfo[0].split('/')[1];
+    const remoteVersion = spKernelInfo[1];
+    const isInstalled = spKernelInfo.length > 2;
 
-    const kernel:Kernel = { id: _.uniqueId(), name, isInstalled };
+    const kernel:Kernel = {
+      id: _.uniqueId(), name, isInstalled, remoteVersion,
+    };
     kernels.push(kernel);
   }));
-  return kernels;
+  const sortedKernel = kernels.sort((a, b) => (a.remoteVersion < b.remoteVersion ? 1 : -1));
+  return sortedKernel;
 };
 
 export const runCommandInstallKernel = async (kernelName:string) => {
