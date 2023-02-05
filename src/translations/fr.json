@@ -152,6 +152,11 @@
         "close": "Fermer",
         "bugReport": "Rapport de bogue",
         "copied": "Copié",
-        "copyCommand": "Commande copier"
+        "copyCommand": "Commande copier",
+        "cancel": "Annuler",
+        "apply": "Appliquer",
+        "confirmDesc": "Êtes-vous sûr de vouloir continuer votre action ?",
+        "confirmation": "Confirmation",
+        "activeBranchDesc": "Les paquets Manjaro commencent leur vie dans la branche instable. Une fois qu'ils sont réputés stables, ils sont déplacés vers la branche de test, où d'autres tests seront réalisés pour s'assurer que le paquet est prêt à être soumis à la branche stable."
     }
 }
