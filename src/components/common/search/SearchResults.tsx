@@ -10,6 +10,7 @@ import { SiPagekit } from 'react-icons/si';
 import { FcDocument } from 'react-icons/fc';
 import { SearchManjaro, SearchResult } from './SearchManjaro';
 import handleSearch from './HandleSearch';
+import commands from '../../../assets/Commands';
 
 const Res = (props: SearchResult) => {
   const {
@@ -35,7 +36,7 @@ const Res = (props: SearchResult) => {
       <Link
         onClick={async () => {
           if (type === 'package') {
-            const cmd = new Command('pamac-manager', [`--details=${props.package}`]);
+            const cmd = new Command(commands.getPamacManager.program, [`--details=${props.package}`]);
             cmd.execute();
           } else if (url) {
             await open(url);

@@ -17,6 +17,7 @@ import {
 } from '../../stores/PackageStore';
 import { connectionState } from '../../stores/ConnectionStore';
 import commandState from '../../stores/CommandStore';
+import commands from '../../assets/Commands';
 
 interface PackageStatusProps {
     isInstalled:boolean,
@@ -35,7 +36,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
   const packageInstallStatusControl = async (catId:string, pkId:string) => {
     const pack = packageSt.get(catId)?.packages.get(pkId);
     const pkName = pack?.pkg || '';
-    const cmdVersion = new Command('version-control', ['-Q', pkName]);
+    const cmdVersion = new Command(commands.getPacman.program, ['-Q', pkName]);
     const cmdVersionResult = await cmdVersion.execute();
     if (cmdVersionResult.stdout) {
       const spStd = cmdVersionResult.stdout.split(' ')[1];
@@ -83,7 +84,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
         `pamac install --no-confirm --no-upgrade ${pkgName}`, // and one new item at the end
       ],
     );
-    const cmd = new Command('pamac', [
+    const cmd = new Command(commands.getPamac.program, [
       'install',
       '--no-confirm',
       '--no-upgrade',

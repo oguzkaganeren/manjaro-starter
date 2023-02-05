@@ -2,6 +2,7 @@ import { Button, Stat, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
+import commands from '../../assets/Commands';
 
 const ManjaroSettingsModule: React.FC = () => {
   const { t } = useTranslation();
@@ -9,7 +10,7 @@ const ManjaroSettingsModule: React.FC = () => {
   const borderColor = useColorModeValue('gray.800', 'gray.500');
   const languageText = ['installDrivers', 'setDateTime', 'languagePackages'];
   const openManjaroSettingsManager = async (moduleName:string) => {
-    const cmd = new Command('manjaro-settings-manager', ['-m', `msm_${moduleName}`]);
+    const cmd = new Command(commands.getMSM.program, ['-m', `msm_${moduleName}`]);
     cmd.execute();
   };
 
@@ -48,7 +49,7 @@ const ManjaroSettingsModule: React.FC = () => {
         <Button
           width="100%"
           onClick={async () => {
-            new Command('manjaro-settings-manager').execute();
+            new Command(commands.getMSM.program).execute();
           }}
         >
           {t('moreSettings')}

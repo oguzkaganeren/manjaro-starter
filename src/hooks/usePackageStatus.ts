@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Command } from '@tauri-apps/api/shell';
+import commands from '../assets/Commands';
 
 async function getPackageInstalled(packageName:string) {
-  const result = await new Command('version-control', [
+  const result = await new Command(commands.getPacman.program, [
     '-Q',
     packageName,
   ]).execute().then((response) => {

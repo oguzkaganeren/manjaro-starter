@@ -73,11 +73,9 @@
                     "cmd": "mcp-qt",
                     "args": true
                 }, {
-                    "name": "version-control",
+                    "name": "pacman",
                     "cmd": "pacman",
-                    "args": ["-Q", {
-                        "validator": "\\S+"
-                    }]
+                    "args": true
                 }, {
                     "name": "mhwd-kernel",
                     "cmd": "mhwd-kernel",

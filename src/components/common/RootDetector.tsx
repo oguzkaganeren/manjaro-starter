@@ -15,6 +15,7 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { info } from 'tauri-plugin-log-api';
 import { appWindow } from '@tauri-apps/api/window';
+import commands from '../../assets/Commands';
 
 type Props = {}
 
@@ -26,7 +27,7 @@ const RootDetector = () => {
   };
   useEffect(() => {
     const detectWho = async () => {
-      const cmd = new Command('whoami');
+      const cmd = new Command(commands.getWhoami.program);
       cmd.stdout.on('data', (line) => {
         info(`whoami stdout: "${line}"`);
         if (line === 'root') {

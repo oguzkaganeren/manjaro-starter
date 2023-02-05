@@ -4,6 +4,7 @@ import {
 import _ from 'lodash';
 import { Child, Command } from '@tauri-apps/api/shell';
 import apps from '../assets/data/apps.json';
+import commands from '../assets/Commands';
 
 export interface Package {
   id: string,
@@ -43,7 +44,7 @@ export const getPackages = selector({
         const id = _.uniqueId();
         let pkInstalled = false;
         let pkVer = '';
-        const cmdVersion = new Command('version-control', ['-Q', app.pkg]);
+        const cmdVersion = new Command(commands.getPacman.program, ['-Q', app.pkg]);
         const cmdVersionResult = await cmdVersion.execute();
         if (cmdVersionResult.stdout) {
           const spStd = cmdVersionResult.stdout.split(' ')[1];

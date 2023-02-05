@@ -15,6 +15,7 @@ import { invoke } from '@tauri-apps/api/tauri';
 import DOMPurify from 'dompurify';
 import { AtSignIcon } from '@chakra-ui/icons';
 import PackageStatus from './PackageStatus';
+import commands from '../../assets/Commands';
 
   interface PackageDetailProps {
     icon:string;
@@ -71,7 +72,7 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
                     '2xl': '80em',
                   }}
                   onClick={() => {
-                    const cmd = new Command('pamac-manager', [
+                    const cmd = new Command(commands.getPamacManager.program, [
                       `--details=${pkg}`,
                     ]);
                     cmd.execute();

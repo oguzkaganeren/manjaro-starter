@@ -26,6 +26,7 @@ import { useRecoilValue, useRecoilState } from 'recoil';
 import { connectionState } from '../../stores/ConnectionStore';
 import commandState from '../../stores/CommandStore';
 import ConfirmPopComponent from '../common/ConfirmPopComponent';
+import commands from '../../assets/Commands';
 
 interface Kernel {
   id: string;
@@ -47,7 +48,7 @@ const KernelComponent: React.FC = () => {
     const splitKernels = kernelList.stdout.split('*').filter((item) => item.indexOf('linux') > 0);
     await Promise.all(splitKernels.map(async (item) => {
       const kernelName = item.replace(/^\s+|\s+$/g, '').replaceAll('"', '');
-      const installedCmd = new Command('version-control', ['-Q', kernelName]);
+      const installedCmd = new Command(commands.getPacman.program, ['-Q', kernelName]);
       const kernelInstalled = await installedCmd.execute();
       let isInstalled = false;
       if (kernelInstalled.stdout) {
@@ -89,7 +90,7 @@ const KernelComponent: React.FC = () => {
       ...commandHistory, // that contains all the old items
       `pamac install --no-confirm ${kernelName}`, // and one new item at the end
     ]);
-    const cmd = new Command('pamac', ['install', '--no-confirm', kernelName]);
+    const cmd = new Command(commands.getPamac.program, ['install', '--no-confirm', kernelName]);
     cmd.on('close', (data) => {
       info(
         `command finished with code ${data.code} and signal ${data.signal}`,
