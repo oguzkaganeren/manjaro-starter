@@ -1,25 +1,8 @@
-import { info, error } from 'tauri-plugin-log-api';
 import { Command } from '@tauri-apps/api/shell';
 import { invoke } from '@tauri-apps/api/tauri';
 import commands from '../../../assets/Commands';
+import commandLogger from '../../common/CommandHelper';
 
-function commandLogger(command:Command) {
-  command.on('close', (data) => {
-    info(
-      `command finished with code ${data.code} and signal ${data.signal}`,
-    );
-  });
-  command.on('error', (errors) => {
-    error(errors);
-  });
-  command.stdout.on('data', (line) => {
-    info(`command stdout: "${line}"`);
-  });
-  command.stderr.on('data', (line) => {
-    error(`command stderr: "${line}"`);
-  });
-  return command;
-}
 const fastestMirrorRunner = async () => {
   const cmd = new Command(
     commands.fastestMirror.program,

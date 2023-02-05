@@ -8,7 +8,7 @@ import {
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import KernelComponent from '../components/systemConfig/KernelComponent';
+import KernelComponent from '../components/systemConfig/kernel/KernelComponent';
 import SystemInfoComponent from '../components/systemConfig/SystemInfo';
 import SystemUpdate from '../components/systemConfig/SystemUpdate';
 import Mirrors from '../components/systemConfig/mirrors/index';
