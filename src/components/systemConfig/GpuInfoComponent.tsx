@@ -12,6 +12,7 @@ import { Command } from '@tauri-apps/api/shell';
 import { error } from 'tauri-plugin-log-api';
 import { TbHeartRateMonitor } from 'react-icons/tb';
 import { useTranslation } from 'react-i18next';
+import commands from '../../assets/Commands';
 
 const GpuInfoComponent = () => {
   const [isProcessing, setIsProcessing] = useState(false);
@@ -20,7 +21,7 @@ const GpuInfoComponent = () => {
   useEffect(() => {
     const getGpuInfo = async () => {
       setIsProcessing(true);
-      const cmd = new Command('lspci');
+      const cmd = new Command(commands.getLspci.program);
       cmd.on('close', (data) => {
         setIsProcessing(false);
       });

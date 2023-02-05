@@ -25,6 +25,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
 import { SettingsIcon } from '@chakra-ui/icons';
+import commands from '../../assets/Commands';
 
 const GnomeLayoutManager: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -83,7 +84,7 @@ const GnomeLayoutManager: FC = () => {
                 aria-label={t('advanced')}
                 icon={<SettingsIcon />}
                 onClick={async () => {
-                  new Command('gnome-layout-switcher').execute();
+                  new Command(commands.getGLM.program).execute();
                 }}
               />
             </Tooltip>
@@ -108,7 +109,7 @@ const GnomeLayoutManager: FC = () => {
                   rounded="lg"
                   onClick={async () => {
                     setIsSelected(layout);
-                    new Command('gnome-layout-switcher', [
+                    new Command(commands.getGLM.program, [
                       `apply-${layout}`,
                     ]).execute();
                   }}

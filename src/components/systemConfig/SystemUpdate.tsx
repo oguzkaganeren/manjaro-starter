@@ -21,6 +21,7 @@ import { info, error } from 'tauri-plugin-log-api';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { connectionState } from '../../stores/ConnectionStore';
 import commandState from '../../stores/CommandStore';
+import commands from '../../assets/Commands';
 
 const SystemUpdate: React.FC = () => {
   const { t } = useTranslation();
@@ -30,7 +31,7 @@ const SystemUpdate: React.FC = () => {
   const [commandHistory, setCommandHistory] = useRecoilState(commandState);
   const [isUpdating, setIsUpdating] = useState(false);
   const checkUpdates = async () => {
-    const cmd = new Command('pamac', ['checkupdates']);
+    const cmd = new Command(commands.getPamac.program, ['checkupdates']);
     const cmdResult = await cmd.execute();
 
     if (cmdResult.stdout) {
@@ -57,7 +58,7 @@ const SystemUpdate: React.FC = () => {
       ...commandHistory, // that contains all the old items
       'pamac update --no-confirm --force-refresh', // and one new item at the end
     ]);
-    const cmd = new Command('pamac', [
+    const cmd = new Command(commands.getPamac.program, [
       'update',
       '--no-confirm',
       '--force-refresh',
@@ -83,7 +84,7 @@ const SystemUpdate: React.FC = () => {
   };
 
   const openPamacUpdateGui = async () => {
-    const cmd = new Command('pamac-manager', ['--updates']);
+    const cmd = new Command(commands.getPamacManager.program, ['--updates']);
     const cmdResult = await cmd.execute();
     error(cmdResult.stderr);
     info(cmdResult.stdout);

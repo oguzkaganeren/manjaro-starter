@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
 import { useRecoilValue } from 'recoil';
 import { liveState } from '../../stores/LiveStore';
+import commands from '../../assets/Commands';
 
 const LiveInstaller = () => {
   const { t } = useTranslation();
@@ -20,7 +21,7 @@ const LiveInstaller = () => {
           variant="outline"
           colorScheme="whatsapp"
           onClick={async () => {
-            new Command('calamares_polkit').execute();
+            new Command(commands.getCalamaresPolkit.program).execute();
           }}
         >
           {t('installManjaroLinux')}

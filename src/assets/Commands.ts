@@ -20,8 +20,53 @@ const getActiveBranch = {
   args: ['--get-branch'],
 } as commandType;
 
+const getWhoami = {
+  program: 'whoami',
+} as commandType;
+
+const getPamacManager = {
+  program: 'pamac-manager',
+} as commandType;
+
+const getCalamaresPolkit = {
+  program: 'calamares_polkit',
+} as commandType;
+
+const getPacman = {
+  program: 'pacman',
+} as commandType;
+
+const getPamac = {
+  program: 'pamac',
+} as commandType;
+
+const getGLM = {
+  program: 'gnome-layout-switcher',
+} as commandType;
+
+const getLspci = {
+  program: 'lspci',
+} as commandType;
+
+const getMSM = {
+  program: 'manjaro-settings-manager',
+} as commandType;
+
+const getMCP = {
+  program: 'mcp',
+} as commandType;
+
 const commands = {
   fastestMirror,
   getActiveBranch,
+  getWhoami,
+  getPamacManager,
+  getCalamaresPolkit,
+  getPacman,
+  getPamac,
+  getGLM,
+  getLspci,
+  getMSM,
+  getMCP
 };
 export default commands;

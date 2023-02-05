@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import usePackageStatus from '../../hooks/usePackageStatus';
 import ManjaroSettingsModule from './ManjaroSettingsModule';
 import GnomeLayoutManager from './GnomeLayoutMaganer';
+import commands from '../../assets/Commands';
 
 const SettingsComponent = () => {
   const isVisibleMSM = usePackageStatus('manjaro-settings-manager');
@@ -27,7 +28,7 @@ const SettingsComponent = () => {
       <Button
         width="100%"
         onClick={async () => {
-          new Command('mcp').execute();
+          new Command(commands.getMCP.program).execute();
         }}
       >
         {t('moreSettings')}
