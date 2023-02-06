@@ -1,3 +1,17 @@
+# [0.26.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.25.0...v0.26.0) (2023-02-06)
+
+
+### Bug Fixes
+
+* 🐛 kernel list improvements ([ed40ca5](https://github.com/oguzkaganeren/manjaro-starter/commit/ed40ca5b5d129ed8bebab381367f8a28d9dea082)), closes [#321](https://github.com/oguzkaganeren/manjaro-starter/issues/321)
+
+
+### Features
+
+* 🎸 added send feedback component ([13d1e45](https://github.com/oguzkaganeren/manjaro-starter/commit/13d1e45b3fa1f8e69704212fb7864581eec49e70)), closes [#320](https://github.com/oguzkaganeren/manjaro-starter/issues/320)
+
+
+
 # [0.25.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.24.5...v0.25.0) (2023-02-04)
 
 
@@ -34,15 +48,6 @@
 * 🐛 empty command problem ([f533abf](https://github.com/oguzkaganeren/manjaro-starter/commit/f533abf2b3efcd80e1e419aa0182e45ebe68a897))
 * 🐛 removed logs from command history and some changes ([d8532fb](https://github.com/oguzkaganeren/manjaro-starter/commit/d8532fbdb295a68622d766d0fb7024a5b55d8f83)), closes [#324](https://github.com/oguzkaganeren/manjaro-starter/issues/324)
 * **deps:** update dependency framer-motion to v9 ([c7d8156](https://github.com/oguzkaganeren/manjaro-starter/commit/c7d8156e8e6ad151af689bfe346b118c547997af))
-
-
-
-## [0.24.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.24.1...v0.24.2) (2023-01-30)
-
-
-### Bug Fixes
-
-* 🐛 build problem fixes ([6eb5b9c](https://github.com/oguzkaganeren/manjaro-starter/commit/6eb5b9c57b38ca611894cd9a23c276f7f9b69e17))
 
 
 
