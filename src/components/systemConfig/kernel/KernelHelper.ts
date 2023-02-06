@@ -6,7 +6,6 @@ import { Kernel } from './Kernel';
 
 const getKernelList = async () => {
   const cmd = new Command(commands.getPacman.program, ['-Ss', '^linux[0-9][0-9]?([0-9])$|^linux[0-9][0-9]?([0-9])-rt$']);
-  commandLogger(cmd);
   const kernelList = await cmd.execute();
   const kernels = [] as Kernel[];
   const splitKernels = kernelList.stdout.split('\n').filter((item) => item.indexOf('linux') > 0);
@@ -28,6 +27,11 @@ const getKernelList = async () => {
 export const runCommandInstallKernel = async (kernelName:string) => {
   const cmd = new Command(commands.getPamac.program, ['install', '--no-confirm', kernelName]);
   commandLogger(cmd);
+  return cmd.execute();
+};
+
+export const runCommandGetRunningKernel = async () => {
+  const cmd = new Command(commands.getRunningKernel.program, ['-r']);
   return cmd.execute();
 };
 

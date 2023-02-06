@@ -56,6 +56,10 @@ const getMCP = {
   program: 'mcp',
 } as commandType;
 
+const getRunningKernel = {
+  program: 'uname',
+} as commandType;
+
 const commands = {
   fastestMirror,
   getActiveBranch,
@@ -67,6 +71,7 @@ const commands = {
   getGLM,
   getLspci,
   getMSM,
-  getMCP
+  getMCP,
+  getRunningKernel,
 };
 export default commands;

@@ -106,6 +106,10 @@
                     "name": "pacman-mirrors",
                     "cmd": "pacman-mirrors",
                     "args": true
+                }, {
+                    "name": "uname",
+                    "cmd": "uname",
+                    "args": true
                 }]
             },
             "window": {

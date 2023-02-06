@@ -5,21 +5,32 @@ import { useTranslation } from 'react-i18next';
 import commandState from '../../../stores/CommandStore';
 import commands from '../../../assets/Commands';
 import { Kernel } from './Kernel';
-import getKernelList, { runCommandInstallKernel } from './KernelHelper';
+import getKernelList, { runCommandGetRunningKernel, runCommandInstallKernel } from './KernelHelper';
 
 export default function useKernelHook() {
   const [kernelList, setKernelList] = useState<Kernel[]>();
+  const [currentKernel, setCurrentKernel] = useState('');
   const toast = useToast();
   const { t } = useTranslation();
   const [isLoadingKernel, setIsLoadingKernel] = useState<Map<string, boolean>>(new Map());
   const [commandHistory, setCommandHistory] = useRecoilState(commandState);
 
+  const getCurrentKernel = async () => {
+    const temp = await runCommandGetRunningKernel();
+    const spTemp = temp.stdout.split('.');
+    const major = spTemp[0];
+    const minor = spTemp[1];
+    const isRT = temp.stdout.toLowerCase().indexOf('rt') > 0 ? '-rt' : '';
+    const kernelPkName = `linux${major}${minor}${isRT}`;
+    setCurrentKernel(kernelPkName);
+  };
   const getKernels = async () => {
     const temp:Kernel[] = await getKernelList();
     setKernelList(temp);
   };
   useEffect(() => {
     getKernels();
+    getCurrentKernel();
   }, []);
   const installKernel = async (kernelName:string) => {
     setIsLoadingKernel(new Map(isLoadingKernel?.set(kernelName, true)));
@@ -43,5 +54,7 @@ export default function useKernelHook() {
     });
   };
 
-  return { installKernel, kernelList, isLoadingKernel };
+  return {
+    installKernel, kernelList, isLoadingKernel, currentKernel,
+  };
 }
