@@ -1,3 +1,12 @@
+## [0.26.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.26.0...v0.26.1) (2023-02-06)
+
+
+### Bug Fixes
+
+* 🐛 ci release fail problem fixed ([35642eb](https://github.com/oguzkaganeren/manjaro-starter/commit/35642ebd25941c053ac292a69a1be1f2429fd43e))
+
+
+
 # [0.26.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.25.0...v0.26.0) (2023-02-06)
 
 
@@ -37,17 +46,6 @@
 
 * 🐛 fixed bug report button problem ([82ea0c2](https://github.com/oguzkaganeren/manjaro-starter/commit/82ea0c2734a7ef585c769f34af84fb4829eb1ae4))
 * 🐛 fixed fstrim problem ([2b14a86](https://github.com/oguzkaganeren/manjaro-starter/commit/2b14a86c74445ac869a63ad823a6335b4627ecec)), closes [#353](https://github.com/oguzkaganeren/manjaro-starter/issues/353)
-
-
-
-## [0.24.3](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.24.2...v0.24.3) (2023-02-01)
-
-
-### Bug Fixes
-
-* 🐛 empty command problem ([f533abf](https://github.com/oguzkaganeren/manjaro-starter/commit/f533abf2b3efcd80e1e419aa0182e45ebe68a897))
-* 🐛 removed logs from command history and some changes ([d8532fb](https://github.com/oguzkaganeren/manjaro-starter/commit/d8532fbdb295a68622d766d0fb7024a5b55d8f83)), closes [#324](https://github.com/oguzkaganeren/manjaro-starter/issues/324)
-* **deps:** update dependency framer-motion to v9 ([c7d8156](https://github.com/oguzkaganeren/manjaro-starter/commit/c7d8156e8e6ad151af689bfe346b118c547997af))
 
 
 
