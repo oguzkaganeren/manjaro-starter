@@ -25,7 +25,7 @@ const getKernelList = async () => {
 };
 
 export const runCommandInstallKernel = async (kernelName:string) => {
-  const cmd = new Command(commands.getPamac.program, ['install', '--no-confirm', kernelName]);
+  const cmd = new Command(commands.getPamac.program, ['install', '--no-confirm --no-upgrade', kernelName]);
   commandLogger(cmd);
   return cmd.execute();
 };
