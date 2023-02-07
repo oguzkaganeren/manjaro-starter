@@ -1,3 +1,12 @@
+## [0.26.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.26.1...v0.26.2) (2023-02-07)
+
+
+### Bug Fixes
+
+* 🐛 added no upgrade parameter for kernel installation ([374d3f7](https://github.com/oguzkaganeren/manjaro-starter/commit/374d3f7703c0a0f599d9350bca57d40fde1128d8))
+
+
+
 ## [0.26.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.26.0...v0.26.1) (2023-02-06)
 
 
@@ -36,16 +45,6 @@
 ### Bug Fixes
 
 * 🐛 added confirmation popup ([cbc8e56](https://github.com/oguzkaganeren/manjaro-starter/commit/cbc8e56798abcd4d6aef7b6a6a791c1482008538)), closes [#323](https://github.com/oguzkaganeren/manjaro-starter/issues/323)
-
-
-
-## [0.24.4](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.24.3...v0.24.4) (2023-02-02)
-
-
-### Bug Fixes
-
-* 🐛 fixed bug report button problem ([82ea0c2](https://github.com/oguzkaganeren/manjaro-starter/commit/82ea0c2734a7ef585c769f34af84fb4829eb1ae4))
-* 🐛 fixed fstrim problem ([2b14a86](https://github.com/oguzkaganeren/manjaro-starter/commit/2b14a86c74445ac869a63ad823a6335b4627ecec)), closes [#353](https://github.com/oguzkaganeren/manjaro-starter/issues/353)
 
 
 
