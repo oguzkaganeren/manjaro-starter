@@ -1,3 +1,13 @@
+## [0.26.3](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.26.2...v0.26.3) (2023-02-08)
+
+
+### Bug Fixes
+
+* 🐛 added desc for current branch badge ([6f6ccc5](https://github.com/oguzkaganeren/manjaro-starter/commit/6f6ccc5e2bd07a151348d09de15d546c302cc53e)), closes [#382](https://github.com/oguzkaganeren/manjaro-starter/issues/382)
+* 🐛 install kernel tooltip fixes ([119dcc0](https://github.com/oguzkaganeren/manjaro-starter/commit/119dcc0cffdddc0e3c92aacb11942f04c778ea20)), closes [#383](https://github.com/oguzkaganeren/manjaro-starter/issues/383)
+
+
+
 ## [0.26.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.26.1...v0.26.2) (2023-02-07)
 
 
@@ -36,15 +46,6 @@
 ### Features
 
 * 🎸 added active branch badge to the mirror section ([a3fffd2](https://github.com/oguzkaganeren/manjaro-starter/commit/a3fffd2f7b0582b9baa4946a0c819ed1c7e82a48)), closes [#362](https://github.com/oguzkaganeren/manjaro-starter/issues/362)
-
-
-
-## [0.24.5](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.24.4...v0.24.5) (2023-02-04)
-
-
-### Bug Fixes
-
-* 🐛 added confirmation popup ([cbc8e56](https://github.com/oguzkaganeren/manjaro-starter/commit/cbc8e56798abcd4d6aef7b6a6a791c1482008538)), closes [#323](https://github.com/oguzkaganeren/manjaro-starter/issues/323)
 
 
 
