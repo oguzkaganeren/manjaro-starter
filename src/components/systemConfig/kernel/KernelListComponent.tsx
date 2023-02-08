@@ -67,18 +67,25 @@ const KernelListComponent = () => {
               {' '}
               {kernel.remoteVersion}
             </TagLabel>
-            {currentKernel === kernel.name && <TagComponent text={t('running')} color="green.600" />}
-            {kernel.remoteVersion.indexOf('rc') > 0 && <TagComponent text={t('experimental')} color="orange.600" />}
-            {kernel.remoteVersion.indexOf('rt') > 0 && <TagComponent text={t('realtime')} color="blue.600" />}
+            {currentKernel === kernel.name && (
+              <TagComponent text={t('running')} color="green.600" />
+            )}
+            {kernel.remoteVersion.indexOf('rc') > 0 && (
+              <TagComponent text={t('experimental')} color="orange.600" />
+            )}
+            {kernel.remoteVersion.indexOf('rt') > 0 && (
+              <TagComponent text={t('realtime')} color="blue.600" />
+            )}
             {!kernel.isInstalled ? (
-              <Tooltip label="Install Kernel">
-                <ConfirmPopComponent
-                  confirmationDesc="confirmDesc"
-                  handleClick={() => installKernel(kernel.name)}
-                  isButtonDisabled={
+
+              <ConfirmPopComponent
+                confirmationDesc="confirmDesc"
+                handleClick={() => installKernel(kernel.name)}
+                isButtonDisabled={
                     isLoadingKernel?.get(kernel.name) || !isOnline
                   }
-                >
+              >
+                <Tooltip label={t('installKernel')}>
                   <IconButton
                     ml={5}
                     mr={-2}
@@ -87,8 +94,8 @@ const KernelListComponent = () => {
                     aria-label=""
                     icon={<RiInstallLine />}
                   />
-                </ConfirmPopComponent>
-              </Tooltip>
+                </Tooltip>
+              </ConfirmPopComponent>
             ) : (
               <IconButton
                 ml={5}
