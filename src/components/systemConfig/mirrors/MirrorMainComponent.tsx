@@ -18,7 +18,7 @@ const MirrorMainComponent: React.FC = () => {
   return (
     <Card minH="2xs" variant="filled">
       <CardBody>
-        <Flex mt={-7} mb={5} justifyContent="flex-end">
+        <Flex mt={-2} mb={5} justifyContent="flex-end">
           <ActiveBranchComponent />
         </Flex>
         <chakra.p fontSize="sm">{t('mirrorDesc')}</chakra.p>

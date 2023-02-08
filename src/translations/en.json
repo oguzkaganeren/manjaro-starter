@@ -163,6 +163,7 @@
         "starterFeedback": "Send us your feedback",
         "running": "Running",
         "experimental": "Experimental",
-        "realtime": "Real time"
+        "realtime": "Real time",
+        "currentBranch": "Current branch"
     }
 }

@@ -1,4 +1,6 @@
-import { Badge, Tooltip } from '@chakra-ui/react';
+import {
+  Badge, HStack, Text, Tooltip,
+} from '@chakra-ui/react';
 import { t } from 'i18next';
 import React, { useEffect, useState } from 'react';
 import { getActiveBranch } from '../MirrorHelper';
@@ -23,11 +25,17 @@ const ActiveBranchComponent = () => {
     });
   }, []);
   return (
-    <Tooltip label={t('activeBranchDesc')}>
-      <Badge variant="solid" colorScheme={colorSc()}>
-        {activeBranch}
-      </Badge>
-    </Tooltip>
+    <HStack>
+      <Text as="b" fontSize="sm" mr={-1} mt={1}>
+        {t('currentBranch')}
+        :
+      </Text>
+      <Tooltip label={t('activeBranchDesc')}>
+        <Badge variant="solid" colorScheme={colorSc()}>
+          {activeBranch}
+        </Badge>
+      </Tooltip>
+    </HStack>
   );
 };
 
