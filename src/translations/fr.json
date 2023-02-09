@@ -163,6 +163,7 @@
         "starterFeedback": "Faites-nous part de vos commentaires",
         "running": "Utilisé",
         "experimental": "Expérimental",
-        "realtime": "Temps réel"
+        "realtime": "Temps réel",
+        "currentBranch": "Branche actuelle"
     }
 }
