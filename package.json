@@ -1,6 +1,6 @@
 {
   "name": "manjaro-starter",
-  "version": "0.26.3",
+  "version": "0.26.4",
   "private": true,
   "dependencies": {
     "@anubra266/stickyreact": "^1.0.1",

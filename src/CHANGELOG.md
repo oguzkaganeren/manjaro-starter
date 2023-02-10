@@ -1,3 +1,12 @@
+## [0.26.4](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.26.3...v0.26.4) (2023-02-10)
+
+
+### Bug Fixes
+
+* 🐛 added repo button and removed version info ([1eda26e](https://github.com/oguzkaganeren/manjaro-starter/commit/1eda26e403989799c54e0ef86e3a7385f607a5cc)), closes [#377](https://github.com/oguzkaganeren/manjaro-starter/issues/377) [#387](https://github.com/oguzkaganeren/manjaro-starter/issues/387)
+
+
+
 ## [0.26.3](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.26.2...v0.26.3) (2023-02-08)
 
 
@@ -37,15 +46,6 @@
 ### Features
 
 * 🎸 added send feedback component ([13d1e45](https://github.com/oguzkaganeren/manjaro-starter/commit/13d1e45b3fa1f8e69704212fb7864581eec49e70)), closes [#320](https://github.com/oguzkaganeren/manjaro-starter/issues/320)
-
-
-
-# [0.25.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.24.5...v0.25.0) (2023-02-04)
-
-
-### Features
-
-* 🎸 added active branch badge to the mirror section ([a3fffd2](https://github.com/oguzkaganeren/manjaro-starter/commit/a3fffd2f7b0582b9baa4946a0c819ed1c7e82a48)), closes [#362](https://github.com/oguzkaganeren/manjaro-starter/issues/362)
 
 
 
