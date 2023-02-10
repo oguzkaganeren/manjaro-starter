@@ -164,6 +164,7 @@
         "running": "Running",
         "experimental": "Experimental",
         "realtime": "Real time",
-        "currentBranch": "Current branch"
+        "currentBranch": "Current branch",
+        "statusOfMirrors": "Status of Mirrors"
     }
 }

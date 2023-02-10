@@ -9,12 +9,16 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useRecoilValue } from 'recoil';
+import { connectionState } from '../../../stores/ConnectionStore';
 import ActiveBranchComponent from './activeBranch/ActiveBranchComponent';
 import FastestMirrorComponent from './fastest/FastestMirrorComponent';
+import ShowRepoDetails from './repo/ShowRepoDetails';
 import MirrorList from './showing/ShowMirrorListComponent';
 
 const MirrorMainComponent: React.FC = () => {
   const { t } = useTranslation();
+  const isOnline = useRecoilValue(connectionState);
   return (
     <Card minH="2xs" variant="filled">
       <CardBody>
@@ -42,6 +46,7 @@ const MirrorMainComponent: React.FC = () => {
         <ButtonGroup spacing="2">
           <MirrorList />
           <FastestMirrorComponent />
+          {isOnline && <ShowRepoDetails />}
         </ButtonGroup>
       </CardFooter>
     </Card>

@@ -19,7 +19,6 @@ import HomeScreen from './HomeScreen';
 import PackageScreen from './PackageScreen';
 import FinalScreen from './FinalScreen';
 import ConfigurationScreen from './ConfigurationScreen';
-import packageJson from '../../package.json';
 import Nav from '../components/NavbarComponent';
 import { liveState } from '../stores/LiveStore';
 import { connectionState } from '../stores/ConnectionStore';
@@ -144,7 +143,6 @@ const App: React.FC = () => {
               mt={2}
               color="gray.500"
             >
-              {packageJson.version}
               {isLive && (
                 <Tooltip label={t('liveTooltip')}>
                   <Badge ml="1" size="sm" colorScheme="purple">
