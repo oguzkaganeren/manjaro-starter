@@ -164,6 +164,7 @@
         "running": "Utilisé",
         "experimental": "Expérimental",
         "realtime": "Temps réel",
-        "currentBranch": "Branche actuelle"
+        "currentBranch": "Branche actuelle",
+        "statusOfMirrors": "Statut des miroirs"
     }
 }
