@@ -1,3 +1,12 @@
+# [0.27.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.26.4...v0.27.0) (2023-02-13)
+
+
+### Features
+
+* 🎸 added confirm popup commands ([35b0110](https://github.com/oguzkaganeren/manjaro-starter/commit/35b01108e34f72a30cf7c334a3e220161dce63b7)), closes [#376](https://github.com/oguzkaganeren/manjaro-starter/issues/376)
+
+
+
 ## [0.26.4](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.26.3...v0.26.4) (2023-02-10)
 
 
@@ -32,20 +41,6 @@
 ### Bug Fixes
 
 * 🐛 ci release fail problem fixed ([35642eb](https://github.com/oguzkaganeren/manjaro-starter/commit/35642ebd25941c053ac292a69a1be1f2429fd43e))
-
-
-
-# [0.26.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.25.0...v0.26.0) (2023-02-06)
-
-
-### Bug Fixes
-
-* 🐛 kernel list improvements ([ed40ca5](https://github.com/oguzkaganeren/manjaro-starter/commit/ed40ca5b5d129ed8bebab381367f8a28d9dea082)), closes [#321](https://github.com/oguzkaganeren/manjaro-starter/issues/321)
-
-
-### Features
-
-* 🎸 added send feedback component ([13d1e45](https://github.com/oguzkaganeren/manjaro-starter/commit/13d1e45b3fa1f8e69704212fb7864581eec49e70)), closes [#320](https://github.com/oguzkaganeren/manjaro-starter/issues/320)
 
 
 
