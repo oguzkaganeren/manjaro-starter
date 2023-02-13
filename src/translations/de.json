@@ -163,6 +163,8 @@
         "starterFeedback": "Sende uns dein Feedback",
         "running": "Aktiv",
         "experimental": "Experimentel",
-        "realtime": "Real Time"
+        "realtime": "Real Time",
+        "currentBranch": "Derzeitiger Zweig",
+        "statusOfMirrors": "Mirrorstatus"
     }
 }
