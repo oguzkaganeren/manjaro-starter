@@ -50,7 +50,7 @@
         "allowlist": {
             "all": true,
             "http": {
-                "scope": ["https://manjaro.org/search/*"]
+                "scope": ["https://manjaro.org/search/*", "https://translate.argosopentech.com/translate", "https://translate.argosopentech.com/languages"]
             },
             "shell": {
                 "all": true,

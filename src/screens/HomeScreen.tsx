@@ -17,7 +17,7 @@ import '@fontsource/caveat';
 import { open } from '@tauri-apps/api/shell';
 import ManjaroVersion from '../components/home/ManjaroVersion';
 import LearnMoreComponent from '../components/home/LearnMoreComponent';
-import ReleaseNotes from '../components/home/ReleaseNotes';
+import ReleaseNotes from '../components/home/releaseNotes/ReleaseNotes';
 import LiveInstaller from '../components/home/LiveInstaller';
 
 const HomeScreen: React.FC<{ nextStep: () => void }> = ({ nextStep }) => {
