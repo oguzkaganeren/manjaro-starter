@@ -25,7 +25,13 @@ const FsTrimServiceComponent = () => {
   const [isServiceActive, setIsServiceActive] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [commandHistory, setCommandHistory] = useRecoilState(commandState);
-
+  // FIXME: these are should be commands ts
+  const enableDisableCom = !isServiceActive
+    ? 'systemctl enable fstrim.timer'
+    : 'systemctl disable fstrim.timer';
+  const startStopCom = !isServiceActive
+    ? 'systemctl start fstrim.timer'
+    : 'systemctl stop fstrim.timer';
   const { t } = useTranslation();
   function isServiceRunning() {
     invoke('is_service_active', {
@@ -35,14 +41,7 @@ const FsTrimServiceComponent = () => {
       setIsServiceActive(response as boolean);
     });
   }
-  function serviceHandler(isStart:boolean) {
-    const enableDisableCom = isStart
-      ? 'systemctl enable fstrim.timer'
-      : 'systemctl disable fstrim.timer';
-    const startStopCom = isStart
-      ? 'systemctl start fstrim.timer'
-      : 'systemctl stop fstrim.timer';
-
+  function serviceHandler() {
     invoke('run_shell_command', {
       command: enableDisableCom,
     }).then((response) => {
@@ -69,7 +68,7 @@ const FsTrimServiceComponent = () => {
   }, []);
   const setServiceStatus = () => {
     setProcessing(true);
-    serviceHandler(!isServiceActive);
+    serviceHandler();
   };
   return (
     <Card minH="2xs" variant="filled">
@@ -106,6 +105,7 @@ const FsTrimServiceComponent = () => {
               confirmationDesc="confirmDesc"
               handleClick={setServiceStatus}
               isButtonDisabled={false}
+              commands={[enableDisableCom, startStopCom]}
             >
               <IconButton
                 ml={5}

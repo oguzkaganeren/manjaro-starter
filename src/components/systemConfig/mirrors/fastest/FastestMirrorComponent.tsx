@@ -5,6 +5,7 @@ import { useRecoilValue } from 'recoil';
 import { connectionState } from '../../../../stores/ConnectionStore';
 import useFastestMirrorHook from './useFastestMirrorHook';
 import ConfirmPopComponent from '../../../common/ConfirmPopComponent';
+import commands from '../../../../assets/Commands';
 
 const FastestMirrorComponent: React.FC = () => {
   const { t } = useTranslation();
@@ -16,6 +17,11 @@ const FastestMirrorComponent: React.FC = () => {
       confirmationDesc="confirmDesc"
       handleClick={callFastestMirrorCommand}
       isButtonDisabled={!isOnline || isProcessing}
+      commands={[
+        (commands.fastestMirror.args as Array<string>)
+          .map((text) => `${text}`)
+          .join(' '),
+      ]}
     >
       <Button
         shadow="base"

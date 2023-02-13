@@ -5,10 +5,9 @@ import {
   chakra,
   TagLeftIcon,
   Tag,
-  IconButton,
-  Tooltip,
   Spinner,
   Wrap,
+  Button,
 } from '@chakra-ui/react';
 import { FaLinux } from 'react-icons/fa';
 import { RiInstallLine } from 'react-icons/ri';
@@ -17,10 +16,14 @@ import { useTranslation } from 'react-i18next';
 import useKernelHook from './useKernelHook';
 import { connectionState } from '../../../stores/ConnectionStore';
 import ConfirmPopComponent from '../../common/ConfirmPopComponent';
+import commands from '../../../assets/Commands';
 
 type tagProps = {
   text: string;
   color: string;
+};
+type kernelSubProps = {
+  name: string;
 };
 
 const TagComponent = (props: tagProps) => {
@@ -41,13 +44,49 @@ const TagComponent = (props: tagProps) => {
     </chakra.span>
   );
 };
-
-const KernelListComponent = () => {
+const InstallButton = (props: kernelSubProps) => {
+  const { installKernel, isLoadingKernel } = useKernelHook();
   const isOnline = useRecoilValue(connectionState);
   const { t } = useTranslation();
+  const { name } = props;
+  return (
+    <ConfirmPopComponent
+      confirmationDesc="confirmDesc"
+      handleClick={() => installKernel(name)}
+      isButtonDisabled={isLoadingKernel?.get(name) || !isOnline}
+      commands={[
+        (
+            [
+              commands.getPamac.program,
+              'install',
+              '--no-confirm',
+              name,
+            ] as Array<string>
+        )
+          .map((text) => `${text}`)
+          .join(' '),
+      ]}
+    >
+      <Button
+        ml={5}
+        mr={-2}
+        size="sm"
+        isDisabled={isLoadingKernel?.get(name) || !isOnline}
+        isLoading={isLoadingKernel?.get(name) || false}
+        leftIcon={<RiInstallLine />}
+      >
+        {t('installKernel')}
+
+      </Button>
+    </ConfirmPopComponent>
+  );
+};
+const KernelListComponent = () => {
+  const { t } = useTranslation();
   const {
-    kernelList, installKernel, isLoadingKernel, currentKernel,
+    kernelList, currentKernel,
   } = useKernelHook();
+
   return (
     <Wrap pb={4}>
       {kernelList === undefined ? (
@@ -77,33 +116,17 @@ const KernelListComponent = () => {
               <TagComponent text={t('realtime')} color="blue.600" />
             )}
             {!kernel.isInstalled ? (
-
-              <ConfirmPopComponent
-                confirmationDesc="confirmDesc"
-                handleClick={() => installKernel(kernel.name)}
-                isButtonDisabled={
-                    isLoadingKernel?.get(kernel.name) || !isOnline
-                  }
-              >
-                <Tooltip label={t('installKernel')}>
-                  <IconButton
-                    ml={5}
-                    mr={-2}
-                    isDisabled={isLoadingKernel?.get(kernel.name) || !isOnline}
-                    isLoading={isLoadingKernel?.get(kernel.name) || false}
-                    aria-label=""
-                    icon={<RiInstallLine />}
-                  />
-                </Tooltip>
-              </ConfirmPopComponent>
+              <InstallButton name={kernel.name} />
             ) : (
-              <IconButton
+              <Button
                 ml={5}
                 mr={-2}
+                size="sm"
                 isDisabled
-                aria-label=""
-                icon={<MdOutlineDownloadDone />}
-              />
+                leftIcon={<MdOutlineDownloadDone />}
+              >
+                {t('installed')}
+              </Button>
             )}
           </Tag>
         ))
