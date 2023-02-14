@@ -1,20 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Button,
-  Modal,
-  ModalOverlay,
-  useDisclosure,
-  Box,
-  ModalContent,
-  Text,
-  Heading,
-} from '@chakra-ui/react';
+
 import ReactMarkdown from 'react-markdown';
 import { useTranslation } from 'react-i18next';
 import remarkGfm from 'remark-gfm';
-import ChakraUIRenderer from 'chakra-ui-markdown-renderer';
 import { open } from '@tauri-apps/api/shell';
 import { HiOutlineDocumentText } from 'react-icons/hi';
+import { Button, Modal, Card } from 'react-daisyui';
 import notes from '../../CHANGELOG.md';
 
 const newTheme = {
@@ -23,39 +14,37 @@ const newTheme = {
 
     return (
       <Button
-        variant="link"
-        whiteSpace="initial"
+        variant="outline"
         size="sm"
+        color="success"
         onClick={async () => {
           await open(href);
         }}
       >
-        <Text as="u">{children}</Text>
+        {children}
       </Button>
     );
   },
   h3: (props: any) => {
     const { children } = props;
     return (
-      <Heading as="h6" size="xs">
-        {children}
-      </Heading>
+      <Card.Title tag="h6">{children}</Card.Title>
     );
   },
   h2: (props: any) => {
     const { children } = props;
     return (
-      <Heading as="h5" size="xs">
+      <Card.Title tag="h5">
         {children}
-      </Heading>
+      </Card.Title>
     );
   },
   h1: (props: any) => {
     const { children } = props;
     return (
-      <Heading as="h4" size="xs">
+      <Card.Title tag="h4">
         {children}
-      </Heading>
+      </Card.Title>
     );
   },
 };
@@ -63,8 +52,10 @@ const newTheme = {
 const Changelog = () => {
   const { t } = useTranslation();
   const [mdContent, setMdContent] = useState('');
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const [visible, setVisible] = useState<boolean>(false);
+  const toggleVisible = () => {
+    setVisible(!visible);
+  };
   useEffect(() => {
     fetch(notes)
       .then((response) => response.text())
@@ -73,28 +64,37 @@ const Changelog = () => {
       });
   }, []);
   return (
-    <Box>
-      <Button leftIcon={<HiOutlineDocumentText />} size="xs" onClick={onOpen}>
+    <div className="font-sans">
+      <Button
+        startIcon={<HiOutlineDocumentText />}
+        size="xs"
+        onClick={toggleVisible}
+      >
         {t('appChangelog')}
       </Button>
 
       <Modal
-        isOpen={isOpen}
-        onClose={onClose}
-        size="2xl"
-        motionPreset="slideInBottom"
+        open={visible}
+        onClickBackdrop={toggleVisible}
       >
-        <ModalOverlay backdropBlur="2px" />
-        <ModalContent p={4}>
+        <Button
+          size="sm"
+          shape="circle"
+          className="absolute right-2 top-2"
+          onClick={toggleVisible}
+        >
+          ✕
+        </Button>
+        <Modal.Body>
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
-            components={ChakraUIRenderer(newTheme)}
+            components={newTheme}
           >
             {mdContent}
           </ReactMarkdown>
-        </ModalContent>
+        </Modal.Body>
       </Modal>
-    </Box>
+    </div>
   );
 };
 

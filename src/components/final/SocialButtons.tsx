@@ -1,9 +1,4 @@
 import React from 'react';
-import {
-  Text,
-  Button,
-  Center,
-} from '@chakra-ui/react';
 import { open } from '@tauri-apps/api/shell';
 
 import {
@@ -19,6 +14,8 @@ import {
 } from 'react-icons/si';
 import { BiDonateHeart } from 'react-icons/bi';
 import { useTranslation } from 'react-i18next';
+
+import { Button } from 'react-daisyui';
 // eslint-disable-next-line import/no-named-default
 import { default as SocialDetails } from '../../assets/SocialUrls.json';
 
@@ -26,7 +23,6 @@ interface socialProps {
   url: string;
   icon: any;
   text: string;
-  color: string;
 }
 const icons:any = {
   FiTwitter: <FiTwitter />,
@@ -43,24 +39,18 @@ const icons:any = {
 };
 const SocialIcon = (props: socialProps) => {
   const {
-    url, icon, text, color,
+    url, icon, text,
   } = props;
   const { t } = useTranslation();
   return (
     <Button
-      mt={2}
-      mr={2}
-      size="xs"
-      colorScheme={color}
+      size="sm"
       onClick={async () => {
         await open(url);
       }}
-      leftIcon={icon}
-      shadow="md"
+      startIcon={icon}
     >
-      <Center>
-        <Text>{t(text)}</Text>
-      </Center>
+      {t(text)}
     </Button>
   );
 };
@@ -71,7 +61,6 @@ const SocialButtons = () => (
         url={det.url}
         icon={icons[det.icon]}
         text={det.text}
-        color={det.color}
       />
     ))}
   </>

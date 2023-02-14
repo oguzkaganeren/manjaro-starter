@@ -3,10 +3,10 @@ import { createRoot } from 'react-dom/client';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { StepsTheme } from 'chakra-ui-steps';
 import { RecoilRoot } from 'recoil';
-
 import App from './screens/App';
 import reportWebVitals from './reportWebVitals';
 import RootDetector from './components/common/RootDetector';
+import './index.css';
 
 const container = document.getElementById('root');
 const root = createRoot(container!);
@@ -33,8 +33,8 @@ const theme = extendTheme({
 });
 root.render(
   <ChakraProvider theme={theme}>
-    <RootDetector />
     <RecoilRoot>
+      <RootDetector />
       <App />
     </RecoilRoot>
   </ChakraProvider>,

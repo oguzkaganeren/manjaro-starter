@@ -9,6 +9,7 @@ import {
   Box,
   Center,
 } from '@chakra-ui/react';
+
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
 import { FiPackage, FiHome, FiCheckCircle } from 'react-icons/fi';
 import { GiSettingsKnobs } from 'react-icons/gi';
