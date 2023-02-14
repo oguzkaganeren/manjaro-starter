@@ -157,7 +157,7 @@
         "apply": "Anwenden",
         "confirmDesc": "Bist du sicher, dass du mit der gewählten Aktion fortfahren willst?",
         "confirmation": "Bestätigung",
-        "activeBranchDesc": "Manjaro Softwarepakete werden zuerst im Unstable Zweig freigegeben. Wenn die Pakete as stabil gelten, werden diese im Testing Zweig freigegeben und von einer breiteren Unseranzahl getestet bevor sie nach ausreichenden Tests endgültig im Stable Zweig veröffentlicht werden.",
+        "activeBranchDesc": "Manjaro Softwarepakete werden zuerst im Unstable Zweig freigegeben. Wenn die Pakete als stabil gelten, werden diese im Testing Zweig freigegeben und von einer breiteren Benutzeranzahl getestet bevor sie nach ausreichenden Tests endgültig im Stable Zweig veröffentlicht werden.",
         "chooseFeedbackWay": "Wähle die Art der Kontaktierung.",
         "sendFeedback": "uns dein Feedback zu senden.",
         "starterFeedback": "Sende uns dein Feedback",
