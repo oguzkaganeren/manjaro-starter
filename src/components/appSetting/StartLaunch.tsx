@@ -1,20 +1,13 @@
-import {
-  Switch,
-  HStack,
-  Spacer,
-  FormControl,
-  useColorModeValue,
-} from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { resolveResource, configDir } from '@tauri-apps/api/path';
 import { copyFile, removeFile, exists } from '@tauri-apps/api/fs';
 import { info } from 'tauri-plugin-log-api';
+import { Toggle, Form } from 'react-daisyui';
 
 const StartLaunch = (): JSX.Element => {
   const { t } = useTranslation();
   const [launch, setLaunch] = useState(false);
-  const bColor = useColorModeValue('gray.800', 'gray.500');
   const handleLaunchChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     setLaunch(event.target.checked);
     const configDirPath = await configDir();
@@ -38,25 +31,17 @@ const StartLaunch = (): JSX.Element => {
     getLocalData();
   }, []);
   return (
-    <FormControl
-      px={{ base: 2, md: 4 }}
-      py="5"
-      mt={5}
-      shadow="xl"
-      border="1px solid"
-      borderColor={bColor}
-      rounded="lg"
-    >
-      <HStack>
-        <span>{t('launchStart')}</span>
-        <Spacer />
-        <Switch
-          isChecked={launch}
+    <Form className="bg-base-200 p-4 mt-5 rounded-lg shadow">
+      <Form.Label title={t('launchStart') ?? ''}>
+        <Toggle
+          checked={launch}
+          size="sm"
+          color="success"
           onChange={handleLaunchChange}
           id="launch-start"
         />
-      </HStack>
-    </FormControl>
+      </Form.Label>
+    </Form>
   );
 };
 

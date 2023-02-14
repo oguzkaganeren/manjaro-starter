@@ -4,7 +4,7 @@
         "prev": "Previous",
         "finish": "Finish",
         "manjaroStarter": "Manjaro Starter",
-        "projectGithubPage": "Project Github Page",
+        "projectGithubPage": "Github",
         "gnu": "License",
         "welcomeManjaro": "Welcome to Manjaro!",
         "homeText1": "We, the Manjaro Developers, hope that you will enjoy using Manjaro as much as we enjoy building it. Manjaro Starter will help you to get started with your new operating system. So enjoy the experience, and don't hesitate to",
@@ -160,12 +160,13 @@
         "activeBranchDesc": "Manjaro packages start their lives in the unstable branch. Once they are a deemed stable, they are moved to the testing branch, where more tests will be realized to ensure the package is ready to be submitted to the stable branch.",
         "chooseFeedbackWay": "Choose which way to contact us.",
         "sendFeedback": "send us your feedback.",
-        "starterFeedback": "Send us your feedback",
+        "starterFeedback": "Feedback",
         "running": "Running",
         "experimental": "Experimental",
         "realtime": "Real time",
         "currentBranch": "Current branch",
         "statusOfMirrors": "Status of Mirrors",
-        "belowCommandsRun": "Below commands will be run."
+        "belowCommandsRun": "Below commands will be run.",
+        "theme": "Theme"
     }
 }

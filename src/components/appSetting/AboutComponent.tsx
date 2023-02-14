@@ -15,7 +15,7 @@ import SendFeedback from './SendFeedback';
 const AboutComponent = (): JSX.Element => {
   const { t } = useTranslation();
   return (
-    <Stats className="bg-base-200 shadow mt-5 font-sans">
+    <Stats className="w-full bg-base-200 shadow mt-5 font-sans">
       <Stats.Stat>
         <Stats.Stat.Item variant="title">{t('manjaroStarter')}</Stats.Stat.Item>
         <Stats.Stat.Item variant="value">{packageJson.version}</Stats.Stat.Item>
@@ -33,6 +33,7 @@ const AboutComponent = (): JSX.Element => {
             await open('https://github.com/oguzkaganeren/manjaro-starter');
           }}
           startIcon={<SiGit />}
+          className="mt-2"
         >
           {t('projectGithubPage')}
         </Button>
@@ -44,6 +45,7 @@ const AboutComponent = (): JSX.Element => {
             );
           }}
           startIcon={<SiMonkeytie />}
+          className="mt-2"
         >
           {t('gnu')}
         </Button>

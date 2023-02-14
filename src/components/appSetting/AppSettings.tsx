@@ -1,42 +1,43 @@
-import {
-  Modal, useDisclosure, ModalBody, ModalCloseButton,
-  ModalContent, ModalHeader, ModalOverlay, IconButton,
-} from '@chakra-ui/react';
-import { useRef, FC } from 'react';
+import { FC, useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useTranslation } from 'react-i18next';
+import { Button, Modal } from 'react-daisyui';
+import { MdClose } from 'react-icons/md';
 import AboutComponent from './AboutComponent';
 import LanguageComponent from './LanguageComponent';
 import StartLaunch from './StartLaunch';
+import ThemeSelectComponent from './ThemeSelectComponent';
 
 const AppSettings: FC = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const { t } = useTranslation();
-  const initialRef = useRef(null);
-  const finalRef = useRef(null);
+  const [visible, setVisible] = useState<boolean>(false);
+  const toggleVisible = () => {
+    setVisible(!visible);
+  };
   return (
     <>
-      <IconButton size="sm" aria-label="Menu" icon={<GiHamburgerMenu />} onClick={onOpen} />
-      <Modal
-        initialFocusRef={initialRef}
-        finalFocusRef={finalRef}
-        isOpen={isOpen}
-        size="md"
-        onClose={onClose}
-      >
-        <ModalOverlay
-          bg="blackAlpha.300"
-          backdropFilter="blur(10px) hue-rotate(90deg)"
+      <Button
+        size="sm"
+        shape="square"
+        onClick={toggleVisible}
+        startIcon={<GiHamburgerMenu />}
+        className="z-[998]"
+      />
+      <Modal open={visible} onClickBackdrop={toggleVisible}>
+        <Button
+          size="sm"
+          shape="square"
+          className="absolute right-2 top-2"
+          onClick={toggleVisible}
+          startIcon={<MdClose />}
         />
-        <ModalContent>
-          <ModalHeader>{t('appSettings')}</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody pb={6}>
-            <LanguageComponent />
-            <StartLaunch />
-            <AboutComponent />
-          </ModalBody>
-        </ModalContent>
+        <Modal.Header>{t('appSettings')}</Modal.Header>
+        <Modal.Body>
+          <ThemeSelectComponent />
+          <LanguageComponent />
+          <StartLaunch />
+          <AboutComponent />
+        </Modal.Body>
       </Modal>
     </>
   );

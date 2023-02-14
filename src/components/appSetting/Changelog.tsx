@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm';
 import { open } from '@tauri-apps/api/shell';
 import { HiOutlineDocumentText } from 'react-icons/hi';
 import { Button, Modal, Card } from 'react-daisyui';
+import { MdClose } from 'react-icons/md';
 import notes from '../../CHANGELOG.md';
 
 const newTheme = {
@@ -68,28 +69,22 @@ const Changelog = () => {
       <Button
         startIcon={<HiOutlineDocumentText />}
         size="xs"
+        fullWidth
         onClick={toggleVisible}
       >
         {t('appChangelog')}
       </Button>
 
-      <Modal
-        open={visible}
-        onClickBackdrop={toggleVisible}
-      >
+      <Modal open={visible} onClickBackdrop={toggleVisible}>
         <Button
           size="sm"
-          shape="circle"
+          shape="square"
           className="absolute right-2 top-2"
           onClick={toggleVisible}
-        >
-          ✕
-        </Button>
+          startIcon={<MdClose />}
+        />
         <Modal.Body>
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            components={newTheme}
-          >
+          <ReactMarkdown remarkPlugins={[remarkGfm]} components={newTheme}>
             {mdContent}
           </ReactMarkdown>
         </Modal.Body>
