@@ -60,6 +60,7 @@ const InstallButton = (props: kernelSubProps) => {
               commands.getPamac.program,
               'install',
               '--no-confirm',
+              '--no-update',
               name,
             ] as Array<string>
         )

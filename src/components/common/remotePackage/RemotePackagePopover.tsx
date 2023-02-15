@@ -1,3 +1,4 @@
+import { HamburgerIcon } from '@chakra-ui/icons';
 import {
   Popover,
   PopoverTrigger,
@@ -5,7 +6,8 @@ import {
   PopoverBody,
   PopoverArrow,
   PopoverCloseButton,
-  Button,
+  IconButton,
+  Portal,
 } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -17,19 +19,21 @@ type Props = {
 const RemotePackagePopover = ({ name }: Props) => {
   const { t } = useTranslation();
   return (
-    <Popover>
+    <Popover size="xs" isLazy>
       <PopoverTrigger>
-        <Button>{t('remoteVersion')}</Button>
+        <IconButton aria-label={t('remoteVersion')} icon={<HamburgerIcon />} />
       </PopoverTrigger>
-      <PopoverContent color="white" bg="blue.800" borderColor="blue.800">
-        <PopoverArrow />
-        <PopoverCloseButton />
-        <PopoverBody>
-          <RemotePackageVersion branch="unstable" name={name} />
-          <RemotePackageVersion branch="testing" name={name} />
-          <RemotePackageVersion branch="stable" name={name} />
-        </PopoverBody>
-      </PopoverContent>
+      <Portal>
+        <PopoverContent color="white" bg="blue.800" borderColor="blue.800">
+          <PopoverArrow />
+          <PopoverCloseButton />
+          <PopoverBody>
+            <RemotePackageVersion branch="unstable" name={name} />
+            <RemotePackageVersion branch="testing" name={name} />
+            <RemotePackageVersion branch="stable" name={name} />
+          </PopoverBody>
+        </PopoverContent>
+      </Portal>
     </Popover>
   );
 };

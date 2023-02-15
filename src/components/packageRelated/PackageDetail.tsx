@@ -85,11 +85,11 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
               <Text fontSize="xs">{installedVersion}</Text>
             </Box>
           </Flex>
+          <RemotePackagePopover name={pkg} />
         </Flex>
       </CardHeader>
       <CardBody>
         <Text fontSize="sm">{children}</Text>
-        <RemotePackagePopover name={pkg} />
       </CardBody>
 
       <CardFooter

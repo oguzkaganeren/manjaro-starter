@@ -9,47 +9,28 @@ type Props = {
     name:string,
     branch:string
 }
-
+const VerComp = (tooldesc: string, label: string, version: string) => (
+  <Tooltip label={tooldesc}>
+    <Tag mt={2} colorScheme="cyan">
+      {label}
+      {' '}
+      :
+      {' '}
+      {version}
+    </Tag>
+  </Tooltip>
+);
 const RemotePackageVersion = ({ name, branch }: Props) => {
   const { version } = useRemoteHook(name, branch);
   const { t } = useTranslation();
+
   switch (branch) {
     case 'unstable':
-      return (
-        <Tooltip label={t('unstableDesc')}>
-          <Tag colorScheme="red">
-            {t('unstableVersion')}
-            {' '}
-            :
-            {' '}
-            {version}
-          </Tag>
-        </Tooltip>
-      );
+      return VerComp(t('unstableDesc'), t('unstableVersion'), version);
     case 'testing':
-      return (
-        <Tooltip label={t('testingDesc')}>
-          <Tag colorScheme="orange">
-            {t('testingVersion')}
-            {' '}
-            :
-            {' '}
-            {version}
-          </Tag>
-        </Tooltip>
-      );
+      return VerComp(t('testingDesc'), t('testingVersion'), version);
     case 'stable':
-      return (
-        <Tooltip label={t('stableDesc')}>
-          <Tag colorScheme="green">
-            {t('stableVersion')}
-            {' '}
-            :
-            {' '}
-            {version}
-          </Tag>
-        </Tooltip>
-      );
+      return VerComp(t('stableDesc'), t('stableVersion'), version);
     default:
       return <Box />;
   }
