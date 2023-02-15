@@ -12,13 +12,14 @@ import {
   PopoverFooter,
 } from '@chakra-ui/react';
 import { open } from '@tauri-apps/api/shell';
+import { MdFeedback } from 'react-icons/md';
 
 const SendFeedback = () => {
   const { t } = useTranslation();
   return (
     <Popover>
       <PopoverTrigger>
-        <Button size="xs">{t('starterFeedback')}</Button>
+        <Button leftIcon={<MdFeedback />} size="xs">{t('starterFeedback')}</Button>
       </PopoverTrigger>
       <PopoverContent color="white" bg="blue.800" borderColor="blue.800">
         <PopoverArrow />
