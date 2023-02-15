@@ -1,3 +1,12 @@
+## [0.27.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.27.0...v0.27.1) (2023-02-15)
+
+
+### Bug Fixes
+
+* 🐛 changed app about component ([122d548](https://github.com/oguzkaganeren/manjaro-starter/commit/122d548a87c93e68f0cf1aeffbcdaab79e2e2e6a))
+
+
+
 # [0.27.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.26.4...v0.27.0) (2023-02-13)
 
 
@@ -32,15 +41,6 @@
 ### Bug Fixes
 
 * 🐛 added no upgrade parameter for kernel installation ([374d3f7](https://github.com/oguzkaganeren/manjaro-starter/commit/374d3f7703c0a0f599d9350bca57d40fde1128d8))
-
-
-
-## [0.26.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.26.0...v0.26.1) (2023-02-06)
-
-
-### Bug Fixes
-
-* 🐛 ci release fail problem fixed ([35642eb](https://github.com/oguzkaganeren/manjaro-starter/commit/35642ebd25941c053ac292a69a1be1f2429fd43e))
 
 
 
