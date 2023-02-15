@@ -39,12 +39,14 @@ const StartLaunch = (): JSX.Element => {
   }, []);
   return (
     <FormControl
-      px={{ base: 2, md: 4 }}
-      py="5"
-      mt={5}
-      shadow="xl"
-      border="1px solid"
-      borderColor={bColor}
+      py={4}
+      px={8}
+      mt={4}
+      bg="white"
+      _dark={{
+        bg: 'gray.800',
+      }}
+      shadow="lg"
       rounded="lg"
     >
       <HStack>

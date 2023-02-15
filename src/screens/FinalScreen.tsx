@@ -6,15 +6,14 @@ import { CheckCircleIcon } from '@chakra-ui/icons';
 
 import { GiReturnArrow } from 'react-icons/gi';
 import { useTranslation } from 'react-i18next';
+import { useRecoilValue } from 'recoil';
 import SearchComponent from '../components/common/search/SearchComponent';
 import SocialButtons from '../components/final/SocialButtons';
+import stepState from '../stores/StepStore';
 
-interface FinalProps {
-    onReset: () => void;
-}
-const FinalScreen: React.FC<FinalProps> = (props) => {
+const FinalScreen: React.FC = () => {
   const { t } = useTranslation();
-  const { onReset } = props;
+  const { reset } = useRecoilValue(stepState);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -38,7 +37,7 @@ const FinalScreen: React.FC<FinalProps> = (props) => {
           bottom={5}
           aria-label={t('returnFirstStep')}
           left={5}
-          onClick={() => onReset()}
+          onClick={() => reset()}
           icon={<GiReturnArrow />}
         />
       </Tooltip>

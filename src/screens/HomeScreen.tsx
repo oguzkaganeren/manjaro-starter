@@ -15,13 +15,17 @@ import {
 import { useTranslation } from 'react-i18next';
 import '@fontsource/caveat';
 import { open } from '@tauri-apps/api/shell';
+import { useRecoilValue } from 'recoil';
 import ManjaroVersion from '../components/home/ManjaroVersion';
 import LearnMoreComponent from '../components/home/LearnMoreComponent';
 import ReleaseNotes from '../components/home/ReleaseNotes';
 import LiveInstaller from '../components/home/LiveInstaller';
+import stepState from '../stores/StepStore';
 
-const HomeScreen: React.FC<{ nextStep: () => void }> = ({ nextStep }) => {
+const HomeScreen: React.FC = () => {
   const { t } = useTranslation();
+
+  const { nextStep } = useRecoilValue(stepState);
   const Arrow = createIcon({
     displayName: 'Arrow',
     viewBox: '0 0 72 24',
