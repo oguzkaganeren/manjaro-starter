@@ -160,11 +160,12 @@
         "activeBranchDesc": "Les paquets Manjaro commencent leur vie dans la branche instable. Une fois qu'ils sont réputés stables, ils sont déplacés vers la branche de test, où d'autres tests seront réalisés pour s'assurer que le paquet est prêt à être soumis à la branche stable.",
         "chooseFeedbackWay": "Choisissez le moyen de nous contacter.",
         "sendFeedback": "faites-nous part de vos commentaires.",
-        "starterFeedback": "Faites-nous part de vos commentaires",
+        "starterFeedback": "Envoyer des commentaires",
         "running": "Utilisé",
         "experimental": "Expérimental",
         "realtime": "Temps réel",
         "currentBranch": "Branche actuelle",
-        "statusOfMirrors": "Statut des miroirs"
+        "statusOfMirrors": "Statut des miroirs",
+        "belowCommandsRun": "Les commandes ci-dessous seront exécutées."
     }
 }
