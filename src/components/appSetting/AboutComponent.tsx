@@ -8,6 +8,7 @@ import {
   chakra,
   VStack,
   HStack,
+  Divider,
 } from '@chakra-ui/react';
 import {
   SiGit, SiMonkeytie,
@@ -68,12 +69,8 @@ const AboutDetailsInfo = () => {
           color: 'white',
         }}
         fontSize={{
-          base: '2xl',
+          base: '1xl',
           md: '3xl',
-        }}
-        mt={{
-          base: 2,
-          md: 0,
         }}
         fontWeight="bold"
       >
@@ -92,7 +89,6 @@ const AboutDetailsInfo = () => {
           base: 2,
           md: 0,
         }}
-        fontWeight="bold"
       >
         {packageJson.version}
       </chakra.h3>
@@ -100,48 +96,48 @@ const AboutDetailsInfo = () => {
   );
 };
 
-const AboutComponent = (): JSX.Element => {
-  const { t } = useTranslation();
-  return (
-    <Box
-      mx="auto"
-      py={4}
-      px={8}
-      mt={16}
-      bg="white"
-      _dark={{
-        bg: 'gray.800',
+const AboutComponent = (): JSX.Element => (
+  <Box
+    mx="auto"
+    py={4}
+    px={8}
+    mt={16}
+    bg="white"
+    _dark={{
+      bg: 'gray.800',
+    }}
+    shadow="lg"
+    rounded="lg"
+  >
+    <Flex
+      justifyContent={{
+        base: 'center',
+        md: 'end',
       }}
-      shadow="lg"
-      rounded="lg"
+      mt={-16}
     >
-      <Flex
-        justifyContent={{
-          base: 'center',
-          md: 'end',
+      <Image
+        w={20}
+        h={20}
+        fit="cover"
+        rounded="full"
+        borderStyle="solid"
+        borderWidth={2}
+        color="brand.500"
+        _dark={{
+          color: 'brand.400',
         }}
-        mt={-16}
-      >
-        <Image
-          w={20}
-          h={20}
-          fit="cover"
-          rounded="full"
-          borderStyle="solid"
-          borderWidth={2}
-          color="brand.500"
-          _dark={{
-            color: 'brand.400',
-          }}
-          src={logo}
-        />
-      </Flex>
-      <HStack>
-        <AboutDetailsInfo />
-        <AboutDetailsButtons />
-      </HStack>
-    </Box>
-  );
-};
+        src={logo}
+      />
+    </Flex>
+    <HStack>
+      <AboutDetailsInfo />
+      <Center height="180px">
+        <Divider orientation="vertical" />
+      </Center>
+      <AboutDetailsButtons />
+    </HStack>
+  </Box>
+);
 
 export default AboutComponent;

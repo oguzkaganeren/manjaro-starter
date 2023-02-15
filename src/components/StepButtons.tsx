@@ -1,22 +1,15 @@
 import { Button, Flex } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
+import { useRecoilValue } from 'recoil';
+import stepState from '../stores/StepStore';
 
-type StepButtonsProps = {
-  nextStep: () => void;
-  prevStep: () => void;
-  prevDisabled: boolean;
-  nextDisabled: boolean;
-  isLast: boolean;
-};
-
-const StepButtons = ({
-  nextStep,
-  prevStep,
-  prevDisabled,
-  nextDisabled,
-  isLast,
-}: StepButtonsProps): JSX.Element => {
+const StepButtons = (): JSX.Element => {
   const { t } = useTranslation();
+  const {
+    activeStep, nextStep, prevStep, stepCount,
+  } = useRecoilValue(stepState);
+  const prevDisabled = activeStep === 0;
+  const isLast = activeStep === stepCount - 1;
   const nextButtonText = () => {
     if (prevDisabled) {
       return t('start');
@@ -38,7 +31,7 @@ const StepButtons = ({
         {t('prev')}
       </Button>
 
-      <Button isDisabled={nextDisabled} colorScheme={prevDisabled ? 'green' : 'gray'} size="sm" onClick={nextStep}>
+      <Button isDisabled={false} colorScheme={prevDisabled ? 'green' : 'gray'} size="sm" onClick={nextStep}>
         { nextButtonText()}
       </Button>
     </Flex>

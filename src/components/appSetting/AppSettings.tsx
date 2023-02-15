@@ -16,7 +16,12 @@ const AppSettings: FC = () => {
   const finalRef = useRef(null);
   return (
     <>
-      <IconButton size="sm" aria-label="Menu" icon={<GiHamburgerMenu />} onClick={onOpen} />
+      <IconButton
+        size="sm"
+        aria-label="Menu"
+        icon={<GiHamburgerMenu />}
+        onClick={onOpen}
+      />
       <Modal
         initialFocusRef={initialRef}
         finalFocusRef={finalRef}
@@ -28,7 +33,7 @@ const AppSettings: FC = () => {
           bg="blackAlpha.300"
           backdropFilter="blur(10px) hue-rotate(90deg)"
         />
-        <ModalContent>
+        <ModalContent bg="#edf3f8" _dark={{ bg: '#2D3748' }}>
           <ModalHeader>{t('appSettings')}</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>

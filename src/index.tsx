@@ -3,8 +3,8 @@ import { createRoot } from 'react-dom/client';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { StepsTheme } from 'chakra-ui-steps';
 import { RecoilRoot } from 'recoil';
-
-import App from './screens/App';
+import Nav from './components/NavbarComponent';
+import App from './initial/App';
 import reportWebVitals from './reportWebVitals';
 import RootDetector from './components/common/RootDetector';
 
@@ -21,7 +21,6 @@ function disableContextMenuOnRelease() {
     return false;
   }, { capture: true });
 }
-
 const theme = extendTheme({
   config: {
     initialColorMode: 'system',
@@ -35,6 +34,7 @@ root.render(
   <ChakraProvider theme={theme}>
     <RootDetector />
     <RecoilRoot>
+      <Nav />
       <App />
     </RecoilRoot>
   </ChakraProvider>,
