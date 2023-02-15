@@ -160,7 +160,7 @@
         "activeBranchDesc": "Manjaro packages start their lives in the unstable branch. Once they are a deemed stable, they are moved to the testing branch, where more tests will be realized to ensure the package is ready to be submitted to the stable branch.",
         "chooseFeedbackWay": "Choose which way to contact us.",
         "sendFeedback": "send us your feedback.",
-        "starterFeedback": "Send us your feedback",
+        "starterFeedback": "Send Feedback",
         "running": "Running",
         "experimental": "Experimental",
         "realtime": "Real time",
