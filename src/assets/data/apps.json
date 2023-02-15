@@ -114,13 +114,6 @@
                 "extra": []
             },
             {
-                "name": "Sylpheed",
-                "icon": "sylpheed",
-                "description": "E-mail client",
-                "pkg": "sylpheed",
-                "extra": []
-            },
-            {
                 "name": "Thunderbird",
                 "icon": "thunderbird",
                 "description": "Send and receive mail, contacts and schedule",
@@ -381,13 +374,6 @@
                 "extra": []
             },
             {
-                "name": "Tux Paint",
-                "icon": "tuxpaint",
-                "description": "Drawing program for children",
-                "pkg": "tuxpaint",
-                "extra": []
-            },
-            {
                 "name": "Flameshot",
                 "icon": "flameshot",
                 "description": "Powerful and simple to use screenshot software with built-in editor with advanced features.",
@@ -489,13 +475,6 @@
                 "description": "VLC media player, the openxource multimedia player",
                 "pkg": "vlc",
                 "extra": []
-            },
-            {
-                "name": "Xplayer",
-                "icon": "xplayer",
-                "description": "Xplayer is based on Totem and plays both music an video",
-                "pkg": "xplayer",
-                "extra": []
             }
         ]
     },
@@ -516,13 +495,6 @@
                 "description": "Play music files and internet radio",
                 "pkg": "clementine",
                 "extra": []
-            },
-            {
-                "name": "DeadBeeF",
-                "icon": "deadbeef",
-                "description": "Listen to music",
-                "pkg": "deadbeef",
-                "extra": ["ffmpeg", "libmad", "mpg123"]
             },
             {
                 "name": "Lollypop",
@@ -699,7 +671,7 @@
                 "name": "Syncthing",
                 "icon": "syncthing-gtk",
                 "description": "Cross Platform file synchronization tool",
-                "pkg": "syncthing-gtk",
+                "pkg": "syncthing",
                 "extra": []
             }
         ]
@@ -807,13 +779,6 @@
                 "icon": "gparted",
                 "description": "Create, reorganize, and delete partitions",
                 "pkg": "gparted",
-                "extra": []
-            },
-            {
-                "name": "IsoUSB",
-                "icon": "mintstick",
-                "description": "A graphical tool to copy a hybrid ISO onto a USB key.",
-                "pkg": "isousb",
                 "extra": []
             },
             {

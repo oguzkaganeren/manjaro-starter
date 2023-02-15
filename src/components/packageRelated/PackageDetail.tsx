@@ -16,6 +16,7 @@ import DOMPurify from 'dompurify';
 import { AtSignIcon } from '@chakra-ui/icons';
 import PackageStatus from './PackageStatus';
 import commands from '../../assets/Commands';
+import RemotePackagePopover from '../common/remotePackage/RemotePackagePopover';
 
   interface PackageDetailProps {
     icon:string;
@@ -47,16 +48,16 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
       <CardHeader>
         <Flex>
           <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-            {avatarSrc
-              && avatarSrc
-                !== 'Unable to read file' ? (
-                  <div
-                    // eslint-disable-next-line react/no-danger
-                    dangerouslySetInnerHTML={{
-                      __html: DOMPurify.sanitize(avatarSrc),
-                    }}
-                  />
-              ) : <AtSignIcon />}
+            {avatarSrc && avatarSrc !== 'Unable to read file' ? (
+              <div
+                // eslint-disable-next-line react/no-danger
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(avatarSrc),
+                }}
+              />
+            ) : (
+              <AtSignIcon />
+            )}
 
             <Box>
               <Heading size="sm">
@@ -88,6 +89,7 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
       </CardHeader>
       <CardBody>
         <Text fontSize="sm">{children}</Text>
+        <RemotePackagePopover name={pkg} />
       </CardBody>
 
       <CardFooter
