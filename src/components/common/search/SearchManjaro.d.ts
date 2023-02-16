@@ -12,3 +12,12 @@ export interface SearchManjaro {
     contentType?: string;
     'search-results'?: SearchResult[];
 }
+
+export interface SearchInterface {
+    description?: string;
+    isDoc?: boolean;
+    pkg?: string;
+    title?: string;
+    type?: string;
+    url?: string;
+}

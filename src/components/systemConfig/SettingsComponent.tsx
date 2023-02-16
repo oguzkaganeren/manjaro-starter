@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  SimpleGrid, Stat, Button, useColorModeValue,
+  SimpleGrid, Button, Card,
 } from '@chakra-ui/react';
 import { Command } from '@tauri-apps/api/shell';
 import { useTranslation } from 'react-i18next';
@@ -14,26 +14,21 @@ const SettingsComponent = () => {
   const isVisibleMCP = usePackageStatus('mcp-qt');
   const isVisibleGnomeLayout = usePackageStatus('gnome-layout-switcher');
   const { t } = useTranslation();
-  const borderColor = useColorModeValue('gray.800', 'gray.500');
   const MCPModule = (
-    <Stat
-      px={{ base: 2, md: 4 }}
-      py="5"
-      shadow="xl"
+    <Card
       size="sm"
-      border="1px solid"
-      borderColor={borderColor}
-      rounded="lg"
     >
       <Button
         width="100%"
+        height="20"
+        variant="ghost"
         onClick={async () => {
           new Command(commands.getMCP.program).execute();
         }}
       >
         {t('moreSettings')}
       </Button>
-    </Stat>
+    </Card>
   );
   return (
     <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 5, lg: 8 }}>

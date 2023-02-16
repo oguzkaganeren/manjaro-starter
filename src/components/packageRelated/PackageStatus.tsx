@@ -1,6 +1,5 @@
 import {
   useToast,
-  Tooltip,
   Button,
   ButtonGroup,
   IconButton,
@@ -18,6 +17,7 @@ import {
 import { connectionState } from '../../stores/ConnectionStore';
 import commandState from '../../stores/CommandStore';
 import commands from '../../assets/Commands';
+import ConfirmPopComponent from '../common/ConfirmPopComponent';
 
 interface PackageStatusProps {
     isInstalled:boolean,
@@ -142,7 +142,24 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
         </Button>
       ) : (
         <ButtonGroup size="sm" isAttached variant="ghost">
-          <Tooltip label={t('install')}>
+          <ConfirmPopComponent
+            confirmationDesc="confirmDesc"
+            handleClick={() => installPackageWithName(catId, pkId, pkgName)}
+            isButtonDisabled={isLoadingPackage?.get(pkId) || !isOnline}
+            commands={[
+              (
+                [
+                  commands.getPamac.program,
+                  'install',
+                  '--no-confirm',
+                  '--no-update',
+                  pkgName,
+                ] as Array<string>
+              )
+                .map((text) => `${text}`)
+                .join(' '),
+            ]}
+          >
             <Button
               aria-label="install"
               flex="1"
@@ -151,12 +168,11 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
               variant="ghost"
               leftIcon={<RiInstallLine />}
               isLoading={isLoadingPackage?.get(pkId) || false}
-              onClick={() => installPackageWithName(catId, pkId, pkgName)}
               colorScheme="green"
             >
               {t('install')}
             </Button>
-          </Tooltip>
+          </ConfirmPopComponent>
           {isLoadingPackage?.get(pkId) && (
             <IconButton
               aria-label="Cancel"

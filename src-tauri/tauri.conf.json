@@ -50,7 +50,10 @@
         "allowlist": {
             "all": true,
             "http": {
-                "scope": ["https://manjaro.org/search/*"]
+                "scope": [
+                    "https://manjaro.org/search/*",
+                    "https://search.manjaro-sway.download/*"
+                ]
             },
             "shell": {
                 "all": true,

@@ -3,10 +3,9 @@ import {
   Box,
   Flex,
   useColorModeValue,
-  Stat,
-  StatLabel,
-  StatNumber,
   Spinner,
+  Card,
+  Text,
 } from '@chakra-ui/react';
 import { Command } from '@tauri-apps/api/shell';
 import { error } from 'tauri-plugin-log-api';
@@ -44,26 +43,22 @@ const GpuInfoComponent = () => {
 
   if (isProcessing) return <Spinner />;
   return (
-    <Stat
+    <Card
       px={{ base: 2, md: 4 }}
       py="3"
       mt={4}
-      shadow="xl"
       size="sm"
-      border="1px solid"
-      borderColor={useColorModeValue('gray.800', 'gray.500')}
-      rounded="lg"
     >
       <Flex justifyContent="space-between">
         <Box pl={{ base: 2, md: 4 }}>
-          <StatLabel fontWeight="bold">{t('gpu')}</StatLabel>
-          <StatNumber
+          <Text fontWeight="bold">{t('gpu')}</Text>
+          <Text
             style={{ whiteSpace: 'pre-line' }}
             fontSize="1xl"
             fontWeight="small"
           >
             {vgaInfo}
-          </StatNumber>
+          </Text>
         </Box>
         <Box
           my="auto"
@@ -73,7 +68,7 @@ const GpuInfoComponent = () => {
           <TbHeartRateMonitor size="2em" />
         </Box>
       </Flex>
-    </Stat>
+    </Card>
   );
 };
 export default GpuInfoComponent;

@@ -1,4 +1,6 @@
-import { Button, Stat, useColorModeValue } from '@chakra-ui/react';
+import {
+  Button, Card,
+} from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
@@ -7,7 +9,6 @@ import commands from '../../assets/Commands';
 const ManjaroSettingsModule: React.FC = () => {
   const { t } = useTranslation();
   const modules = ['mhwd', 'timedate', 'language_packages'];
-  const borderColor = useColorModeValue('gray.800', 'gray.500');
   const languageText = ['installDrivers', 'setDateTime', 'languagePackages'];
   const openManjaroSettingsManager = async (moduleName:string) => {
     const cmd = new Command(commands.getMSM.program, ['-m', `msm_${moduleName}`]);
@@ -17,44 +18,32 @@ const ManjaroSettingsModule: React.FC = () => {
   return (
     <>
       {modules.map((module, index) => (
-        <Stat
-          px={{ base: 2, md: 4 }}
-          py="5"
-          shadow="xl"
-          size="sm"
-          border="1px solid"
-          borderColor={borderColor}
-          rounded="lg"
-        >
+        <Card size="sm">
           <Button
             width="100%"
+            height="20"
+            variant="ghost"
             onClick={() => {
               openManjaroSettingsManager(module);
             }}
           >
             {t(languageText[index])}
           </Button>
-        </Stat>
+        </Card>
       ))}
 
-      <Stat
-        px={{ base: 2, md: 4 }}
-        py="5"
-        shadow="xl"
-        size="sm"
-        border="1px solid"
-        borderColor={borderColor}
-        rounded="lg"
-      >
+      <Card size="sm">
         <Button
           width="100%"
+          height="20"
+          variant="ghost"
           onClick={async () => {
             new Command(commands.getMSM.program).execute();
           }}
         >
           {t('moreSettings')}
         </Button>
-      </Stat>
+      </Card>
     </>
   );
 };

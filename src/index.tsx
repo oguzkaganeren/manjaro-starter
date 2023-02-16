@@ -1,12 +1,12 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
-import { StepsTheme } from 'chakra-ui-steps';
+import { ChakraProvider } from '@chakra-ui/react';
 import { RecoilRoot } from 'recoil';
 import Nav from './components/NavbarComponent';
 import App from './initial/App';
 import reportWebVitals from './reportWebVitals';
 import RootDetector from './components/common/RootDetector';
+import theme from './theme/theme';
 
 const container = document.getElementById('root');
 const root = createRoot(container!);
@@ -21,15 +21,7 @@ function disableContextMenuOnRelease() {
     return false;
   }, { capture: true });
 }
-const theme = extendTheme({
-  config: {
-    initialColorMode: 'system',
-    useSystemColorMode: true,
-  },
-  components: {
-    Steps: StepsTheme,
-  },
-});
+
 root.render(
   <ChakraProvider theme={theme}>
     <RootDetector />
