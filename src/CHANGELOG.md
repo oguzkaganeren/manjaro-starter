@@ -1,3 +1,17 @@
+# [0.28.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.27.1...v0.28.0) (2023-02-16)
+
+
+### Bug Fixes
+
+* 🐛 Some ui changes ([41c4553](https://github.com/oguzkaganeren/manjaro-starter/commit/41c4553062d5002d88aedb245496d0d8c93e70ad))
+
+
+### Features
+
+* 🎸 added package branch version ([2b8cdfa](https://github.com/oguzkaganeren/manjaro-starter/commit/2b8cdfa0c69a2ff4fb1847cfedf900928217b8cb)), closes [#389](https://github.com/oguzkaganeren/manjaro-starter/issues/389)
+
+
+
 ## [0.27.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.27.0...v0.27.1) (2023-02-15)
 
 
@@ -32,15 +46,6 @@
 
 * 🐛 added desc for current branch badge ([6f6ccc5](https://github.com/oguzkaganeren/manjaro-starter/commit/6f6ccc5e2bd07a151348d09de15d546c302cc53e)), closes [#382](https://github.com/oguzkaganeren/manjaro-starter/issues/382)
 * 🐛 install kernel tooltip fixes ([119dcc0](https://github.com/oguzkaganeren/manjaro-starter/commit/119dcc0cffdddc0e3c92aacb11942f04c778ea20)), closes [#383](https://github.com/oguzkaganeren/manjaro-starter/issues/383)
-
-
-
-## [0.26.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.26.1...v0.26.2) (2023-02-07)
-
-
-### Bug Fixes
-
-* 🐛 added no upgrade parameter for kernel installation ([374d3f7](https://github.com/oguzkaganeren/manjaro-starter/commit/374d3f7703c0a0f599d9350bca57d40fde1128d8))
 
 
 
