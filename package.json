@@ -39,7 +39,7 @@
     "recoil": "^0.7.6",
     "remark-gfm": "^3.0.1",
     "store": "^2.0.12",
-    "tauri-plugin-log-api": "github:oguzkaganeren/tauri-plugin-log#dev",
+    "tauri-plugin-log-api": "https://github.com/tauri-apps/tauri-plugin-log",
     "typescript": "^4.9.5",
     "use-debounce": "^9.0.3",
     "web-vitals": "^3.1.1"

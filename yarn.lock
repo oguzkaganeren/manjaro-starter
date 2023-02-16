@@ -10473,6 +10473,12 @@ tapable@^2.0.0, tapable@^2.1.1, tapable@^2.2.0:
   dependencies:
     "@tauri-apps/api" "^1.2.0"
 
+"tauri-plugin-log-api@https://github.com/tauri-apps/tauri-plugin-log":
+  version "0.0.0"
+  resolved "https://github.com/tauri-apps/tauri-plugin-log#921afb3366b14ac43e3d8041a7def4b85d4d7192"
+  dependencies:
+    "@tauri-apps/api" "^1.2.0"
+
 temp-dir@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/temp-dir/-/temp-dir-2.0.0.tgz"
