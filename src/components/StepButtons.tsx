@@ -23,7 +23,6 @@ const StepButtons = (): JSX.Element => {
     <Flex width="100%" justify="flex-end">
       <Button
         mr={4}
-        variant="ghost"
         size="sm"
         onClick={prevStep}
         hidden={prevDisabled}

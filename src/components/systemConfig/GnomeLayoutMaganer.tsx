@@ -15,7 +15,7 @@ import {
   VStack,
   IconButton,
   Tooltip,
-  Stat,
+  Card,
 } from '@chakra-ui/react';
 import { configDir } from '@tauri-apps/api/path';
 import { exists, readTextFile } from '@tauri-apps/api/fs';
@@ -49,19 +49,13 @@ const GnomeLayoutManager: FC = () => {
   }, []);
   return (
     <>
-      <Stat
-        px={{ base: 2, md: 4 }}
-        py="5"
-        shadow="xl"
+      <Card
         size="sm"
-        border="1px solid"
-        borderColor={useColorModeValue('gray.800', 'gray.500')}
-        rounded="lg"
       >
-        <Button width="100%" onClick={onOpen}>
+        <Button width="100%" height="20" variant="ghost" onClick={onOpen}>
           {t('gnomeLayoutSwitcher')}
         </Button>
-      </Stat>
+      </Card>
 
       <Modal
         initialFocusRef={initialRef}
