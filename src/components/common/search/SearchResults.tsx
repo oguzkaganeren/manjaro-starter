@@ -8,14 +8,17 @@ import { Command, open } from '@tauri-apps/api/shell';
 import { FaDiscourse, FaWikipediaW } from 'react-icons/fa';
 import { SiPagekit } from 'react-icons/si';
 import { FcDocument } from 'react-icons/fc';
-import { SearchManjaro, SearchResult } from './SearchManjaro';
+import { useRecoilValue } from 'recoil';
+import { SearchInterface, SearchManjaro } from './SearchManjaro';
 import handleSearch from './HandleSearch';
 import commands from '../../../assets/Commands';
+import { connectionState } from '../../../stores/ConnectionStore';
 
-const Res = (props: SearchResult) => {
+const Res = (props: SearchInterface) => {
   const {
-    description, is_doc, title, type, url,
+    description, isDoc, title, type, url, pkg,
   } = props;
+  const isOnline = useRecoilValue(connectionState);
   const getIcon = () => {
     switch (type) {
       case 'package':
@@ -36,7 +39,9 @@ const Res = (props: SearchResult) => {
       <Link
         onClick={async () => {
           if (type === 'package') {
-            const cmd = new Command(commands.getPamacManager.program, [`--details=${props.package}`]);
+            const cmd = new Command(commands.getPamacManager.program, [
+              `--details=${pkg}`,
+            ]);
             cmd.execute();
           } else if (url) {
             await open(url);
@@ -63,7 +68,7 @@ const Res = (props: SearchResult) => {
             <Box textTransform="capitalize">{description}</Box>
           </Stack>
           <Spacer />
-          {is_doc && (
+          {isDoc && (
             <Icon boxSize={5} my="auto">
               <FcDocument size="xs" />
             </Icon>
@@ -98,8 +103,8 @@ const SearchResults = (props: SearchResProps) => {
         <StickyBoundary as={Stack} key={`api-result-${cid}`}>
           <Res
             description={res.description}
-            is_doc={res.is_doc}
-            package={res.package}
+            isDoc={res.is_doc}
+            pkg={res.package}
             title={res.title}
             type={res.type}
             url={res.url}

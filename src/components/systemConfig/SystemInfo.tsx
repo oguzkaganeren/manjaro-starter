@@ -3,9 +3,8 @@ import {
   Flex,
   useColorModeValue,
   SimpleGrid,
-  Stat,
-  StatLabel,
-  StatNumber,
+  Card,
+  Text,
 } from '@chakra-ui/react';
 import React, {
   ReactNode, useState, useEffect,
@@ -27,23 +26,19 @@ interface StatsCardProps {
 const StatsCard = (props: StatsCardProps) => {
   const { title, stat, icon } = props;
   return (
-    <Stat
+    <Card
       px={{ base: 2, md: 4 }}
       py="3"
-      shadow="xl"
       size="sm"
-      border="1px solid"
-      borderColor={useColorModeValue('gray.800', 'gray.500')}
-      rounded="lg"
     >
       <Flex justifyContent="space-between">
         <Box px={{ base: 2, md: 4 }}>
-          <StatLabel fontWeight="bold">
+          <Text fontWeight="bold">
             {title}
-          </StatLabel>
-          <StatNumber fontSize="sm" fontWeight="small">
+          </Text>
+          <Text fontSize="sm" fontWeight="small">
             {stat}
-          </StatNumber>
+          </Text>
         </Box>
         <Box
           my="auto"
@@ -53,7 +48,7 @@ const StatsCard = (props: StatsCardProps) => {
           {icon}
         </Box>
       </Flex>
-    </Stat>
+    </Card>
   );
 };
 

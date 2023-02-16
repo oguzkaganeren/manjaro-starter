@@ -60,6 +60,12 @@
             "color": "pink"
         },
         {
+            "url": "https://packages.manjaro.org",
+            "icon": "FiPackage",
+            "text": "packages",
+            "color": "orange"
+        },
+        {
             "url": "https://manjaro.org/donate",
             "icon": "BiDonateHeart",
             "text": "donate",

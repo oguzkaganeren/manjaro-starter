@@ -14,9 +14,11 @@ import { Command } from '@tauri-apps/api/shell';
 import { invoke } from '@tauri-apps/api/tauri';
 import DOMPurify from 'dompurify';
 import { AtSignIcon } from '@chakra-ui/icons';
+import { useRecoilValue } from 'recoil';
 import PackageStatus from './PackageStatus';
 import commands from '../../assets/Commands';
 import RemotePackagePopover from '../common/remotePackage/RemotePackagePopover';
+import { connectionState } from '../../stores/ConnectionStore';
 
   interface PackageDetailProps {
     icon:string;
@@ -34,6 +36,7 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
     icon, title, catId, uniqueId, pkg, isInstalled, installedVersion, children,
   } = props;
   const [avatarSrc, setAvatarSrc] = React.useState('');
+  const isOnline = useRecoilValue(connectionState);
   useEffect(() => {
     invoke('get_svg_icon', {
       svgpath: `/usr/share/icons/Papirus/32x32/apps/${icon}.svg`,
@@ -85,7 +88,7 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
               <Text fontSize="xs">{installedVersion}</Text>
             </Box>
           </Flex>
-          <RemotePackagePopover name={pkg} />
+          {isOnline && <RemotePackagePopover name={pkg} />}
         </Flex>
       </CardHeader>
       <CardBody>

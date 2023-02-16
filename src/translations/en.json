@@ -166,6 +166,11 @@
         "realtime": "Real time",
         "currentBranch": "Current branch",
         "statusOfMirrors": "Status of Mirrors",
-        "belowCommandsRun": "Below commands will be run."
+        "belowCommandsRun": "Below commands will be run.",
+        "unstableVersion": "Unstable Version",
+        "testingVersion": "Testing Version",
+        "stableVersion": "Stable Version",
+        "repoDetail": "Repo Detail",
+        "branchVersions": "Branch Versions"
     }
 }
