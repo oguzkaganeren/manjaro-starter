@@ -4,7 +4,7 @@ on: pull_request
 jobs:
   build:
     name: Deploy
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     environment: starter
     steps:
       - uses: actions/checkout@v3
