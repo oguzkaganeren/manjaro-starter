@@ -166,6 +166,11 @@
         "realtime": "Temps réel",
         "currentBranch": "Branche actuelle",
         "statusOfMirrors": "Statut des miroirs",
-        "belowCommandsRun": "Les commandes ci-dessous seront exécutées."
+        "belowCommandsRun": "Les commandes ci-dessous seront exécutées.",
+        "unstableVersion": "Version instable",
+        "testingVersion": "Version de test",
+        "stableVersion": "Version stable",
+        "repoDetail": "Détail du dépôt",
+        "branchVersions": "Versions de branche"
     }
 }
