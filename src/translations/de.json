@@ -160,12 +160,21 @@
         "activeBranchDesc": "Manjaro Softwarepakete werden zuerst im Unstable Zweig freigegeben. Wenn die Pakete als stabil gelten, werden diese im Testing Zweig freigegeben und von einer breiteren Benutzeranzahl getestet bevor sie nach ausreichenden Tests endgültig im Stable Zweig veröffentlicht werden.",
         "chooseFeedbackWay": "Wähle die Art der Kontaktierung.",
         "sendFeedback": "uns dein Feedback zu senden.",
-        "starterFeedback": "Sende uns dein Feedback",
+        "starterFeedback": "Feedback senden",
         "running": "Aktiv",
         "experimental": "Experimentel",
         "realtime": "Real Time",
         "currentBranch": "Derzeitiger Zweig",
         "statusOfMirrors": "Mirrorstatus",
-        "belowCommandsRun": "Folgender Befehl wird ausgeführt."
+        "belowCommandsRun": "Folgender Befehl wird ausgeführt.",
+        "unstableVersion": "Unstable Version",
+        "testingVersion": "Testing Version",
+        "stableVersion": "Stable Version",
+        "repoDetail": "Softwareverzeichnisdetail",
+        "branchVersions": "Zweigversionen",
+        "availableCountries": "Mirror verfügbarer Länder",
+        "pacmanMirrorCountryDesc": "Erstelle einen eigenen Mirrorpool von einem Land deiner Wahl.",
+        "customizeMirror": "Eigener Mirrorpool",
+        "all": "Alle"
     }
 }
