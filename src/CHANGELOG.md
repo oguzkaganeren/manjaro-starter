@@ -1,3 +1,17 @@
+# [0.29.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.28.0...v0.29.0) (2023-02-18)
+
+
+### Bug Fixes
+
+* **deps:** update rust crate sysinfo to 0.28.0 ([a1eeae5](https://github.com/oguzkaganeren/manjaro-starter/commit/a1eeae5a2403182c128dad6d68c8733b6f8bd870))
+
+
+### Features
+
+* 🎸 added custom mirror pool by country selection ([096ebcb](https://github.com/oguzkaganeren/manjaro-starter/commit/096ebcb448e42c8f3b707297b08e733f5142fe5c)), closes [#322](https://github.com/oguzkaganeren/manjaro-starter/issues/322)
+
+
+
 # [0.28.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.27.1...v0.28.0) (2023-02-16)
 
 
@@ -36,16 +50,6 @@
 ### Bug Fixes
 
 * 🐛 added repo button and removed version info ([1eda26e](https://github.com/oguzkaganeren/manjaro-starter/commit/1eda26e403989799c54e0ef86e3a7385f607a5cc)), closes [#377](https://github.com/oguzkaganeren/manjaro-starter/issues/377) [#387](https://github.com/oguzkaganeren/manjaro-starter/issues/387)
-
-
-
-## [0.26.3](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.26.2...v0.26.3) (2023-02-08)
-
-
-### Bug Fixes
-
-* 🐛 added desc for current branch badge ([6f6ccc5](https://github.com/oguzkaganeren/manjaro-starter/commit/6f6ccc5e2bd07a151348d09de15d546c302cc53e)), closes [#382](https://github.com/oguzkaganeren/manjaro-starter/issues/382)
-* 🐛 install kernel tooltip fixes ([119dcc0](https://github.com/oguzkaganeren/manjaro-starter/commit/119dcc0cffdddc0e3c92aacb11942f04c778ea20)), closes [#383](https://github.com/oguzkaganeren/manjaro-starter/issues/383)
 
 
 
