@@ -9,7 +9,7 @@
     "@chakra-ui/react": "^2.5.1",
     "@choc-ui/paginator": "^3.4.0",
     "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
+    "@emotion/styled": "^11.10.6",
     "@fontsource/caveat": "^4.5.10",
     "@react-icons/all-files": "^4.1.0",
     "@tauri-apps/api": "^1.2.0",
