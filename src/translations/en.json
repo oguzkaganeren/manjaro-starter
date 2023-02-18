@@ -171,6 +171,10 @@
         "testingVersion": "Testing Version",
         "stableVersion": "Stable Version",
         "repoDetail": "Repo Detail",
-        "branchVersions": "Branch Versions"
+        "branchVersions": "Branch Versions",
+        "availableCountries": "Mirror Available Countries",
+        "pacmanMirrorCountryDesc": "Create a custom mirror pool from your country of choice.",
+        "customizeMirror": "Custom Mirror Pool",
+        "all": "All"
     }
 }

@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { useRecoilValue } from 'recoil';
 import { connectionState } from '../../../stores/ConnectionStore';
 import ActiveBranchComponent from './activeBranch/ActiveBranchComponent';
+import CountryModal from './country/CountryModal';
 import FastestMirrorComponent from './fastest/FastestMirrorComponent';
 import ShowRepoDetails from './repo/ShowRepoDetails';
 import MirrorList from './showing/ShowMirrorListComponent';
@@ -45,6 +46,7 @@ const MirrorMainComponent: React.FC = () => {
       >
         <ButtonGroup spacing="2">
           <MirrorList />
+          <CountryModal />
           <FastestMirrorComponent />
           {isOnline && <ShowRepoDetails />}
         </ButtonGroup>
