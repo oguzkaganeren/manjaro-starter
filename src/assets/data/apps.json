@@ -483,6 +483,12 @@
         "icon": "musicbrainz",
         "description": "Audio players",
         "apps": [{
+                "name": "Spotify",
+                "icon": "Spotify",
+                "description": "Client for spotify's apt repository in Rust for Arch Linux",
+                "pkg": "spotify-launcher",
+                "extra": []
+            }, {
                 "name": "Audacious",
                 "icon": "audacious",
                 "description": "Listen to music",
