@@ -15,9 +15,19 @@ const fastestMirror = {
   args: ['pacman-mirrors', '--fasttrack', '5'],
 } as commandType;
 
+const countryMirror = {
+  program: 'pkexec',
+  args: ['pacman-mirrors', '--country'],
+} as commandType;
+
 const getActiveBranch = {
   program: 'pacman-mirrors',
   args: ['--get-branch'],
+} as commandType;
+
+const getMirrorCountry = {
+  program: 'pacman-mirrors',
+  args: ['--country-list'],
 } as commandType;
 
 const getWhoami = {
@@ -73,5 +83,7 @@ const commands = {
   getMSM,
   getMCP,
   getRunningKernel,
+  getMirrorCountry,
+  countryMirror,
 };
 export default commands;
