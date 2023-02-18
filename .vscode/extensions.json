@@ -22,6 +22,10 @@
         "vadimcn.vscode-lldb",
         "waderyan.gitblame",
         "wayou.vscode-todo-highlight",
-        "eamodio.gitlens"
+        "eamodio.gitlens",
+        "bungcip.better-toml",
+        "vadimcn.vscode-lldb",
+        "serayuzgur.crates",
+        "rust-lang.rust-analyzer"
 	]
 }
