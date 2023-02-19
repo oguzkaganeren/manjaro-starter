@@ -1,3 +1,13 @@
+## [0.29.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.29.0...v0.29.1) (2023-02-19)
+
+
+### Bug Fixes
+
+* 🐛 fixes confirm popup for packages ([0af029c](https://github.com/oguzkaganeren/manjaro-starter/commit/0af029cca2b644c319c8945fb6ec2c18de85fa87)), closes [#430](https://github.com/oguzkaganeren/manjaro-starter/issues/430)
+* 🐛 overflow problem fixed ([f51950c](https://github.com/oguzkaganeren/manjaro-starter/commit/f51950cacfce93c01d6ade146cc738ef0b50f806))
+
+
+
 # [0.29.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.28.0...v0.29.0) (2023-02-18)
 
 
@@ -41,15 +51,6 @@
 ### Features
 
 * 🎸 added confirm popup commands ([35b0110](https://github.com/oguzkaganeren/manjaro-starter/commit/35b01108e34f72a30cf7c334a3e220161dce63b7)), closes [#376](https://github.com/oguzkaganeren/manjaro-starter/issues/376)
-
-
-
-## [0.26.4](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.26.3...v0.26.4) (2023-02-10)
-
-
-### Bug Fixes
-
-* 🐛 added repo button and removed version info ([1eda26e](https://github.com/oguzkaganeren/manjaro-starter/commit/1eda26e403989799c54e0ef86e3a7385f607a5cc)), closes [#377](https://github.com/oguzkaganeren/manjaro-starter/issues/377) [#387](https://github.com/oguzkaganeren/manjaro-starter/issues/387)
 
 
 
