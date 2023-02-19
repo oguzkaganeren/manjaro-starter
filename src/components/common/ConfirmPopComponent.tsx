@@ -84,6 +84,6 @@ const ConfirmPopComponent = ({
 ConfirmPopComponent.defaultProps = {
   children: undefined,
   commands: undefined,
-  portalEnabled: false,
+  portalEnabled: true,
 };
 export default ConfirmPopComponent;
