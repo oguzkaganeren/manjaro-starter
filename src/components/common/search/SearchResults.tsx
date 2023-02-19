@@ -12,7 +12,7 @@ import { useRecoilValue } from 'recoil';
 import { SearchInterface, SearchManjaro } from './SearchManjaro';
 import handleSearch from './HandleSearch';
 import commands from '../../../assets/Commands';
-import { connectionState } from '../../../stores/ConnectionStore';
+import connectionState from '../../../stores/ConnectionStore';
 
 const Res = (props: SearchInterface) => {
   const {

@@ -14,7 +14,7 @@ import { RiInstallLine } from 'react-icons/ri';
 import { MdOutlineDownloadDone } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
 import useKernelHook from './useKernelHook';
-import { connectionState } from '../../../stores/ConnectionStore';
+import connectionState from '../../../stores/ConnectionStore';
 import ConfirmPopComponent from '../../common/ConfirmPopComponent';
 import commands from '../../../assets/Commands';
 

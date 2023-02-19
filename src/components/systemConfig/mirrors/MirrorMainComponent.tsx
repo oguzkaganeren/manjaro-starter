@@ -10,7 +10,7 @@ import {
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useRecoilValue } from 'recoil';
-import { connectionState } from '../../../stores/ConnectionStore';
+import connectionState from '../../../stores/ConnectionStore';
 import ActiveBranchComponent from './activeBranch/ActiveBranchComponent';
 import CountryModal from './country/CountryModal';
 import FastestMirrorComponent from './fastest/FastestMirrorComponent';

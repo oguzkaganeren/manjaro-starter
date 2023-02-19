@@ -6,7 +6,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useRecoilValue } from 'recoil';
 import commands from '../../../../assets/Commands';
-import { connectionState } from '../../../../stores/ConnectionStore';
+import connectionState from '../../../../stores/ConnectionStore';
 import countryState from '../../../../stores/CountryStore';
 import ConfirmPopComponent from '../../../common/ConfirmPopComponent';
 import CountryList from './CountryList';

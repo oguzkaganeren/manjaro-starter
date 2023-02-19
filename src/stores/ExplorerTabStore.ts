@@ -2,7 +2,9 @@ import {
   atom,
 } from 'recoil';
 
-export const explorerTabState = atom({
+const explorerTabState = atom({
   key: 'explorerTabState',
   default: 0,
 });
+
+export default explorerTabState;

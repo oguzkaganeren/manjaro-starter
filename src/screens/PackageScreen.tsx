@@ -17,7 +17,7 @@ import { packageState, Category, Package } from '../stores/PackageStore';
 import PackageDetail from '../components/packageRelated/PackageDetail';
 import ArrowComponent from '../components/packageRelated/ArrowComponent';
 import SearchComponent from '../components/common/search/SearchComponent';
-import { explorerTabState } from '../stores/ExplorerTabStore';
+import explorerTabState from '../stores/ExplorerTabStore';
 
 const PackageScreen: React.FC = () => {
   const packageSt = useRecoilValue(packageState);

@@ -14,7 +14,7 @@ import { CloseIcon } from '@chakra-ui/icons';
 import {
   packageState,
 } from '../../stores/PackageStore';
-import { connectionState } from '../../stores/ConnectionStore';
+import connectionState from '../../stores/ConnectionStore';
 import commandState from '../../stores/CommandStore';
 import commands from '../../assets/Commands';
 import ConfirmPopComponent from '../common/ConfirmPopComponent';

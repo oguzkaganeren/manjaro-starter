@@ -18,7 +18,7 @@ import { useRecoilValue } from 'recoil';
 import PackageStatus from './PackageStatus';
 import commands from '../../assets/Commands';
 import RemotePackagePopover from '../common/remotePackage/RemotePackagePopover';
-import { connectionState } from '../../stores/ConnectionStore';
+import connectionState from '../../stores/ConnectionStore';
 
   interface PackageDetailProps {
     icon:string;

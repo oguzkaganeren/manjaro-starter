@@ -2,7 +2,7 @@ import { Button } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useRecoilValue } from 'recoil';
-import { connectionState } from '../../../../stores/ConnectionStore';
+import connectionState from '../../../../stores/ConnectionStore';
 import useFastestMirrorHook from './useFastestMirrorHook';
 import ConfirmPopComponent from '../../../common/ConfirmPopComponent';
 import commands from '../../../../assets/Commands';

@@ -13,7 +13,7 @@ import { SearchIcon } from '@chakra-ui/icons';
 import { useTranslation } from 'react-i18next';
 import { useRecoilValue } from 'recoil';
 import SearchModelComponent from './SearchModelComponent';
-import { connectionState } from '../../../stores/ConnectionStore';
+import connectionState from '../../../stores/ConnectionStore';
 
 const ACTION_KEY_DEFAULT = ['Ctrl', 'Control'];
 const ACTION_KEY_APPLE = ['⌘', 'Command'];

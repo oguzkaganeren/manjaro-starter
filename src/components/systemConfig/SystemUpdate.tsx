@@ -19,7 +19,7 @@ import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
 import { info, error } from 'tauri-plugin-log-api';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { connectionState } from '../../stores/ConnectionStore';
+import connectionState from '../../stores/ConnectionStore';
 import commandState from '../../stores/CommandStore';
 import commands from '../../assets/Commands';
 

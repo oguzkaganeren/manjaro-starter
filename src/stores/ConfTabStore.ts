@@ -2,7 +2,8 @@ import {
   atom,
 } from 'recoil';
 
-export const confTabState = atom({
+const confTabState = atom({
   key: 'confTabState',
   default: 0,
 });
+export default confTabState;

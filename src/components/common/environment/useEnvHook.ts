@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { connectionState } from '../../../stores/ConnectionStore';
+import connectionState from '../../../stores/ConnectionStore';
 
 export default function useEnvHook() {
   const [isOnline, setIsOnline] = useRecoilState(connectionState);
