@@ -4,8 +4,8 @@ import {
   CardBody,
   CardFooter,
   Divider,
-  ButtonGroup,
   Flex,
+  Wrap,
 } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -44,12 +44,12 @@ const MirrorMainComponent: React.FC = () => {
           },
         }}
       >
-        <ButtonGroup spacing="2">
+        <Wrap spacing="2">
           <MirrorList />
           <CountryModal />
           <FastestMirrorComponent />
           {isOnline && <ShowRepoDetails />}
-        </ButtonGroup>
+        </Wrap>
       </CardFooter>
     </Card>
   );
