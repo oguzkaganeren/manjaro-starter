@@ -56,11 +56,12 @@ const SystemUpdate: React.FC = () => {
     setCommandHistory([
       // with a new array
       ...commandHistory, // that contains all the old items
-      'pamac update --no-confirm --force-refresh', // and one new item at the end
+      'pamac update --no-confirm --no-aur --force-refresh', // and one new item at the end
     ]);
     const cmd = new Command(commands.getPamac.program, [
       'update',
       '--no-confirm',
+      '--no-aur',
       '--force-refresh',
     ]);
     cmd.on('close', (data) => {

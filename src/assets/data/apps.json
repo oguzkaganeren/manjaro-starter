@@ -208,16 +208,6 @@
         "icon": "text-editor",
         "description": "Various editors for text or code",
         "apps": [{
-                "name": "Atom",
-                "icon": "atom",
-                "description": "A hackable text editor for the 21st Century",
-                "pkg": "atom",
-                "filter": [
-                    "advanced"
-                ],
-                "extra": []
-            },
-            {
                 "name": "Gedit",
                 "icon": "gedit",
                 "description": "Gnome text editor.",
