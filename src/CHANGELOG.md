@@ -1,3 +1,12 @@
+## [0.29.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.29.1...v0.29.2) (2023-02-22)
+
+
+### Bug Fixes
+
+* 🐛 removed aur package ([74dce70](https://github.com/oguzkaganeren/manjaro-starter/commit/74dce70b649d9f89785df4f19b77dd0e13202c9d))
+
+
+
 ## [0.29.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.29.0...v0.29.1) (2023-02-19)
 
 
@@ -42,15 +51,6 @@
 ### Bug Fixes
 
 * 🐛 changed app about component ([122d548](https://github.com/oguzkaganeren/manjaro-starter/commit/122d548a87c93e68f0cf1aeffbcdaab79e2e2e6a))
-
-
-
-# [0.27.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.26.4...v0.27.0) (2023-02-13)
-
-
-### Features
-
-* 🎸 added confirm popup commands ([35b0110](https://github.com/oguzkaganeren/manjaro-starter/commit/35b01108e34f72a30cf7c334a3e220161dce63b7)), closes [#376](https://github.com/oguzkaganeren/manjaro-starter/issues/376)
 
 
 
