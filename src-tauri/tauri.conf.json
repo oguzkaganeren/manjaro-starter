@@ -171,6 +171,10 @@
         }],
         "security": {
             "csp": null
+        },
+        "systemTray": {
+            "iconPath": "icons/icon.png",
+            "iconAsTemplate": true
         }
     }
 }

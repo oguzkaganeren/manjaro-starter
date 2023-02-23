@@ -175,6 +175,10 @@
         "availableCountries": "Mirror Available Countries",
         "pacmanMirrorCountryDesc": "Create a custom mirror pool from your country of choice.",
         "customizeMirror": "Custom Mirror Pool",
-        "all": "All"
+        "all": "All",
+        "appCloseDesc": "Are you sure to exit Manjaro Starter?",
+        "exit": "Exit",
+        "exitApplication": "Exit Application",
+        "hideAsTrayIcon": "Hide as tray icon"
     }
 }

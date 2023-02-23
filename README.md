@@ -81,6 +81,7 @@ A PKGBUILD can be found on [Manjaro GitLab](https://gitlab.manjaro.org/packages/
 * pacman-mirrors
 * pamac-gtk
 * papirus-icon-theme
+* libayatana-appindicator
 
 ### Dependency(Optional)
 * manjaro-settings-manager

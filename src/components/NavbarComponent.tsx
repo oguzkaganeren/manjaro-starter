@@ -6,13 +6,13 @@ import {
   Spacer,
 } from '@chakra-ui/react';
 import React from 'react';
-import { CloseIcon } from '@chakra-ui/icons';
 import { appWindow } from '@tauri-apps/api/window';
 import { BiWindow } from 'react-icons/bi';
 import { MdOutlineMinimize } from 'react-icons/md';
 import AppSettings from './appSetting/AppSettings';
 import ThemeComponent from './ThemeComponent';
 import CommandHistory from './common/CommandHistory';
+import CloseAppComponent from './common/CloseAppComponent';
 
 const NavbarComponent: React.FC = () => (
   <Flex
@@ -49,14 +49,7 @@ const NavbarComponent: React.FC = () => (
             size="sm"
             icon={<BiWindow />}
           />
-          <IconButton
-            aria-label="Close"
-            onClick={() => {
-              appWindow.close();
-            }}
-            size="sm"
-            icon={<CloseIcon />}
-          />
+          <CloseAppComponent />
         </ButtonGroup>
       </Stack>
     </Flex>
