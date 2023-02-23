@@ -1,15 +1,13 @@
-import { useToast } from '@chakra-ui/react';
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useRecoilState } from 'recoil';
 import commands from '../../../../assets/Commands';
+import useToastCustom from '../../../../hooks/useToastCustom';
 import commandState from '../../../../stores/CommandStore';
 import fastestMirrorRunner from '../MirrorHelper';
 
 export default function useFastestMirrorHook() {
   const [isProcessing, setIsProcessing] = useState(false);
-  const toast = useToast();
-  const { t } = useTranslation();
+  const { callWarningToast } = useToastCustom();
   const [commandHistory, setCommandHistory] = useRecoilState(commandState);
   const callFastestMirrorCommand = async () => {
     setIsProcessing(true);
@@ -20,14 +18,7 @@ export default function useFastestMirrorHook() {
     ]);
     fastestMirrorRunner().then((result) => {
       const isSuccess = result.code === 0;
-      toast({
-        title: '',
-        description: isSuccess ? t('success') : t('failed'),
-        status: isSuccess ? 'success' : 'error',
-        duration: 9000,
-        isClosable: true,
-        position: 'bottom-right',
-      });
+      callWarningToast(isSuccess);
       setIsProcessing(false);
     });
   };

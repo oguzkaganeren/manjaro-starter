@@ -113,6 +113,10 @@
                     "name": "uname",
                     "cmd": "uname",
                     "args": true
+                }, {
+                    "name": "systemctl",
+                    "cmd": "systemctl",
+                    "args": true
                 }]
             },
             "window": {

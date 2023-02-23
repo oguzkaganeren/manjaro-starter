@@ -9,12 +9,11 @@ import {
   ButtonGroup,
   Spinner,
   Tooltip,
-  useToast,
   CardHeader,
   Text,
   HStack,
 } from '@chakra-ui/react';
-import React, { useState, ReactNode, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Command } from '@tauri-apps/api/shell';
 import { info, error } from 'tauri-plugin-log-api';
@@ -22,12 +21,14 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { connectionState } from '../../stores/ConnectionStore';
 import commandState from '../../stores/CommandStore';
 import commands from '../../assets/Commands';
+import useToastCustom from '../../hooks/useToastCustom';
+import commandLogger from '../common/CommandHelper';
 
 const SystemUpdate: React.FC = () => {
   const { t } = useTranslation();
   const [checkUpdateText, setCheckUpdateText] = useState('');
   const isOnline = useRecoilValue(connectionState);
-  const toast = useToast();
+  const { callWarningToast } = useToastCustom();
   const [commandHistory, setCommandHistory] = useRecoilState(commandState);
   const [isUpdating, setIsUpdating] = useState(false);
   const checkUpdates = async () => {
@@ -40,16 +41,6 @@ const SystemUpdate: React.FC = () => {
       setCheckUpdateText(updateCount);
     }
   };
-  function showMsg(msg: string | ReactNode, isError: boolean) {
-    toast({
-      title: '',
-      description: msg,
-      status: isError ? 'error' : 'success',
-      duration: 9000,
-      isClosable: true,
-      position: 'bottom-right',
-    });
-  }
 
   const updateSystem = async () => {
     setIsUpdating(true);
@@ -64,24 +55,12 @@ const SystemUpdate: React.FC = () => {
       '--no-aur',
       '--force-refresh',
     ]);
-    cmd.on('close', (data) => {
-      info(`command finished with code ${data.code} and signal ${data.signal}`);
+    commandLogger(cmd);
+    cmd.execute().then((result) => {
+      const isSuccess = result.code === 0;
+      callWarningToast(isSuccess);
       setIsUpdating(false);
-      const isThereError = data.code !== 0;
-      showMsg(isThereError ? t('failed') : t('success'), isThereError);
     });
-    cmd.on('error', (error) => {
-      error(error);
-    });
-    cmd.stdout.on('data', (line) => {
-      info(`command stdout: "${line}"`);
-    });
-    cmd.stderr.on('data', (line) => {
-      error(`command stderr: "${line}"`);
-    });
-    const child = await cmd.spawn();
-
-    info(`pid:${child.pid}`);
   };
 
   const openPamacUpdateGui = async () => {
@@ -140,15 +119,33 @@ const SystemUpdate: React.FC = () => {
               {t('updateWithGui')}
             </Button>
           </Tooltip>
-          {/* <Tooltip label={t('updateTooltip')}>
+          {// FIXME: use global loading-updating state
+          }
+          {/* <ConfirmPopComponent
+            confirmationDesc="confirmDesc"
+            handleClick={updateSystem}
+            isButtonDisabled={!isOnline || isUpdating}
+            commands={[
+              (
+                [
+                  commands.getPamac.program,
+                  'update',
+                  '--no-aur',
+                  '--no-confirm',
+                  '--no-update',
+                ] as Array<string>
+              )
+                .map((text) => `${text}`)
+                .join(' '),
+            ]}
+          >
             <Button
               isLoading={isUpdating}
               isDisabled={!isOnline || isUpdating}
-              onClick={updateSystem}
             >
               {t('updateWithCli')}
             </Button>
-      </Tooltip> */}
+          </ConfirmPopComponent> */}
         </ButtonGroup>
       </CardFooter>
     </Card>

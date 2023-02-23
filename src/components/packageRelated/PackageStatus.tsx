@@ -1,10 +1,9 @@
 import {
-  useToast,
   Button,
   ButtonGroup,
   IconButton,
 } from '@chakra-ui/react';
-import React, { useState, ReactNode } from 'react';
+import React, { useState } from 'react';
 import { RiInstallLine, RiCheckLine } from 'react-icons/ri';
 import { Command } from '@tauri-apps/api/shell';
 import { useRecoilState, useRecoilValue } from 'recoil';
@@ -18,6 +17,7 @@ import { connectionState } from '../../stores/ConnectionStore';
 import commandState from '../../stores/CommandStore';
 import commands from '../../assets/Commands';
 import ConfirmPopComponent from '../common/ConfirmPopComponent';
+import useToastCustom from '../../hooks/useToastCustom';
 
 interface PackageStatusProps {
     isInstalled:boolean,
@@ -26,7 +26,7 @@ interface PackageStatusProps {
     pkgName:string,
   }
 const PackageStatus: React.FC<PackageStatusProps> = (props) => {
-  const toast = useToast();
+  const { callPackageWarning } = useToastCustom();
   const { t } = useTranslation();
   const isOnline = useRecoilValue(connectionState);
   const [commandHistory, setCommandHistory] = useRecoilState(commandState);
@@ -51,16 +51,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
       }
     }
   };
-  function showMsg(msg: string | ReactNode, pkName: string, isError: boolean) {
-    toast({
-      title: `${pkName}`,
-      description: msg,
-      status: isError ? 'error' : 'success',
-      duration: 9000,
-      isClosable: true,
-      position: 'bottom-right',
-    });
-  }
+
   const cancelInstall = async (
     catId:string,
     pkId:string,
@@ -94,7 +85,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
       info(`command finished with code ${data.code} and signal ${data.signal}`);
       if (isLoadingPackage.get(pkId)) {
         const isThereError = data.code === 1;
-        showMsg(
+        callPackageWarning(
           isThereError ? t('installError') : t('installSuccess'),
           pkgName,
           isThereError,
@@ -103,8 +94,8 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
       }
       packageInstallStatusControl(catId, pkId);
     });
-    cmd.on('error', (error) => {
-      error(error);
+    cmd.on('error', (errorst) => {
+      error(errorst);
     });
     cmd.stdout.on('data', (line) => {
       info(`command stdout: "${line}"`);
