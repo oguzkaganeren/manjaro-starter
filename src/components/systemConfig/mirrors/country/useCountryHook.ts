@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useRecoilState } from 'recoil';
 import commands from '../../../../assets/Commands';
 import useToastCustom from '../../../../hooks/useToastCustom';
@@ -10,6 +11,7 @@ export default function useCountryHook() {
   const [countries, setCountries] = useState<string[]>();
   const [checkedItems, setCheckedItems] = useRecoilState(countryState);
   const [isProcessing, setIsProcessing] = useState(false);
+  const { t } = useTranslation();
   const { callWarningToast } = useToastCustom();
   const [commandHistory, setCommandHistory] = useRecoilState(commandState);
 
@@ -40,7 +42,8 @@ export default function useCountryHook() {
     ]);
     countryMirrorRunner(countryParam).then((result) => {
       const isSuccess = result.code === 0;
-      callWarningToast(isSuccess);
+      const msg = isSuccess ? t('countryMirrorSuccess') : t('countryMirrorFail');
+      callWarningToast(isSuccess, msg);
 
       setIsProcessing(false);
     });

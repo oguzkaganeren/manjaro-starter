@@ -133,8 +133,8 @@
         "openPamacTooltip": "It opens pamac update page.",
         "updateTooltip": "It runs pamac update command.",
         "commandHistory": "Command History",
-        "installSuccess": "Installed successfully.",
-        "installError": "Failed installed.",
+        "installSuccess": "installed successfully.",
+        "installError": "installation failed.",
         "failed": "Failed",
         "success": "Success",
         "learnMore": "Learn More",
@@ -179,6 +179,16 @@
         "appCloseDesc": "Are you sure to exit Manjaro Starter?",
         "exit": "Exit",
         "exitApplication": "Exit Application",
-        "hideAsTrayIcon": "Hide as tray icon"
+        "hideAsTrayIcon": "Hide as tray icon",
+        "fsTrimSuccess": "Fstrim.timer service action succeeds.",
+        "fsTrimFail": "Fstrim.timer service action fail.",
+        "updateSuccess": "Update success.",
+        "updateFail": "Update fail.",
+        "kernelSuccess": "Kernel installation succeeds.",
+        "kernelFail": "Kernel installation fail.",
+        "countryMirrorSuccess": "Creating a custom mirror pool succeeds.",
+        "countryMirrorFail": "Creating a custom mirror pool fail.",
+        "fastestMirrorSuccess": "Setting fastest mirror succeeds.",
+        "fastestMirrorFail": "Setting fastest mirror fail."
     }
 }
