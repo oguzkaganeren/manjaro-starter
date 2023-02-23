@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useRecoilState } from 'recoil';
 import commands from '../../../../assets/Commands';
 import useToastCustom from '../../../../hooks/useToastCustom';
@@ -8,6 +9,7 @@ import fastestMirrorRunner from '../MirrorHelper';
 export default function useFastestMirrorHook() {
   const [isProcessing, setIsProcessing] = useState(false);
   const { callWarningToast } = useToastCustom();
+  const { t } = useTranslation();
   const [commandHistory, setCommandHistory] = useRecoilState(commandState);
   const callFastestMirrorCommand = async () => {
     setIsProcessing(true);
@@ -18,7 +20,8 @@ export default function useFastestMirrorHook() {
     ]);
     fastestMirrorRunner().then((result) => {
       const isSuccess = result.code === 0;
-      callWarningToast(isSuccess);
+      const msg = isSuccess ? t('fastestMirrorSuccess') : t('fastestMirrorFail');
+      callWarningToast(isSuccess, msg);
       setIsProcessing(false);
     });
   };

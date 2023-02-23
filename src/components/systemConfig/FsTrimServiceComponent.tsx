@@ -28,6 +28,7 @@ const FsTrimServiceComponent = () => {
   const [isServiceActive, setIsServiceActive] = useState(false);
   const [processing, setProcessing] = useState(false);
   const { callWarningToast } = useToastCustom();
+  const { t } = useTranslation();
   const [commandHistory, setCommandHistory] = useRecoilState(commandState);
 
   const enableDisableCom = !isServiceActive
@@ -37,7 +38,7 @@ const FsTrimServiceComponent = () => {
     ? ['start', 'fstrim.timer']
     : ['stop', 'fstrim.timer'];
   const printCmds = [`systemctl ${enableDisableCom.map((text) => `${text}`).join(' ')}`, `systemctl ${startStopCom.map((text) => `${text}`).join(' ')}`];
-  const { t } = useTranslation();
+
   function isServiceRunning() {
     invoke('is_service_active', {
       service: 'fstrim.timer',
@@ -64,7 +65,8 @@ const FsTrimServiceComponent = () => {
       );
       commandLogger(ssCmd);
       ssCmd.execute().then((responseSt) => {
-        callWarningToast(responseSt.code === 0);
+        const msg = responseSt.code === 0 ? t('fsTrimSuccess') : t('fsTrimFail');
+        callWarningToast(responseSt.code === 0, msg);
         isServiceRunning();
         setProcessing(false);
       });

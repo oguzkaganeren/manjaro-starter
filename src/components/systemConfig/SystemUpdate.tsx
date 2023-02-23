@@ -58,7 +58,8 @@ const SystemUpdate: React.FC = () => {
     commandLogger(cmd);
     cmd.execute().then((result) => {
       const isSuccess = result.code === 0;
-      callWarningToast(isSuccess);
+      const msg = isSuccess ? t('updateSuccess') : t('updateFail');
+      callWarningToast(isSuccess, msg);
       setIsUpdating(false);
     });
   };

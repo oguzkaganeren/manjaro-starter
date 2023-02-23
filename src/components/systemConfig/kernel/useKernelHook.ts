@@ -42,7 +42,8 @@ export default function useKernelHook() {
     runCommandInstallKernel(kernelName).then((data) => {
       setIsLoadingKernel(new Map(isLoadingKernel?.set(kernelName, false)));
       const isThereError = data.code === 1;
-      callWarningToast(isThereError);
+      const msg = !isThereError ? t('kernelSuccess') : t('kernelFail');
+      callWarningToast(isThereError, msg);
 
       getKernels();
     });
