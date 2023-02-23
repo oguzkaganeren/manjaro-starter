@@ -18,20 +18,25 @@ import { FiHardDrive } from 'react-icons/fi';
 import { BsCheck } from 'react-icons/bs';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { useRecoilState } from 'recoil';
+import { Command } from '@tauri-apps/api/shell';
 import commandState from '../../stores/CommandStore';
 import ConfirmPopComponent from '../common/ConfirmPopComponent';
+import useToastCustom from '../../hooks/useToastCustom';
+import commandLogger from '../common/CommandHelper';
 
 const FsTrimServiceComponent = () => {
   const [isServiceActive, setIsServiceActive] = useState(false);
   const [processing, setProcessing] = useState(false);
+  const { callWarningToast } = useToastCustom();
   const [commandHistory, setCommandHistory] = useRecoilState(commandState);
-  // FIXME: these are should be commands ts
+
   const enableDisableCom = !isServiceActive
-    ? 'systemctl enable fstrim.timer'
-    : 'systemctl disable fstrim.timer';
+    ? ['enable', 'fstrim.timer']
+    : ['disable', 'fstrim.timer'];
   const startStopCom = !isServiceActive
-    ? 'systemctl start fstrim.timer'
-    : 'systemctl stop fstrim.timer';
+    ? ['start', 'fstrim.timer']
+    : ['stop', 'fstrim.timer'];
+  const printCmds = [`systemctl ${enableDisableCom.map((text) => `${text}`).join(' ')}`, `systemctl ${startStopCom.map((text) => `${text}`).join(' ')}`];
   const { t } = useTranslation();
   function isServiceRunning() {
     invoke('is_service_active', {
@@ -42,22 +47,24 @@ const FsTrimServiceComponent = () => {
     });
   }
   function serviceHandler() {
-    invoke('run_shell_command', {
-      command: enableDisableCom,
-    }).then((response) => {
-      info(enableDisableCom);
-      info(response as string);
-      invoke('run_shell_command', {
-        command: startStopCom,
-      }).then((responseSt) => {
-        info(startStopCom);
-        const cmds = [enableDisableCom, startStopCom];
-        setCommandHistory([
-          // with a new array
-          ...commandHistory, // that contains all the old items
-          ...cmds, // and one new item at the end
-        ]);
-        info(responseSt as string);
+    setCommandHistory([
+      // with a new array
+      ...commandHistory, // that contains all the old items
+      printCmds.map((text) => `${text}`).join(' '), // and one new item at the end
+    ]);
+    const cmd = new Command(
+      'systemctl',
+      enableDisableCom,
+    );
+    commandLogger(cmd);
+    cmd.execute().then(() => {
+      const ssCmd = new Command(
+        'systemctl',
+        startStopCom,
+      );
+      commandLogger(ssCmd);
+      ssCmd.execute().then((responseSt) => {
+        callWarningToast(responseSt.code === 0);
         isServiceRunning();
         setProcessing(false);
       });
@@ -104,8 +111,9 @@ const FsTrimServiceComponent = () => {
             <ConfirmPopComponent
               confirmationDesc="confirmDesc"
               handleClick={setServiceStatus}
+              portalEnabled={false}
               isButtonDisabled={false}
-              commands={[enableDisableCom, startStopCom]}
+              commands={printCmds}
             >
               <IconButton
                 ml={5}

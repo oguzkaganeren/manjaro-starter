@@ -1,4 +1,3 @@
-import { useToast } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { useTranslation } from 'react-i18next';
@@ -6,11 +5,12 @@ import commandState from '../../../stores/CommandStore';
 import commands from '../../../assets/Commands';
 import { Kernel } from './Kernel';
 import getKernelList, { runCommandGetRunningKernel, runCommandInstallKernel } from './KernelHelper';
+import useToastCustom from '../../../hooks/useToastCustom';
 
 export default function useKernelHook() {
   const [kernelList, setKernelList] = useState<Kernel[]>();
   const [currentKernel, setCurrentKernel] = useState('');
-  const toast = useToast();
+  const { callWarningToast } = useToastCustom();
   const { t } = useTranslation();
   const [isLoadingKernel, setIsLoadingKernel] = useState<Map<string, boolean>>(new Map());
   const [commandHistory, setCommandHistory] = useRecoilState(commandState);
@@ -42,14 +42,8 @@ export default function useKernelHook() {
     runCommandInstallKernel(kernelName).then((data) => {
       setIsLoadingKernel(new Map(isLoadingKernel?.set(kernelName, false)));
       const isThereError = data.code === 1;
-      toast({
-        title: `${t('installing')} ${kernelName}`,
-        description: isThereError ? t('failed') : t('success'),
-        status: isThereError ? 'error' : 'success',
-        duration: 9000,
-        isClosable: true,
-        position: 'bottom-right',
-      });
+      callWarningToast(isThereError);
+
       getKernels();
     });
   };
