@@ -17,11 +17,9 @@ import { info } from 'tauri-plugin-log-api';
 import { appWindow } from '@tauri-apps/api/window';
 import commands from '../../assets/Commands';
 
-type Props = {}
-
 const RootDetector = () => {
   const { t } = useTranslation();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen } = useDisclosure();
   const closeHandle = () => {
     appWindow.close();
   };
@@ -40,6 +38,7 @@ const RootDetector = () => {
       await cmd.spawn();
     };
     detectWho();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <Modal isCentered isOpen={isOpen} onClose={closeHandle}>

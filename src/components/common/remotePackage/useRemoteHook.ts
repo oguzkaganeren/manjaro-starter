@@ -8,6 +8,7 @@ export default function useRemoteHook(name: string, branch: string) {
     handleRemoteInfo(name, branch).then((response) => {
       setVersion(response[0].version);
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return { version };
 }

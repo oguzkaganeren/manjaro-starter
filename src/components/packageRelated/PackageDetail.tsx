@@ -45,6 +45,7 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
         setAvatarSrc(response as string);
       }
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <Card minH="2xs" variant="filled">

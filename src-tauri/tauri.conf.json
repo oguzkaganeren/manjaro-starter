@@ -173,6 +173,7 @@
             "width": 400,
             "height": 200,
             "decorations": false,
+            "center": true,
             "url": "/splash/splash.html",
             "label": "splashscreen"
         }],

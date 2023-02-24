@@ -54,6 +54,7 @@ const App: React.FC = () => {
       setStep,
       stepCount: STEPCOUNT,
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeStep]);
   const steps = [
     {

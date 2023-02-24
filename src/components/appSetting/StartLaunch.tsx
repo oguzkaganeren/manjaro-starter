@@ -3,7 +3,6 @@ import {
   HStack,
   Spacer,
   FormControl,
-  useColorModeValue,
 } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -14,7 +13,6 @@ import { info } from 'tauri-plugin-log-api';
 const StartLaunch = (): JSX.Element => {
   const { t } = useTranslation();
   const [launch, setLaunch] = useState(false);
-  const bColor = useColorModeValue('gray.800', 'gray.500');
   const handleLaunchChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     setLaunch(event.target.checked);
     const configDirPath = await configDir();

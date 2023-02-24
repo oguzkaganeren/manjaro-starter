@@ -27,12 +27,11 @@ export const countryMirrorRunner = async (param:string) => {
 export const getMirrorList = () => invoke('run_shell_command_with_result', {
   command: 'cat /etc/pacman.d/mirrorlist',
 }).then((response) => {
+  let responseRp = response as string;
   if (response) {
-    const responseRp = (response as string)
-      .replaceAll('"', '');
-
-    return responseRp;
+    responseRp = responseRp.replaceAll('"', '');
   }
+  return responseRp;
 });
 
 export const getActiveBranch = async () => {

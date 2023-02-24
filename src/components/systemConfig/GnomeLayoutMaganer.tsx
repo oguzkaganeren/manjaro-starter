@@ -34,7 +34,13 @@ const GnomeLayoutManager: FC = () => {
   const [isSelected, setIsSelected] = useState('');
   const initialRef = useRef(null);
   const finalRef = useRef(null);
-
+  const btnBg = useColorModeValue('green.100', 'green.900');
+  const btnBorder = useColorModeValue('gray.800', 'gray.500');
+  function buttonBgColor(layout: string) {
+    return isSelected === layout
+      ? btnBg
+      : 'transparent';
+  }
   useEffect(() => {
     const getLocalData = async () => {
       const configDirPath = await configDir();
@@ -86,20 +92,18 @@ const GnomeLayoutManager: FC = () => {
           <ModalCloseButton />
           <ModalBody>
             <SimpleGrid columns={2} spacing={10}>
-              {LAYOUTS.map((layout, index) => (
+              {LAYOUTS.map((layout) => (
                 <Button
                   py="5"
                   px={{ base: 2, md: 4 }}
                   height="200px"
                   shadow="xl"
                   backgroundColor={
-                    isSelected === layout
-                      ? useColorModeValue('green.100', 'green.900')
-                      : 'transparent'
+                    buttonBgColor(layout)
                   }
                   variant="outline"
                   border="1px solid"
-                  borderColor={useColorModeValue('gray.800', 'gray.500')}
+                  borderColor={btnBorder}
                   rounded="lg"
                   onClick={async () => {
                     setIsSelected(layout);
