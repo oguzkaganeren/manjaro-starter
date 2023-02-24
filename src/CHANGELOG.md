@@ -1,3 +1,20 @@
+# [0.31.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.30.0...v0.31.0) (2023-02-24)
+
+
+### Bug Fixes
+
+* 🐛 code improvements and fstrim result popup ([27132ac](https://github.com/oguzkaganeren/manjaro-starter/commit/27132acb178c44007d16b0294d8bcd2d543fd6e3)), closes [#381](https://github.com/oguzkaganeren/manjaro-starter/issues/381)
+* 🐛 mirror country problem fixed ([75d4085](https://github.com/oguzkaganeren/manjaro-starter/commit/75d408545eec795097a8eec93bfeff35aa468225))
+* 🐛 removed popup when clicking close button ([5d0af5c](https://github.com/oguzkaganeren/manjaro-starter/commit/5d0af5ce37b15b5c94876583e01324a5ce618f7d)), closes [#448](https://github.com/oguzkaganeren/manjaro-starter/issues/448)
+
+
+### Features
+
+* 🎸 added system notification ([c043cd6](https://github.com/oguzkaganeren/manjaro-starter/commit/c043cd6c24047a3b9577d9017584eaf24b089e6e)), closes [#393](https://github.com/oguzkaganeren/manjaro-starter/issues/393)
+* 🎸 single instance plugin added ([8005498](https://github.com/oguzkaganeren/manjaro-starter/commit/80054986d4598d38f2196cfc2012d1918d4f86cb)), closes [#447](https://github.com/oguzkaganeren/manjaro-starter/issues/447)
+
+
+
 # [0.30.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.29.2...v0.30.0) (2023-02-23)
 
 
@@ -37,20 +54,6 @@
 ### Features
 
 * 🎸 added custom mirror pool by country selection ([096ebcb](https://github.com/oguzkaganeren/manjaro-starter/commit/096ebcb448e42c8f3b707297b08e733f5142fe5c)), closes [#322](https://github.com/oguzkaganeren/manjaro-starter/issues/322)
-
-
-
-# [0.28.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.27.1...v0.28.0) (2023-02-16)
-
-
-### Bug Fixes
-
-* 🐛 Some ui changes ([41c4553](https://github.com/oguzkaganeren/manjaro-starter/commit/41c4553062d5002d88aedb245496d0d8c93e70ad))
-
-
-### Features
-
-* 🎸 added package branch version ([2b8cdfa](https://github.com/oguzkaganeren/manjaro-starter/commit/2b8cdfa0c69a2ff4fb1847cfedf900928217b8cb)), closes [#389](https://github.com/oguzkaganeren/manjaro-starter/issues/389)
 
 
 
