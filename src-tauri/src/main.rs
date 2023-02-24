@@ -11,7 +11,13 @@ use sysinfo::{CpuExt, CpuRefreshKind, RefreshKind, System, SystemExt};
 use tauri::Manager;
 use tauri::SystemTray;
 use tauri::{CustomMenuItem, SystemTrayEvent, SystemTrayMenu, SystemTrayMenuItem};
-use tauri_plugin_log::{LogTarget, LoggerBuilder, RotationStrategy};
+use tauri_plugin_log::{LogTarget, RotationStrategy};
+
+#[derive(Clone, serde::Serialize)]
+struct Payload {
+  args: Vec<String>,
+  cwd: String,
+}
 
 #[tauri::command]
 fn run_shell_command(command: String) -> String {
@@ -93,13 +99,24 @@ fn main() {
       Ok(())
     })
     .plugin(
-      LoggerBuilder::default()
+      tauri_plugin_log::Builder::default()
         .rotation_strategy(RotationStrategy::KeepAll)
         .max_file_size(1000)
         .level(LevelFilter::Debug)
         .targets([LogTarget::LogDir, LogTarget::Stdout, LogTarget::Webview])
         .build(),
     )
+    .plugin(tauri_plugin_single_instance::init(|app, argv, cwd| {
+      println!("{}, {argv:?}, {cwd}", app.package_info().name);
+      let window = app.get_window("main").unwrap();
+      let item_handle = app.tray_handle().get_item("hide");
+      window.show().unwrap();
+      window.set_focus().unwrap();
+      item_handle.set_title("Hide").unwrap();
+      app
+        .emit_all("single-instance", Payload { args: argv, cwd })
+        .unwrap();
+    }))
     // This is where you pass in your commands
     .invoke_handler(tauri::generate_handler![
       run_shell_command,
