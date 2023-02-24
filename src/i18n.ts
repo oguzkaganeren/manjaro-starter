@@ -15,7 +15,7 @@ const resources = {
   Polish,
 };
 
-export const availableLanguages = Object.keys(resources);
+const availableLanguages = Object.keys(resources);
 
 i18n.use(initReactI18next)
   .use(LanguageDetector)
@@ -24,3 +24,5 @@ i18n.use(initReactI18next)
     defaultNS: 'common',
     fallbackLng: 'English',
   });
+
+export default availableLanguages;

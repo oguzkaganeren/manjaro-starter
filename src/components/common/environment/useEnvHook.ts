@@ -16,11 +16,11 @@ export default function useEnvHook() {
     // Listen to the offline status
     window.addEventListener('offline', handleStatusChange);
 
-    // Specify how to clean up after this effect for performance improvment
     return () => {
       window.removeEventListener('online', handleStatusChange);
       window.removeEventListener('offline', handleStatusChange);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOnline]);
   return { isOnline };
 }
