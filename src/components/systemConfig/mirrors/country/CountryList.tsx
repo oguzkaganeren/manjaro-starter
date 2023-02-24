@@ -26,7 +26,7 @@ const CountryList = () => {
         onChange={(e) => {
           if (e.target.checked) {
             const temp = new Map();
-            countries.map((val) => temp.set(val.toLocaleLowerCase(), e.target.checked));
+            countries.map((val) => temp.set(val, e.target.checked));
             setCheckedItems(temp);
           } else {
             setCheckedItems(new Map());
@@ -39,9 +39,9 @@ const CountryList = () => {
         <SimpleGrid mt={5} columns={3} spacing={4}>
           {slicedCountries?.map((country) => (
             <Checkbox
-              value={country.toLocaleLowerCase()}
+              value={country}
               colorScheme="green"
-              isChecked={checkedItems.has(country.toLocaleLowerCase())}
+              isChecked={checkedItems.has(country)}
               onChange={(e) => {
                 if (e.target.checked) {
                   setCheckedItems(
