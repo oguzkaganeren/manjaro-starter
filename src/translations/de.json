@@ -175,6 +175,20 @@
         "availableCountries": "Mirror verfügbarer Länder",
         "pacmanMirrorCountryDesc": "Erstelle einen eigenen Mirrorpool von einem Land deiner Wahl.",
         "customizeMirror": "Eigener Mirrorpool",
-        "all": "Alle"
+        "all": "Alle",
+        "appCloseDesc": "Willst du Manjaro Starter beenden?",
+        "exit": "Beenden",
+        "exitApplication": "Applikation beenden",
+        "hideAsTrayIcon": "Als Tray Icon ablegen",
+        "fsTrimSuccess": "Fstrim.timer Dienst Prozess erfolgreich.",
+        "fsTrimFail": "Fstrim.timer Dienst Prozess fehlgeschlagen.",
+        "updateSuccess": "Update erfolgreich.",
+        "updateFail": "Update fehlgeschlagen.",
+        "kernelSuccess": "Kernel Installation erfolgreich.",
+        "kernelFail": "Kernel Installation fehlgeschlagen.",
+        "countryMirrorSuccess": "Erstellung eines eigenen Mirrorpools erfolgreich.",
+        "countryMirrorFail": "Erstellung eines eigenen Mirrorpools fehlgeschlagen.",
+        "fastestMirrorSuccess": "Schnellsten Mirror einrichten erfolgreich.",
+        "fastestMirrorFail": "Schnellsten Mirror einrichten fehlgeschlagen."
     }
 }
