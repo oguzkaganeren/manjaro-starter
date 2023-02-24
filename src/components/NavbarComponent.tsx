@@ -9,10 +9,11 @@ import React from 'react';
 import { appWindow } from '@tauri-apps/api/window';
 import { BiWindow } from 'react-icons/bi';
 import { MdOutlineMinimize } from 'react-icons/md';
+import { invoke } from '@tauri-apps/api/tauri';
+import { CloseIcon } from '@chakra-ui/icons';
 import AppSettings from './appSetting/AppSettings';
 import ThemeComponent from './ThemeComponent';
 import CommandHistory from './common/CommandHistory';
-import CloseAppComponent from './common/CloseAppComponent';
 
 const NavbarComponent: React.FC = () => (
   <Flex
@@ -49,7 +50,14 @@ const NavbarComponent: React.FC = () => (
             size="sm"
             icon={<BiWindow />}
           />
-          <CloseAppComponent />
+          <IconButton
+            aria-label="Close"
+            onClick={async () => {
+              invoke('hide_window');
+            }}
+            size="sm"
+            icon={<CloseIcon />}
+          />
         </ButtonGroup>
       </Stack>
     </Flex>
