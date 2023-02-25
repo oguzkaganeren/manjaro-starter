@@ -83,12 +83,6 @@
                     "cmd": "pacman",
                     "args": true
                 }, {
-                    "name": "mhwd-kernel",
-                    "cmd": "mhwd-kernel",
-                    "args": [{
-                        "validator": "\\S+"
-                    }]
-                }, {
                     "name": "pamac",
                     "cmd": "pamac",
                     "args": true

@@ -77,7 +77,6 @@ A PKGBUILD can be found on [Manjaro GitLab](https://gitlab.manjaro.org/packages/
 
 * gtk3
 * webkit2gtk
-* mhwd
 * pacman-mirrors
 * pamac-gtk
 * papirus-icon-theme
