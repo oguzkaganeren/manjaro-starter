@@ -1,3 +1,12 @@
+## [0.31.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.1...v0.31.2) (2023-02-25)
+
+
+### Bug Fixes
+
+* 🐛 reduced min screen and default screen size and fixes ([23ed112](https://github.com/oguzkaganeren/manjaro-starter/commit/23ed112ce6ba6e8aec252767688af5620485c31b)), closes [#464](https://github.com/oguzkaganeren/manjaro-starter/issues/464)
+
+
+
 ## [0.31.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.0...v0.31.1) (2023-02-25)
 
 
@@ -40,16 +49,6 @@
 ### Bug Fixes
 
 * 🐛 removed aur package ([74dce70](https://github.com/oguzkaganeren/manjaro-starter/commit/74dce70b649d9f89785df4f19b77dd0e13202c9d))
-
-
-
-## [0.29.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.29.0...v0.29.1) (2023-02-19)
-
-
-### Bug Fixes
-
-* 🐛 fixes confirm popup for packages ([0af029c](https://github.com/oguzkaganeren/manjaro-starter/commit/0af029cca2b644c319c8945fb6ec2c18de85fa87)), closes [#430](https://github.com/oguzkaganeren/manjaro-starter/issues/430)
-* 🐛 overflow problem fixed ([f51950c](https://github.com/oguzkaganeren/manjaro-starter/commit/f51950cacfce93c01d6ade146cc738ef0b50f806))
 
 
 
