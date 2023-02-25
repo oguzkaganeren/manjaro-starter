@@ -122,8 +122,8 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
     <div>
       {isInstalled ? (
         <Button
-          flex="1"
           variant="ghost"
+          size={['xs', 'xs', 'md', 'md']}
           aria-label="installed"
           isDisabled
           leftIcon={<RiCheckLine />}
@@ -153,7 +153,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
           >
             <Button
               aria-label="install"
-              flex="1"
+              size={['xs', 'xs', 'md', 'md']}
               shadow="base"
               isDisabled={!isOnline || isLoadingPackage?.get(pkId)}
               variant="ghost"

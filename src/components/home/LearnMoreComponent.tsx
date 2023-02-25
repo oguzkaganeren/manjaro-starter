@@ -23,7 +23,7 @@ interface FeatureProps {
   }
 const Feature = ({ title, text, icon }: FeatureProps) => (
   <Box
-    w="md"
+    w={['xs', 'xs', 'sm', 'md']}
     mx="auto"
     py={4}
     px={8}
@@ -86,7 +86,7 @@ const LearnMoreComponent: React.FC = () => {
       <Modal
         isOpen={isOpen}
         onClose={onClose}
-        size="xl"
+        size={['xs', 'sm', 'md', 'lg']}
         motionPreset="slideInBottom"
       >
         <ModalOverlay backdropInvert="80%" backdropBlur="2px" />

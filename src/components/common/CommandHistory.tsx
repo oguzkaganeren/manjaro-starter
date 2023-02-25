@@ -40,7 +40,7 @@ const CommandHistory = () => {
         />
       </Tooltip>
 
-      <Drawer placement="left" size="md" onClose={onClose} isOpen={isOpen}>
+      <Drawer placement="left" size={['xs', 'xs', 'md', 'lg']} onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />

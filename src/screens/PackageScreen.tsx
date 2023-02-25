@@ -18,6 +18,7 @@ import PackageDetail from '../components/packageRelated/PackageDetail';
 import ArrowComponent from '../components/packageRelated/ArrowComponent';
 import SearchComponent from '../components/common/search/SearchComponent';
 import { explorerTabState } from '../stores/ExplorerTabStore';
+import useWindowDimensions from '../hooks/useWindowDimensions';
 
 const PackageScreen: React.FC = () => {
   const packageSt = useRecoilValue(packageState);
@@ -25,13 +26,14 @@ const PackageScreen: React.FC = () => {
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const [tabIndex, setTabIndex] = useRecoilState(explorerTabState);
   const [loaded, setLoaded] = useState(false);
+  const { width } = useWindowDimensions();
   const [sliderRef, instanceRef] = useKeenSlider({
     mode: 'free',
     loop: false,
     rubberband: false,
     slides: {
       origin: 'auto',
-      perView: 2.2,
+      perView: width > 760 ? 2.2 : 1.2,
       spacing: 5,
     },
     created() {
@@ -61,6 +63,7 @@ const PackageScreen: React.FC = () => {
   const Apps = Array.from(packageSt.values()).map((category: Category) => (
     <TabPanel key={category.id}>
       <Box textAlign={{ lg: 'left' }}>
+        {width > 760 && (
         <HStack>
           <chakra.p
             mb={4}
@@ -72,6 +75,7 @@ const PackageScreen: React.FC = () => {
             {t(`${category.icon}Desc`)}
           </chakra.p>
         </HStack>
+        )}
 
         <Box position="relative">
           <div ref={sliderRef} className="keen-slider">
@@ -115,7 +119,13 @@ const PackageScreen: React.FC = () => {
     </TabPanel>
   ));
   return (
-    <Box width="full" px={8} pt={50}>
+    <Box
+      width="full"
+      mt={width < 760 ? 10 : 4}
+      mb={20}
+      px={8}
+      pt={50}
+    >
       <SearchComponent isForPackage />
       <Tabs
         orientation="vertical"

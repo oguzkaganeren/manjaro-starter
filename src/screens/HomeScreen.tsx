@@ -81,6 +81,7 @@ const HomeScreen: React.FC = () => {
             variant="solid"
             colorScheme="whatsapp"
             px={6}
+            size={['xs', 'sm', 'md', 'md']}
             onClick={nextStep}
             _hover={{
               bg: 'green.500',

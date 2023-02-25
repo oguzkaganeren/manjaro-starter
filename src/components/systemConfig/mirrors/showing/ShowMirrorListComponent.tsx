@@ -10,6 +10,7 @@ import {
   Text,
   useColorModeValue,
   ModalBody,
+  ModalCloseButton,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { getMirrorList } from '../MirrorHelper';
@@ -36,11 +37,13 @@ const MirrorList = () => {
       <Modal
         isOpen={isOpen}
         onClose={onClose}
-        size="2xl"
+        size={['md', 'md', 'xl', '2xl']}
         motionPreset="slideInBottom"
       >
         <ModalOverlay backdropBlur="2px" />
+
         <ModalContent>
+          <ModalCloseButton />
           <ModalBody p={4}>
             {mirrorList?.split('\\n')
               .map((item) => (

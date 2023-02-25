@@ -18,6 +18,7 @@ const LiveInstaller = () => {
         <Button
           fontWeight="700"
           rounded="md"
+          size={['xs', 'sm', 'md', 'md']}
           variant="outline"
           colorScheme="whatsapp"
           onClick={async () => {

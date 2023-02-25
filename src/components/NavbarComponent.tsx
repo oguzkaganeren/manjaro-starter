@@ -24,6 +24,8 @@ const NavbarComponent: React.FC = () => (
     boxShadow="sm"
     justify="flex-end"
     zIndex={998}
+    bg="#edf3f8"
+    _dark={{ bg: '#1A202C' }}
   >
     <div data-tauri-drag-region className="titlebar" />
     <Flex h={16} alignItems="center" justifyContent="space-between" />

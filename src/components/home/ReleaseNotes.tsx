@@ -5,6 +5,7 @@ import {
   ModalOverlay,
   useDisclosure,
   ModalContent,
+  ModalCloseButton,
 } from '@chakra-ui/react';
 import ReactMarkdown from 'react-markdown';
 import { useTranslation } from 'react-i18next';
@@ -31,11 +32,12 @@ const ReleaseNotes = () => {
       <Modal
         isOpen={isOpen}
         onClose={onClose}
-        size="2xl"
+        size={['md', 'md', 'xl', '2xl']}
         motionPreset="slideInBottom"
       >
         <ModalOverlay backdropBlur="2px" />
         <ModalContent p={4}>
+          <ModalCloseButton />
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={ChakraUIRenderer()}
