@@ -37,13 +37,13 @@ export default function useKernelHook() {
     setCommandHistory([
       // with a new array
       ...commandHistory, // that contains all the old items
-      ([commands.getPamac.program, 'install', '--no-confirm', kernelName] as Array<string>).map((text) => `${text}`).join(' '),
+      ([commands.getPamac.program, 'install', '--no-confirm', '--no-upgrade', kernelName] as Array<string>).map((text) => `${text}`).join(' '),
     ]);
     runCommandInstallKernel(kernelName).then((data) => {
       setIsLoadingKernel(new Map(isLoadingKernel?.set(kernelName, false)));
-      const isThereError = data.code === 1;
-      const msg = !isThereError ? t('kernelSuccess') : t('kernelFail');
-      callWarningToast(isThereError, msg);
+      const isSuccess = data.code === 0;
+      const msg = isSuccess ? t('kernelSuccess') : t('kernelFail');
+      callWarningToast(isSuccess, msg);
 
       getKernels();
     });
