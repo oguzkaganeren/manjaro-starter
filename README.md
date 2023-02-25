@@ -1,6 +1,4 @@
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
+[![CodeFactor](https://www.codefactor.io/repository/github/oguzkaganeren/manjaro-starter/badge)](https://www.codefactor.io/repository/github/oguzkaganeren/manjaro-starter)
 [![codebeat badge](https://codebeat.co/badges/959539e5-bcdb-4e7c-9bce-97215bcb99dd)](https://codebeat.co/projects/github-com-oguzkaganeren-manjaro-starter-master)
 ![build](https://github.com/oguzkaganeren/manjaro-starter/actions/workflows/deploymentCheck.yml/badge.svg)
 
