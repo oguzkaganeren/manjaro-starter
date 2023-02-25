@@ -23,7 +23,7 @@ const CountryModal = () => {
     <>
       <Button onClick={onOpen}>{t('customizeMirror')}</Button>
 
-      <Modal size="xl" onClose={onClose} isOpen={isOpen}>
+      <Modal size={['md', 'md', 'xl', 'xl']} onClose={onClose} isOpen={isOpen}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{t('availableCountries')}</ModalHeader>

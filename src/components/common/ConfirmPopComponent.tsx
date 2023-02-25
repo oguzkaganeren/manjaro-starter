@@ -38,7 +38,7 @@ const ConfirmPopComponent = ({
   const { onOpen, onClose, isOpen } = useDisclosure();
   const { t } = useTranslation();
   const popContent = (
-    <PopoverContent color="white" bg="blue.800" borderColor="blue.800">
+    <PopoverContent fontSize={['xs', 'xs', 'md', 'md']} color="white" bg="blue.800" borderColor="blue.800">
       <PopoverHeader pt={4} fontWeight="bold" border="0">
         {t('confirmation')}
       </PopoverHeader>
@@ -50,17 +50,18 @@ const ConfirmPopComponent = ({
         <Spacer />
         {t('belowCommandsRun')}
         <VStack alignItems="flex-start" mt={1} mx={0}>
-          {commands && commands.map((cmd) => <Code maxW={300}>{cmd}</Code>)}
+          {commands && commands.map((cmd) => <Code fontSize={['xs', 'xs', 'md', 'md']} maxW={300}>{cmd}</Code>)}
         </VStack>
       </PopoverBody>
       <PopoverFooter display="flex" border="0" pb={4} justifyContent="flex-end">
         <ButtonGroup size="sm">
-          <Button variant="outline" onClick={onClose}>
+          <Button fontSize={['xs', 'xs', 'md', 'md']} variant="outline" onClick={onClose}>
             {t('cancel')}
           </Button>
           <Button
             colorScheme="orange"
             isDisabled={isButtonDisabled}
+            fontSize={['xs', 'xs', 'md', 'md']}
             onClick={(event) => {
               handleClick(event);
               onClose();

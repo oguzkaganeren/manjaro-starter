@@ -30,9 +30,11 @@ const TagComponent = (props: tagProps) => {
   const { text, color } = props;
   return (
     <chakra.span
+      pos="absolute"
+      top="-6px"
+      left="-10px"
       px={2}
       py={1}
-      ml="10px"
       fontSize="xs"
       fontWeight="bold"
       lineHeight="none"
@@ -89,26 +91,42 @@ const KernelListComponent = () => {
   } = useKernelHook();
 
   return (
-    <Wrap pb={4}>
+    <Wrap pb={4} pt={4} pl={4}>
       {kernelList === undefined ? (
         <Spinner />
       ) : (
         kernelList.map((kernel) => (
-          <Tag
-            mr={2}
-            mt={2}
-            shadow="base"
-            key={kernel.id}
-            colorScheme={kernel.isInstalled ? 'whatsapp' : 'gray'}
-          >
-            <TagLeftIcon boxSize="12px" as={FaLinux} />
-            <TagLabel>
-              Linux
-              {' '}
-              {kernel.remoteVersion}
-            </TagLabel>
+          <chakra.span pos="relative" display="inline-block">
+            <Tag
+              mr={2}
+              mt={2}
+              shadow="base"
+              key={kernel.id}
+              colorScheme={kernel.isInstalled ? 'whatsapp' : 'gray'}
+            >
+              <TagLeftIcon boxSize="12px" as={FaLinux} />
+              <TagLabel>
+                Linux
+                {' '}
+                {kernel.remoteVersion}
+              </TagLabel>
+
+              {!kernel.isInstalled ? (
+                <InstallButton name={kernel.name} />
+              ) : (
+                <Button
+                  ml={5}
+                  mr={-2}
+                  size="sm"
+                  isDisabled
+                  leftIcon={<MdOutlineDownloadDone />}
+                >
+                  {t('installed')}
+                </Button>
+              )}
+            </Tag>
             {currentKernel === kernel.name && (
-              <TagComponent text={t('running')} color="green.600" />
+            <TagComponent text={t('running')} color="green.600" />
             )}
             {kernel.remoteVersion.indexOf('rc') > 0 && (
               <TagComponent text={t('experimental')} color="orange.600" />
@@ -116,20 +134,8 @@ const KernelListComponent = () => {
             {kernel.remoteVersion.indexOf('rt') > 0 && (
               <TagComponent text={t('realtime')} color="blue.600" />
             )}
-            {!kernel.isInstalled ? (
-              <InstallButton name={kernel.name} />
-            ) : (
-              <Button
-                ml={5}
-                mr={-2}
-                size="sm"
-                isDisabled
-                leftIcon={<MdOutlineDownloadDone />}
-              >
-                {t('installed')}
-              </Button>
-            )}
-          </Tag>
+          </chakra.span>
+
         ))
       )}
     </Wrap>

@@ -87,9 +87,12 @@ const App: React.FC = () => {
           checkIcon={FiCheckCircle}
           position="fixed"
           padding={5}
+          variant={width > 760 ? 'circles' : 'circles-alt'}
           size={width > 900 ? 'md' : 'sm'}
           onClickStep={(step) => setStep(step)}
           zIndex={998}
+          bg="#edf3f8"
+          _dark={{ bg: '#1A202C' }}
           activeStep={activeStep}
         >
           {steps.map(({
@@ -98,7 +101,7 @@ const App: React.FC = () => {
             <Step
               label={label}
               key={label}
-              description={description}
+              description={width > 760 ? description : ''}
               icon={icon}
             >
               <Flex w="100%" py={4}>
@@ -111,7 +114,14 @@ const App: React.FC = () => {
       {activeStep === STEPCOUNT ? (
         <FinalScreen />
       ) : (
-        <Flex position="fixed" padding={5} bottom={0} w="100%">
+        <Flex
+          position="fixed"
+          bg="#edf3f8"
+          _dark={{ bg: '#1A202C' }}
+          padding={5}
+          bottom={0}
+          w="100%"
+        >
           <StepButtons />
           <EnvironmentStatusComponent />
         </Flex>

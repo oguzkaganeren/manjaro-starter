@@ -19,7 +19,10 @@ const FinalScreen: React.FC = () => {
   }, []);
 
   return (
-    <Container textAlign="center">
+    <Container
+      pb={40}
+      textAlign="center"
+    >
       <CheckCircleIcon boxSize="50px" color="green.500" marginTop={100} />
       <Heading as="h2" size="xl" mt={6} mb={2}>
         {t('congratulations')}
@@ -31,10 +34,10 @@ const FinalScreen: React.FC = () => {
 
       <Tooltip label={t('returnFirstStep')}>
         <IconButton
-          boxSize="50px"
           color="green.500"
           position="fixed"
           bottom={5}
+          size={['sm', 'sm', 'md', 'md']}
           aria-label={t('returnFirstStep')}
           left={5}
           onClick={() => reset()}

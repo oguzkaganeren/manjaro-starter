@@ -19,6 +19,7 @@ import PackageStatus from './PackageStatus';
 import commands from '../../assets/Commands';
 import RemotePackagePopover from '../common/remotePackage/RemotePackagePopover';
 import { connectionState } from '../../stores/ConnectionStore';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
   interface PackageDetailProps {
     icon:string;
@@ -37,6 +38,7 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
   } = props;
   const [avatarSrc, setAvatarSrc] = React.useState('');
   const isOnline = useRecoilValue(connectionState);
+  const { width } = useWindowDimensions();
   useEffect(() => {
     invoke('get_svg_icon', {
       svgpath: `/usr/share/icons/Papirus/32x32/apps/${icon}.svg`,
@@ -48,7 +50,7 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <Card minH="2xs" variant="filled">
+    <Card minH={['none', 'none', '2xs', '2xs']} variant="filled">
       <CardHeader>
         <Flex>
           <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
@@ -86,24 +88,21 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
                   {title}
                 </Button>
               </Heading>
-              <Text fontSize="xs">{installedVersion}</Text>
+              {width > 760 && (<Text fontSize="xs">{installedVersion}</Text>)}
             </Box>
           </Flex>
-          {isOnline && <RemotePackagePopover name={pkg} />}
+          {isOnline && width > 500 && <RemotePackagePopover name={pkg} />}
         </Flex>
       </CardHeader>
+      {width > 760 && (
       <CardBody>
         <Text fontSize="sm">{children}</Text>
       </CardBody>
+      )}
 
       <CardFooter
         justify="space-between"
         flexWrap="wrap"
-        sx={{
-          '& > button': {
-            minW: '136px',
-          },
-        }}
       >
         <PackageStatus
           catId={catId}

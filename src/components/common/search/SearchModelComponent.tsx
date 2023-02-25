@@ -47,7 +47,7 @@ export default forwardRef<
       isOpen={isOpen}
       onClose={onClose}
       motionPreset="slideInBottom"
-      size="xl"
+      size={['md', 'md', 'xl', 'xl']}
     >
       <ModalOverlay backdropFilter="blur(2px)" />
       <ModalContent mt="5rem" bg="white" _dark={{ bg: '#111' }}>
