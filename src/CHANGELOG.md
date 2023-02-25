@@ -1,3 +1,13 @@
+## [0.31.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.0...v0.31.1) (2023-02-25)
+
+
+### Bug Fixes
+
+* 🐛 fixed kernel installation problem ([e403164](https://github.com/oguzkaganeren/manjaro-starter/commit/e403164e578f9c471b8dddacae2ad3e2fb228287)), closes [#459](https://github.com/oguzkaganeren/manjaro-starter/issues/459)
+* 🐛 remove mhwd dependency(we use pamac now) ([ecccc91](https://github.com/oguzkaganeren/manjaro-starter/commit/ecccc91d038bdbf9dc422682935e8e60bf101c96))
+
+
+
 # [0.31.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.30.0...v0.31.0) (2023-02-24)
 
 
@@ -40,20 +50,6 @@
 
 * 🐛 fixes confirm popup for packages ([0af029c](https://github.com/oguzkaganeren/manjaro-starter/commit/0af029cca2b644c319c8945fb6ec2c18de85fa87)), closes [#430](https://github.com/oguzkaganeren/manjaro-starter/issues/430)
 * 🐛 overflow problem fixed ([f51950c](https://github.com/oguzkaganeren/manjaro-starter/commit/f51950cacfce93c01d6ade146cc738ef0b50f806))
-
-
-
-# [0.29.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.28.0...v0.29.0) (2023-02-18)
-
-
-### Bug Fixes
-
-* **deps:** update rust crate sysinfo to 0.28.0 ([a1eeae5](https://github.com/oguzkaganeren/manjaro-starter/commit/a1eeae5a2403182c128dad6d68c8733b6f8bd870))
-
-
-### Features
-
-* 🎸 added custom mirror pool by country selection ([096ebcb](https://github.com/oguzkaganeren/manjaro-starter/commit/096ebcb448e42c8f3b707297b08e733f5142fe5c)), closes [#322](https://github.com/oguzkaganeren/manjaro-starter/issues/322)
 
 
 
