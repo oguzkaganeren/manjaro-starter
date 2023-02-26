@@ -13,8 +13,8 @@ export const isLive = selector({
     const calamaresCont = new Command(commands.getPacman.program, ['-Q', 'calamares']);
     return calamaresCont.execute().then((result) => {
       if (result.stdout) {
-        return invoke('run_shell_command_with_result', { command: '[ -d "/run/miso/bootmnt/manjaro" ] && echo "true"' }).then((response) => {
-          if (response === 'true') {
+        return invoke('run_shell_command_with_result', { command: '[ -d "/run/miso/bootmnt/manjaro" ] && echo "true" || echo "false"' }).then((response) => {
+          if ((response as string).indexOf('true') > 0) {
             return true;
           } return false;
         });
