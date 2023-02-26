@@ -11,15 +11,16 @@ export const isLive = selector({
     // do not forget to change path
 
     const calamaresCont = new Command(commands.getPacman.program, ['-Q', 'calamares']);
-    const cmdVersionResult = await calamaresCont.execute();
-    if (cmdVersionResult.stdout) {
-      return invoke('run_shell_command_with_result', { command: '[ -d "/run/miso/bootmnt/manjaro" ] && echo "true"' }).then((response) => {
-        if (response) {
-          return true;
-        } return false;
-      });
-    }
-    return false;
+    return calamaresCont.execute().then((result) => {
+      if (result.stdout) {
+        return invoke('run_shell_command_with_result', { command: '[ -d "/run/miso/bootmnt/manjaro" ] && echo "true"' }).then((response) => {
+          if (response === 'true') {
+            return true;
+          } return false;
+        });
+      }
+      return false;
+    });
   },
 });
 
