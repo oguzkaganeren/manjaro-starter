@@ -15,6 +15,7 @@ export interface Package {
   extra: Array<string>,
   isInstalled: boolean,
   installedVersion:string,
+  isLoading:boolean,
   process?:Child
 }
 
@@ -60,6 +61,7 @@ export const getPackages = selector({
           isInstalled: pkInstalled,
           name: app.name,
           installedVersion: pkVer,
+          isLoading: false,
         });
       }));
     })).then(() => categories);

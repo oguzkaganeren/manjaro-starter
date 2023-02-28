@@ -5,7 +5,7 @@ import {
 
 const ArrowComponent = (props: {
   left?: boolean;
-  onClick: (e: any) => void;
+  onClick: (e: unknown) => void;
 }) => {
   const { left, onClick } = props;
   const color = useColorModeValue('#181F2E', '#fff');
