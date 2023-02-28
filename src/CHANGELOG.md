@@ -1,3 +1,13 @@
+## [0.31.3](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.2...v0.31.3) (2023-02-28)
+
+
+### Bug Fixes
+
+* 🐛 showing installation button logic changed ([221fa1e](https://github.com/oguzkaganeren/manjaro-starter/commit/221fa1eedb44f1ed2e8d5598571c6e18668ef8fc)), closes [#467](https://github.com/oguzkaganeren/manjaro-starter/issues/467)
+* **deps:** update rust crate sysinfo to 0.28.1 ([5b31bb7](https://github.com/oguzkaganeren/manjaro-starter/commit/5b31bb7700b0376c3c9e085fdb738e09a0c3bfd9))
+
+
+
 ## [0.31.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.1...v0.31.2) (2023-02-25)
 
 
@@ -40,15 +50,6 @@
 ### Features
 
 * 🎸 added tray icon ([1ac037d](https://github.com/oguzkaganeren/manjaro-starter/commit/1ac037dd07e946309d6f21ee2ed80c1c2d8ddf8f))
-
-
-
-## [0.29.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.29.1...v0.29.2) (2023-02-22)
-
-
-### Bug Fixes
-
-* 🐛 removed aur package ([74dce70](https://github.com/oguzkaganeren/manjaro-starter/commit/74dce70b649d9f89785df4f19b77dd0e13202c9d))
 
 
 
