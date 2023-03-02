@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import AboutComponent from './AboutComponent';
 import LanguageComponent from './LanguageComponent';
 import StartLaunch from './StartLaunch';
+import CommandHistory from './CommandHistory';
 
 const AppSettings: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -39,6 +40,7 @@ const AppSettings: FC = () => {
           <ModalBody pb={6}>
             <LanguageComponent />
             <StartLaunch />
+            <CommandHistory />
             <AboutComponent />
           </ModalBody>
         </ModalContent>
