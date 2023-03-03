@@ -13,6 +13,7 @@ import { invoke } from '@tauri-apps/api/tauri';
 import { CloseIcon } from '@chakra-ui/icons';
 import AppSettings from './appSetting/AppSettings';
 import ThemeComponent from './ThemeComponent';
+import ProcessList from './common/ProcessList';
 
 const NavbarComponent: React.FC = () => (
   <Flex
@@ -31,6 +32,7 @@ const NavbarComponent: React.FC = () => (
     <Spacer />
     <Flex h={16} mr={5} alignItems="center" justifyContent="space-between">
       <Stack direction="row" spacing={2}>
+        <ProcessList />
         <ThemeComponent />
         <AppSettings />
         <ButtonGroup>
