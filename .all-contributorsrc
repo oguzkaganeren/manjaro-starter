@@ -63,6 +63,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "tomektom",
+      "name": "tomektom",
+      "avatar_url": "https://avatars.githubusercontent.com/u/57803202?v=4",
+      "profile": "https://github.com/tomektom",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
