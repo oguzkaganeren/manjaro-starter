@@ -1,6 +1,6 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/oguzkaganeren/manjaro-starter/badge)](https://www.codefactor.io/repository/github/oguzkaganeren/manjaro-starter)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![codebeat badge](https://codebeat.co/badges/959539e5-bcdb-4e7c-9bce-97215bcb99dd)](https://codebeat.co/projects/github-com-oguzkaganeren-manjaro-starter-master)
 ![build](https://github.com/oguzkaganeren/manjaro-starter/actions/workflows/deploymentCheck.yml/badge.svg)
@@ -188,6 +188,7 @@ Project Link: [https://github.com/oguzkaganeren/manjaro-starter](https://github.
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://oguzkaganeren.github.io/"><img src="https://avatars.githubusercontent.com/u/5963437?v=4?s=100" width="100px;" alt="Oğuz Kağan EREN"/><br /><sub><b>Oğuz Kağan EREN</b></sub></a><br /><a href="https://github.com/oguzkaganeren/manjaro-starter/commits?author=oguzkaganeren" title="Code">💻</a> <a href="#maintenance-oguzkaganeren" title="Maintenance">🚧</a> <a href="https://github.com/oguzkaganeren/manjaro-starter/commits?author=oguzkaganeren" title="Documentation">📖</a> <a href="#design-oguzkaganeren" title="Design">🎨</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/dai5m5iq"><img src="https://avatars.githubusercontent.com/u/111610689?v=4?s=100" width="100px;" alt="dai5m5iq"/><br /><sub><b>dai5m5iq</b></sub></a><br /><a href="https://github.com/oguzkaganeren/manjaro-starter/commits?author=dai5m5iq" title="Documentation">📖</a></td>
     </tr>
   </tbody>
   <tfoot>
