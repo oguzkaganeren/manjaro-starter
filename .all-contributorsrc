@@ -33,6 +33,18 @@
         "ideas",
         "translation"
       ]
+    },
+    {
+      "login": "Tuxman2",
+      "name": "Tuxman2",
+      "avatar_url": "https://avatars.githubusercontent.com/u/23556606?v=4",
+      "profile": "https://github.com/Tuxman2",
+      "contributions": [
+        "bug",
+        "doc",
+        "ideas",
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
