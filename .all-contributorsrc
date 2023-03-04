@@ -1,0 +1,79 @@
+{
+  "projectName": "manjaro-starter",
+  "projectOwner": "oguzkaganeren",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "gitmoji",
+  "contributors": [
+    {
+      "login": "oguzkaganeren",
+      "name": "Oğuz Kağan EREN",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5963437?v=4",
+      "profile": "https://oguzkaganeren.github.io/",
+      "contributions": [
+        "code",
+        "maintenance",
+        "doc",
+        "design"
+      ]
+    },
+    {
+      "login": "dai5m5iq",
+      "name": "dai5m5iq",
+      "avatar_url": "https://avatars.githubusercontent.com/u/111610689?v=4",
+      "profile": "https://github.com/dai5m5iq",
+      "contributions": [
+        "doc",
+        "bug",
+        "ideas",
+        "translation"
+      ]
+    },
+    {
+      "login": "Tuxman2",
+      "name": "Tuxman2",
+      "avatar_url": "https://avatars.githubusercontent.com/u/23556606?v=4",
+      "profile": "https://github.com/Tuxman2",
+      "contributions": [
+        "bug",
+        "doc",
+        "ideas",
+        "translation"
+      ]
+    },
+    {
+      "login": "fhdk",
+      "name": "Frede H",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22748698?v=4",
+      "profile": "https://root.nix.dk/",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "yochananmarqos",
+      "name": "Mark Wagie",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5437803?v=4",
+      "profile": "https://manjaro.org/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "tomektom",
+      "name": "tomektom",
+      "avatar_url": "https://avatars.githubusercontent.com/u/57803202?v=4",
+      "profile": "https://github.com/tomektom",
+      "contributions": [
+        "translation"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "linkToUsage": true
+}

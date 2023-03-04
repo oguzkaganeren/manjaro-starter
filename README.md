@@ -1,7 +1,9 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/oguzkaganeren/manjaro-starter/badge)](https://www.codefactor.io/repository/github/oguzkaganeren/manjaro-starter)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![codebeat badge](https://codebeat.co/badges/959539e5-bcdb-4e7c-9bce-97215bcb99dd)](https://codebeat.co/projects/github-com-oguzkaganeren-manjaro-starter-master)
 ![build](https://github.com/oguzkaganeren/manjaro-starter/actions/workflows/deploymentCheck.yml/badge.svg)
-[![All Contributors](https://img.shields.io/github/all-contributors/oguzkaganeren/manjaro-starter?color=ee8449&style=flat-square)](#contributors)
 
 <!-- PROJECT LOGO -->
 <br />
@@ -178,9 +180,31 @@ Project Link: [https://github.com/oguzkaganeren/manjaro-starter](https://github.
 <!-- ACKNOWLEDGEMENTS -->
 ## Contributors
 
+
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://oguzkaganeren.github.io/"><img src="https://avatars.githubusercontent.com/u/5963437?v=4?s=100" width="100px;" alt="Oğuz Kağan EREN"/><br /><sub><b>Oğuz Kağan EREN</b></sub></a><br /><a href="https://github.com/oguzkaganeren/manjaro-starter/commits?author=oguzkaganeren" title="Code">💻</a> <a href="#maintenance-oguzkaganeren" title="Maintenance">🚧</a> <a href="https://github.com/oguzkaganeren/manjaro-starter/commits?author=oguzkaganeren" title="Documentation">📖</a> <a href="#design-oguzkaganeren" title="Design">🎨</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/dai5m5iq"><img src="https://avatars.githubusercontent.com/u/111610689?v=4?s=100" width="100px;" alt="dai5m5iq"/><br /><sub><b>dai5m5iq</b></sub></a><br /><a href="https://github.com/oguzkaganeren/manjaro-starter/commits?author=dai5m5iq" title="Documentation">📖</a> <a href="https://github.com/oguzkaganeren/manjaro-starter/issues?q=author%3Adai5m5iq" title="Bug reports">🐛</a> <a href="#ideas-dai5m5iq" title="Ideas, Planning, & Feedback">🤔</a> <a href="#translation-dai5m5iq" title="Translation">🌍</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Tuxman2"><img src="https://avatars.githubusercontent.com/u/23556606?v=4?s=100" width="100px;" alt="Tuxman2"/><br /><sub><b>Tuxman2</b></sub></a><br /><a href="https://github.com/oguzkaganeren/manjaro-starter/issues?q=author%3ATuxman2" title="Bug reports">🐛</a> <a href="https://github.com/oguzkaganeren/manjaro-starter/commits?author=Tuxman2" title="Documentation">📖</a> <a href="#ideas-Tuxman2" title="Ideas, Planning, & Feedback">🤔</a> <a href="#translation-Tuxman2" title="Translation">🌍</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://root.nix.dk/"><img src="https://avatars.githubusercontent.com/u/22748698?v=4?s=100" width="100px;" alt="Frede H"/><br /><sub><b>Frede H</b></sub></a><br /><a href="#translation-fhdk" title="Translation">🌍</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://manjaro.org/"><img src="https://avatars.githubusercontent.com/u/5437803?v=4?s=100" width="100px;" alt="Mark Wagie"/><br /><sub><b>Mark Wagie</b></sub></a><br /><a href="https://github.com/oguzkaganeren/manjaro-starter/commits?author=yochananmarqos" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/tomektom"><img src="https://avatars.githubusercontent.com/u/57803202?v=4?s=100" width="100px;" alt="tomektom"/><br /><sub><b>tomektom</b></sub></a><br /><a href="#translation-tomektom" title="Translation">🌍</a></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td align="center" size="13px" colspan="7">
+        <img src="https://raw.githubusercontent.com/all-contributors/all-contributors-cli/1b8533af435da9854653492b1327a23a4dbd0a10/assets/logo-small.svg">
+          <a href="https://all-contributors.js.org/docs/en/bot/usage">Add your contributions</a>
+        </img>
+      </td>
+    </tr>
+  </tfoot>
+</table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
