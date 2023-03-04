@@ -1,7 +1,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/oguzkaganeren/manjaro-starter/badge)](https://www.codefactor.io/repository/github/oguzkaganeren/manjaro-starter)
 [![codebeat badge](https://codebeat.co/badges/959539e5-bcdb-4e7c-9bce-97215bcb99dd)](https://codebeat.co/projects/github-com-oguzkaganeren-manjaro-starter-master)
 ![build](https://github.com/oguzkaganeren/manjaro-starter/actions/workflows/deploymentCheck.yml/badge.svg)
-
+[![All Contributors](https://img.shields.io/github/all-contributors/oguzkaganeren/manjaro-starter?color=ee8449&style=flat-square)](#contributors)
 
 <!-- PROJECT LOGO -->
 <br />
@@ -178,9 +178,14 @@ Project Link: [https://github.com/oguzkaganeren/manjaro-starter](https://github.
 <!-- ACKNOWLEDGEMENTS -->
 ## Contributors
 
-<a href="https://github.com/oguzkaganeren/manjaro-starter/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=oguzkaganeren/manjaro-starter" />
-</a>
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 
 
