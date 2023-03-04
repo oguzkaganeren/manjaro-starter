@@ -45,6 +45,15 @@
         "ideas",
         "translation"
       ]
+    },
+    {
+      "login": "fhdk",
+      "name": "Frede H",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22748698?v=4",
+      "profile": "https://root.nix.dk/",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
