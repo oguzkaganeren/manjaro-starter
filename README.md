@@ -188,7 +188,7 @@ Project Link: [https://github.com/oguzkaganeren/manjaro-starter](https://github.
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://oguzkaganeren.github.io/"><img src="https://avatars.githubusercontent.com/u/5963437?v=4?s=100" width="100px;" alt="Oğuz Kağan EREN"/><br /><sub><b>Oğuz Kağan EREN</b></sub></a><br /><a href="https://github.com/oguzkaganeren/manjaro-starter/commits?author=oguzkaganeren" title="Code">💻</a> <a href="#maintenance-oguzkaganeren" title="Maintenance">🚧</a> <a href="https://github.com/oguzkaganeren/manjaro-starter/commits?author=oguzkaganeren" title="Documentation">📖</a> <a href="#design-oguzkaganeren" title="Design">🎨</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/dai5m5iq"><img src="https://avatars.githubusercontent.com/u/111610689?v=4?s=100" width="100px;" alt="dai5m5iq"/><br /><sub><b>dai5m5iq</b></sub></a><br /><a href="https://github.com/oguzkaganeren/manjaro-starter/commits?author=dai5m5iq" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/dai5m5iq"><img src="https://avatars.githubusercontent.com/u/111610689?v=4?s=100" width="100px;" alt="dai5m5iq"/><br /><sub><b>dai5m5iq</b></sub></a><br /><a href="https://github.com/oguzkaganeren/manjaro-starter/commits?author=dai5m5iq" title="Documentation">📖</a> <a href="https://github.com/oguzkaganeren/manjaro-starter/issues?q=author%3Adai5m5iq" title="Bug reports">🐛</a> <a href="#ideas-dai5m5iq" title="Ideas, Planning, & Feedback">🤔</a> <a href="#translation-dai5m5iq" title="Translation">🌍</a></td>
     </tr>
   </tbody>
   <tfoot>
