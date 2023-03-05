@@ -190,6 +190,8 @@
         "countryMirrorFail": "Creating a custom mirror pool fail.",
         "fastestMirrorSuccess": "Setting fastest mirror succeeds.",
         "fastestMirrorFail": "Setting fastest mirror fail.",
-        "show": "Show"
+        "show": "Show",
+        "noProcess": "There is no process.",
+        "processList": "Process List"
     }
 }

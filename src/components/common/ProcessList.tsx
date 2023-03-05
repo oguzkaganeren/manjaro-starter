@@ -10,14 +10,19 @@ import {
   Tooltip,
   DrawerCloseButton,
   VStack,
+  Text,
+  AbsoluteCenter,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { HiOutlineQueueList } from 'react-icons/hi2';
+import { useRecoilValue } from 'recoil';
 import ProcessSingle from './ProcessSingle';
+import processState from '../../stores/ProcessStore';
 
 const ProcessList = () => {
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const processList = useRecoilValue(processState);
   return (
     <>
       <Tooltip label={t('processList')}>
@@ -43,8 +48,9 @@ const ProcessList = () => {
           </DrawerHeader>
           <DrawerBody>
             <VStack alignItems="start">
-              <ProcessSingle />
+              {processList.size > 0 && <ProcessSingle />}
             </VStack>
+            {processList.size === 0 && <AbsoluteCenter><Text fontSize="xs" color="gray.400">{t('noProcess')}</Text></AbsoluteCenter>}
           </DrawerBody>
         </DrawerContent>
       </Drawer>
