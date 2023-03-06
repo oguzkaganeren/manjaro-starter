@@ -16,8 +16,27 @@ import {
 import { useTranslation } from 'react-i18next';
 import { HiOutlineQueueList } from 'react-icons/hi2';
 import { useRecoilValue } from 'recoil';
+import { FaLinux } from 'react-icons/fa';
+import { GiMirrorMirror } from 'react-icons/gi';
+import { FiPackage, FiTool } from 'react-icons/fi';
+import processState, { ProcessStatues, ProcessTypes } from '../../stores/ProcessStore';
 import ProcessSingle from './ProcessSingle';
-import processState from '../../stores/ProcessStore';
+
+const getIcon = (type:ProcessTypes) => {
+  switch (type) {
+    case ProcessTypes.Kernel:
+      return FaLinux;
+
+    case ProcessTypes.Mirror:
+      return GiMirrorMirror;
+
+    case ProcessTypes.Package:
+      return FiPackage;
+
+    default:
+      return FiTool;
+  }
+};
 
 const ProcessList = () => {
   const { t } = useTranslation();
@@ -48,7 +67,17 @@ const ProcessList = () => {
           </DrawerHeader>
           <DrawerBody>
             <VStack alignItems="start">
-              {processList.size > 0 && <ProcessSingle />}
+              {processList.size > 0 && Array.from(processList.entries()).map((entry) => {
+                const [key, value] = entry;
+                return (
+                  <ProcessSingle
+                    title={key}
+                    desc={ProcessTypes[value.type]}
+                    isProcessing={value.status === ProcessStatues.Processing}
+                    icon={getIcon(value.type)}
+                  />
+                );
+              })}
             </VStack>
             {processList.size === 0 && <AbsoluteCenter><Text fontSize="xs" color="gray.400">{t('noProcess')}</Text></AbsoluteCenter>}
           </DrawerBody>

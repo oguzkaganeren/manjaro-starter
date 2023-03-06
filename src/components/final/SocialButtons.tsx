@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import {
   Text,
   Button,
@@ -24,7 +24,7 @@ import { default as SocialDetails } from '../../assets/SocialUrls.json';
 
 interface socialProps {
   url: string;
-  icon: any;
+  icon: ReactElement;
   text: string;
   color: string;
 }

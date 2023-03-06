@@ -1,4 +1,5 @@
 import { CloseIcon } from '@chakra-ui/icons';
+import React from 'react';
 import {
   Box,
   Flex,
@@ -8,9 +9,18 @@ import {
   Spacer,
   IconButton,
 } from '@chakra-ui/react';
-import { SiProgress } from 'react-icons/si';
+import { IconType } from 'react-icons';
 
-const ProcessSingle: React.FC = () => (
+type Props = {
+  title: string;
+  desc: string;
+  icon:IconType;
+  isProcessing:boolean;
+};
+
+const ProcessSingle = ({
+  title, desc, icon, isProcessing,
+}:Props) => (
   <Flex
     maxW="sm"
     w="full"
@@ -23,8 +33,8 @@ const ProcessSingle: React.FC = () => (
     overflow="hidden"
   >
     <Flex justifyContent="center" alignItems="center" w={12} bg="green.500">
-      <Icon as={SiProgress} color="white" boxSize={6} />
-      <Spinner />
+      {!isProcessing && <Icon as={icon} color="white" boxSize={6} />}
+      {isProcessing && <Spinner />}
     </Flex>
 
     <Box mx={-3} py={2} px={4}>
@@ -36,7 +46,7 @@ const ProcessSingle: React.FC = () => (
           }}
           fontWeight="bold"
         >
-          Success
+          {title}
         </chakra.span>
         <chakra.p
           color="gray.600"
@@ -45,7 +55,7 @@ const ProcessSingle: React.FC = () => (
           }}
           fontSize="sm"
         >
-          Your account was registered!
+          {desc}
         </chakra.p>
       </Box>
     </Box>

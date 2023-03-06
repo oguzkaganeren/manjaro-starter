@@ -1,7 +1,7 @@
 import {
   atom,
 } from 'recoil';
-import { Child } from '@tauri-apps/api/shell';
+import { Command } from '@tauri-apps/api/shell';
 
 export enum ProcessTypes {
   Package,
@@ -18,7 +18,7 @@ export enum ProcessStatues {
 export interface Process {
   type:ProcessTypes,
   status:ProcessStatues,
-  child:Child
+  child:Command,
 }
 
 const processes: Map<string, Process> = new Map<string, Process>();

@@ -7,6 +7,7 @@ import {
   Package,
   packageState,
 } from '../../stores/PackageStore';
+import processState, { ProcessStatues, ProcessTypes } from '../../stores/ProcessStore';
 import callPackageQuery, { callPackageInstall } from './PackageHelper';
 
 export default function usePackageHook() {
@@ -14,6 +15,7 @@ export default function usePackageHook() {
   const { t } = useTranslation();
   const [commandHistory, setCommandHistory] = useRecoilState(commandState);
   const [packageSt, setPackageSt] = useRecoilState(packageState);
+  const [processList, setProcessList] = useRecoilState(processState);
   const getPackageLoadingStatus = (catId:string, pkId:string) => packageSt.get(catId)?.packages.get(pkId)?.isLoading;
 
   const checkInstalledPackage = (catId:string, pkId:string) => {
@@ -89,8 +91,21 @@ export default function usePackageHook() {
         );
         checkInstalledPackage(catId, pkId);
       });
-      const child = await cmd.spawn();
-      setProcessToPkStore(catId, pkId, child);
+      // copy (shallow) the old map's entries in the new Map
+      const updateList = new Map(processList);
+      // add the new entry in the 'updatedMap'
+      updateList.set(
+        pk.pkg,
+        {
+          child: cmd,
+          type: ProcessTypes.Package,
+          status: ProcessStatues.Waiting,
+        },
+      );
+      // update the state
+      setProcessList(updateList);
+      // const child = await cmd.spawn();
+      // setProcessToPkStore(catId, pkId, child);
     }
   };
 
