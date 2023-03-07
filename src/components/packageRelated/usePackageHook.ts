@@ -8,6 +8,7 @@ import {
   packageState,
 } from '../../stores/PackageStore';
 import processState, { ProcessStatues, ProcessTypes } from '../../stores/ProcessStore';
+import isDev from '../../utils/DevHelper';
 import callPackageQuery, { callPackageInstall } from './PackageHelper';
 
 export default function usePackageHook() {
@@ -74,10 +75,11 @@ export default function usePackageHook() {
     const pk = packageSt.get(catId)?.packages.get(pkId);
     if (pk) {
       setPackageLoading(catId, pkId, pk, true);
+      const dryRun = isDev() ? '--dry-run' : '';
       setCommandHistory(
         [ // with a new array
           ...commandHistory, // that contains all the old items
-          `pamac install --no-confirm --no-upgrade ${pk.pkg}`, // and one new item at the end
+          `pamac install --no-confirm --no-upgrade ${dryRun} ${pk.pkg}`, // and one new item at the end
         ],
       );
       const cmd = (await callPackageInstall(pk.pkg));
