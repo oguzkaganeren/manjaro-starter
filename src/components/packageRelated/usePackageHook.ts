@@ -17,7 +17,7 @@ export default function usePackageHook() {
   const [commandHistory, setCommandHistory] = useRecoilState(commandState);
   const [packageSt, setPackageSt] = useRecoilState(packageState);
   const [processList, setProcessList] = useRecoilState(processState);
-  const getPackageLoadingStatus = (catId:string, pkId:string) => packageSt.get(catId)?.packages.get(pkId)?.isLoading;
+  const getPackageLoadingStatus = (pkgName:string) => processList.has(pkgName);
 
   const checkInstalledPackage = (catId:string, pkId:string) => {
     const pk = packageSt.get(catId)?.packages.get(pkId);

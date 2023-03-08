@@ -46,7 +46,7 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
           <ConfirmPopComponent
             confirmationDesc="confirmDesc"
             handleClick={() => installPackage(catId, pkId)}
-            isButtonDisabled={getPackageLoadingStatus(catId, pkId) || !isOnline}
+            isButtonDisabled={getPackageLoadingStatus(pkgName) || !isOnline}
             commands={[
               (
                 [
@@ -65,16 +65,16 @@ const PackageStatus: React.FC<PackageStatusProps> = (props) => {
               aria-label="install"
               size={['xs', 'xs', 'md', 'md']}
               shadow="base"
-              isDisabled={!isOnline || getPackageLoadingStatus(catId, pkId)}
+              isDisabled={!isOnline || getPackageLoadingStatus(pkgName)}
               variant="ghost"
               leftIcon={<RiInstallLine />}
-              isLoading={getPackageLoadingStatus(catId, pkId) || false}
+              isLoading={getPackageLoadingStatus(pkgName) || false}
               colorScheme="green"
             >
               {t('install')}
             </Button>
           </ConfirmPopComponent>
-          {getPackageLoadingStatus(catId, pkId) && (
+          {getPackageLoadingStatus(pkgName) && (
             <IconButton
               aria-label="Cancel"
               icon={<CloseIcon />}
