@@ -43,7 +43,7 @@
     "tauri-plugin-log-api": "https://github.com/tauri-apps/tauri-plugin-log",
     "typescript": "^4.9.5",
     "use-debounce": "^9.0.3",
-    "web-vitals": "^3.1.1"
+    "web-vitals": "^3.3.0"
   },
   "scripts": {
     "start": "BROWSER=none react-scripts start",
