@@ -1,13 +1,13 @@
 import {
-  Tabs,
-  TabList,
   TabPanels,
-  Tab,
   TabPanel,
 } from '@chakra-ui/react';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { useRecoilState, useRecoilValue } from 'recoil';
+import {
+  FiAirplay,
+  FiDownload, FiGitMerge, FiHardDrive, FiLayers, FiSettings,
+} from 'react-icons/fi';
 import KernelComponent from '../components/systemConfig/kernel/KernelComponent';
 import SystemInfoComponent from '../components/systemConfig/SystemInfo';
 import SystemUpdate from '../components/systemConfig/SystemUpdate';
@@ -16,20 +16,31 @@ import { liveState } from '../stores/LiveStore';
 import FsTrimServiceComponent from '../components/systemConfig/FsTrimServiceComponent';
 import { confTabState } from '../stores/ConfTabStore';
 import SettingsComponent from '../components/systemConfig/SettingsComponent';
+import Sidebar from '../components/common/Sidebar/Sidebar';
+import { SidebarContentType } from '../components/common/Sidebar/SidebarContentType';
 
-const TabListEx = () => {
+const SideContent = () => {
   const isLive = useRecoilValue(liveState);
-  const { t } = useTranslation();
-  return (
-    <TabList>
-      <Tab>{t('system')}</Tab>
-      <Tab>{t('mirrors')}</Tab>
-      <Tab>{t('updates')}</Tab>
-      {!isLive && <Tab>{t('kernels')}</Tab>}
-      {!isLive && <Tab>{t('storage')}</Tab>}
-      <Tab>{t('settings')}</Tab>
-    </TabList>
-  );
+  const ret: Array<SidebarContentType> = [];
+  ret.push({
+    icon: FiAirplay, text: 'system', isSelected: true, onClick: () => {},
+  });
+  ret.push({
+    icon: FiGitMerge, text: 'mirrors', onClick: () => {},
+  });
+  ret.push({
+    icon: FiDownload, text: 'updates', onClick: () => {},
+  });
+  ret.push({
+    icon: FiLayers, text: 'kernels', isHidden: isLive, onClick: () => {},
+  });
+  ret.push({
+    icon: FiHardDrive, text: 'storage', isHidden: isLive, onClick: () => {},
+  });
+  ret.push({
+    icon: FiSettings, text: 'settings', onClick: () => {},
+  });
+  return ret;
 };
 
 const TabPanelEx = () => {
@@ -65,23 +76,7 @@ const TabPanelEx = () => {
 const ConfigurationScreen: React.FC = () => {
   const [confTabIndex, setConfTabIndex] = useRecoilState(confTabState);
   return (
-    <Tabs
-      isLazy
-      mt={20}
-      mb={20}
-      px={5}
-      display="grid"
-      gridTemplateColumns="auto 1fr"
-      orientation="vertical"
-      variant="solid-rounded"
-      colorScheme="whatsapp"
-      w="100%"
-      index={confTabIndex}
-      onChange={(index) => setConfTabIndex(index)}
-    >
-      <TabListEx />
-      <TabPanelEx />
-    </Tabs>
+    <Sidebar sidebarContent={SideContent()} />
   );
 };
 export default ConfigurationScreen;
