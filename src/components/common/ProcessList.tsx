@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import {
   DrawerOverlay,
   Drawer,
@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { HiOutlineQueueList } from 'react-icons/hi2';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { FaLinux } from 'react-icons/fa';
 import { GiMirrorMirror } from 'react-icons/gi';
 import { FiPackage, FiTool } from 'react-icons/fi';
@@ -42,7 +42,24 @@ const getIcon = (type:ProcessTypes) => {
 const ProcessList = () => {
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const processList = useRecoilValue(processState);
+  const [processList, setProcess] = useRecoilState(processState);
+  async function startProcess() {
+    Array.from(processList.entries()).map(async (entry) => {
+      const [key, value] = entry;
+
+      value.child.execute().then((res) => {
+        const updateList = new Map(processList);
+        updateList.delete(key);
+        setProcess(updateList);
+      });
+    });
+  }
+  useEffect(() => {
+    if (processList.size === 7) {
+      startProcess();
+    }
+  }, [processList]);
+
   return (
     <>
       <Tooltip label={t('processList')}>
