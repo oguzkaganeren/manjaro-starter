@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Flex,
   useDisclosure,
   Box,
   Drawer,
@@ -9,9 +8,9 @@ import {
   IconButton,
 } from '@chakra-ui/react';
 import { FiMenu } from 'react-icons/fi';
-import { useTranslation } from 'react-i18next';
 import SidebarContent from './SidebarContent';
 import { SidebarContentType } from './SidebarContentType';
+import KernelComponent from '../../systemConfig/kernel/KernelComponent';
 
 type Props = {
     sidebarContent:Array<SidebarContentType>
@@ -19,15 +18,9 @@ type Props = {
 
 const Sidebar = ({ sidebarContent }:Props) => {
   const sidebar = useDisclosure();
-  const { t } = useTranslation();
   return (
     <Box
       as="section"
-      bg="gray.50"
-      _dark={{
-        bg: 'gray.700',
-      }}
-      minH="100vh"
       mt={59}
     >
       <SidebarContent
@@ -62,36 +55,22 @@ const Sidebar = ({ sidebarContent }:Props) => {
         }}
         transition=".3s ease"
       >
-        <Flex
-          as="header"
-          align="center"
-          justify="space-between"
-          w="full"
-          px="4"
-          bg="white"
-          _dark={{
-            bg: 'gray.800',
+        <IconButton
+          aria-label="Menu"
+          pos="fixed"
+          zIndex="sticky"
+          display={{
+            base: 'inline-flex',
+            md: 'none',
           }}
-          borderBottomWidth="1px"
-          color="inherit"
-          h="14"
-        >
-          <IconButton
-            aria-label="Menu"
-            display={{
-              base: 'inline-flex',
-              md: 'none',
-            }}
-            onClick={sidebar.onOpen}
-            icon={<FiMenu />}
-            size="sm"
-          />
-
-        </Flex>
+          onClick={sidebar.onOpen}
+          icon={<FiMenu />}
+          size="sm"
+        />
 
         <Box as="main" w="full" p="4">
           {/* Add content here, remove div below  */}
-          <Box borderWidth="4px" borderStyle="dashed" rounded="md" w="full" h="96" />
+          <KernelComponent />
         </Box>
       </Box>
     </Box>

@@ -18,7 +18,6 @@ const SidebarContent = ({ sidebarContent, otherProps }:Props) => {
     <Box
       as="nav"
       pos="fixed"
-      top="145"
       left="0"
       zIndex="sticky"
       h="full"
@@ -30,12 +29,10 @@ const SidebarContent = ({ sidebarContent, otherProps }:Props) => {
         bg: 'gray.800',
       }}
       color="inherit"
-      borderRightWidth="1px"
       w="60"
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...otherProps}
     >
-      <Flex px="4" py="5" align="center" />
       <Flex
         direction="column"
         as="nav"
