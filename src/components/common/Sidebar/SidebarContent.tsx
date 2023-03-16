@@ -29,7 +29,7 @@ const SidebarContent = ({ sidebarContent, otherProps }:Props) => {
         bg: 'gray.800',
       }}
       color="inherit"
-      w="60"
+      w="auto"
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...otherProps}
     >

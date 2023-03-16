@@ -26,6 +26,7 @@ const NavItem = (props:Props) => {
     <Flex
       align="center"
       px="4"
+      pr="12"
       mx="2"
       rounded="md"
       py="3"

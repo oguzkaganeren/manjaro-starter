@@ -10,7 +10,7 @@ import {
 import { FiMenu } from 'react-icons/fi';
 import SidebarContent from './SidebarContent';
 import { SidebarContentType } from './SidebarContentType';
-import KernelComponent from '../../systemConfig/kernel/KernelComponent';
+import SystemInfoComponent from '../../systemConfig/SystemInfo';
 
 type Props = {
     sidebarContent:Array<SidebarContentType>
@@ -68,9 +68,9 @@ const Sidebar = ({ sidebarContent }:Props) => {
           size="sm"
         />
 
-        <Box as="main" w="full" p="4">
+        <Box as="main" w="full" pr="4">
           {/* Add content here, remove div below  */}
-          <KernelComponent />
+          <SystemInfoComponent />
         </Box>
       </Box>
     </Box>
