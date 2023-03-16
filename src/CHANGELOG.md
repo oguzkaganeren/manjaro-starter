@@ -1,3 +1,12 @@
+## [0.31.4](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.3...v0.31.4) (2023-03-16)
+
+
+### Bug Fixes
+
+* 🐛 dependencies version bumps ([8606c94](https://github.com/oguzkaganeren/manjaro-starter/commit/8606c94951fa861c3e0f7ab3c3311193746d2a1c))
+
+
+
 ## [0.31.3](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.2...v0.31.3) (2023-02-28)
 
 
@@ -41,15 +50,6 @@
 
 * 🎸 added system notification ([c043cd6](https://github.com/oguzkaganeren/manjaro-starter/commit/c043cd6c24047a3b9577d9017584eaf24b089e6e)), closes [#393](https://github.com/oguzkaganeren/manjaro-starter/issues/393)
 * 🎸 single instance plugin added ([8005498](https://github.com/oguzkaganeren/manjaro-starter/commit/80054986d4598d38f2196cfc2012d1918d4f86cb)), closes [#447](https://github.com/oguzkaganeren/manjaro-starter/issues/447)
-
-
-
-# [0.30.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.29.2...v0.30.0) (2023-02-23)
-
-
-### Features
-
-* 🎸 added tray icon ([1ac037d](https://github.com/oguzkaganeren/manjaro-starter/commit/1ac037dd07e946309d6f21ee2ed80c1c2d8ddf8f))
 
 
 
