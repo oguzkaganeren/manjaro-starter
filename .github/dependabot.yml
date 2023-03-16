@@ -7,3 +7,12 @@ updates:
     # Check the npm registry for updates every day (weekdays)
     schedule:
       interval: "daily"
+  - package-ecosystem: "cargo"
+    directory: "/src-tauri/"
+    schedule:
+      interval: "daily"
+    ignore:
+        # These are peer deps of Cargo and should not be automatically bumped
+        - dependency-name: "semver"
+        - dependency-name: "crates-io"
+    rebase-strategy: "disabled"
