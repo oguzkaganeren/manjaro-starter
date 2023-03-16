@@ -1856,6 +1856,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "num_threads"
+version = "0.1.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2819ce041d2ee131036f4fc9d6ae7ae125a3a40e97ba64d04fe799ad9dabbb44"
+dependencies = [
+ "libc",
+]
+
+[[package]]
 name = "objc"
 version = "0.2.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3210,7 +3219,7 @@ dependencies = [
 [[package]]
 name = "tauri-plugin-log"
 version = "0.1.0"
-source = "git+https://github.com/tauri-apps/plugins-workspace?branch=dev#8f34eb83e4f9a8c72fd3823a066c94f861f2d021"
+source = "git+https://github.com/tauri-apps/plugins-workspace?branch=dev#9b70a79b2cc05bfd671f2317c2de85b77c6773a3"
 dependencies = [
  "byte-unit",
  "fern",
@@ -3225,7 +3234,7 @@ dependencies = [
 [[package]]
 name = "tauri-plugin-single-instance"
 version = "0.1.0"
-source = "git+https://github.com/tauri-apps/plugins-workspace?branch=dev#8f34eb83e4f9a8c72fd3823a066c94f861f2d021"
+source = "git+https://github.com/tauri-apps/plugins-workspace?branch=dev#9b70a79b2cc05bfd671f2317c2de85b77c6773a3"
 dependencies = [
  "log",
  "serde",
@@ -3383,6 +3392,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "53250a3b3fed8ff8fd988587d8925d26a83ac3845d9e03b220b37f34c2b8d6c2"
 dependencies = [
  "itoa 1.0.5",
+ "libc",
+ "num_threads",
  "serde",
  "time-core",
  "time-macros",
