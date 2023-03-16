@@ -6,7 +6,8 @@
   "packageRules": [
     {
       "matchSourceUrlPrefixes": ["https://github.com/tauri-apps/"],
-      "groupName": "All tauri packages"
+      "groupName": "All tauri packages",
+      "enabled": false
     }
   ]
 }
