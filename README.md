@@ -93,8 +93,6 @@ A PKGBUILD can be found on [Manjaro GitLab](https://gitlab.manjaro.org/packages/
 * [React](https://reactjs.org)
 * [Tauri](https://tauri.studio)
 
-
-
 <!-- GETTING STARTED -->
 ## Getting Started
 
