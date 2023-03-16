@@ -5,7 +5,8 @@
   ],
   "packageRules": [
     {
-      "excludePackageNames": ["tauri-plugin-log-api"]
+      "matchSourceUrlPrefixes": ["https://github.com/tauri-apps/"],
+      "groupName": "All tauri packages"
     }
   ]
 }
