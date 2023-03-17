@@ -1,3 +1,12 @@
+## [0.31.5](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.4...v0.31.5) (2023-03-17)
+
+
+### Bug Fixes
+
+* 🐛 tab design changes ([0486d64](https://github.com/oguzkaganeren/manjaro-starter/commit/0486d645481577a96265e4ececcac5aaf18cc648))
+
+
+
 ## [0.31.4](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.3...v0.31.4) (2023-03-16)
 
 
@@ -33,23 +42,6 @@
 
 * 🐛 fixed kernel installation problem ([e403164](https://github.com/oguzkaganeren/manjaro-starter/commit/e403164e578f9c471b8dddacae2ad3e2fb228287)), closes [#459](https://github.com/oguzkaganeren/manjaro-starter/issues/459)
 * 🐛 remove mhwd dependency(we use pamac now) ([ecccc91](https://github.com/oguzkaganeren/manjaro-starter/commit/ecccc91d038bdbf9dc422682935e8e60bf101c96))
-
-
-
-# [0.31.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.30.0...v0.31.0) (2023-02-24)
-
-
-### Bug Fixes
-
-* 🐛 code improvements and fstrim result popup ([27132ac](https://github.com/oguzkaganeren/manjaro-starter/commit/27132acb178c44007d16b0294d8bcd2d543fd6e3)), closes [#381](https://github.com/oguzkaganeren/manjaro-starter/issues/381)
-* 🐛 mirror country problem fixed ([75d4085](https://github.com/oguzkaganeren/manjaro-starter/commit/75d408545eec795097a8eec93bfeff35aa468225))
-* 🐛 removed popup when clicking close button ([5d0af5c](https://github.com/oguzkaganeren/manjaro-starter/commit/5d0af5ce37b15b5c94876583e01324a5ce618f7d)), closes [#448](https://github.com/oguzkaganeren/manjaro-starter/issues/448)
-
-
-### Features
-
-* 🎸 added system notification ([c043cd6](https://github.com/oguzkaganeren/manjaro-starter/commit/c043cd6c24047a3b9577d9017584eaf24b089e6e)), closes [#393](https://github.com/oguzkaganeren/manjaro-starter/issues/393)
-* 🎸 single instance plugin added ([8005498](https://github.com/oguzkaganeren/manjaro-starter/commit/80054986d4598d38f2196cfc2012d1918d4f86cb)), closes [#447](https://github.com/oguzkaganeren/manjaro-starter/issues/447)
 
 
 
