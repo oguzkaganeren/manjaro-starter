@@ -63,8 +63,11 @@ const PackageScreen: React.FC = () => {
   const Apps = Array.from(packageSt.values()).map((category: Category) => (
     <TabPanel key={category.id}>
       <Box textAlign={{ lg: 'left' }}>
-        {width > 760 && (
-        <HStack>
+        <HStack display={{
+          base: 'none',
+          md: 'inline-flex',
+        }}
+        >
           <chakra.p
             mb={4}
             maxW="2xl"
@@ -75,7 +78,6 @@ const PackageScreen: React.FC = () => {
             {t(`${category.icon}Desc`)}
           </chakra.p>
         </HStack>
-        )}
 
         <Box position="relative">
           <div ref={sliderRef} className="keen-slider">
@@ -121,15 +123,15 @@ const PackageScreen: React.FC = () => {
   return (
     <Box
       width="full"
-      mt={width < 760 ? 10 : 4}
+      mt={{ base: 4, md: 10 }}
       mb={20}
-      px={8}
+      px={2}
       pt={50}
     >
       <SearchComponent isForPackage />
       <Tabs
         orientation="vertical"
-        variant="solid-rounded"
+        variant="unstyled"
         colorScheme="whatsapp"
         isLazy
         py={5}
@@ -142,7 +144,11 @@ const PackageScreen: React.FC = () => {
         }}
       >
         {Categories}
-        <TabPanels overflow="scroll">{Apps}</TabPanels>
+
+        <TabPanels overflow="scroll">
+
+          {Apps}
+        </TabPanels>
       </Tabs>
     </Box>
   );

@@ -18,7 +18,6 @@ import PackageStatus from './PackageStatus';
 import commands from '../../assets/Commands';
 import RemotePackagePopover from '../common/remotePackage/RemotePackagePopover';
 import { connectionState } from '../../stores/ConnectionStore';
-import useWindowDimensions from '../../hooks/useWindowDimensions';
 import { PackageDetailProps } from './PackageDetailTypes';
 import usePkIconHook from './usePkIconHook';
 
@@ -26,7 +25,6 @@ function header(
   iconSrc: string,
   pkg: string,
   title: string,
-  width: number,
   installedVersion: string,
   isOnline: boolean,
 ) {
@@ -68,10 +66,19 @@ function header(
                 {title}
               </Button>
             </Heading>
-            {width > 760 && (<Text fontSize="xs">{installedVersion}</Text>)}
+            <Text
+              display={{
+                base: 'none',
+                md: 'inline-flex',
+              }}
+              fontSize="xs"
+            >
+              {installedVersion}
+
+            </Text>
           </Box>
         </Flex>
-        {isOnline && width > 500 && <RemotePackagePopover name={pkg} />}
+        {isOnline && <RemotePackagePopover name={pkg} />}
       </Flex>
     </CardHeader>
   );
@@ -83,16 +90,18 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
   } = props;
   const iconSrc = usePkIconHook(icon);
   const isOnline = useRecoilValue(connectionState);
-  const { width } = useWindowDimensions();
 
   return (
     <Card minH={['none', 'none', '2xs', '2xs']} variant="filled">
-      {header(iconSrc, pkg, title, width, installedVersion, isOnline)}
-      {width > 760 && (
-      <CardBody>
+      {header(iconSrc, pkg, title, installedVersion, isOnline)}
+
+      <CardBody display={{
+        base: 'none',
+        md: 'inline-flex',
+      }}
+      >
         <Text fontSize="sm">{children}</Text>
       </CardBody>
-      )}
 
       <CardFooter
         justify="space-between"
