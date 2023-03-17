@@ -2,6 +2,7 @@ import { extendTheme } from '@chakra-ui/react';
 import { StepsTheme } from 'chakra-ui-steps';
 import { cardTheme } from './card';
 import buttonTheme from './button';
+import tabsTheme from './tab';
 
 const theme = extendTheme(
   {
@@ -20,6 +21,7 @@ const theme = extendTheme(
       Steps: StepsTheme,
       Card: cardTheme,
       Button: buttonTheme,
+      Tabs: tabsTheme,
     },
   },
 );
