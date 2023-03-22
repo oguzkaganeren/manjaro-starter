@@ -13,20 +13,17 @@ import {
 import { Command } from '@tauri-apps/api/shell';
 import DOMPurify from 'dompurify';
 import { AtSignIcon } from '@chakra-ui/icons';
-import { useRecoilValue } from 'recoil';
 import PackageStatus from './PackageStatus';
 import commands from '../../assets/Commands';
-import RemotePackagePopover from '../common/remotePackage/RemotePackagePopover';
-import { connectionState } from '../../stores/ConnectionStore';
 import { PackageDetailProps } from './PackageDetailTypes';
 import usePkIconHook from './usePkIconHook';
+import PackageDetailMenu from './PackageDetailMenu';
 
 function header(
   iconSrc: string,
   pkg: string,
   title: string,
   installedVersion: string,
-  isOnline: boolean,
 ) {
   return (
     <CardHeader>
@@ -78,7 +75,6 @@ function header(
             </Text>
           </Box>
         </Flex>
-        {isOnline && <RemotePackagePopover name={pkg} />}
       </Flex>
     </CardHeader>
   );
@@ -89,11 +85,10 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
     icon, title, catId, uniqueId, pkg, isInstalled, installedVersion, children,
   } = props;
   const iconSrc = usePkIconHook(icon);
-  const isOnline = useRecoilValue(connectionState);
 
   return (
     <Card minH={['none', 'none', '2xs', '2xs']} variant="filled">
-      {header(iconSrc, pkg, title, installedVersion, isOnline)}
+      {header(iconSrc, pkg, title, installedVersion)}
 
       <CardBody display={{
         base: 'none',
@@ -112,6 +107,13 @@ const PackageDetail: React.FC<PackageDetailProps> = (props) => {
           pkId={uniqueId}
           pkgName={pkg}
           isInstalled={isInstalled}
+        />
+        <PackageDetailMenu
+          installedVersion={installedVersion}
+          isInstalled={isInstalled}
+          pkg={pkg}
+          catId={catId}
+          pkId={uniqueId}
         />
       </CardFooter>
     </Card>

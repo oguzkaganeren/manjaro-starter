@@ -8,3 +8,10 @@ export interface PackageDetailProps {
     installedVersion:string;
     children: React.ReactNode;
   }
+export interface PackageDetailMenuProps {
+  pkg: string;
+  isInstalled: boolean;
+  installedVersion: string;
+  catId: string;
+  pkId:string;
+}

@@ -5,11 +5,10 @@ import {
   PopoverBody,
   PopoverArrow,
   PopoverCloseButton,
-  IconButton,
   Portal,
-  Tooltip,
   useDisclosure,
   PopoverHeader,
+  MenuItem,
 } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -25,13 +24,12 @@ const RemotePackagePopover = ({ name }: Props) => {
   return (
     <Popover isOpen={isOpen} onClose={onClose} size="xs" isLazy>
       <PopoverTrigger>
-        <Tooltip label={t('repoDetail')}>
-          <IconButton
-            aria-label={t('remoteVersion')}
-            icon={<FaCloudversify />}
-            onClick={onToggle}
-          />
-        </Tooltip>
+        <MenuItem
+          icon={<FaCloudversify />}
+          onClick={onToggle}
+        >
+          {t('remoteVersion')}
+        </MenuItem>
       </PopoverTrigger>
       <Portal>
         <PopoverContent color="white" bg="blue.800" borderColor="blue.800">
