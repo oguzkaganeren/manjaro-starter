@@ -1,3 +1,12 @@
+## [0.31.6](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.5...v0.31.6) (2023-03-28)
+
+
+### Bug Fixes
+
+* 🐛 updated dependencies ([ffd7220](https://github.com/oguzkaganeren/manjaro-starter/commit/ffd7220d55db2794acdac394352d32b31902a1d6))
+
+
+
 ## [0.31.5](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.4...v0.31.5) (2023-03-17)
 
 
@@ -32,16 +41,6 @@
 ### Bug Fixes
 
 * 🐛 reduced min screen and default screen size and fixes ([23ed112](https://github.com/oguzkaganeren/manjaro-starter/commit/23ed112ce6ba6e8aec252767688af5620485c31b)), closes [#464](https://github.com/oguzkaganeren/manjaro-starter/issues/464)
-
-
-
-## [0.31.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.0...v0.31.1) (2023-02-25)
-
-
-### Bug Fixes
-
-* 🐛 fixed kernel installation problem ([e403164](https://github.com/oguzkaganeren/manjaro-starter/commit/e403164e578f9c471b8dddacae2ad3e2fb228287)), closes [#459](https://github.com/oguzkaganeren/manjaro-starter/issues/459)
-* 🐛 remove mhwd dependency(we use pamac now) ([ecccc91](https://github.com/oguzkaganeren/manjaro-starter/commit/ecccc91d038bdbf9dc422682935e8e60bf101c96))
 
 
 
