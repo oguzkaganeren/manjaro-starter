@@ -132,7 +132,6 @@ yarn tauri dev
 See the [open issues](https://github.com/oguzkaganeren/manjaro-starter/issues) for a list of proposed features (and known issues).
 
 
-
 <!-- CONTRIBUTING -->
 ## 🤝 Contributing
 
