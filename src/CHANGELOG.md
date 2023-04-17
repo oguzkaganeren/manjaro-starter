@@ -1,3 +1,12 @@
+## [0.31.7](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.6...v0.31.7) (2023-04-17)
+
+
+### Bug Fixes
+
+* 🐛 removed package ([434a2d7](https://github.com/oguzkaganeren/manjaro-starter/commit/434a2d70e8ac5ef6b1d6e7439713b03303772d17))
+
+
+
 ## [0.31.6](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.5...v0.31.6) (2023-03-28)
 
 
@@ -32,15 +41,6 @@
 
 * 🐛 showing installation button logic changed ([221fa1e](https://github.com/oguzkaganeren/manjaro-starter/commit/221fa1eedb44f1ed2e8d5598571c6e18668ef8fc)), closes [#467](https://github.com/oguzkaganeren/manjaro-starter/issues/467)
 * **deps:** update rust crate sysinfo to 0.28.1 ([5b31bb7](https://github.com/oguzkaganeren/manjaro-starter/commit/5b31bb7700b0376c3c9e085fdb738e09a0c3bfd9))
-
-
-
-## [0.31.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.1...v0.31.2) (2023-02-25)
-
-
-### Bug Fixes
-
-* 🐛 reduced min screen and default screen size and fixes ([23ed112](https://github.com/oguzkaganeren/manjaro-starter/commit/23ed112ce6ba6e8aec252767688af5620485c31b)), closes [#464](https://github.com/oguzkaganeren/manjaro-starter/issues/464)
 
 
 
