@@ -555,13 +555,6 @@
                 "extra": []
             },
             {
-                "name": "Simple Screen Recorder",
-                "icon": "simple-ccsm",
-                "description": "Screen Capturing Application",
-                "pkg": "simplescreenrecorder",
-                "extra": []
-            },
-            {
                 "name": "Flowblade",
                 "icon": "flowblade",
                 "description": "Multitrack non-linear video editor",
