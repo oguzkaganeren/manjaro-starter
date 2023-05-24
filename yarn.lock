@@ -2152,10 +2152,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.40.0.tgz#3ba73359e11f5a7bd3e407f70b3528abfae69cec"
   integrity sha512-ElyB54bJIhXQYVKjDSvCkPO1iU1tSAeVQJbllWJq1XQSmmA4dgFk8CbiBGpiOPxleE48vDogxCtmMYku4HSVLA==
 
-"@fontsource/caveat@^4.5.10":
-  version "4.5.10"
-  resolved "https://registry.npmjs.org/@fontsource/caveat/-/caveat-4.5.10.tgz"
-  integrity sha512-uTg0I4hBXfOzjpUQlGwdmdlcLUlwSNXlux52IwFq7TCHlyHMAHPEqP1zDyg8lWKD86L7wOyv9jmIK/Iy5erndg==
+"@fontsource/caveat@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@fontsource/caveat/-/caveat-5.0.1.tgz#dd9f70a4819c692d220a4c775659599362c9a58d"
+  integrity sha512-0vQ88z0c1d8HPDNuT2FXEkunXVxL3f38JTM+SPxYXqat4QKNRJsIcGTDD/VVtazIMdP8cG0tmpxa0/qyzDh9bg==
 
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
