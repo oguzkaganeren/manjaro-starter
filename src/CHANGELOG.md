@@ -1,3 +1,12 @@
+## [0.31.8](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.7...v0.31.8) (2023-05-27)
+
+
+### Bug Fixes
+
+* 🐛 dependencies updates ([fa6c5d9](https://github.com/oguzkaganeren/manjaro-starter/commit/fa6c5d9f80e9cbe48a482df8f8ddf633a98e79b3))
+
+
+
 ## [0.31.7](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.6...v0.31.7) (2023-04-17)
 
 
@@ -31,16 +40,6 @@
 ### Bug Fixes
 
 * 🐛 dependencies version bumps ([8606c94](https://github.com/oguzkaganeren/manjaro-starter/commit/8606c94951fa861c3e0f7ab3c3311193746d2a1c))
-
-
-
-## [0.31.3](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.2...v0.31.3) (2023-02-28)
-
-
-### Bug Fixes
-
-* 🐛 showing installation button logic changed ([221fa1e](https://github.com/oguzkaganeren/manjaro-starter/commit/221fa1eedb44f1ed2e8d5598571c6e18668ef8fc)), closes [#467](https://github.com/oguzkaganeren/manjaro-starter/issues/467)
-* **deps:** update rust crate sysinfo to 0.28.1 ([5b31bb7](https://github.com/oguzkaganeren/manjaro-starter/commit/5b31bb7700b0376c3c9e085fdb738e09a0c3bfd9))
 
 
 
