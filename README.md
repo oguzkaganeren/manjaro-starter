@@ -153,8 +153,6 @@ Contributions are what make the open source community such an amazing place to b
 5. Commit all changes
 6. Send pull request
 
-or 
-https://poeditor.com/join/project/E3GYwQeAVc
 
 <!-- LICENSE -->
 ## 📝 License
