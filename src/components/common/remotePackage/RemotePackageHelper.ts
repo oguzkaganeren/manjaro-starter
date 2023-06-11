@@ -15,7 +15,7 @@ const handleRemoteInfo = async (name: string, branch:string) => {
       'User-Agent': 'Manjaro-Starter-Desktop 1.0 (+https://manjaro.org)',
     },
   });
-  return response.data as RemotePackageResponseType[];
+  return response.data as RemotePackageResponseType;
 };
 
 export default handleRemoteInfo;
