@@ -8,7 +8,7 @@
     "@chakra-ui/icons": "^2.0.19",
     "@chakra-ui/react": "^2.6.1",
     "@choc-ui/paginator": "^3.4.0",
-    "@emotion/react": "^11.11.0",
+    "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fontsource/caveat": "^5.0.1",
     "@react-icons/all-files": "^4.1.0",
