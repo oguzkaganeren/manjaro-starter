@@ -1107,10 +1107,15 @@
     "@chakra-ui/shared-utils" "2.0.5"
     "@chakra-ui/spinner" "2.0.13"
 
-"@chakra-ui/anatomy@2.1.2", "@chakra-ui/anatomy@^2.1.2":
+"@chakra-ui/anatomy@2.1.2":
   version "2.1.2"
   resolved "https://registry.npmjs.org/@chakra-ui/anatomy/-/anatomy-2.1.2.tgz"
   integrity sha512-pKfOS/mztc4sUXHNc8ypJ1gPWSolWT770jrgVRfolVbYlki8y5Y+As996zMF6k5lewTu6j9DQequ7Cc9a69IVQ==
+
+"@chakra-ui/anatomy@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@chakra-ui/anatomy/-/anatomy-2.2.0.tgz#788229829f853dcd03314cd7ddd4f19f056ec24e"
+  integrity sha512-cD8Ms5C8+dFda0LrORMdxiFhAZwOIY1BSlCadz6/mHUIgNdQy13AHPrXiq6qWdMslqVHq10k5zH7xMPLt6kjFg==
 
 "@chakra-ui/avatar@2.2.11":
   version "2.2.11"
