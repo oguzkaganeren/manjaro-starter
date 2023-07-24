@@ -24,7 +24,7 @@
     "chakra-ui-markdown-renderer": "^4.1.0",
     "chakra-ui-steps": "^3.0.1",
     "dompurify": "^3.0.5",
-    "framer-motion": "^10.13.0",
+    "framer-motion": "^10.13.1",
     "i18next": "^23.2.11",
     "i18next-browser-languagedetector": "^7.1.0",
     "i18next-http-backend": "^2.2.1",
