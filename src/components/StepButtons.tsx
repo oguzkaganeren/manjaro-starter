@@ -1,38 +1,37 @@
-import { Button, Flex } from '@chakra-ui/react';
+import { IconButton, Flex } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useRecoilValue } from 'recoil';
+import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import stepState from '../stores/StepStore';
+import StepperComponent from './common/StepperComponent';
 
 const StepButtons = (): JSX.Element => {
   const { t } = useTranslation();
   const {
-    activeStep, nextStep, prevStep, stepCount,
+    activeStep, setActiveStep, count,
   } = useRecoilValue(stepState);
   const prevDisabled = activeStep === 0;
-  const isLast = activeStep === stepCount - 1;
-  const nextButtonText = () => {
-    if (prevDisabled) {
-      return t('start');
-    }
-    if (isLast) {
-      return t('finish');
-    }
-    return t('next');
-  };
+  const isLast = activeStep === count;
   return (
     <Flex width="100%" justify="flex-end">
-      <Button
+      <IconButton
         mr={4}
         size="sm"
-        onClick={prevStep}
-        hidden={prevDisabled}
-      >
-        {t('prev')}
-      </Button>
-
-      <Button isDisabled={false} colorScheme={prevDisabled ? 'green' : 'gray'} size="sm" onClick={nextStep}>
-        { nextButtonText()}
-      </Button>
+        aria-label="back"
+        icon={<BsChevronLeft />}
+        onClick={() => setActiveStep(activeStep - 1)}
+        isDisabled={prevDisabled}
+      />
+      <StepperComponent />
+      <IconButton
+        ml={4}
+        isDisabled={isLast}
+        aria-label="next"
+        colorScheme={prevDisabled ? 'green' : 'gray'}
+        size="sm"
+        icon={<BsChevronRight />}
+        onClick={() => setActiveStep(activeStep + 1)}
+      />
     </Flex>
   );
 };

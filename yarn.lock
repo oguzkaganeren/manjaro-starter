@@ -4204,11 +4204,6 @@ chakra-ui-markdown-renderer@^4.1.0:
   dependencies:
     deepmerge "^4.2.2"
 
-chakra-ui-steps@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/chakra-ui-steps/-/chakra-ui-steps-3.0.1.tgz"
-  integrity sha512-Rm1YfEZ+VvI1Vo09J7qOMaKbmWybv5ZKg1VyFBQ9KaPMObOxlahG9TaZjPiypPE2rRkxMO4WdvSZePkYMCxGww==
-
 chalk@^2.0.0, chalk@^2.4.1:
   version "2.4.2"
   resolved "https://registry.npmjs.org/chalk/-/chalk-2.4.2.tgz"

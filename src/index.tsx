@@ -2,6 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { ChakraProvider } from '@chakra-ui/react';
 import { RecoilRoot } from 'recoil';
+import { BrowserRouter } from 'react-router-dom';
 import Nav from './components/NavbarComponent';
 import App from './initial/App';
 import RootDetector from './components/common/RootDetector';
@@ -26,7 +27,9 @@ root.render(
     <RootDetector />
     <RecoilRoot>
       <Nav />
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </RecoilRoot>
   </ChakraProvider>,
 );

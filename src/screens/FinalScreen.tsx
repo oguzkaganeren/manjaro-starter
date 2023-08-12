@@ -1,10 +1,9 @@
 import {
-  Container, Heading, Text, Tooltip, IconButton, Spacer,
+  Container, Heading, Text, Spacer,
 } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { CheckCircleIcon } from '@chakra-ui/icons';
 
-import { GiReturnArrow } from 'react-icons/gi';
 import { useTranslation } from 'react-i18next';
 import { useRecoilValue } from 'recoil';
 import SearchComponent from '../components/common/search/SearchComponent';
@@ -31,19 +30,6 @@ const FinalScreen: React.FC = () => {
       <Spacer mt={5} />
       <SearchComponent isForPackage={false} />
       <SocialButtons />
-
-      <Tooltip label={t('returnFirstStep')}>
-        <IconButton
-          color="green.500"
-          position="fixed"
-          bottom={5}
-          size={['sm', 'sm', 'md', 'md']}
-          aria-label={t('returnFirstStep')}
-          left={5}
-          onClick={() => reset()}
-          icon={<GiReturnArrow />}
-        />
-      </Tooltip>
     </Container>
   );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import {
   Stack,
   Text,
@@ -24,8 +24,7 @@ import stepState from '../stores/StepStore';
 
 const HomeScreen: React.FC = () => {
   const { t } = useTranslation();
-
-  const { nextStep } = useRecoilValue(stepState);
+  const { activeStep, setActiveStep } = useRecoilValue(stepState);
   const Arrow = createIcon({
     displayName: 'Arrow',
     viewBox: '0 0 72 24',
@@ -82,7 +81,7 @@ const HomeScreen: React.FC = () => {
             colorScheme="whatsapp"
             px={6}
             size={['xs', 'sm', 'md', 'md']}
-            onClick={nextStep}
+            onClick={() => { setActiveStep(activeStep + 1); }}
             _hover={{
               bg: 'green.500',
             }}
@@ -94,7 +93,10 @@ const HomeScreen: React.FC = () => {
             <Spacer />
             <ReleaseNotes />
           </HStack>
-          <LiveInstaller />
+          <Suspense>
+            <LiveInstaller />
+          </Suspense>
+
           <Box>
             <Icon
               as={Arrow}

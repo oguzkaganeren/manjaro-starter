@@ -3,16 +3,13 @@ import {
 } from 'recoil';
 
 export interface StepType {
-    nextStep: () => void;
-    prevStep: () => void;
-    reset: () => void;
-    setStep: (step: number) => void;
+    setActiveStep: (step: number) => void;
     activeStep: number;
-    stepCount:number;
+    count:number;
 }
 
 const stepState = atom({
   key: 'stepState',
-  default: {} as StepType,
+  default: { activeStep: 0 } as StepType,
 });
 export default stepState;

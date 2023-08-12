@@ -1,131 +1,71 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense, lazy } from 'react';
 import {
-  Flex,
-  VStack,
-  Spinner,
-  Box,
-  Center,
+  Box, Center, Flex, Spinner, VStack,
 } from '@chakra-ui/react';
-import { Step, Steps, useSteps } from 'chakra-ui-steps';
-import { FiPackage, FiHome, FiCheckCircle } from 'react-icons/fi';
-import { GiSettingsKnobs } from 'react-icons/gi';
-import { useTranslation } from 'react-i18next';
-import { useSetRecoilState } from 'recoil';
-import StepButtons from '../components/StepButtons';
-import HomeScreen from '../screens/HomeScreen';
-import PackageScreen from '../screens/PackageScreen';
-import FinalScreen from '../screens/FinalScreen';
-import ConfigurationScreen from '../screens/ConfigurationScreen';
-
-import useWindowDimensions from '../hooks/useWindowDimensions';
+import { useRecoilValue } from 'recoil';
+import { Routes, Route } from 'react-router-dom';
 import EnvironmentStatusComponent from '../components/common/environment/EnvironmentStatusComponent';
 import stepState from '../stores/StepStore';
 
-const Package = (
-  <Suspense
-    fallback={(
-      <Box w="100%">
-        <Center>
-          <Spinner mt={20} color="green.300" />
-        </Center>
-      </Box>
-    )}
-  >
-    <PackageScreen />
-  </Suspense>
-);
-
-const App: React.FC = () => {
-  const { t } = useTranslation();
-  const { width } = useWindowDimensions();
-  const STEPCOUNT = 3;
-  const setGlobalStep = useSetRecoilState(stepState);
-  const {
-    nextStep, prevStep, reset, activeStep, setStep,
-  } = useSteps({
-    initialStep: 0,
-  });
-  useEffect(() => {
-    setGlobalStep({
-      nextStep,
-      prevStep,
-      reset,
-      activeStep,
-      setStep,
-      stepCount: STEPCOUNT,
-    });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeStep]);
-  const steps = [
-    {
-      label: t('welcome'),
-      icon: FiHome,
-      content: <HomeScreen />,
-    },
-    {
-      label: t('configurations'),
-      description: t('confDescription'),
-      icon: GiSettingsKnobs,
-      content: <ConfigurationScreen />,
-    },
-    {
-      label: t('explorer'),
-      description: t('explorerDescription'),
-      icon: FiPackage,
-      content: Package,
-    },
-  ];
-  if (activeStep === 0) {
-    return (
-      <HomeScreen />
-    );
+const HomeScreen = lazy(() => import('../screens/HomeScreen'));
+const PackageScreen = lazy(() => import('../screens/PackageScreen'));
+const ConfigurationScreen = lazy(() => import('../screens/ConfigurationScreen'));
+const FinalScreen = lazy(() => import('../screens/FinalScreen'));
+function getCorrectScreen(activeStep:number) {
+  switch (activeStep) {
+    case 0:
+      return <HomeScreen />;
+    case 1:
+      return <ConfigurationScreen />;
+    case 2:
+      return <PackageScreen />;
+    default:
+      return <FinalScreen />;
   }
+}
+const App: React.FC = () => {
+  const { activeStep } = useRecoilValue(stepState);
+
   return (
     <VStack mt={63}>
-      <VStack width="100%">
-        <Steps
-          checkIcon={FiCheckCircle}
-          position="fixed"
-          padding={5}
-          variant={width > 760 ? 'circles' : 'circles-alt'}
-          size={width > 900 ? 'md' : 'sm'}
-          onClickStep={(step) => setStep(step)}
-          zIndex={998}
-          bg="#edf3f8"
-          _dark={{ bg: '#1A202C' }}
-          activeStep={activeStep}
+      <Flex
+        position="fixed"
+        bg="#edf3f8"
+        _dark={{ bg: '#1A202C' }}
+        padding={5}
+        bottom={0}
+        w="100%"
+      >
+        <Routes>
+          <Route
+            index
+            element={(
+              <Suspense
+                fallback={(
+                  <Box w="100%">
+                    <Center>
+                      <Spinner mt={20} color="green.300" />
+                    </Center>
+                  </Box>
+                )}
+              >
+                {getCorrectScreen(activeStep)}
+              </Suspense>
+            )}
+          />
+        </Routes>
+        <Suspense
+          fallback={(
+            <Box w="100%">
+              <Center>
+                <Spinner mt={20} color="green.300" />
+              </Center>
+            </Box>
+          )}
         >
-          {steps.map(({
-            label, content, icon, description,
-          }) => (
-            <Step
-              label={label}
-              key={label}
-              description={width > 760 ? description : ''}
-              icon={icon}
-            >
-              <Flex w="100%" py={4}>
-                {content}
-              </Flex>
-            </Step>
-          ))}
-        </Steps>
-      </VStack>
-      {activeStep === STEPCOUNT ? (
-        <FinalScreen />
-      ) : (
-        <Flex
-          position="fixed"
-          bg="#edf3f8"
-          _dark={{ bg: '#1A202C' }}
-          padding={5}
-          bottom={0}
-          w="100%"
-        >
-          <StepButtons />
           <EnvironmentStatusComponent />
-        </Flex>
-      )}
+        </Suspense>
+      </Flex>
     </VStack>
   );
 };
