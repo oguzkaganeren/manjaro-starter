@@ -33,8 +33,8 @@ const StepperComponent = () => {
           <Step key={`step-${i}`} onClick={() => setActiveStep(i)}>
             <StepStatus
               complete={<GoDotFill />}
-              incomplete={<GoDot />}
-              active={<GoDot color="gray" />}
+              incomplete={<GoDot color="gray" />}
+              active={<GoDot />}
             />
           </Step>
         ))}
