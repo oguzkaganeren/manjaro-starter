@@ -9,7 +9,6 @@ import {
   useDisclosure,
   Text,
   IconButton,
-  Tooltip,
   DrawerCloseButton,
   DrawerFooter,
   useColorModeValue,
@@ -17,6 +16,9 @@ import {
   VStack,
   Box,
   useToast,
+  HStack,
+  Spacer,
+  FormControl,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { HiOutlineCommandLine } from 'react-icons/hi2';
@@ -31,16 +33,35 @@ const CommandHistory = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Tooltip label={t('commandHistory')}>
-        <IconButton
-          size="sm"
-          aria-label="Open Command History"
-          onClick={onOpen}
-          icon={<HiOutlineCommandLine />}
-        />
-      </Tooltip>
+      <FormControl
+        py={4}
+        px={8}
+        mt={4}
+        bg="white"
+        _dark={{
+          bg: 'gray.800',
+        }}
+        shadow="lg"
+        rounded="lg"
+      >
+        <HStack>
+          <span>{t('commandHistory')}</span>
+          <Spacer />
+          <IconButton
+            size="sm"
+            aria-label="Open Command History"
+            onClick={onOpen}
+            icon={<HiOutlineCommandLine />}
+          />
+        </HStack>
+      </FormControl>
 
-      <Drawer placement="left" size={['xs', 'xs', 'md', 'lg']} onClose={onClose} isOpen={isOpen}>
+      <Drawer
+        placement="left"
+        size={['xs', 'xs', 'md', 'lg']}
+        onClose={onClose}
+        isOpen={isOpen}
+      >
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />

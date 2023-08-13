@@ -140,7 +140,6 @@ const ConfigurationScreen: React.FC = () => {
   return (
     <Tabs
       isLazy
-      mt={20}
       mb={20}
       px={2}
       display="grid"

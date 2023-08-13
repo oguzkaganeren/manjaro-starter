@@ -14,7 +14,6 @@ import { invoke } from '@tauri-apps/api/tauri';
 import { CloseIcon } from '@chakra-ui/icons';
 import AppSettings from './appSetting/AppSettings';
 import ThemeComponent from './ThemeComponent';
-import CommandHistory from './common/CommandHistory';
 import StepButtons from './StepButtons';
 
 const NavbarComponent: React.FC = () => (
@@ -34,6 +33,7 @@ const NavbarComponent: React.FC = () => (
       <Flex alignItems="center">
         <StepButtons />
       </Flex>
+
       <Flex
         justify="flex-end"
         h={16}
@@ -42,7 +42,6 @@ const NavbarComponent: React.FC = () => (
         justifyContent="space-between"
       >
         <Stack direction="row" spacing={2}>
-          <CommandHistory />
           <ThemeComponent />
           <AppSettings />
           <ButtonGroup>
