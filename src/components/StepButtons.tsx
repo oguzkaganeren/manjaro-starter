@@ -13,7 +13,7 @@ const StepButtons = (): JSX.Element => {
   const prevDisabled = activeStep === 0;
   const isLast = activeStep === count;
   return (
-    <Flex width="100%" justify="flex-end">
+    <Flex justify="flex-end">
       <IconButton
         mr={4}
         size="sm"

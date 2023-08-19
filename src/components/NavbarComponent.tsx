@@ -28,9 +28,12 @@ const NavbarComponent: React.FC = () => (
     _dark={{ bg: '#1A202C' }}
   >
     <div data-tauri-drag-region className="titlebar" />
-    <SimpleGrid columns={3} spacing={10}>
+    {/*<SimpleGrid columns={3} spacing={10}>*/}
       <Spacer />
-      <Flex alignItems="center">
+      <Flex w={"full"} justifyContent="center" alignItems="center" marginLeft={{
+        base: "-3em",
+        md: "12em"
+      }}>
         <StepButtons />
       </Flex>
 
@@ -72,7 +75,7 @@ const NavbarComponent: React.FC = () => (
           </ButtonGroup>
         </Stack>
       </Flex>
-    </SimpleGrid>
+    {/*</SimpleGrid>*/}
   </Flex>
 );
 export default NavbarComponent;
