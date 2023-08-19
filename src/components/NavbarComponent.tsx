@@ -4,7 +4,6 @@ import {
   IconButton,
   ButtonGroup,
   Spacer,
-  SimpleGrid,
 } from '@chakra-ui/react';
 import React from 'react';
 import { appWindow } from '@tauri-apps/api/window';
@@ -28,11 +27,10 @@ const NavbarComponent: React.FC = () => (
     _dark={{ bg: '#1A202C' }}
   >
     <div data-tauri-drag-region className="titlebar" />
-    {/*<SimpleGrid columns={3} spacing={10}>*/}
       <Spacer />
       <Flex w={"full"} justifyContent="center" alignItems="center" marginLeft={{
         base: "-3em",
-        md: "12em"
+        md: "12em",
       }}>
         <StepButtons />
       </Flex>
@@ -75,7 +73,6 @@ const NavbarComponent: React.FC = () => (
           </ButtonGroup>
         </Stack>
       </Flex>
-    {/*</SimpleGrid>*/}
   </Flex>
 );
 export default NavbarComponent;
