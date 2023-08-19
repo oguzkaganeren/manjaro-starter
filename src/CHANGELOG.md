@@ -1,3 +1,18 @@
+# [0.32.0](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.10...v0.32.0) (2023-08-19)
+
+
+### Bug Fixes
+
+* 🐛 [#835](https://github.com/oguzkaganeren/manjaro-starter/issues/835) [#836](https://github.com/oguzkaganeren/manjaro-starter/issues/836) fixed ([b50851b](https://github.com/oguzkaganeren/manjaro-starter/commit/b50851be527d09391beea55c60fe43dbab54b1c5))
+* 🐛 bug fixes ([9ca1950](https://github.com/oguzkaganeren/manjaro-starter/commit/9ca19505d9dc94e2b14a7fb2eb339b4b5b7ed82c))
+
+
+### Features
+
+* 🎸 updated stepper ([0067618](https://github.com/oguzkaganeren/manjaro-starter/commit/0067618fb04a3cd4847b4c2b561c47dfeea47c6e))
+
+
+
 ## [0.31.10](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.9...v0.31.10) (2023-07-10)
 
 
@@ -31,15 +46,6 @@
 ### Bug Fixes
 
 * 🐛 removed package ([434a2d7](https://github.com/oguzkaganeren/manjaro-starter/commit/434a2d70e8ac5ef6b1d6e7439713b03303772d17))
-
-
-
-## [0.31.6](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.5...v0.31.6) (2023-03-28)
-
-
-### Bug Fixes
-
-* 🐛 updated dependencies ([ffd7220](https://github.com/oguzkaganeren/manjaro-starter/commit/ffd7220d55db2794acdac394352d32b31902a1d6))
 
 
 
