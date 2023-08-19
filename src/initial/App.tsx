@@ -33,7 +33,6 @@ const App: React.FC = () => {
         bg="#edf3f8"
         _dark={{ bg: '#1A202C' }}
         padding={5}
-        bottom={0}
         w="100%"
       >
         <Routes>

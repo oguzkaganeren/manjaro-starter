@@ -123,10 +123,8 @@ const PackageScreen: React.FC = () => {
   return (
     <Box
       width="full"
-      mt={{ base: 4, md: 10 }}
       mb={20}
       px={2}
-      pt={50}
     >
       <SearchComponent isForPackage />
       <Tabs

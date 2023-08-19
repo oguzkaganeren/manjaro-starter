@@ -9,8 +9,8 @@ const ManjaroVersion = () => {
     invoke('run_shell_command_with_result', { command: 'cat /etc/lsb-release' }).then((response) => {
       if (response) {
         const variables = (response as string).split('\\n');
-        const versionTemp = variables[1].split('=')[1];
-        const codeNameTemp = variables[2].split('=')[1];
+        const versionTemp = variables[1].split('=')[1].replaceAll('\\"', '');
+        const codeNameTemp = variables[2].split('=')[1].replaceAll('\\"', '');
         setVersion(versionTemp);
         setCodeName(codeNameTemp);
       }
