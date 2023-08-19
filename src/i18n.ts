@@ -14,7 +14,7 @@ const resources = {
   German,
   English,
   Polish,
-  Russian
+  Russian,
 };
 
 const availableLanguages = Object.keys(resources);
