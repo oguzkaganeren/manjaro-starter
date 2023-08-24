@@ -7,6 +7,7 @@ import German from './translations/de.json';
 import English from './translations/en.json';
 import Polish from './translations/pl.json';
 import Russian from './translations/ru.json';
+import Ukrainian from './translations/uk.json';
 
 const resources = {
   Danish,
@@ -15,6 +16,7 @@ const resources = {
   English,
   Polish,
   Russian,
+  Ukrainian,
 };
 
 const availableLanguages = Object.keys(resources);

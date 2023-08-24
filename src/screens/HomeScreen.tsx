@@ -38,12 +38,19 @@ const HomeScreen: React.FC = () => {
     ),
   });
   return (
-    <Container maxW="3xl">
+    <Container
+      maxW="3xl"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      minH="90dvh"
+    >
       <Stack
         as={Box}
         textAlign="center"
         spacing={{ base: 8, md: 14 }}
-        pt={{ base: 20, md: 120 }}
+        justify="center"
+        align="center"
       >
         <Heading
           fontWeight={600}
@@ -69,7 +76,7 @@ const HomeScreen: React.FC = () => {
 
         <Stack
           direction="column"
-          spacing={3}
+          spacing={8}
           align="center"
           alignSelf="center"
           position="relative"
@@ -79,6 +86,7 @@ const HomeScreen: React.FC = () => {
             rounded="md"
             variant="solid"
             colorScheme="whatsapp"
+            pt={1}
             px={6}
             size={['xs', 'sm', 'md', 'md']}
             onClick={() => { setActiveStep(activeStep + 1); }}
