@@ -168,7 +168,6 @@ Oguz Kagan EREN - [@oguzkagan](https://forum.manjaro.org/u/oguzkagan/summary)
 Project Link: [https://github.com/oguzkaganeren/manjaro-starter](https://github.com/oguzkaganeren/manjaro-starter)
 
 
-
 <!-- ACKNOWLEDGEMENTS -->
 ## Contributors
 
