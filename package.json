@@ -38,7 +38,7 @@
     "react-markdown": "^8.0.7",
     "react-router-dom": "^6.16.0",
     "recoil": "^0.7.7",
-    "remark-gfm": "^3.0.1",
+    "remark-gfm": "^4.0.0",
     "store": "^2.0.12",
     "tauri-plugin-log-api": "https://github.com/tauri-apps/tauri-plugin-log",
     "typescript": "^5.2.2",
