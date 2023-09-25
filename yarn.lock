@@ -3223,10 +3223,10 @@
   resolved "https://registry.npmjs.org/@types/stack-utils/-/stack-utils-2.0.1.tgz"
   integrity sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==
 
-"@types/store@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.npmjs.org/@types/store/-/store-2.0.2.tgz"
-  integrity sha512-ZPHnXkzmGMfk+pHqAGzTSpA9CbsHmJLgkvOl5w52LZ0XTxB1ZIHWZzQ7lEtjTNWScBbsQekg8TjApMXkMe4nkw==
+"@types/store@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@types/store/-/store-2.0.3.tgz#a9f4391b351be32a50fb4f6cd6f56029d24648c8"
+  integrity sha512-hwArKS+x+2IMmkgOrW/dRaDOiRx6c7O7BBOvK7SYzLT6FJ/i5/wLkgAo0JYrnmZQXGGx/PxjsWW6zA+MVzannQ==
 
 "@types/trusted-types@*", "@types/trusted-types@^2.0.2":
   version "2.0.2"
