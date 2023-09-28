@@ -23,7 +23,7 @@
     "@types/store": "^2.0.3",
     "chakra-ui-markdown-renderer": "^4.1.0",
     "chakra-ui-steps": "^3.0.1",
-    "dompurify": "^3.0.5",
+    "dompurify": "^3.0.6",
     "framer-motion": "^10.16.4",
     "i18next": "^23.5.1",
     "i18next-browser-languagedetector": "^7.1.0",
