@@ -3323,9 +3323,9 @@ dependencies = [
 
 [[package]]
 name = "systemctl"
-version = "0.3.0"
+version = "0.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d5020a4f8f7435cd8f2af59657ea72740b59defe892ce98dc7fc413632a5cbcd"
+checksum = "d813aabc24ee364be160eff576cd390b5c63e5dd5ea3b0947eb63f9aeab52eda"
 dependencies = [
  "itertools",
  "strum 0.25.0",
