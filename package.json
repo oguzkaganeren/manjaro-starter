@@ -10,7 +10,7 @@
     "@choc-ui/paginator": "^3.4.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@fontsource/caveat": "^5.0.12",
+    "@fontsource/caveat": "^5.0.13",
     "@react-icons/all-files": "^4.1.0",
     "@tauri-apps/api": "^1.5.0",
     "@testing-library/jest-dom": "^6.1.3",
