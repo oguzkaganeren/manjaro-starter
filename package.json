@@ -20,7 +20,7 @@
     "@types/node": "^20.8.6",
     "@types/react": "^18.2.29",
     "@types/react-dom": "^18.2.13",
-    "@types/store": "^2.0.3",
+    "@types/store": "^2.0.4",
     "chakra-ui-markdown-renderer": "^4.1.0",
     "chakra-ui-steps": "^3.0.1",
     "dompurify": "^3.0.6",
