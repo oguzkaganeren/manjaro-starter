@@ -27,7 +27,7 @@
     "framer-motion": "^10.16.4",
     "i18next": "^23.6.0",
     "i18next-browser-languagedetector": "^7.1.0",
-    "i18next-http-backend": "^2.2.2",
+    "i18next-http-backend": "^2.3.0",
     "keen-slider": "^6.8.6",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
