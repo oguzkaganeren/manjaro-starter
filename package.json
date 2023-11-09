@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@anubra266/stickyreact": "^1.0.1",
-    "@chakra-ui/anatomy": "^2.2.0",
+    "@chakra-ui/anatomy": "^2.2.2",
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.2",
     "@choc-ui/paginator": "^3.4.0",
