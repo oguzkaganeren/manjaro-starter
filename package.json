@@ -26,7 +26,7 @@
     "dompurify": "^3.0.6",
     "framer-motion": "^10.16.4",
     "i18next": "^23.7.2",
-    "i18next-browser-languagedetector": "^7.1.0",
+    "i18next-browser-languagedetector": "^7.2.0",
     "i18next-http-backend": "^2.4.1",
     "keen-slider": "^6.8.6",
     "lodash": "^4.17.21",
