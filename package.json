@@ -36,7 +36,7 @@
     "react-i18next": "^13.5.0",
     "react-icons": "^4.12.0",
     "react-markdown": "^8.0.7",
-    "react-router-dom": "^6.18.0",
+    "react-router-dom": "^6.19.0",
     "recoil": "^0.7.7",
     "remark-gfm": "^4.0.0",
     "store": "^2.0.12",
