@@ -1,3 +1,12 @@
+## [0.32.2](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.32.1...v0.32.2) (2023-11-16)
+
+
+### Bug Fixes
+
+* 🐛 packages updated ([4e4d9ac](https://github.com/oguzkaganeren/manjaro-starter/commit/4e4d9ac99f23c23099708522ed3fa2ab76487c52))
+
+
+
 ## [0.32.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.32.0...v0.32.1) (2023-08-25)
 
 
@@ -37,15 +46,6 @@
 ### Bug Fixes
 
 * 🐛 package version api update ([babd3c2](https://github.com/oguzkaganeren/manjaro-starter/commit/babd3c2e16b6933e339abc8a2515e560c125065b))
-
-
-
-## [0.31.8](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.31.7...v0.31.8) (2023-05-27)
-
-
-### Bug Fixes
-
-* 🐛 dependencies updates ([fa6c5d9](https://github.com/oguzkaganeren/manjaro-starter/commit/fa6c5d9f80e9cbe48a482df8f8ddf633a98e79b3))
 
 
 
