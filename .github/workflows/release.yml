@@ -42,7 +42,9 @@ jobs:
           cache: 'yarn'
 
       - name: Install app dependencies and build web
-        run: yarn
+        run: | 
+          yarn
+          npx update-browserslist-db@latest
 
       - name: Build the app
         uses: tauri-apps/tauri-action@v0
