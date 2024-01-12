@@ -1,3 +1,12 @@
+## [0.32.6](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.32.5...v0.32.6) (2024-01-12)
+
+
+### Bug Fixes
+
+* 🐛 package and error fixes ([ad35333](https://github.com/oguzkaganeren/manjaro-starter/commit/ad35333bf4d33551d21187e9745287752e16dcd6))
+
+
+
 ## [0.32.5](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.32.4...v0.32.5) (2024-01-12)
 
 
@@ -32,15 +41,6 @@
 ### Bug Fixes
 
 * 🐛 packages updated ([4e4d9ac](https://github.com/oguzkaganeren/manjaro-starter/commit/4e4d9ac99f23c23099708522ed3fa2ab76487c52))
-
-
-
-## [0.32.1](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.32.0...v0.32.1) (2023-08-25)
-
-
-### Bug Fixes
-
-* 🐛 added ukrainian language ([c4def36](https://github.com/oguzkaganeren/manjaro-starter/commit/c4def365ed473a64afeb0de47a03b3da1b8b6a10))
 
 
 
