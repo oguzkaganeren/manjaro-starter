@@ -44,7 +44,6 @@ jobs:
       - name: Install app dependencies and build web
         run: | 
           yarn
-          npx update-browserslist-db@latest
 
       - name: Build the app
         uses: tauri-apps/tauri-action@v0
