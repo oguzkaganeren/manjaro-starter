@@ -22,8 +22,8 @@ tauri-utils = "1.5.0"
 log = "0.4.20"
 sysinfo = "0.30.5"
 systemctl = "0.3.1"
-tauri-plugin-single-instance = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "dev" }
-tauri-plugin-log = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "dev" }
+tauri-plugin-single-instance = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
+tauri-plugin-log = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
 [features]
 default = ["custom-protocol"]
 custom-protocol = ["tauri/custom-protocol"]

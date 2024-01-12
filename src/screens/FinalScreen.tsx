@@ -5,14 +5,11 @@ import React, { useEffect } from 'react';
 import { CheckCircleIcon } from '@chakra-ui/icons';
 
 import { useTranslation } from 'react-i18next';
-import { useRecoilValue } from 'recoil';
 import SearchComponent from '../components/common/search/SearchComponent';
 import SocialButtons from '../components/final/SocialButtons';
-import stepState from '../stores/StepStore';
 
 const FinalScreen: React.FC = () => {
   const { t } = useTranslation();
-  const { reset } = useRecoilValue(stepState);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
