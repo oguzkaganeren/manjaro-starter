@@ -7,7 +7,7 @@ use serde_json::json;
 use std::fs;
 use std::path::Path;
 use std::process::Command;
-use sysinfo::{CpuExt, CpuRefreshKind, RefreshKind, System, SystemExt};
+use sysinfo::{System};
 use tauri::Manager;
 use tauri::SystemTray;
 use tauri::{CustomMenuItem, SystemTrayEvent, SystemTrayMenu, SystemTrayMenuItem};
@@ -39,8 +39,7 @@ fn get_svg_icon(svgpath: String) -> String {
 }
 #[tauri::command]
 fn get_sys_info() -> String {
-  let mut sys =
-    System::new_with_specifics(RefreshKind::new().with_cpu(CpuRefreshKind::everything()));
+  let mut sys =System::new_all();
   // First we update all information of our `System` struct.
   sys.refresh_all();
   let sys_info = json!( {
@@ -48,10 +47,10 @@ fn get_sys_info() -> String {
     "usedMemory": sys.used_memory().to_string(),
     "totalSwap": sys.total_swap().to_string(),
     "usedSwap": sys.used_swap().to_string(),
-    "sysName":sys.name(),
-    "sysKernelVersion":sys.kernel_version(),
-    "sysOsVersion":sys.os_version(),
-    "sysHostName":sys.host_name(),
+    "sysName":System::name(),
+    "sysKernelVersion":System::kernel_version(),
+    "sysOsVersion":System::os_version(),
+    "sysHostName":System::host_name(),
     "numberOfCpu":sys.cpus().len().to_string(),
     "nameOfCpu":sys.global_cpu_info().brand(),
   });

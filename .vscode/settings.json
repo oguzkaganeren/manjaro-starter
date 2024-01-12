@@ -3,7 +3,7 @@
     "files.autoSave": "onFocusChange",
     "eslint.format.enable": true,
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
+      "source.fixAll.eslint": "explicit"
     },
     "[rust]": {
         "editor.defaultFormatter": "rust-lang.rust-analyzer", // Makes the magic
