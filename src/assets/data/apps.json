@@ -18,7 +18,7 @@
             },
             {
                 "name": "Epiphany",
-                "icon": "epiphany",
+                "icon": "org.gnome.Epiphany",
                 "description": "Gnome Web Browser",
                 "pkg": "epiphany",
                 "filter": [
@@ -28,7 +28,7 @@
             },
             {
                 "name": "Firefox",
-                "icon": "mozilla-firefox",
+                "icon": "firefox",
                 "description": "Privacy oriented Web Browser",
                 "pkg": "firefox",
                 "extra": ["firefox-gnome-theme-maia"]
