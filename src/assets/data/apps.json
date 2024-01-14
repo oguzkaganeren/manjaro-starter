@@ -474,7 +474,7 @@
         "description": "Audio players",
         "apps": [{
                 "name": "Spotify",
-                "icon": "Spotify",
+                "icon": "spotify",
                 "description": "Client for spotify's apt repository in Rust for Arch Linux",
                 "pkg": "spotify-launcher",
                 "extra": []
