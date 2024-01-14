@@ -1,3 +1,13 @@
+## [0.32.8](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.32.7...v0.32.8) (2024-01-14)
+
+
+### Bug Fixes
+
+* 🐛 removed unused deps ([fea66dd](https://github.com/oguzkaganeren/manjaro-starter/commit/fea66dd3cf0f0cf7d5fa0ffc2a163a72e68e03ff))
+* 🐛 spotify icon problem ([16cde2a](https://github.com/oguzkaganeren/manjaro-starter/commit/16cde2a23a2b1ad74fc835464c093883c3f822eb))
+
+
+
 ## [0.32.7](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.32.6...v0.32.7) (2024-01-13)
 
 
@@ -32,15 +42,6 @@
 
 * 🐛 release script updated ([47cdd6b](https://github.com/oguzkaganeren/manjaro-starter/commit/47cdd6b142c36cec287a0cf96a43ea53f3fcd4cb))
 * 🐛 sysinfo problem fixed ([cbca24c](https://github.com/oguzkaganeren/manjaro-starter/commit/cbca24c0113db970637c375c12b0f71b37dbec89))
-
-
-
-## [0.32.3](https://github.com/oguzkaganeren/manjaro-starter/compare/v0.32.2...v0.32.3) (2023-12-03)
-
-
-### Bug Fixes
-
-* 🐛 release script fixes ([2ebc376](https://github.com/oguzkaganeren/manjaro-starter/commit/2ebc376dc41ecde4634a74476be5e89823d96699))
 
 
 
