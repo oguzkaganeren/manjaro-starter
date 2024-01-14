@@ -5,7 +5,6 @@ import {
   Icon,
   Box,
   Button,
-  Heading,
   Container,
   createIcon,
   useColorModeValue,
@@ -16,11 +15,11 @@ import { useTranslation } from 'react-i18next';
 import '@fontsource/caveat';
 import { open } from '@tauri-apps/api/shell';
 import { useRecoilValue } from 'recoil';
-import ManjaroVersion from '../components/home/ManjaroVersion';
 import LearnMoreComponent from '../components/home/LearnMoreComponent';
 import ReleaseNotes from '../components/home/ReleaseNotes';
 import LiveInstaller from '../components/home/LiveInstaller';
 import stepState from '../stores/StepStore';
+import DistroDetail from '../components/home/DistroDetail';
 
 const HomeScreen: React.FC = () => {
   const { t } = useTranslation();
@@ -52,15 +51,7 @@ const HomeScreen: React.FC = () => {
         justify="center"
         align="center"
       >
-        <Heading
-          fontWeight={600}
-          fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
-          lineHeight="110%"
-        >
-          {t('welcomeManjaro')}
-          <br />
-          <ManjaroVersion />
-        </Heading>
+        <DistroDetail />
         <Text color={useColorModeValue('gray.800', 'gray.300')}>
           {t('homeText1')}
           {' '}

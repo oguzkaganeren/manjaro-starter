@@ -6,7 +6,7 @@
         "manjaroStarter": "Manjaro Starter",
         "projectGithubPage": "Project Github Page",
         "gnu": "License",
-        "welcomeManjaro": "Welcome to Manjaro!",
+        "welcomeMessage": "Welcome to",
         "homeText1": "We, the Manjaro Developers, hope that you will enjoy using Manjaro as much as we enjoy building it. Manjaro Starter will help you to get started with your new operating system. So enjoy the experience, and don't hesitate to",
         "handleHardware": "Handling hardware",
         "homeText2": "Manjaro not only supports the use of multiple kernels (selectable from the advanced options at the boot screen), but also provides access to the very latest bleeding-edge kernels as well. This can be done through the use of the Kernel module in Manjaro's graphical Settings Manager, or via the command line using the MHWD-kernel (Manjaro Hardware Detection) command.",

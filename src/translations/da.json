@@ -6,7 +6,7 @@
         "manjaroStarter": "Manjaro Starter",
         "projectGithubPage": "Github Projekt",
         "gnu": "Licens",
-        "welcomeManjaro": "Velkommen til Manjaro!",
+        "welcomeMessage": "Velkommen til",
         "homeText1": "Alle os bag Manjaro håber du vil blive lige så glad for at bruge Manjaro som vi havde glæde at udvikle det. Manjaro Starter er en hjælper så du bedst muligt kommer igang med brugen. Så glæd dig og tøv ikke med at give udtryk for din værdsættelse.",
         "handleHardware": "Hardware håndtering",
         "homeText2": "Manjaro giver mulighed for flere system kerner (ved at vælge 'advanced options' i GRUB menuen), men giver også mulighed for udviklingskerner. Dette gøres ved at bruge 'Kernel' modulet i Manjaro's Grafiske Hardware opsætning, eller via terminal værktøjet MHWD-kernel (Manjaro Hardware Detection).",

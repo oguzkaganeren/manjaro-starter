@@ -6,7 +6,7 @@
         "manjaroStarter": "Manjaro Starter",
         "projectGithubPage": "Github Projektseite",
         "gnu": "Lizenz",
-        "welcomeManjaro": "Willkommen zu Manjaro!",
+        "welcomeMessage": "Willkommen zu",
         "homeText1": "Wir, die Manjaro Entwickler, hoffen, dass dir Manjaro Linux Freude macht, ebenso wie wir Freude daran haben es den Usern zur Verfügung zu stellen. Manjaro Starter hilft dir bei den ersten Schritten der Konfiguration deines neuen Linux Betriebssystems. Wir wünschen dir viel Spaß mit Manjaro Linux und laden dich ein, ",
         "handleHardware": "Hardwareunterstützung",
         "homeText2": "Manjaro ermöglicht nicht nur die Installation von mehreren Kernels (auswählbar in den erweiterten Optionen des Boot-Screens) sondern führt auch immer die neuesten bleeding-edge Kernelversionen in der eigenen Software Repository. Die Installation von Kernels und weiteren Hardwaretreibern wird bei Manjaro mittels des graphischen Softwaretools Manjaro-Settings-Manager, bzw. via Kommandozeilentool MHWD-kernel (Manjaro Hardware Detection) vereinfacht.",

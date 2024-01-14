@@ -6,7 +6,7 @@
         "manjaroStarter": "Manjaro Starter",
         "projectGithubPage": "Strona projektu na Githubie",
         "gnu": "Licencja",
-        "welcomeManjaro": "Witaj w Manjaro!",
+        "welcomeMessage": "Witaj w",
         "homeText1": "My, programiści Manjaro mamy nadzieję, że będziesz cieszyć się korzystaniem z Manjaro tak samo, jak my jego tworzeniem. Manjaro Starter pomoże ci rozpocząć pracę z nowym systemem operacyjnym. Ciesz się doświadczeniem i nie wahaj się wysłać nam informacji zwrotnej.",
         "handleHardware": "Obsługa sprzętu",
         "homeText2": "Manjaro nie tylko obsługuje korzystanie z wielu kerneli (do wyboru w zaawansowanych opcjach na ekranie startowym), ale także zapewnia dostęp do najnowocześniejszych jąder. Można to zrobić za pomocą modułu kernela w programie Menedżer ustawień Manjaro lub za pomocą wiersza poleceń przy użyciu polecenia mhwd-kernel (Manjaro Hardware Detection).",
