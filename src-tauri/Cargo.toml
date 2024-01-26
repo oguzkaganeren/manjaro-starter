@@ -15,12 +15,12 @@ build = "src/build.rs"
 tauri-build = { version = "1.5.1", features = [] }
 
 [dependencies]
-serde_json = "1.0"
-serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0.111"
+serde = { version = "1.0.195", features = ["derive"] }
 tauri = { version = "1.5.4", features = ["api-all", "system-tray"] }
 tauri-utils = "1.5.0"
 log = "0.4.20"
-sysinfo = "0.30.5"
+sysinfo = {version ="0.30.5", features= ["serde"] }
 systemctl = "0.3.1"
 tauri-plugin-single-instance = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
 tauri-plugin-log = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }

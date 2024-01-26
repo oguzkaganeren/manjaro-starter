@@ -9,37 +9,42 @@ import {
 import React, {
   ReactNode, useState, useEffect,
 } from 'react';
-import { FiCpu, FiDatabase } from 'react-icons/fi';
+import { FiCpu, FiDatabase, FiDisc } from 'react-icons/fi';
+import { IoIosTimer } from 'react-icons/io';
 import { FaMemory } from 'react-icons/fa';
 import { HiOutlineDesktopComputer, HiOutlineUser } from 'react-icons/hi';
 import { AiFillCode } from 'react-icons/ai';
 import { invoke } from '@tauri-apps/api/tauri';
 import { useTranslation } from 'react-i18next';
+import { PiTimer } from 'react-icons/pi';
+import { TbTemperature } from 'react-icons/tb';
 import GpuInfoComponent from './GpuInfoComponent';
-import formatBytes from '../../utils/Format';
+import formatBytes, { secToMinutesAndSeconds } from '../../utils/Format';
+import DiskInfo from './DiskInfo';
+import ComponentInfo from './ComponentInfo';
 
 interface StatsCardProps {
   title: string;
-  stat: string;
+  stat?: string;
   icon: ReactNode;
+  children?:ReactNode;
 }
 const StatsCard = (props: StatsCardProps) => {
-  const { title, stat, icon } = props;
+  const {
+    title, stat, icon, children,
+  } = props;
   return (
-    <Card
-      px={{ base: 2, md: 4 }}
-      py="3"
-      size="sm"
-    >
+    <Card px={{ base: 2, md: 4 }} py="3" size="sm">
       <Flex justifyContent="space-between">
         <Box px={{ base: 2, md: 4 }}>
-          <Text fontWeight="bold">
-            {title}
-          </Text>
-          <Text fontSize="sm" fontWeight="small">
-            {stat}
-          </Text>
+          <Text fontWeight="bold">{title}</Text>
+          {stat || (
+            <Text fontSize="sm" fontWeight="small">
+              {stat}
+            </Text>
+          )}
         </Box>
+
         <Box
           my="auto"
           color={useColorModeValue('gray.800', 'gray.200')}
@@ -48,6 +53,7 @@ const StatsCard = (props: StatsCardProps) => {
           {icon}
         </Box>
       </Flex>
+      {children}
     </Card>
   );
 };
@@ -55,20 +61,40 @@ const StatsCard = (props: StatsCardProps) => {
 const SystemInfoComponent: React.FC = () => {
   const { t } = useTranslation();
   const [systemInfo, setSystemInfo] = useState({
-    numberOfCpu: '',
-    totalMemory: 0,
-    usedMemory: 0,
-    totalSwap: 0,
-    usedSwap: 0,
-    sysName: '',
-    sysKernelVersion: '',
-    sysOsVersion: '',
-    sysHostName: '',
-    nameOfCpu: '',
+    host_name: '',
+    distribution_id: '',
+    long_os_version: '',
+    os_version: '',
+    kernel_version: '',
+    name: '',
+    load_average: {},
+    boot_time: 0,
+    uptime: 0,
+    used_swap: 0,
+    free_swap: 0,
+    total_swap: 0,
+    used_memory: 0,
+    available_memory: 0,
+    free_memory: 0,
+    total_memory: 0,
+    physical_core_count: 0,
+    global_cpu_info: {
+      brand: '',
+      cpu_usage: 0,
+      frequency: 0,
+      name: '',
+      vendor_id: '',
+    },
+    cpus: [{
+      brand: '',
+      cpu_usage: 0,
+      frequency: 0,
+      name: '',
+      vendor_id: '',
+    }],
   });
   useEffect(() => {
     invoke('get_sys_info').then((response) => {
-      // why two parse???
       const responseJson = JSON.parse(JSON.parse(JSON.stringify(response)));
       setSystemInfo(responseJson);
     });
@@ -78,35 +104,60 @@ const SystemInfoComponent: React.FC = () => {
       <SimpleGrid transition=".3s ease" columns={2} spacing={4}>
         <StatsCard
           title={t('system')}
-          stat={`${systemInfo.sysName} ${systemInfo.sysOsVersion}`}
+          stat={`${systemInfo.name} ${systemInfo.os_version}`}
           icon={<HiOutlineDesktopComputer size="2em" />}
         />
         <StatsCard
           title={t('kernel')}
-          stat={systemInfo.sysKernelVersion}
+          stat={systemInfo.kernel_version}
           icon={<AiFillCode size="2em" />}
         />
         <StatsCard
           title={t('host')}
-          stat={systemInfo.sysHostName}
+          stat={systemInfo.host_name}
           icon={<HiOutlineUser size="2em" />}
         />
         <StatsCard
-          title={t('cpu')}
-          stat={`${systemInfo.nameOfCpu} 
-          ${systemInfo.numberOfCpu} Core`}
-          icon={<FiCpu size="2em" />}
-        />
-        <StatsCard
           title={t('memory')}
-          stat={`${formatBytes(systemInfo.usedMemory)} / ${formatBytes(systemInfo.totalMemory)}`}
+          stat={`${formatBytes(systemInfo.used_memory)} / ${formatBytes(
+            systemInfo.total_memory,
+          )}`}
           icon={<FaMemory size="2em" />}
         />
+
+        <StatsCard
+          title={t('uptime')}
+          stat={secToMinutesAndSeconds(systemInfo.uptime)}
+          icon={<PiTimer size="2em" />}
+        />
+        <StatsCard
+          title={t('bootTime')}
+          stat={secToMinutesAndSeconds(systemInfo.boot_time)}
+          icon={<IoIosTimer size="2em" />}
+        />
+
+        <StatsCard
+          title={t('cpu')}
+          stat={`${systemInfo.cpus[0].brand} 
+          ${systemInfo.cpus.length} Core`}
+          icon={<FiCpu size="2em" />}
+        />
+        <StatsCard title={t('disks')} icon={<FiDisc size="2em" />}>
+          <DiskInfo />
+        </StatsCard>
         <StatsCard
           title={t('swap')}
-          stat={`${formatBytes(systemInfo.usedSwap)} / ${formatBytes(systemInfo.totalSwap)}`}
+          stat={`${formatBytes(systemInfo.used_swap)} / ${formatBytes(
+            systemInfo.total_swap,
+          )}`}
           icon={<FiDatabase size="2em" />}
         />
+        <StatsCard
+          title={t('componentTemp')}
+          icon={<TbTemperature size="2em" />}
+        >
+          <ComponentInfo />
+        </StatsCard>
       </SimpleGrid>
       <GpuInfoComponent />
     </>

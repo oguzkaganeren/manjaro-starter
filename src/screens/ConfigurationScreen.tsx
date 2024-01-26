@@ -108,7 +108,7 @@ const TabListEx = () => {
 const TabPanelEx = () => {
   const isLive = useRecoilValue(liveState);
   return (
-    <TabPanels>
+    <TabPanels overflowY="auto" maxHeight="calc(80vh)">
       <TabPanel>
         <SystemInfoComponent />
       </TabPanel>

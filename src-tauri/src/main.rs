@@ -3,11 +3,10 @@
   windows_subsystem = "windows"
 )]
 use log::LevelFilter;
-use serde_json::json;
 use std::fs;
 use std::path::Path;
 use std::process::Command;
-use sysinfo::{System};
+use sysinfo::{System,Disks,Components};
 use tauri::Manager;
 use tauri::SystemTray;
 use tauri::{CustomMenuItem, SystemTrayEvent, SystemTrayMenu, SystemTrayMenuItem};
@@ -42,20 +41,24 @@ fn get_sys_info() -> String {
   let mut sys =System::new_all();
   // First we update all information of our `System` struct.
   sys.refresh_all();
-  let sys_info = json!( {
-    "totalMemory": sys.total_memory().to_string(),
-    "usedMemory": sys.used_memory().to_string(),
-    "totalSwap": sys.total_swap().to_string(),
-    "usedSwap": sys.used_swap().to_string(),
-    "sysName":System::name(),
-    "sysKernelVersion":System::kernel_version(),
-    "sysOsVersion":System::os_version(),
-    "sysHostName":System::host_name(),
-    "numberOfCpu":sys.cpus().len().to_string(),
-    "nameOfCpu":sys.global_cpu_info().brand(),
-  });
-  return sys_info.to_string();
+  
+  return serde_json::to_string(&sys).unwrap().to_string();
 }
+
+#[tauri::command]
+fn get_disk_info() -> String {
+  let disks = Disks::new_with_refreshed_list();
+
+  return serde_json::to_string(&disks).unwrap().to_string();
+}
+
+#[tauri::command]
+fn get_component_info() -> String {
+  let components = Components::new_with_refreshed_list();
+
+  return serde_json::to_string(&components).unwrap().to_string();
+}
+
 
 #[tauri::command]
 fn is_service_active(service: String) -> bool {
@@ -121,7 +124,9 @@ fn main() {
       run_shell_command,
       run_shell_command_with_result,
       get_sys_info,
+      get_disk_info,
       get_svg_icon,
+      get_component_info,
       is_service_active,
       hide_window
     ])

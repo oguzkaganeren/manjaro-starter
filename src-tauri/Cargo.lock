@@ -3575,6 +3575,7 @@ dependencies = [
  "ntapi",
  "once_cell",
  "rayon",
+ "serde",
  "windows 0.52.0",
 ]
 

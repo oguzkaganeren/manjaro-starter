@@ -189,6 +189,9 @@
         "countryMirrorSuccess": "Creating a custom mirror pool succeeds.",
         "countryMirrorFail": "Creating a custom mirror pool fail.",
         "fastestMirrorSuccess": "Setting fastest mirror succeeds.",
-        "fastestMirrorFail": "Setting fastest mirror fail."
+        "fastestMirrorFail": "Setting fastest mirror fail.",
+        "uptime":"Uptime",
+        "bootTime":"Boot Time",
+        "disks":"Disks"
     }
 }
