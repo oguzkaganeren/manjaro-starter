@@ -189,6 +189,9 @@
         "countryMirrorSuccess": "Erstellung eines eigenen Mirrorpools erfolgreich.",
         "countryMirrorFail": "Erstellung eines eigenen Mirrorpools fehlgeschlagen.",
         "fastestMirrorSuccess": "Schnellsten Mirror einrichten erfolgreich.",
-        "fastestMirrorFail": "Schnellsten Mirror einrichten fehlgeschlagen."
+        "fastestMirrorFail": "Schnellsten Mirror einrichten fehlgeschlagen.",
+        "uptime":"Betriebszeit",
+        "bootTime":"Bootzeit",
+        "disks":"Festplatten"
     }
 }
