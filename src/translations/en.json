@@ -192,6 +192,7 @@
         "fastestMirrorFail": "Setting fastest mirror fail.",
         "uptime":"Uptime",
         "bootTime":"Boot Time",
-        "disks":"Disks"
+        "disks":"Disks",
+        "componentTemp":"Temperature"
     }
 }
