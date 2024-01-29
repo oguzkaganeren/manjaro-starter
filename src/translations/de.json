@@ -192,6 +192,7 @@
         "fastestMirrorFail": "Schnellsten Mirror einrichten fehlgeschlagen.",
         "uptime":"Betriebszeit",
         "bootTime":"Bootzeit",
-        "disks":"Festplatten"
+        "disks":"Festplatten",
+        "componentTemp":"Temperatur"
     }
 }
