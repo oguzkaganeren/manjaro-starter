@@ -15,7 +15,7 @@
     "@testing-library/jest-dom": "^6.4.2",
     "@types/jest": "^29.5.12",
     "@types/react": "^18.2.74",
-    "@types/react-dom": "^18.2.23",
+    "@types/react-dom": "^18.2.24",
     "chakra-ui-markdown-renderer": "^4.1.0",
     "dompurify": "^3.0.11",
     "eslint-config-react-app": "^7.0.1",
