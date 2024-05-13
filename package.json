@@ -70,7 +70,7 @@
     ]
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^1.5.13",
+    "@tauri-apps/cli": "^1.5.14",
     "@types/dompurify": "^3.0.5",
     "@types/react-copy-to-clipboard": "^5.0.7",
     "@types/react-router-dom": "^5.3.0",
