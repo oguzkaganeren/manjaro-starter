@@ -11565,8 +11565,8 @@ tapable@^2.0.0, tapable@^2.1.1, tapable@^2.2.0:
 
 "tauri-plugin-log-api@https://github.com/tauri-apps/tauri-plugin-log#v1":
   version "0.0.0"
-  uid "2bb26e22f7f7b4f164bad02f0ae4085796f77fff"
-  resolved "https://github.com/tauri-apps/tauri-plugin-log#2bb26e22f7f7b4f164bad02f0ae4085796f77fff"
+  uid ee47371e75db7bc5190c74c3f94cfad3b81ac36d
+  resolved "https://github.com/tauri-apps/tauri-plugin-log#ee47371e75db7bc5190c74c3f94cfad3b81ac36d"
   dependencies:
     "@tauri-apps/api" "1.6.0"
 
