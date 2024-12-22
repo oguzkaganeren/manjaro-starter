@@ -1,7 +1,6 @@
 {
 	"recommendations": [
 		"aaron-bond.better-comments",
-        "abusaidm.html-snippets",
         "christian-kohler.path-intellisense",
         "dbaeumer.vscode-eslint",
         "dsznajder.es7-react-js-snippets",
@@ -10,10 +9,8 @@
         "formulahendry.auto-close-tag",
         "formulahendry.code-runner",
         "kamikillerto.vscode-colorize",
-        "lonefy.vscode-JS-CSS-HTML-formatter",
         "mikestead.dotenv",
         "ms-vscode.atom-keybindings",
-        "msjsdiag.debugger-for-chrome",
         "Orta.vscode-jest",
         "pflannery.vscode-versionlens",
         "PKief.material-icon-theme",
@@ -23,9 +20,7 @@
         "waderyan.gitblame",
         "wayou.vscode-todo-highlight",
         "eamodio.gitlens",
-        "bungcip.better-toml",
         "vadimcn.vscode-lldb",
-        "serayuzgur.crates",
         "rust-lang.rust-analyzer"
 	]
 }
