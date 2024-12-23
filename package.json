@@ -17,7 +17,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "chakra-ui-markdown-renderer": "^4.1.0",
-    "dompurify": "^3.1.6",
+    "dompurify": "^3.2.3",
     "eslint-config-react-app": "^7.0.1",
     "framer-motion": "^11.3.19",
     "i18next": "^23.12.2",
@@ -71,7 +71,7 @@
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.6.0",
-    "@types/dompurify": "^3.0.5",
+    "@types/dompurify": "^3.2.0",
     "@types/react-copy-to-clipboard": "^5.0.7",
     "@types/react-router-dom": "^5.3.0",
     "@typescript-eslint/eslint-plugin": "^7.17.0",
