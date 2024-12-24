@@ -13,7 +13,7 @@
     "@fontsource/caveat": "^5.0.18",
     "@tauri-apps/api": "^2.1.1",
     "@testing-library/jest-dom": "^6.6.3",
-    "@types/jest": "^29.5.12",
+    "@types/jest": "^29.5.14",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "chakra-ui-markdown-renderer": "^4.1.0",
