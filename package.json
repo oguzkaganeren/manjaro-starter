@@ -20,7 +20,7 @@
     "dompurify": "^3.2.3",
     "eslint-config-react-app": "^7.0.1",
     "framer-motion": "^11.3.19",
-    "i18next": "^23.12.2",
+    "i18next": "^24.2.0",
     "i18next-browser-languagedetector": "^8.0.0",
     "keen-slider": "^6.8.6",
     "lodash": "^4.17.21",
