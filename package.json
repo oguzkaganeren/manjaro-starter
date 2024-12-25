@@ -35,7 +35,7 @@
     "remark-gfm": "^4.0.0",
     "tauri-plugin-log-api": "https://github.com/tauri-apps/tauri-plugin-log#v1",
     "typescript": "^5.7.2",
-    "use-debounce": "^10.0.2",
+    "use-debounce": "^10.0.4",
     "web-vitals": "^4.2.4"
   },
   "overrides": {
