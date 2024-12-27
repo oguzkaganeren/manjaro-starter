@@ -20,7 +20,7 @@ serde = { version = "1.0.217", features = ["derive"] }
 tauri = { version = "1.8.1", features = ["api-all", "system-tray"] }
 tauri-utils = "1.6.1"
 log = "0.4.22"
-sysinfo = {version ="0.33.0", features= ["serde"] }
+sysinfo = {version ="0.33.1", features= ["serde"] }
 systemctl = "0.3.1"
 tauri-plugin-single-instance = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
 tauri-plugin-log = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
