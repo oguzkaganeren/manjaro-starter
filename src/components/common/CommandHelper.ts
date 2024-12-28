@@ -1,7 +1,7 @@
-import { info, error } from 'tauri-plugin-log-api';
-import { Command } from '@tauri-apps/api/shell';
+import { info, error } from '@tauri-apps/plugin-log';
+import { Command } from '@tauri-apps/plugin-shell';
 
-export default function commandLogger(command:Command) {
+export default function commandLogger(command:Command<any>) {
   command.on('close', (data) => {
     info(
       `command finished with code ${data.code} and signal ${data.signal}`,

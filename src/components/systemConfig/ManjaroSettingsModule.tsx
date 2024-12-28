@@ -3,7 +3,7 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Command } from '@tauri-apps/api/shell';
+import { Command } from '@tauri-apps/plugin-shell';
 import commands from '../../assets/Commands';
 
 const ManjaroSettingsModule: React.FC = () => {
@@ -11,7 +11,7 @@ const ManjaroSettingsModule: React.FC = () => {
   const modules = ['mhwd', 'timedate', 'language_packages'];
   const languageText = ['installDrivers', 'setDateTime', 'languagePackages'];
   const openManjaroSettingsManager = async (moduleName:string) => {
-    const cmd = new Command(commands.getMSM.program, ['-m', `msm_${moduleName}`]);
+    const cmd = Command.create(commands.getMSM.program, ['-m', `msm_${moduleName}`]);
     cmd.execute();
   };
 
@@ -38,7 +38,7 @@ const ManjaroSettingsModule: React.FC = () => {
           height="20"
           variant="ghost"
           onClick={async () => {
-            new Command(commands.getMSM.program).execute();
+            Command.create(commands.getMSM.program).execute();
           }}
         >
           {t('moreSettings')}

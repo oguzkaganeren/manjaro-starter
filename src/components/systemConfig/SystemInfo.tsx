@@ -14,7 +14,7 @@ import { IoIosTimer } from 'react-icons/io';
 import { FaMemory } from 'react-icons/fa';
 import { HiOutlineDesktopComputer, HiOutlineUser } from 'react-icons/hi';
 import { AiFillCode } from 'react-icons/ai';
-import { invoke } from '@tauri-apps/api/tauri';
+import { invoke } from '@tauri-apps/api/core';
 import { useTranslation } from 'react-i18next';
 import { PiTimer } from 'react-icons/pi';
 import { TbTemperature } from 'react-icons/tb';

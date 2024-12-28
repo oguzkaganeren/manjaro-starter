@@ -2,15 +2,16 @@
   all(not(debug_assertions), target_os = "windows"),
   windows_subsystem = "windows"
 )]
-use log::LevelFilter;
 use std::fs;
 use std::path::Path;
 use std::process::Command;
-use sysinfo::{System,Disks,Components};
-use tauri::Manager;
-use tauri::SystemTray;
-use tauri::{CustomMenuItem, SystemTrayEvent, SystemTrayMenu, SystemTrayMenuItem};
-use tauri_plugin_log::{LogTarget, RotationStrategy};
+use sysinfo::{Components, Disks, System};
+use tauri::{
+  menu::{Menu, MenuItem},
+  tray::TrayIconBuilder,
+  Manager,
+};
+use tauri_plugin_log::{Target, TargetKind};
 
 #[derive(Clone, serde::Serialize)]
 struct Payload {
@@ -38,10 +39,10 @@ fn get_svg_icon(svgpath: String) -> String {
 }
 #[tauri::command]
 fn get_sys_info() -> String {
-  let mut sys =System::new_all();
+  let mut sys = System::new_all();
   // First we update all information of our `System` struct.
   sys.refresh_all();
-  
+
   return serde_json::to_string(&sys).unwrap().to_string();
 }
 
@@ -59,7 +60,6 @@ fn get_component_info() -> String {
   return serde_json::to_string(&components).unwrap().to_string();
 }
 
-
 #[tauri::command]
 fn is_service_active(service: String) -> bool {
   if let Ok(true) = systemctl::exists(&service) {
@@ -71,53 +71,83 @@ fn is_service_active(service: String) -> bool {
 
 #[tauri::command]
 fn hide_window(app_handle: tauri::AppHandle) {
-  let window = app_handle.get_window("main").unwrap();
-  let item_handle = app_handle.tray_handle().get_item("hide");
+  let window = app_handle.get_webview_window("main").unwrap();
+  //let item_handle = app_handle.tray_handle().get_item("hide");
   window.hide().unwrap();
-  item_handle.set_title("Show").unwrap();
+  //item_handle.set_title("Show").unwrap();
 }
 
 fn main() {
-  //init tray
-  let quit = CustomMenuItem::new("quit".to_string(), "Quit Manjaro Starter");
-  let hide = CustomMenuItem::new("hide".to_string(), "Hide");
-  let tray_menu = SystemTrayMenu::new()
-    .add_item(quit)
-    .add_native_item(SystemTrayMenuItem::Separator)
-    .add_item(hide);
-  let tray = SystemTray::new().with_menu(tray_menu);
-
   tauri::Builder::default()
+    .plugin(
+      tauri_plugin_log::Builder::new()
+        .targets([
+          tauri_plugin_log::Target::new(tauri_plugin_log::TargetKind::Stdout),
+          Target::new(TargetKind::Webview),
+        ])
+        .level(log::LevelFilter::Debug)
+        .rotation_strategy(tauri_plugin_log::RotationStrategy::KeepAll)
+        .build(),
+    )
+    .plugin(tauri_plugin_os::init())
+    .plugin(tauri_plugin_shell::init())
+    .plugin(tauri_plugin_dialog::init())
+    .plugin(tauri_plugin_global_shortcut::Builder::new().build())
+    .plugin(tauri_plugin_clipboard_manager::init())
+    .plugin(tauri_plugin_fs::init())
+    .plugin(tauri_plugin_process::init())
+    .plugin(tauri_plugin_notification::init())
+    .plugin(tauri_plugin_http::init())
     .setup(|app| {
-      let splashscreen_window = app.get_window("splashscreen").unwrap();
-      let main_window = app.get_window("main").unwrap();
+      let splashscreen_window = app.get_webview_window("splashscreen").unwrap();
+      let main_window = app.get_webview_window("main").unwrap();
       // we perform the initialization code on a new task so the app doesn't freeze
       tauri::async_runtime::spawn(async move {
         std::thread::sleep(std::time::Duration::from_secs(1));
         // After it's done, close the splashscreen and display the main window
         splashscreen_window.close().unwrap();
         main_window.show().unwrap();
+        main_window.open_devtools();
       });
+      let quit_i = MenuItem::with_id(app, "quit", "Quit Manjaro Starter", true, None::<&str>)?;
+      let hide_i = MenuItem::with_id(app, "hide", "Hide", true, None::<&str>)?;
+      let tray_menu = Menu::with_items(app, &[&quit_i, &hide_i])?;
+      let tray = TrayIconBuilder::new()
+        .menu(&tray_menu)
+        .menu_on_left_click(true)
+        .on_menu_event(|app, event| match event.id.as_ref() {
+          "quit" => {
+            std::process::exit(0);
+          }
+          "hide" => {
+            let window = app.get_webview_window("main").unwrap();
+            let is_visible = window.is_visible().unwrap();
+            if is_visible {
+              window.hide().unwrap();
+              //item_handle.set_title("Show").unwrap();
+            } else {
+              window.show().unwrap();
+              window.set_focus().unwrap();
+              //item_handle.set_title("Hide").unwrap();
+            }
+          }
+          _ => {
+            println!("menu item {:?} not handled", event.id);
+          }
+        })
+        .build(app)?;
       Ok(())
     })
-    .plugin(
-      tauri_plugin_log::Builder::default()
-        .rotation_strategy(RotationStrategy::KeepAll)
-        .max_file_size(1000)
-        .level(LevelFilter::Debug)
-        .targets([LogTarget::LogDir, LogTarget::Stdout, LogTarget::Webview])
-        .build(),
-    )
     .plugin(tauri_plugin_single_instance::init(|app, argv, cwd| {
       println!("{}, {argv:?}, {cwd}", app.package_info().name);
-      let window = app.get_window("main").unwrap();
-      let item_handle = app.tray_handle().get_item("hide");
+      let window = app.get_webview_window("main").unwrap();
+      //let item_handle = app.tray_handle().get_item("hide");
       window.show().unwrap();
       window.set_focus().unwrap();
-      item_handle.set_title("Hide").unwrap();
-      app
-        .emit_all("single-instance", Payload { args: argv, cwd })
-        .unwrap();
+      //item_handle.set_title("Hide").unwrap();
+      /*app
+      .emit_all("single-instance", Payload { args: argv, cwd })
+      .unwrap();*/
     }))
     // This is where you pass in your commands
     .invoke_handler(tauri::generate_handler![
@@ -130,35 +160,10 @@ fn main() {
       is_service_active,
       hide_window
     ])
-    .system_tray(tray)
-    .on_system_tray_event(|app, event| match event {
-      SystemTrayEvent::MenuItemClick { id, .. } => {
-        let item_handle = app.tray_handle().get_item(&id);
-        match id.as_str() {
-          "quit" => {
-            std::process::exit(0);
-          }
-          "hide" => {
-            let window = app.get_window("main").unwrap();
-            let is_visible = window.is_visible().unwrap();
-            if is_visible {
-              window.hide().unwrap();
-              item_handle.set_title("Show").unwrap();
-            } else {
-              window.show().unwrap();
-              window.set_focus().unwrap();
-              item_handle.set_title("Hide").unwrap();
-            }
-          }
-          _ => {}
-        }
-      }
-      _ => {}
-    })
-    .on_window_event(|event| match event.event() {
+    .on_window_event(|window, event| match event {
       tauri::WindowEvent::CloseRequested { api, .. } => {
         // do not close when click close button
-        event.window().hide().unwrap();
+        window.hide().unwrap();
         api.prevent_close();
       }
       _ => {}

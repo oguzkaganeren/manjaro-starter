@@ -1,5 +1,5 @@
 import { useToast } from '@chakra-ui/react';
-import { isPermissionGranted, requestPermission, sendNotification } from '@tauri-apps/api/notification';
+import { isPermissionGranted, requestPermission, sendNotification } from '@tauri-apps/plugin-notification';
 import { capitalize } from 'lodash';
 
 export default function useToastCustom() {

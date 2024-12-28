@@ -13,7 +13,7 @@ import ReactMarkdown from 'react-markdown';
 import { useTranslation } from 'react-i18next';
 import remarkGfm from 'remark-gfm';
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer';
-import { open } from '@tauri-apps/api/shell';
+import { open } from '@tauri-apps/plugin-shell';
 import { HiOutlineDocumentText } from 'react-icons/hi';
 import notes from '../../CHANGELOG.md';
 

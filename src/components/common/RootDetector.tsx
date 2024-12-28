@@ -10,12 +10,14 @@ import {
   ModalOverlay,
   useDisclosure,
 } from '@chakra-ui/react';
-import { Command } from '@tauri-apps/api/shell';
+import { Command } from '@tauri-apps/plugin-shell';
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { info } from 'tauri-plugin-log-api';
-import { appWindow } from '@tauri-apps/api/window';
+import { info, error } from '@tauri-apps/plugin-log';
+import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import commands from '../../assets/Commands';
+
+const appWindow = getCurrentWebviewWindow();
 
 const RootDetector = () => {
   const { t } = useTranslation();
@@ -25,15 +27,15 @@ const RootDetector = () => {
   };
   useEffect(() => {
     const detectWho = async () => {
-      const cmd = new Command(commands.getWhoami.program);
+      const cmd = Command.create(commands.getWhoami.program);
       cmd.stdout.on('data', (line) => {
         info(`whoami stdout: "${line}"`);
         if (line === 'root') {
           onOpen();
         }
       });
-      cmd.on('error', (error) => {
-        error(error);
+      cmd.on('error', (errors) => {
+        error(errors);
       });
       await cmd.spawn();
     };

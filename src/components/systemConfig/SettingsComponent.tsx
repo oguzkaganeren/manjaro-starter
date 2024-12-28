@@ -2,7 +2,7 @@ import React from 'react';
 import {
   SimpleGrid, Button, Card,
 } from '@chakra-ui/react';
-import { Command } from '@tauri-apps/api/shell';
+import { Command } from '@tauri-apps/plugin-shell';
 import { useTranslation } from 'react-i18next';
 import usePackageStatus from '../../hooks/usePackageStatus';
 import ManjaroSettingsModule from './ManjaroSettingsModule';
@@ -23,7 +23,7 @@ const SettingsComponent = () => {
         height="20"
         variant="ghost"
         onClick={async () => {
-          new Command(commands.getMCP.program).execute();
+          Command.create(commands.getMCP.program).execute();
         }}
       >
         {t('moreSettings')}

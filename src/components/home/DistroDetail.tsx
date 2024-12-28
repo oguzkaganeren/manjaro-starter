@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { invoke } from '@tauri-apps/api/tauri';
+import { invoke } from '@tauri-apps/api/core';
 import { Heading, Text } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 

@@ -18,12 +18,12 @@ import {
   Card,
 } from '@chakra-ui/react';
 import { configDir } from '@tauri-apps/api/path';
-import { exists, readTextFile } from '@tauri-apps/api/fs';
+import { exists, readTextFile } from '@tauri-apps/plugin-fs';
 import {
   useRef, FC, useEffect, useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Command } from '@tauri-apps/api/shell';
+import { Command } from '@tauri-apps/plugin-shell';
 import { SettingsIcon } from '@chakra-ui/icons';
 import commands from '../../assets/Commands';
 
@@ -84,7 +84,7 @@ const GnomeLayoutManager: FC = () => {
                 aria-label={t('advanced')}
                 icon={<SettingsIcon />}
                 onClick={async () => {
-                  new Command(commands.getGLM.program).execute();
+                  Command.create(commands.getGLM.program).execute();
                 }}
               />
             </Tooltip>
@@ -107,7 +107,7 @@ const GnomeLayoutManager: FC = () => {
                   rounded="lg"
                   onClick={async () => {
                     setIsSelected(layout);
-                    new Command(commands.getGLM.program, [
+                    Command.create(commands.getGLM.program, [
                       `apply-${layout}`,
                     ]).execute();
                   }}

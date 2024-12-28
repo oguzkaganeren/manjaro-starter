@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { invoke } from '@tauri-apps/api/tauri';
-import { info } from 'tauri-plugin-log-api';
+import { invoke } from '@tauri-apps/api/core';
+import { info } from '@tauri-apps/plugin-log';
 import {
   TagLabel,
   chakra,
@@ -18,7 +18,7 @@ import { FiHardDrive } from 'react-icons/fi';
 import { BsCheck } from 'react-icons/bs';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { useRecoilState } from 'recoil';
-import { Command } from '@tauri-apps/api/shell';
+import { Command } from '@tauri-apps/plugin-shell';
 import commandState from '../../stores/CommandStore';
 import ConfirmPopComponent from '../common/ConfirmPopComponent';
 import useToastCustom from '../../hooks/useToastCustom';
@@ -53,13 +53,13 @@ const FsTrimServiceComponent = () => {
       ...commandHistory, // that contains all the old items
       printCmds.map((text) => `${text}`).join(' '), // and one new item at the end
     ]);
-    const cmd = new Command(
+    const cmd = Command.create(
       'systemctl',
       enableDisableCom,
     );
     commandLogger(cmd);
     cmd.execute().then(() => {
-      const ssCmd = new Command(
+      const ssCmd = Command.create(
         'systemctl',
         startStopCom,
       );

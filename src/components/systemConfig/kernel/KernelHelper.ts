@@ -1,11 +1,11 @@
-import { Command } from '@tauri-apps/api/shell';
+import { Command } from '@tauri-apps/plugin-shell';
 import _ from 'lodash';
 import commands from '../../../assets/Commands';
 import commandLogger from '../../common/CommandHelper';
 import { Kernel } from './Kernel';
 
 const getKernelList = async () => {
-  const cmd = new Command(commands.getPacman.program, ['-Ss', '^linux[0-9][0-9]?([0-9])$|^linux[0-9][0-9]?([0-9])-rt$']);
+  const cmd = Command.create(commands.getPacman.program, ['-Ss', '^linux[0-9][0-9]?([0-9])$|^linux[0-9][0-9]?([0-9])-rt$']);
   const kernelList = await cmd.execute();
   const kernels = [] as Kernel[];
   const splitKernels = kernelList.stdout.split('\n').filter((item) => item.indexOf('linux') > 0);
@@ -25,13 +25,13 @@ const getKernelList = async () => {
 };
 
 export const runCommandInstallKernel = async (kernelName:string) => {
-  const cmd = new Command(commands.getPamac.program, ['install', '--no-confirm', '--no-upgrade', kernelName]);
+  const cmd = Command.create(commands.getPamac.program, ['install', '--no-confirm', '--no-upgrade', kernelName]);
   commandLogger(cmd);
   return cmd.execute();
 };
 
 export const runCommandGetRunningKernel = async () => {
-  const cmd = new Command(commands.getRunningKernel.program, ['-r']);
+  const cmd = Command.create(commands.getRunningKernel.program, ['-r']);
   return cmd.execute();
 };
 

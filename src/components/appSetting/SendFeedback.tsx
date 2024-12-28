@@ -11,7 +11,7 @@ import {
   ButtonGroup,
   PopoverFooter,
 } from '@chakra-ui/react';
-import { open } from '@tauri-apps/api/shell';
+import { open } from '@tauri-apps/plugin-shell';
 import { MdFeedback } from 'react-icons/md';
 
 const SendFeedback = () => {

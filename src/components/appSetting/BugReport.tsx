@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Button,
 } from '@chakra-ui/react';
-import { open } from '@tauri-apps/api/shell';
+import { open } from '@tauri-apps/plugin-shell';
 import { useTranslation } from 'react-i18next';
 import { BiBug } from 'react-icons/bi';
 

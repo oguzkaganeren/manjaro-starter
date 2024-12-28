@@ -11,10 +11,11 @@ import {
   Button,
   useDisclosure,
 } from '@chakra-ui/react';
-import { invoke } from '@tauri-apps/api/tauri';
+import { invoke } from '@tauri-apps/api/core';
 import { useTranslation } from 'react-i18next';
 import { CloseIcon } from '@chakra-ui/icons';
-import { appWindow } from '@tauri-apps/api/window';
+import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
+const appWindow = getCurrentWebviewWindow()
 
 const CloseAppComponent = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

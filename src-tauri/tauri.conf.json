@@ -1,182 +1,83 @@
 {
-    "package": {
-        "productName": "manjaro-starter",
-        "version": "../package.json"
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "windows": {
+      "certificateThumbprint": null,
+      "digestAlgorithm": "sha256",
+      "timestampUrl": ""
     },
-    "build": {
-        "distDir": "../build",
-        "devPath": "http://0.0.0.0:3000",
-        "beforeDevCommand": "yarn start",
-        "beforeBuildCommand": "yarn build",
-        "withGlobalTauri": true
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "resources": [
+      "./resources/manjaro-starter.desktop"
+    ],
+    "externalBin": [],
+    "copyright": "© Copyright 2022 Manjaro GmbH & Co. KG All rights reserved.",
+    "category": "DeveloperTool",
+    "shortDescription": "",
+    "longDescription": "",
+    "macOS": {
+      "frameworks": [],
+      "minimumSystemVersion": "",
+      "exceptionDomain": "",
+      "signingIdentity": null,
+      "entitlements": null
     },
-    "tauri": {
-        "bundle": {
-            "active": true,
-            "targets": "all",
-            "identifier": "com.manjaro.starter",
-            "icon": [
-                "icons/32x32.png",
-                "icons/128x128.png",
-                "icons/128x128@2x.png",
-                "icons/icon.icns",
-                "icons/icon.ico"
-            ],
-            "resources": ["./resources/manjaro-starter.desktop"],
-            "externalBin": [],
-            "copyright": "© Copyright 2022 Manjaro GmbH & Co. KG All rights reserved.",
-            "category": "DeveloperTool",
-            "shortDescription": "",
-            "longDescription": "",
-            "deb": {
-                "depends": []
-            },
-            "macOS": {
-                "frameworks": [],
-                "minimumSystemVersion": "",
-                "exceptionDomain": "",
-                "signingIdentity": null,
-                "entitlements": null
-            },
-            "windows": {
-                "certificateThumbprint": null,
-                "digestAlgorithm": "sha256",
-                "timestampUrl": ""
-            }
-        },
-        "updater": {
-            "active": false
-        },
-        "allowlist": {
-            "all": true,
-            "notification": {
-                "all": true
-            },
-            "http": {
-                "scope": [
-                    "https://manjaro.org/search/*",
-                    "https://search.manjaro-sway.download/*"
-                ]
-            },
-            "shell": {
-                "all": true,
-                "execute": true,
-                "sidecar": true,
-                "open": true,
-                "scope": [{
-                    "name": "gnome-layout-switcher",
-                    "cmd": "gnome-layout-switcher",
-                    "args": true
-                }, {
-                    "name": "calamares_polkit",
-                    "cmd": "calamares_polkit"
-                }, {
-                    "name": "manjaro-settings-manager",
-                    "cmd": "manjaro-settings-manager",
-                    "args": true
-                }, {
-                    "name": "mcp",
-                    "cmd": "mcp-qt",
-                    "args": true
-                }, {
-                    "name": "pacman",
-                    "cmd": "pacman",
-                    "args": true
-                }, {
-                    "name": "pamac",
-                    "cmd": "pamac",
-                    "args": true
-                }, {
-                    "name": "pamac-manager",
-                    "cmd": "pamac-manager",
-                    "args": true
-                }, {
-                    "name": "pkexec",
-                    "cmd": "pkexec",
-                    "args": true
-                }, {
-                    "name": "lspci",
-                    "cmd": "lspci",
-                    "args": true
-                }, {
-                    "name": "whoami",
-                    "cmd": "whoami",
-                    "args": false
-                }, {
-                    "name": "pacman-mirrors",
-                    "cmd": "pacman-mirrors",
-                    "args": true
-                }, {
-                    "name": "uname",
-                    "cmd": "uname",
-                    "args": true
-                }, {
-                    "name": "systemctl",
-                    "cmd": "systemctl",
-                    "args": true
-                }]
-            },
-            "window": {
-                "startDragging": true
-            },
-            "fs": {
-                "all": true,
-                "readFile": true,
-                "writeFile": true,
-                "readDir": true,
-                "copyFile": true,
-                "createDir": true,
-                "removeDir": true,
-                "removeFile": true,
-                "renameFile": true,
-                "scope": [
-                    "$CACHE",
-                    "$CONFIG/*/**",
-                    "$CONFIG/*",
-                    "$DATA",
-                    "$LOCALDATA",
-                    "$EXE",
-                    "$FONT",
-                    "$HOME",
-                    "$PUBLIC",
-                    "$RUNTIME",
-                    "$TEMPLATE",
-                    "$RESOURCE",
-                    "$APP",
-                    "$LOG/*",
-                    "$TEMP"
-                ]
-            },
-            "path": {
-                "all": true
-
-            }
-        },
-        "windows": [{
-            "title": "Manjaro Starter",
-            "width": 800,
-            "height": 600,
-            "resizable": true,
-            "fullscreen": false,
-            "decorations": false,
-            "minWidth": 485,
-            "minHeight": 450,
-            "visible": false,
-            "center": true
-        }, {
-            "width": 400,
-            "height": 200,
-            "decorations": false,
-            "center": true,
-            "url": "/splash/splash.html",
-            "label": "splashscreen"
-        }],
-        "security": {
-            "csp": null
-        },
-        "systemTray": {
-            "iconPath": "icons/icon.png",
-            "iconAsTemplate": true
-        }
+    "linux": {
+      "deb": {
+        "depends": []
+      }
     }
+  },
+  "build": {
+    "devUrl": "http://localhost:1420",
+    "frontendDist": "../dist",
+    "beforeDevCommand": "yarn dev",
+    "beforeBuildCommand": "yarn build"
+  },
+  "productName": "manjaro-starter",
+  "mainBinaryName": "manjaro-starter",
+  "version": "../package.json",
+  "identifier": "com.manjaro.starter",
+  "plugins": {},
+  "app": {
+    "security": {
+      "csp": null
+    },
+    "trayIcon": {
+      "iconPath": "icons/icon.png",
+      "iconAsTemplate": true
+    },
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "title": "Manjaro Starter",
+        "width": 800,
+        "height": 600,
+        "resizable": true,
+        "fullscreen": false,
+        "decorations": false,
+        "minWidth": 485,
+        "minHeight": 450,
+        "visible": false,
+        "center": true,
+        "useHttpsScheme": true
+      },
+      {
+        "width": 400,
+        "height": 200,
+        "decorations": false,
+        "center": true,
+        "url": "/splash/splash.html",
+        "label": "splashscreen",
+        "useHttpsScheme": true
+      }
+    ]
+  }
 }

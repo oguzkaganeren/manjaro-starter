@@ -7,8 +7,8 @@ import {
   Card,
   Text,
 } from '@chakra-ui/react';
-import { Command } from '@tauri-apps/api/shell';
-import { error } from 'tauri-plugin-log-api';
+import { Command } from '@tauri-apps/plugin-shell';
+import { error } from '@tauri-apps/plugin-log';
 import { TbHeartRateMonitor } from 'react-icons/tb';
 import { useTranslation } from 'react-i18next';
 import commands from '../../assets/Commands';
@@ -20,7 +20,7 @@ const GpuInfoComponent = () => {
   useEffect(() => {
     const getGpuInfo = async () => {
       setIsProcessing(true);
-      const cmd = new Command(commands.getLspci.program);
+      const cmd = Command.create(commands.getLspci.program);
       cmd.on('close', (data) => {
         setIsProcessing(false);
       });

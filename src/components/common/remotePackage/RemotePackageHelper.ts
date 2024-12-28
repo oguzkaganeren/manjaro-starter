@@ -1,21 +1,20 @@
-import { getClient, ResponseType } from '@tauri-apps/api/http';
+import { fetch } from '@tauri-apps/plugin-http';
 import { RemotePackageResponseType } from './ResponseType';
 
 const handleRemoteInfo = async (name: string, branch:string) => {
-  const client = await getClient();
   const url = new URL('https://search.manjaro-sway.download/');
+
   url.searchParams.set('name', name);
   url.searchParams.set('branch', branch);
 
-  const response = await client.get(url.toString(), {
-    timeout: 30,
-    // the expected response type
-    responseType: ResponseType.JSON,
+  const client = await fetch(url, {
+    connectTimeout: 30,
     headers: {
       'User-Agent': 'Manjaro-Starter-Desktop 1.0 (+https://manjaro.org)',
     },
   });
-  return response.data as RemotePackageResponseType;
+  const response = await client.json();
+  return response as RemotePackageResponseType;
 };
 
 export default handleRemoteInfo;

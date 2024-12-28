@@ -1,14 +1,14 @@
-import { Command } from '@tauri-apps/api/shell';
+import { Command } from '@tauri-apps/plugin-shell';
 import commands from '../../assets/Commands';
 import commandLogger from '../common/CommandHelper';
 
 const callPackageQuery = async (pkName:string) => {
-  const cmdVersion = new Command(commands.getPacman.program, ['-Q', pkName]);
+  const cmdVersion = Command.create(commands.getPacman.program, ['-Q', pkName]);
   return cmdVersion.execute();
 };
 
 export const callPackageInstall = async (pkName:string) => {
-  const cmdVersion = new Command(commands.getPamac.program, [
+  const cmdVersion = Command.create(commands.getPamac.program, [
     'install',
     '--no-confirm',
     '--no-upgrade',

@@ -1,4 +1,4 @@
-import { Child } from '@tauri-apps/api/shell';
+import { Child } from '@tauri-apps/plugin-shell';
 import { useTranslation } from 'react-i18next';
 import { useRecoilState } from 'recoil';
 import useToastCustom from '../../hooks/useToastCustom';

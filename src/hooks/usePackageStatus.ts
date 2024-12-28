@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Command } from '@tauri-apps/api/shell';
+import { Command } from '@tauri-apps/plugin-shell';
 import commands from '../assets/Commands';
 
 async function getPackageInstalled(packageName:string) {
-  const result = await new Command(commands.getPacman.program, [
+  const result = await Command.create(commands.getPacman.program, [
     '-Q',
     packageName,
   ]).execute().then((response) => {

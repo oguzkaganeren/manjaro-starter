@@ -6,7 +6,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import React, { ReactNode, useState, useEffect } from 'react';
-import { invoke } from '@tauri-apps/api/tauri';
+import { invoke } from '@tauri-apps/api/core';
 import { CiTempHigh } from 'react-icons/ci';
 import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';

@@ -4,7 +4,7 @@ import {
   Button,
   Center,
 } from '@chakra-ui/react';
-import { open } from '@tauri-apps/api/shell';
+import { open } from '@tauri-apps/plugin-shell';
 
 import {
   FiTwitter, FiPackage, FiMail, FiFacebook,

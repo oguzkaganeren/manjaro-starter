@@ -13,7 +13,7 @@ import {
 import {
   SiGit, SiMonkeytie,
 } from 'react-icons/si';
-import { open } from '@tauri-apps/api/shell';
+import { open } from '@tauri-apps/plugin-shell';
 import { useTranslation } from 'react-i18next';
 import logo from '../../assets/icon.png';
 import packageJson from '../../../package.json';

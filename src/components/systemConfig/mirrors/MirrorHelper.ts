@@ -1,10 +1,10 @@
-import { Command } from '@tauri-apps/api/shell';
-import { invoke } from '@tauri-apps/api/tauri';
+import { Command } from '@tauri-apps/plugin-shell';
+import { invoke } from '@tauri-apps/api/core';
 import commands from '../../../assets/Commands';
 import commandLogger from '../../common/CommandHelper';
 
 const fastestMirrorRunner = async () => {
-  const cmd = new Command(
+  const cmd = Command.create(
     commands.fastestMirror.program,
     commands.fastestMirror.args,
     commands.fastestMirror.options,
@@ -15,7 +15,7 @@ const fastestMirrorRunner = async () => {
 
 export const countryMirrorRunner = async (param:string) => {
   const arg = [...(commands.countryMirror.args as Array<string>), param];
-  const cmd = new Command(
+  const cmd = Command.create(
     commands.countryMirror.program,
     arg,
     commands.countryMirror.options,
@@ -35,7 +35,7 @@ export const getMirrorList = () => invoke('run_shell_command_with_result', {
 });
 
 export const getActiveBranch = async () => {
-  const cmd = new Command(
+  const cmd = Command.create(
     commands.getActiveBranch.program,
     commands.getActiveBranch.args,
     commands.getActiveBranch.options,
@@ -45,7 +45,7 @@ export const getActiveBranch = async () => {
 };
 
 export const getMirrorCountry = async () => {
-  const cmd = new Command(
+  const cmd = Command.create(
     commands.getMirrorCountry.program,
     commands.getMirrorCountry.args,
     commands.getMirrorCountry.options,

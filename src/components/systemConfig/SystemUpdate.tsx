@@ -15,8 +15,8 @@ import {
 } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Command } from '@tauri-apps/api/shell';
-import { info, error } from 'tauri-plugin-log-api';
+import { Command } from '@tauri-apps/plugin-shell';
+import { info, error } from '@tauri-apps/plugin-log';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { connectionState } from '../../stores/ConnectionStore';
 import commandState from '../../stores/CommandStore';
@@ -32,7 +32,7 @@ const SystemUpdate: React.FC = () => {
   const [commandHistory, setCommandHistory] = useRecoilState(commandState);
   const [isUpdating, setIsUpdating] = useState(false);
   const checkUpdates = async () => {
-    const cmd = new Command(commands.getPamac.program, ['checkupdates']);
+    const cmd = Command.create(commands.getPamac.program, ['checkupdates']);
     const cmdResult = await cmd.execute();
 
     if (cmdResult.stdout) {
@@ -49,7 +49,7 @@ const SystemUpdate: React.FC = () => {
       ...commandHistory, // that contains all the old items
       'pamac update --no-confirm --no-aur --force-refresh', // and one new item at the end
     ]);
-    const cmd = new Command(commands.getPamac.program, [
+    const cmd = Command.create(commands.getPamac.program, [
       'update',
       '--no-confirm',
       '--no-aur',
@@ -65,7 +65,7 @@ const SystemUpdate: React.FC = () => {
   };
 
   const openPamacUpdateGui = async () => {
-    const cmd = new Command(commands.getPamacManager.program, ['--updates']);
+    const cmd = Command.create(commands.getPamacManager.program, ['--updates']);
     const cmdResult = await cmd.execute();
     error(cmdResult.stderr);
     info(cmdResult.stdout);

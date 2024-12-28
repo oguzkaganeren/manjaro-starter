@@ -2,7 +2,7 @@ import {
   atom, selector,
 } from 'recoil';
 import _ from 'lodash';
-import { Child, Command } from '@tauri-apps/api/shell';
+import { Child, Command } from '@tauri-apps/plugin-shell';
 import apps from '../assets/data/apps.json';
 import commands from '../assets/Commands';
 
@@ -45,7 +45,7 @@ export const getPackages = selector({
         const id = _.uniqueId();
         let pkInstalled = false;
         let pkVer = '';
-        const cmdVersion = new Command(commands.getPacman.program, ['-Q', app.pkg]);
+        const cmdVersion = Command.create(commands.getPacman.program, ['-Q', app.pkg]);
         const cmdVersionResult = await cmdVersion.execute();
         if (cmdVersionResult.stdout) {
           const spStd = cmdVersionResult.stdout.split(' ')[1];

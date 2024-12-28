@@ -4,7 +4,7 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import { Command } from '@tauri-apps/api/shell';
+import { Command } from '@tauri-apps/plugin-shell';
 import { useRecoilValue } from 'recoil';
 import { liveState } from '../../stores/LiveStore';
 import commands from '../../assets/Commands';
@@ -22,7 +22,7 @@ const LiveInstaller = () => {
           variant="outline"
           colorScheme="whatsapp"
           onClick={async () => {
-            new Command(commands.getCalamaresPolkit.program).execute();
+            Command.create(commands.getCalamaresPolkit.program).execute();
           }}
         >
           {t('installManjaroLinux')}

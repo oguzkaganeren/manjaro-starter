@@ -6,14 +6,15 @@ import {
   Spacer,
 } from '@chakra-ui/react';
 import React from 'react';
-import { appWindow } from '@tauri-apps/api/window';
+import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { BiWindow } from 'react-icons/bi';
 import { MdOutlineMinimize } from 'react-icons/md';
-import { invoke } from '@tauri-apps/api/tauri';
+import { invoke } from '@tauri-apps/api/core';
 import { CloseIcon } from '@chakra-ui/icons';
 import AppSettings from './appSetting/AppSettings';
 import ThemeComponent from './ThemeComponent';
 import StepButtons from './StepButtons';
+const appWindow = getCurrentWebviewWindow()
 
 const NavbarComponent: React.FC = () => (
   <Flex

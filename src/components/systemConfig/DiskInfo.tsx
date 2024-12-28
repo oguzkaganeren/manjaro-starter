@@ -6,7 +6,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import React, { ReactNode, useState, useEffect } from 'react';
-import { invoke } from '@tauri-apps/api/tauri';
+import { invoke } from '@tauri-apps/api/core';
 import { FiDisc } from 'react-icons/fi';
 import { FaUsb } from 'react-icons/fa';
 import formatBytes from '../../utils/Format';

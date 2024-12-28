@@ -10,7 +10,7 @@ import {
   Heading,
   Text,
 } from '@chakra-ui/react';
-import { Command } from '@tauri-apps/api/shell';
+import { Command } from '@tauri-apps/plugin-shell';
 import DOMPurify from 'dompurify';
 import { AtSignIcon } from '@chakra-ui/icons';
 import { useRecoilValue } from 'recoil';
@@ -57,7 +57,7 @@ function header(
                   '2xl': '80em',
                 }}
                 onClick={() => {
-                  const cmd = new Command(commands.getPamacManager.program, [
+                  const cmd = Command.create(commands.getPamacManager.program, [
                     `--details=${pkg}`,
                   ]);
                   cmd.execute();

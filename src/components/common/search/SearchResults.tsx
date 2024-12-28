@@ -4,7 +4,7 @@ import {
 } from '@chakra-ui/react';
 import { StickyBoundary, StickyViewport } from '@anubra266/stickyreact';
 import { FiPackage } from 'react-icons/fi';
-import { Command, open } from '@tauri-apps/api/shell';
+import { Command, open } from '@tauri-apps/plugin-shell';
 import { FaDiscourse, FaWikipediaW } from 'react-icons/fa';
 import { SiPagekit } from 'react-icons/si';
 import { FcDocument } from 'react-icons/fc';
@@ -39,7 +39,7 @@ const Res = (props: SearchInterface) => {
       <Link
         onClick={async () => {
           if (type === 'package') {
-            const cmd = new Command(commands.getPamacManager.program, [
+            const cmd = Command.create(commands.getPamacManager.program, [
               `--details=${pkg}`,
             ]);
             cmd.execute();

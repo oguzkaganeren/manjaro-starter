@@ -7,8 +7,8 @@ import {
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { resolveResource, configDir } from '@tauri-apps/api/path';
-import { copyFile, removeFile, exists } from '@tauri-apps/api/fs';
-import { info } from 'tauri-plugin-log-api';
+import { copyFile, remove, exists } from '@tauri-apps/plugin-fs';
+import { info } from '@tauri-apps/plugin-log';
 
 const StartLaunch = (): JSX.Element => {
   const { t } = useTranslation();
@@ -22,7 +22,7 @@ const StartLaunch = (): JSX.Element => {
       copyFile(resourcePath, `${configDirPath}autostart/manjaro-starter.desktop`);
     } else {
       info(`${configDirPath}autostart/manjaro-starter.desktop removed if it exists`);
-      removeFile(`${configDirPath}autostart/manjaro-starter.desktop`);
+      remove(`${configDirPath}autostart/manjaro-starter.desktop`);
     }
   };
 

@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import '@fontsource/caveat';
-import { open } from '@tauri-apps/api/shell';
+import { open } from '@tauri-apps/plugin-shell';
 import { useRecoilValue } from 'recoil';
 import LearnMoreComponent from '../components/home/LearnMoreComponent';
 import ReleaseNotes from '../components/home/ReleaseNotes';

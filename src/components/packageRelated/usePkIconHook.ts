@@ -1,4 +1,4 @@
-import { invoke } from '@tauri-apps/api/tauri';
+import { invoke } from '@tauri-apps/api/core';
 import React, { useEffect } from 'react';
 
 export default function usePkIconHook(icon:string) {
