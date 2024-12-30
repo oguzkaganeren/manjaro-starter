@@ -20,7 +20,7 @@ serde = { version = "1.0.216", features = ["derive"] }
 tauri = { version = "2", features = ["tray-icon"] }
 tauri-utils = "2"
 log = "0.4.22"
-sysinfo = {version ="0.30.13", features= ["serde"] }
+sysinfo = {version ="0.33.1", features= ["serde"] }
 systemctl = "0.3.1"
 tauri-plugin-single-instance = { version = "2" }
 tauri-plugin-log = "2"
