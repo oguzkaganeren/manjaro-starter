@@ -9,6 +9,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { useTheme } from "next-themes"
+import { Moon, MoonIcon, Sun } from "lucide-react"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
@@ -18,11 +26,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
- 
+import { ThemeSwitcher } from "@/components/theme-switcher"
+
 export default function Home() {
   return (
     <Card className="w-[350px]">
       <CardHeader>
+        <ThemeSwitcher />
         <CardTitle>Create project</CardTitle>
         <CardDescription>Deploy your new project in one-click.</CardDescription>
       </CardHeader>
