@@ -36,7 +36,7 @@
     }
   },
   "build": {
-    "devUrl": "http://localhost:1420",
+    "devUrl": "http://localhost:3000",
     "frontendDist": "../dist",
     "beforeDevCommand": "yarn dev",
     "beforeBuildCommand": "yarn build"
