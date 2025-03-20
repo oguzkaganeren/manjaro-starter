@@ -584,16 +584,16 @@ dependencies = [
 
 [[package]]
 name = "cargo_metadata"
-version = "0.18.1"
+version = "0.19.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2d886547e41f740c616ae73108f6eb70afe6d940c7bc697cb30f13daec073037"
+checksum = "dd5eb614ed4c27c5d706420e4320fbe3216ab31fa1c33cd8246ac36dae4479ba"
 dependencies = [
  "camino",
  "cargo-platform",
  "semver",
  "serde",
  "serde_json",
- "thiserror 1.0.69",
+ "thiserror 2.0.9",
 ]
 
 [[package]]
@@ -2178,9 +2178,9 @@ dependencies = [
 
 [[package]]
 name = "infer"
-version = "0.16.0"
+version = "0.19.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bc150e5ce2330295b8616ce0e3f53250e53af31759a9dbedad1621ba29151847"
+checksum = "a588916bfdfd92e71cacef98a63d9b1f0d74d6599980d11894290e7ddefffcf7"
 dependencies = [
  "cfb",
 ]
@@ -4872,10 +4872,11 @@ dependencies = [
 
 [[package]]
 name = "tauri-utils"
-version = "2.1.0"
+version = "2.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9271a88f99b4adea0dc71d0baca4505475a0bbd139fb135f62958721aaa8fe54"
+checksum = "82dcced4014e59af9790cc22f5d271df3be09ecd6728ec68861642553c8d01b7"
 dependencies = [
+ "anyhow",
  "brotli",
  "cargo_metadata",
  "ctor",
